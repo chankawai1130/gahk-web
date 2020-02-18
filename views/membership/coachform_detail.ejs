@@ -1,0 +1,299 @@
+<div class="card col-12">
+    <h1 style="text-align:center">
+        <教練資料>
+    </h1>
+    <div class="col-12">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="font-weight-bold">1. 申請類別：</span>
+                    <%= coach.New_coach%>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">2. 教練註冊級別:</span>
+                    <%=coach.Level %>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">3. 體操項目：</span>
+                    <%= coach.Disciplines1 %> ,
+                    <%= coach.Disciplines2 %> ,
+                    <%= coach.Disciplines3 %> ,
+                    <%= coach.Disciplines4 %> ,
+                    <%= coach.Disciplines5 %> ,
+                    <%= coach.Disciplines6 %> ,
+                </li>
+
+                <li class="list-group-item">
+                        <span class="font-weight-bold"><b>4. 個人資料：</b></span><br>
+                    <span class="font-weight-bold">姓名 (英文):</span>
+                    <%= coach.Engname %>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">姓名 (中文): </span>
+                    <%= coach.Chiname %>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">香港身份證號碼:</span>
+                    <%=coach.Id%>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">性別:</span>
+                    <%= coach.Gender %>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">出生日期:</span>
+                    <%= coach.Birthd%>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">職業:</span>
+                    <%= coach.Occupation%>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">學歷:</span>
+                    <%= coach.Education%>
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">住宅:</span>
+                    <%=coach.Hnumber%>
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">手提:</span>
+                    <%= coach.Mnumber %>
+
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">電郵:</span>
+                    <%= coach.Email %>
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">通訊地址:</span>
+                    <%=coach.ChiAddress%>
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">5. 體操教學經驗: </span>
+                    <%= coach.HaveBeenCoach%>
+
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">如有，請列明課程及任教年份：</span>
+                    <%= coach.Have %>
+
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold"> 其他有關體操教學經驗，請列明：</span>
+                    <%=coach.Have2 %>
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">6. 教練資歷: </span><br>
+                    <span class="font-weight-bold">本會發出之體操教練證書</span>
+                
+                    <%= coach.Qualification%> <br>
+                
+                    <label style="font-size:16px">證書編號</label>
+                    <%= coach.Cert_no%> <br>
+                    <label style="font-size:16px"> 考取年份
+                    </label>
+                    <%= coach.date_Qualification%>
+                    <br>
+
+                    <label style="font-size:16px"> 香港教練培訓委員會發出之證書
+                    </label>
+                    <%= coach.Qualification1%> <br>
+                    <label style="font-size:16px"> 認可教練號碼
+                    </label>
+                    <%= coach.Accredited_coachNo%> <br>
+
+                    <label style="font-size:16px"> 有效日期
+                    </label>
+                    <%=coach.date_Qualification1%> <br>
+
+                    <label style="font-size:16px"> 本會發出之教練理論課程證書</label>
+                    <label style="font-size:16px"> 證書編號
+                    </label>
+
+                    <%= coach.Cert_no2%> <br>
+
+                    <label style="font-size:16px"> 有效日期
+
+                    </label>
+
+                    <%= coach.date_Qualification2%> <br>
+
+                    <label style="font-size:16px">急救證書
+                    </label>
+
+                    <%= coach.Qualification3%> <br>
+
+
+                    <label style="font-size:16px"> 發出機構 </label>
+
+                    <%= coach.Issued_by%> <br>
+
+
+
+                    <label style="font-size:16px">考取年份</label>
+
+                    <%= coach.date_Qualification3%> <br>
+
+
+                    <label style="font-size:16px">其他有關體操教練資歷 ( 如國內、國際教練或裁判 )</label>
+
+                    <%= coach.Qualification4%> <br>
+
+                    <%= coach.others%> <br>
+
+
+                </li>
+
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">7. 達標事項</span>
+                    <%= coach.judges%><br>
+
+                    <label style="font-size:16px">考取年份</label>
+
+                    <%= coach.date_qualification5%> <br>
+
+
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">(B) 在上一次註冊期內曾於學校或其他地區教授之訓練班：(如有)</span>
+<br>
+                    <label style="font-size:16px">舉辦日期 (月/年)</label>
+
+                    <%= coach.date_training%> <br>
+
+                    <label style="font-size:16px">學校 / 機構名稱</label>
+
+                    <%= coach.school_training%> <br>
+
+
+                    <label style="font-size:16px">教授項目</label>
+
+                    <%= coach.Discipline_training%> <br>
+
+
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold"> (C) 在上一次註冊期內曾教導學生考取章別計劃之數量：(如有)</span>
+<br>
+                    <label style="font-size:16px">舉辦日期 (月/年)</label>
+
+                    <%= coach.Badges_date%> <br>
+
+                    <label style="font-size:16px">訓練班 / 學校 / 機構名稱</label>
+
+                    <%= coach.Badges_school%> <br>
+
+
+                    <label style="font-size:16px">級別及數量</label>
+
+                    <%= coach.Badges_no%> <br>
+
+
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">(D) 在上一次註冊期內曾參與總會之體操推廣活動 (包括本地賽事)：(如有)</span>
+<br>
+                    <label style="font-size:16px">舉辦日期 (月/年)</label>
+
+                    <%= coach.Activities_date%> <br>
+
+                    <label style="font-size:16px">活動名稱</label>
+
+                    <%= coach.Activities_event%> <br>
+
+
+                    <label style="font-size:16px">負責職位</label>
+
+                    <%= coach.Activities_badges%> <br>
+
+
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">(E) 在上一次註冊期內曾參與總會及香港教練培訓委員會之複修課程：(請提供文件副本)</span>
+<br>
+                    <label style="font-size:16px">舉辦日期 (月/年)</label>
+
+                    <%= coach.Coaching_workshops_date%> <br>
+
+                    <label style="font-size:16px">活動名稱</label>
+
+                    <%= coach.Coaching_workshops_event%> <br>
+
+
+                    <label style="font-size:16px">舉辦機構</label>
+
+                    <%= coach.Coaching_workshops_organization%> <br>
+
+
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">聲明：</span>
+
+                    <%= coach.hope%> <br>
+                </li>
+
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">日期: </span>
+
+                    <%= coach.date_applicant%> <br>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="font-weight-bold">校長簽署: </span>
+
+                    <%= coach.sign_principal%> <br>
+                </li>
+
+
+
+
+
+
+
+
+            </ul></div>
+
+
+
+
+
+
+</div>
+© 2019 GitHub, Inc.
