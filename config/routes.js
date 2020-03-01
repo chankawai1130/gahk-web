@@ -91,6 +91,7 @@ module.exports.routes = {
 
   'GET /membership/admin/export.csv': 'MembershipController.csv',
   'GET /membership/chinesememberform_detail/:id': 'MembershipController.chineseMemberform_detail',
+  //'GET /membership/chinesememberform': 'MembershipController.chineseMemberform',
   'GET /membership/update_membership/:id': 'MembershipController.update_membership',
   'POST /membership/update_membership/:id': 'MembershipController.update_membership',
   '/membership/confirm_membership/:id' : 'MembershipController.confirm_membership',
@@ -128,4 +129,6 @@ module.exports.routes = {
   'POST /admin/email/:id':'AdminController.email_detail',
 
   'GET /admin/user':'AdminController.user_list',
+
+  'GET /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetition_form': 'ApplicationController.Team_HKRGAgeGroupCompetition_form',
 };
