@@ -130,5 +130,5 @@ module.exports.routes = {
 
   'GET /admin/user':'AdminController.user_list',
 
-  'GET /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetition_form': 'ApplicationController.Team_HKRGAgeGroupCompetition_form',
+  'GET /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform': 'ApplicationController.Team_School_HKRGAgeGroupCompetitionform',
 };
