@@ -1,12 +1,208 @@
-<!-- Team_HKRGAgeGroupCompetition_form.ejs -->
-<form action="/pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform" class="register" method="POST">
+<!-- Team_School_HKRGAgeGroupCompetitionform.ejs -->
+<form action="/pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform" method="POST"
+    class="mx-sm-5">
 
-<h1><b>第63屆體育節 - 2020年全港藝術體操分齡比賽</b></h1>
-<h2><u><b>團體項目報名表(學校組)</b></u></h2>
-<br><br>
+    <br>
+    <h1 style="color: #888888; font-size: 16pt; font-weight: 200;"><b>第63屆體育節 - 2020年全港藝術體操分齡比賽</b></h1>
+    <h2 style="color: #888888; font-size:14pt; font-weight: 200;"><u><b>團體項目報名表(學校組)</b></u></h2>
+    <br><br>
 
-<fieldset class="row1">
+    <fieldset class="row1">
+        <legend style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group Details<span
+                style="font-size:14px;color:red"> * </span></legend>
 
-</fieldset>
+        <div class="form-group">
+            <label>學校名稱(中文)<br>School Name(Chinese):</label>
+            <input type="text" name="Competition[TSSchoolChiName]" value="" style="width:450pt" required>
+        </div>
+
+        <div class="form-group">
+            <label>聯絡電話<br>Contact Number:</label>
+            <input type="text" name="Competition[TSPhone]" value="" maxlength="8" pattern="\d{8}" required>
+
+            <label>聯絡電郵<br>Email:</label>
+            <input type="email" name="Competition[TSEmail]" value="" style="width:300pt" required>
+        </div>
+
+        <div class="form-group">
+            <label>教練姓名<br>Coach Name:</label>
+            <input input="text" name="Competition[TSCoachName]" value="" required>
+
+            <label>教練聯絡電話<br>Coach Contact Number:</label>
+            <input type="text" name="Competition[TSCoachPhone]" value="" maxlength="8" pattern="\d{8}" required>
+        </div>
+
+        <!-- have to make change -->
+        <div class="form-group">
+            <label>組別<br>Category:</label>
+            <input type="radio" value="" name="" />
+            <label class="category">預備A,B組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">預備C,D組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">預備E組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">初級A組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">初級B組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">高級A組</label>
+            <input type="radio" value="" name="" />
+            <label class="category">高級B組</label>
+        </div>
+    </fieldset>
+
+    <hr style="border-top: 1px solid #83a70c;">
+
+    <fieldset class="row2">
+        <legend style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者(1)個人資料 Applicant(1)'s Personal
+            Details<span style="font-size:14px;color:red"> * </span></legend>
+        <div class="form-group">
+            <label>中文姓名<br>Name in Chinese:</label>
+            <input type="text" name="Competition[TSMate1ChiName]" value="" placeholder=" e.g. 陳大文" required>
+            <label>英文姓名<br>Name in English:</label>
+            <input type="text" name="Competition[TSMate1EngName]" value="" placeholder=" e.g. Chan Tai Man" required>
+        </div>
+
+        <div class="form-group">
+            <label>身分證號碼<br>ID Card Number:</label>
+            <input type="text" name="Competition[TSMate1IDNo]" placeholder=" A123456(7)" value="" required>
+
+            <label>出生日期<br>Date of Birth<br>(dd/mm/yyyy)</label>
+            <input type="date" name="Competition[TSMate1Date]" value="" required>
+        </div>
+    </fieldset>
+
+    <fieldset class="row3">
+        <legend style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者(2)個人資料 Applicant(2)'s Personal
+            Details<span style="font-size:14px;color:red"> * </span></legend>
+        <div class="form-group">
+            <label>中文姓名<br>Name in Chinese:</label>
+            <input type="text" name="Competition[TSMate2ChiName]" value="" placeholder=" e.g. 陳大文" required>
+            <label>英文姓名<br>Name in English:</label>
+            <input type="text" name="Competition[TSMate2EngName]" value="" placeholder=" e.g. Chan Tai Man" required>
+        </div>
+
+        <div class="form-group">
+            <label>身分證號碼<br>ID Card Number:</label>
+            <input type="text" name="Competition[TSMate2IDNo]" placeholder=" A123456(7)" value="" required>
+
+            <label>出生日期<br>Date of Birth<br>(dd/mm/yyyy)</label>
+            <input type="date" name="Competition[TSMate2Date]" value="" required>
+        </div>
+    </fieldset>
+
+    <fieldset class="row4">
+        <legend style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者(3)個人資料 Applicant(3)'s Personal
+            Details<span style="font-size:14px;color:red"> * </span></legend>
+        <div class="form-group">
+            <label>中文姓名<br>Name in Chinese:</label>
+            <input type="text" name="Competition[TSMate3ChiName]" value="" placeholder=" e.g. 陳大文" required>
+            <label>英文姓名<br>Name in English:</label>
+            <input type="text" name="Competition[TSMate3EngName]" value="" placeholder=" e.g. Chan Tai Man" required>
+        </div>
+
+        <div class="form-group">
+            <label>身分證號碼<br>ID Card Number:</label>
+            <input type="text" name="Competition[TSMate3IDNo]" placeholder=" A123456(7)" value="" required>
+
+            <label>出生日期<br>Date of Birth<br>(dd/mm/yyyy)</label>
+            <input type="date" name="Competition[TSMate3Date]" value="" required>
+        </div>
+    </fieldset>
+
+    <fieldset class="row5">
+        <legend style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者(4)個人資料 Applicant(4)'s Personal
+            Details<span style="font-size:14px;color:red"> * </span></legend>
+        <div class="form-group">
+            <label>中文姓名<br>Name in Chinese:</label>
+            <input type="text" name="Competition[TSMate4ChiName]" value="" placeholder=" e.g. 陳大文" required>
+            <label>英文姓名<br>Name in English:</label>
+            <input type="text" name="Competition[TSMate4EngName]" value="" placeholder=" e.g. Chan Tai Man" required>
+        </div>
+
+        <div class="form-group">
+            <label>身分證號碼<br>ID Card Number:</label>
+            <input type="text" name="Competition[TSMate4IDNo]" placeholder=" A123456(7)" value="" required>
+
+            <label>出生日期<br>Date of Birth<br>(dd/mm/yyyy)</label>
+            <input type="date" name="Competition[TSMate4Date]" value="" required>
+        </div>
+    </fieldset>
+
+    <hr style="border-top: 1px solid #83a70c;">
+
+    <fieldset class="row6">
+
+        <span>Remark:</span>
+        <ol>
+            <li>如有需要可自行影印表格<br>Applicant can make copy of form if need.</li>
+            <li>每張報名表只可報一個組別<br>A application form can only be applied for one category.</li>
+        </ol>
+
+        <br>
+
+        <div class="form-group">
+            <label><span style="font-size:14px;color:red">*</span><span
+                    style="font-weight: bold; color: #83a70c;">團體項目<br>Group Event: </span>$250 X </label>
+            <input type="number" name="Competition[TSTeamNumber]" min=1 max=100 required>
+            <span>隊 team(s) = $</span>
+            <input type="text" name="Competition[TSTeamPrice]" placeholder=" e.g. 1234" required>
+            <br>
+            <label>總額 Total price = $</label>
+            <input type="text" name="Competition[TSTeamTotalPrice]" placeholder=" e.g. 1234" required>
+        </div>
+
+
+    </fieldset>
+    <div class="form-group">
+        <label style="font-size:12px;color:red;font-weight:bold">*必須填寫 *Must provide
+        </label>
+    </div>
+
+    <hr style="border-top: 1px solid #83a70c;">
+
+    <fieldset class="row7">
+        <div class="form-group">
+            <label><span style="font-size:14px;color:red"> * </span><b>上載聲明 Upload declaration (pdf檔)</b></label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" />
+            <div id="preview"></div>
+        </div>
+
+        <a href="http://www.gahk.org.hk/doc/Team_HKRGAgeGroupCompetition.pdf" target="_blank"><u>下載聲明 Download Declaration</u></a>
+
+        <br><br>
+        <div class="form-group">
+            <input class="form-check-input" name="Competition[box]" type="checkbox" required>
+            <label class="form-check-label" for="Competition[box]"><span style="font-size:14px;color:red"> * </span>I have read carefully and agreed with the <a href="/pages/competition/onlineApplication/annex1" target="_blank">Rules and Regulation</a> of the competition</label>
+        </div>
+    </fieldset>
+
+    <br><button type="submit" class="btn btn-primary">Preview</button><br><br>
+    
+
+
 
 </form>
+
+<script>
+    function handleFile(files) {
+    const file = files[0];
+    if (!file.type.startsWith('image/')&&!file.type=='application/pdf') return;
+    var preview = document.getElementById('preview');
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    preview.innerHTML = "";
+     // var img = document.createElement('img');
+      //img.src = e.target.result;
+      //preview.appendChild(img);
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'Competition[declaration]';
+      input.value = e.target.result;
+     
+      preview.appendChild(input);
+    }
+    reader.readAsDataURL(file);
+  }
+</script>

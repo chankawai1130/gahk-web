@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+    //action - view
+    annex1: async function (req, res) {
+        if (req.method == 'GET') { return res.view('pages/competition/onlineApplication/annex1'); }
+    },
+
+    //action - create
     Team_School_HKRGAgeGroupCompetitionform: async function (req, res) {
         if (req.method == 'GET') { return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform', { 'data': req.session.data || {} }); }
 
@@ -14,7 +20,9 @@ module.exports = {
 
 
         return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform', { 'data': req.session.data || {} });
-    }
+    },
+
+
 
 };
 
