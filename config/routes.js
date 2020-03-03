@@ -61,6 +61,7 @@ module.exports.routes = {
   '/links': { view: 'pages/links' },
 
   '/competition/form/rgt': { view: 'pages/competition/form/rgt' },
+  '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
 
   /***************************************************************************
   *                                                                          *
@@ -89,7 +90,8 @@ module.exports.routes = {
   //  ║║║║╚═╗║
   //  ╩ ╩╩╚═╝╚═╝
 
-  'POST /competition/form/rgt': 'RGTController.create',
+  'POST /competition/form/rgt': 'ApplicationController.create',
+  'POST /competition/form/gfa': 'ApplicationController.gfa',
 
 
   'GET /membership/admin/export.csv': 'MembershipController.csv',

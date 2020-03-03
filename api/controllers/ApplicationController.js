@@ -17,7 +17,7 @@ module.exports = {
         //     if (err) { return res.serverError(err); }
         //     if (uploadedFiles.length == 0){ return res.badRequest('No file was uploaded'); }
 
-        await RGT.create(req.body.RGT);
+        await Application.create(req.body.Application);
 
         // await Form.update({id: req.body.id}, {
         //     avatarPath: uploadedFiles[0].fd
@@ -25,6 +25,19 @@ module.exports = {
 
         return res.ok("Successfully created!");
         // });
+    },
+
+    gfa: async function (req, res) {
+
+        if (req.method == "GET")
+            return res.view('competition/form/gfa');
+
+        if (typeof req.body.Competition === "undefined")
+            return res.badRequest("Form-data not received.");
+
+        await Application.create(req.body.Application)
+
+        return res.ok("Successfully submitted!");
     },
 
 
