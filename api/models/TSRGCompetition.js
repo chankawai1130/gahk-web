@@ -1,5 +1,5 @@
 /**
- * Competition.js
+ * TSRGCompetition.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,11 +12,6 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-
-    CompetitionType: { //Identify the type of competition
-      type: 'string',
-    },
 
     //Team_School_HKRGAgeGroupCompetitionform attributes
     TSSchoolChiName: {

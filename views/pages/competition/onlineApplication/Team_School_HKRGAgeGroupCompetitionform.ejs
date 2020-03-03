@@ -2,6 +2,9 @@
 <form action="/pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform" method="POST"
     class="mx-sm-5">
 
+    <input type="radio" name="Competition[CompetitionType]" value="TSCompetition" checked required/>
+    <label class="CompetitionType" style="font-size: small;">第63屆體育節 - 2020年全港藝術體操分齡比賽 團體項目報名表(學校組)</label>
+
     <br>
     <h1 style="color: #888888; font-size: 16pt; font-weight: 200;"><b>第63屆體育節 - 2020年全港藝術體操分齡比賽</b></h1>
     <h2 style="color: #888888; font-size:14pt; font-weight: 200;"><u><b>團體項目報名表(學校組)</b></u></h2>
@@ -215,7 +218,7 @@
             //preview.appendChild(img);
             var input = document.createElement('input');
             input.type = 'hidden';
-            input.name = 'Competition[declaration]';
+            input.name = 'Competition[TSDeclaration]';
             input.value = e.target.result;
 
             preview.appendChild(input);
