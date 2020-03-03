@@ -133,6 +133,8 @@ module.exports.routes = {
   'GET /pages/competition/onlineApplication/annex1': 'TSRGCompetitionController.annex1',
   'GET /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
   'POST /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'GET /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
 
 
 };

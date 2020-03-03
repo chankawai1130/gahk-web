@@ -6,32 +6,32 @@
  */
 
 module.exports = {
-  // json function
-  json: async function (req, res) {
+    // json function
+    json: async function (req, res) {
 
-    var applications = await TSRGCompetition.find();
+        var applications = await TSRGCompetition.find();
 
-    return res.json(applications);
-},
+        return res.json(applications);
+    },
 
-//action - view
-annex1: async function (req, res) {
-    if (req.method == 'GET') { return res.view('pages/competition/onlineApplication/annex1'); }
-},
+    //action - view
+    annex1: async function (req, res) {
+        if (req.method == 'GET') { return res.view('pages/competition/onlineApplication/annex1'); }
+    },
 
-//action - create
-Team_School_HKRGAgeGroupCompetitionform: async function (req, res) {
-    if (req.method == 'GET')
-        return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform');
+    //action - create
+    Team_School_HKRGAgeGroupCompetitionform: async function (req, res) {
+        if (req.method == 'GET')
+            return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform');
 
-    if (!req.body.TSRGCompetition)
-        return res.badRequest("Form-data not received.");
+        if (!req.body.TSRGCompetition)
+            return res.badRequest("Form-data not received.");
 
-    await TSRGCompetition.create(req.body.TSRGCompetition);
+        await TSRGCompetition.create(req.body.TSRGCompetition);
 
-    //return res.redirect('/'); //Change location to preview page
-    return res.ok("ok");
-},
+        //return res.redirect('/'); //Change location to preview page
+        return res.ok("ok");
+    },
 
 };
 
