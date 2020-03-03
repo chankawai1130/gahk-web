@@ -9,7 +9,7 @@ module.exports = {
   // json function
   json: async function (req, res) {
 
-    var applications = await Competition.find();
+    var applications = await TSRGCompetition.find();
 
     return res.json(applications);
 },
@@ -24,10 +24,10 @@ Team_School_HKRGAgeGroupCompetitionform: async function (req, res) {
     if (req.method == 'GET')
         return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform');
 
-    if (!req.body.Competition)
+    if (!req.body.TSRGCompetition)
         return res.badRequest("Form-data not received.");
 
-    await Competition.create(req.body.Competition);
+    await TSRGCompetition.create(req.body.TSRGCompetition);
 
     //return res.redirect('/'); //Change location to preview page
     return res.ok("ok");
