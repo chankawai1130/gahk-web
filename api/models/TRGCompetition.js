@@ -13,7 +13,7 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    //Team_School_HKRGAgeGroupCompetitionform attributes
+    //Team_HKRGAgeGroupCompetitionform attributes
     OrgChiName: {
       type: 'string',
     },
