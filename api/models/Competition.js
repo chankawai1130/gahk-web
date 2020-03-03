@@ -13,6 +13,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+
+    CompetitionType: { //Identify the type of competition
+      type: 'string',
+    },
+
     //Team_School_HKRGAgeGroupCompetitionform attributes
     TSSchoolChiName: {
       type: 'string',
@@ -32,6 +37,10 @@ module.exports = {
 
     TSCoachPhone: {
       type: 'string',
+    },
+
+    TSCategory: { 
+      type:'string', //true, false
     },
 
     TSMate1ChiName: {
@@ -114,11 +123,11 @@ module.exports = {
       type: 'number',
     },
 
-    declaration: {
+    TSDeclaration: {
       type: 'string',
     },
 
-    box: {
+    TSBox: {
       type: 'string',
     },
 

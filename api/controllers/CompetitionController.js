@@ -13,13 +13,15 @@ module.exports = {
 
     //action - create
     Team_School_HKRGAgeGroupCompetitionform: async function (req, res) {
-        if (req.method == 'GET') { return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform', { 'data': req.session.data || {} }); }
+        if (req.method == 'GET')
+            return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform');
 
-        // return res.view('membership/chineseMemberform', { 'data': req.session.data || {} });
-        req.session.data = req.body.Competition;
+        if (!req.body.Competition)
+            return res.badRequest("Form-data not received.");
 
+        await Competition.create(req.body.Competition);
 
-        return res.view('pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform', { 'data': req.session.data || {} });
+        return res.redirect('/'); //Change location to preview page
     },
 
 
