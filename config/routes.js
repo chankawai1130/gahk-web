@@ -90,8 +90,7 @@ module.exports.routes = {
   //  ║║║║╚═╗║
   //  ╩ ╩╩╚═╝╚═╝
 
-  'POST /competition/form/rgt': 'ApplicationController.create',
-  'POST /competition/form/gfa': 'ApplicationController.gfa',
+  
 
 
   'GET /membership/admin/export.csv': 'MembershipController.csv',
@@ -133,4 +132,18 @@ module.exports.routes = {
   'POST /admin/email/:id':'AdminController.email_detail',
 
   'GET /admin/user':'AdminController.user_list',
+
+//********************Competition Application routes****************
+
+  'POST /competition/form/rgt': 'ApplicationController.create',
+  'POST /competition/form/gfa': 'ApplicationController.gfa',
+
+
+  'GET /pages/competition/formn/annex1': 'TSRGCompetitionController.annex1',
+  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+
 };
