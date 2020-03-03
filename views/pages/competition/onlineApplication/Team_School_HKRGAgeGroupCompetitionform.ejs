@@ -171,7 +171,7 @@
     <fieldset>
         <div class="form-group">
             <label><span style="font-size:14px;color:red"> * </span><b>上載聲明 Upload declaration (pdf檔)</b></label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+            <input type="file" accept="image/*,application/pdf"  onchange="handleFile(this.files)" required/>
             <div id="preview"></div>
         </div>
 
@@ -204,6 +204,8 @@
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
         var preview = document.getElementById('preview');
         var reader = new FileReader();
+
+
         reader.onload = function (e) {
             preview.innerHTML = "";
             // var img = document.createElement('img');
