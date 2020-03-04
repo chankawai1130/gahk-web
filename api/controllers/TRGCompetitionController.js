@@ -6,18 +6,11 @@
  */
 
 module.exports = {
-    // json function
-    json: async function (req, res) {
-
-        var applications = await TRGCompetition.find();
-
-        return res.json(applications);
-    },
 
     //action - create
     Team_HKRGAgeGroupCompetitionform: async function (req, res) {
         if (req.method == 'GET')
-            return res.view('pages/competition/onlineApplication/Team_HKRGAgeGroupCompetitionform');
+            return res.view('pages/competition/form/Team_HKRGAgeGroupCompetitionform');
 
         if (!req.body.TRGCompetition)
             return res.badRequest("Form-data not received.");

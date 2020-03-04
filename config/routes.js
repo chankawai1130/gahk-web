@@ -130,12 +130,12 @@ module.exports.routes = {
 
   'GET /admin/user': 'AdminController.user_list',
 
-  'GET /pages/competition/onlineApplication/annex1': 'TSRGCompetitionController.annex1',
-  'GET /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'GET /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/onlineApplication/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/onlineApplication/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+  'GET /pages/competition/form/annex1': 'TSRGCompetitionController.annex1',
+  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
 
 
 };
