@@ -95,43 +95,53 @@ module.exports.routes = {
 
   'GET /membership/admin/export.csv': 'MembershipController.csv',
   'GET /membership/chinesememberform_detail/:id': 'MembershipController.chineseMemberform_detail',
+  //'GET /membership/chinesememberform': 'MembershipController.chineseMemberform',
   'GET /membership/update_membership/:id': 'MembershipController.update_membership',
   'POST /membership/update_membership/:id': 'MembershipController.update_membership',
-  '/membership/confirm_membership/:id' : 'MembershipController.confirm_membership',
-  '/membership/canel_membership/:id' : 'MembershipController.canel_membership',
+  '/membership/confirm_membership/:id': 'MembershipController.confirm_membership',
+  '/membership/canel_membership/:id': 'MembershipController.canel_membership',
 
   'GET /athelete/athelete_detail/:id': 'AtheleteController.athelete_detail',
   'GET /athelete/athelete_record/export.csv': 'AtheleteController.csv',
   'GET /athelete/update_athelete/:id': 'AtheleteController.update_athelete',
   'POST /athelete/update_athelete/:id': 'AtheleteController.update_athelete',
-  '/athelete/confirm_athelete/:id' : 'AtheleteController.confirm_athelete',
-  '/athelete/canel_athelete/:id' : 'AtheleteController.canel_athelete',
+  '/athelete/confirm_athelete/:id': 'AtheleteController.confirm_athelete',
+  '/athelete/canel_athelete/:id': 'AtheleteController.canel_athelete',
 
   'GET /coach/coach_record/export.csv': 'CoachController.csv',
   'GET /coach/coachform_detail/:id': 'CoachController.coachform_detail',
   'GET /coach/update_coach/:id': 'CoachController.update_coach',
   'POST /coach/update_coach/:id': 'CoachController.update_coach',
-  '/coach/confirm_coach/:id' : 'CoachController.confirm_coach',
-  '/coach/canel_coach/:id' : 'CoachController.canel_coach',
+  '/coach/confirm_coach/:id': 'CoachController.confirm_coach',
+  '/coach/canel_coach/:id': 'CoachController.canel_coach',
 
-  'GET /user':'UserController.index',
-  '/user/login':'UserController.login',
+  'GET /user': 'UserController.index',
+  '/user/login': 'UserController.login',
   '/user/update_user/:id': 'UserController.Update_User',
   'GET /user/detail/:id': 'UserController.detail',
   '/user/register': 'UserController.register',
   '/user/forgot-password': 'UserController.forgot',
 
-  'GET /admin':'AdminController.index',
+  'GET /admin': 'AdminController.index',
 
-  'GET /admin/news':'AdminController.news_list',
-  '/admin/news/detail':'AdminController.news_create',
-  '/admin/news/detail/:id':'AdminController.news_detail',
-  'DELETE /admin/news/detail/:id':'AdminController.news_delete',
+  'GET /admin/news': 'AdminController.news_list',
+  '/admin/news/detail': 'AdminController.news_create',
+  '/admin/news/detail/:id': 'AdminController.news_detail',
+  'DELETE /admin/news/detail/:id': 'AdminController.news_delete',
 
-  'GET /admin/email':'AdminController.email_list',
-  'POST /admin/email/:id':'AdminController.email_detail',
+  'GET /admin/email': 'AdminController.email_list',
+  'POST /admin/email/:id': 'AdminController.email_detail',
 
-  'GET /admin/user':'AdminController.user_list',
+  'GET /admin/user': 'AdminController.user_list',
+
+  'GET /pages/competition/form/annex1': 'TSRGCompetitionController.annex1',
+  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+
+'GET /admin/user':'AdminController.user_list',
 
 //********************Competition Application routes****************
 
@@ -145,5 +155,10 @@ module.exports.routes = {
   'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
   'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
   'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+
+
+
+
+  
 
 };
