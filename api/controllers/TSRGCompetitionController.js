@@ -39,7 +39,7 @@ module.exports = {
     Team_School_HKRGAgeGroupCompetitionFormPreview: async function (req, res) {
         if (req.method == 'POST') {
             await TSRGCompetition.create(req.session.data);
-            
+
             req.session.data = {};  //clear data of session
         }
 
