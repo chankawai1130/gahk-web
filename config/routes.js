@@ -61,6 +61,8 @@ module.exports.routes = {
   '/links': { view: 'pages/links' },
 
   //********************Competition Application routes****************
+  '/competition/2020/21': {view: 'pages/competition/2021'},
+  
   '/competition/form/rgt': { view: 'pages/competition/form/rgt' },
   '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
 
@@ -69,6 +71,7 @@ module.exports.routes = {
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
   //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
+  
 
   /***************************************************************************
   *                                                                          *
