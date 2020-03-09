@@ -166,10 +166,10 @@
             <input id="teamNo" type="number" name="TRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
                 required>
             <span>隊 team(s) = $</span>
-            <input id="teamPrice" type="number" name="TRGCompetition[TeamPrice]" disabled>
+            <input id="teamPrice" type="number" name = "TRGCompetition[TeamPrice]"  required>
             <br>
             <label>總額 Total price = $</label>
-            <input id="total" type="number" name="TRGCompetition[TeamTotalPrice]" disabled>
+            <input id="total" type="number" name = "TRGCompetition[TeamTotalPrice]" required>
         </div>
 
     </fieldset>
@@ -222,7 +222,9 @@
         document.getElementById('teamPrice').value = 250 * document.getElementById('teamNo').value;
 
         var price = document.getElementById('teamPrice').value;
+
         document.getElementById('total').value = price;
+        
     }
 
 
