@@ -35,7 +35,7 @@ module.exports = {
     },
 
     TSCategory: { 
-      type:'string', //true, false
+      type:'string', 
     },
 
     TSMate1ChiName: {

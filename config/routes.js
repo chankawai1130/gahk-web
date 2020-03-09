@@ -60,8 +60,15 @@ module.exports.routes = {
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
 
+  //********************Competition Application routes****************
   '/competition/form/rgt': { view: 'pages/competition/form/rgt' },
   '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
+
+  '/competition/annex1': { view: 'pages/competition/form/annex1' },
+  '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
+  '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
+  //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
+  '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
 
   /***************************************************************************
   *                                                                          *
@@ -90,12 +97,11 @@ module.exports.routes = {
   //  ║║║║╚═╗║
   //  ╩ ╩╩╚═╝╚═╝
 
-  
+
 
 
   'GET /membership/admin/export.csv': 'MembershipController.csv',
   'GET /membership/chinesememberform_detail/:id': 'MembershipController.chineseMemberform_detail',
-  //'GET /membership/chinesememberform': 'MembershipController.chineseMemberform',
   'GET /membership/update_membership/:id': 'MembershipController.update_membership',
   'POST /membership/update_membership/:id': 'MembershipController.update_membership',
   '/membership/confirm_membership/:id': 'MembershipController.confirm_membership',
@@ -134,31 +140,26 @@ module.exports.routes = {
 
   'GET /admin/user': 'AdminController.user_list',
 
-  'GET /pages/competition/form/annex1': 'TSRGCompetitionController.annex1',
-  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
 
-'GET /admin/user':'AdminController.user_list',
 
-//********************Competition Application routes****************
+  //********************Competition Application routes****************
 
   'POST /competition/form/rgt': 'ApplicationController.create',
   'POST /competition/form/gfa': 'ApplicationController.gfa',
 
-
-  'GET /pages/competition/formn/annex1': 'TSRGCompetitionController.annex1',
-  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'POST /competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
+  //'POST /competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
 
+  'POST /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
+  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
+  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
 
 
 
-  
+
+
+
 
 };
