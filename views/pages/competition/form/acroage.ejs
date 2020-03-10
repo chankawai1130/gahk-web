@@ -1,0 +1,297 @@
+<form action="/competition/form/team" method="POST">
+    <div class="row mx-sm-2">
+        <div class="col-12" style="color: #888888; ">
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年度全港技巧體操分齡賽</b></h1>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
+            <br>
+        </div>
+
+        <div class="col-12"><br>
+            <span style="font-size:14px;color:red"> * 必須填寫 *Must provide</span>
+        </div>
+
+        <!-- Person Details -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">個人資料 Personal
+                Details</h5>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>姓名 Name:</label>
+            <input type="text" class="form-group" name="Acroage[cpChiName]" required>
+            <label>中文 Chinese</label>
+            <input type="text" class="form-group" name="Acroage[cpEngName]" required>
+            <label>英文 English</label>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>性別 Gender </label> 
+            <input type="radio" name="Acroage[gender]" id="male" value="male" required>
+            <label class="gender">男 Male</label>
+            <input type="radio" name="Acroage[gender]" id="female" value="female" required>
+            <label class="gender">女 Female</label>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>出生日期 Date of birth:</label>
+            <input type="date" class="form-group" name="Acroage[birthday]" required>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>身份證號碼 ID Card No.:</label>
+            <input type="text" class="form-group" name="Acroage[idNo]" required>
+            <label>XXX( X )</label>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>聯絡電話 Contact No.:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[contactNo]" required>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>電郵地址 Email Address:</label>
+            <input type="email" class="form-group" name="Acroage[email]" style="width:230pt;" required>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>聯絡地址 Contact  Address:</label>
+            <input type="email" class="form-group" name="Acroage[address]" style="width:230pt;" required>
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label><span style="font-size:14px;color:red"> * </span>運動員簽署 Athlete sign: </label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+            <div id="preview3"></div>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>組別/年齡 Category/Age:</label>
+            <input type="radio" name="Acroage[levelCategory]" value="1 級(6 至 14 歲)" required />
+            <label class="form-check-label" for="levelCategory">1 級(6 至 14 歲)</label>
+
+            <input type="radio" name="Acroage[levelCategory]" value="2 級(6 至 14 歲)" required />
+            <label class="form-check-label" for="levelCategory">2 級(6 至 14 歲)</label>
+
+            <input type="radio" name="Acroage[levelCategory]" value="3 級(8 歲或以上)" required />
+            <label class="form-check-label" for="levelCategory">3 級(8 歲或以上)</label>
+
+            <input type="radio" name="Acroage[levelCategory]" value="4 級(9 歲或以上)" required />
+            <label class="form-check-label" for="levelCategory">4 級(9 歲或以上)</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" name="Acroage[levelCategory]" value="5 級(10 歲或以上)" required />
+            <label class="form-check-label" for="levelCategory">5 級(10 歲或以上)</label>
+        </div>
+
+        <div class="col-12">
+            <label><span style="font-size:14px;color:red"> * </span>項目 Item:</label>
+            <input type="radio" name="Acroage[itemCategory]" value="1 級(6 至 14 歲)" required />
+            <label class="form-check-label" for="itemCategory">男子雙人<br>Men's Double</label>
+
+            <input type="radio" name="Acroage[itemCategory]" value="2 級(6 至 14 歲)" required />
+            <label class="form-check-label" for="itemCategory">女子雙人<br>Women's Double</label>
+
+            <input type="radio" name="Acroage[itemCategory]" value="3 級(8 歲或以上)" required />
+            <label class="form-check-label" for="itemCategory">混合雙人<br>Mixed double</label>
+
+            <input type="radio" name="Acroage[itemCategory]" value="4 級(9 歲或以上)" required />
+            <label class="form-check-label" for="itemCategory">女子三人<br>Women's trio</label>
+        </div>
+
+        <!-- Coach Details -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">教練資料
+                Coach Details</h5>
+        </div>
+
+        <div class="col-12">
+            <label>教練姓名 Coach Name: </label>
+            <input type="text" class="form-group" name="Acroage[coachName]" required>
+        </div>
+
+        <div class="col-12">
+            <label>教練聯絡電話 Coach Contact Number: </label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[cContactNo]" required>
+        </div>
+
+        <div class="col-12">
+            <label>學校/機構名稱(如適用) School/Organization Name(If applicable): </label>
+            <input type="text" class="form-group" name="Acroage[organName]" required>
+        </div>
+
+        <div class="col-12">
+            <label>收據臺頭<br>Receipt header: </label> 
+            <input type="radio" value="radio" name="receiptHeader"/>
+            <label class="Receipt">運動員姓名<br>Athlete name</label>
+            <input type="radio" class="form-group" value="radio" name="receiptHeader"/>
+            <label class="Receipt">學校/機構名稱<br>School/Institution Name</label>
+            <input type="text" class="form-group" name="Acroage[receiptName]" />
+        </div>
+
+        <div class="col-12"><br>
+            閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
+        </div>
+
+        <!-- Note -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">註
+                Note</h5>
+        </div>
+
+        <div class="col-12 form-group">
+            1. 參加者需填寫「運動員、家長或監護人聲明」，如參加者未滿 18 歲，則由家長填寫。所有參加者需附上年齡證明副
+            本(包括身份證、出世紙、護照) 與報名時一併遞交。
+        </div>
+
+        <div class="col-12 form-group">
+            2. 如有需要，請自行影印表格。
+        </div>
+
+        <div class="col-12 form-group">
+            3. 不貼相片及資料不全，恕不受理。
+        </div>
+
+        <div class="col-12 form-group">
+            4. 每名參賽者需填寫一份報名表，並以每隊為單位，將整隊之運動員報名表連同比賽卡交予本會。
+        </div>
+
+        <div class="col-12 form-group">
+            5. 1-3 級賽事每名運動員只可參加一個組別的一個項目。4-5 級賽事每名運動員在同一個級別內可參加最多兩個不同項
+            目，並需分別繳付兩個項目之報名費。            
+        </div>
+
+        <div class="col-12 form-group">
+            6. 如 4-5 級運動員參加兩個項目，需填寫兩份報名表。
+        </div>
+
+        <div class="col-12 form-group">
+            7. 所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。
+        </div>
+
+        <!-- Declaration of Applicant -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">申 請 人 聲 明
+                Declaration of Applicant</h5>
+        </div>
+
+        <div class="col-12 form-group">
+            （如申請人未滿十八歲，請由家長或監護人填寫）
+        </div>
+
+        <div class="col-12 form-group">
+            1. 謹證明本人／敝子女是自願參加比賽或訓練課程，並願意自行承擔所有責任。敝子女亦謹遵守貴會之一切
+            規則、決定，包括藥物檢查條例。
+            本人／敝子女、本人／敝子女之繼承人、本人／敝子女之遺囑執行人及本人／敝子女之管理人謹此豁免中
+            國香港體操總會、所有贊助商、支持是項活動之團體及任何有關之團體對於本人／敝子女因參加是項比賽
+            或課程而由任何原因，包括疏忽，所引致之疾病、死亡、個人損失之任何法律責任，以及放棄任何有關之
+            權利、索償及追究行動。本人／敝子女亦同時聲明本人／敝子女身體狀況良好及具備足夠之體能及技術完
+            成賽事或訓練課程。本人／敝子女願意授權大會及傳媒在無須本人／敝子女審查而可以使用本人／敝子女
+            的肖像、姓名、聲線及個人資料作為活動籌辦及推廣之用。            
+        </div>
+
+        <div class="col-12 form-group">
+            2. 本人／敝子女明白在此報名表上提供之資料均屬正確及完備，如有任何虛假及誤導性資料，本人／敝子女
+            的申請將被取消。如已接納，均屬無效。
+        </div>
+
+        <div class="col-12 form-group">
+            3. 本人／敝子女已細閱及明瞭<a href="/competition/form/notice">[參加者健康及體能須知]</a>，並同時聲明本人/敝子女身體狀況良好及具備足夠之
+            體能及技術完成賽事或訓練課程。
+        </div>
+
+        <!-- 團體蓋章
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體蓋章</h5>
+        </div> -->
+
+        <div class="col-12">
+            <br>
+            <label>運動員簽署 Athlete sign: </label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+            <div id="preview3"></div>
+        </div>
+
+        <div class="col-12">
+            <label>家長姓名 Parent Name: </label>
+            <input type="text" class="form-group" name="Acroage[parentName]">
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label>家長簽署 Parent's signature: </label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+            <div id="preview3"></div>
+        </div>
+
+        <div class="col-12">
+            <label>日期 Date:</label>
+            <input type="date" class="form-group" name="Acroage[date]">
+        </div>
+
+        <!-- Terms of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
+                Terms of Competition</h5>
+        </div>
+
+        <div class="col-12">
+            <label>*請下載 <a href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+                    style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
+                    href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+                    style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+            <div id="preview3"></div>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <input type="checkbox" required>
+            <label style="color: #656565;">我已閱讀並同意比賽規則及須知 I have read carefully and agreed with the rules and regulation
+                of the competition</label>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <button type="submit" class="btn btn-primary"
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
+                Submit</button>
+        </div>
+    </div>
+    <br>
+</form>
+
+<script>
+    
+    function handleFile3(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
+            return;
+        }
+        var preview = document.getElementById('preview3');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Acroage[constent]';
+            input.value = e.target.result;
+            img.style.width = "150px";
+            img.style.height = "200px";
+            preview.appendChild(input);
+        }
+        reader.readAsDataURL(file);
+    }
+</script>

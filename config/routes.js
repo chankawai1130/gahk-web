@@ -60,6 +60,8 @@ module.exports.routes = {
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
 
+  '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+  '/competition/form/notice': { view: 'pages/competition/form/notice' },
 
 
   /***************************************************************************
