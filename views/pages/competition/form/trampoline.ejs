@@ -1,0 +1,232 @@
+<form action="/competition/form/trampoline" method="POST">
+    <br>
+
+    <div class="row mx-sm-2">
+        <div class="col-12" style="color: #888888; ">
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港彈網分齡賽</b></h1>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>雙人同步 報名表格</u></h2>
+            <br><br>
+        </div>
+
+
+        <div class="col-12">
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
+                details</h5>
+        </div>
+
+        <div class="col-12">
+            <p>
+                <label>性別 Gender </label>
+                <input type="radio" value="radio" id="male" />
+                <label for="male">男 Male</label>
+                <input type="radio" value="radio" id="female" />
+                <label for="female">女 Female</label>
+            </p>
+            <p>
+                <label for="category">參賽組別 Category</label>
+                <input id="youngest" type="radio" value="radio" />
+                <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
+                <input id="median" type="radio" value="radio" />
+                <label for="median">15 至 16 歲 15 to 16 years old</label>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <input id="eldest" type="radio" value="radio" />
+                <label for="eldest">17 歲或以上 17 years old or above</label>
+            </p>
+
+        </div>
+
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
+                Applicant(1)'s Personal Details</h6>
+            <h5>[正選 Current athlete]</h5>
+
+            <div>
+                <label for="chiName1">中文姓名 Name in Chinese:</label>
+                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="(e.g. 陳大文)"
+                    required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Trampoline[engName1]" placeholder="(e.g. Chan Tai Man)"
+                    required>
+            </div>
+            <div>
+                <label>身份證號碼 ID card no.:</label>
+                <input type="text" class="form-group" name="Trampoline[ID1]" required>
+            </div>
+            <div>
+                <label>出生年份 Birthdate:</label>
+                <input type="date" class="form-group" name="Trampoline[birth1]" required>
+                <br>
+            </div>
+            <div>
+                <label>聯絡電話 Contact number:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone2]" required>
+            </div>
+            <div>
+                <label>電郵 Email:</label>
+                <input type="email" class="form-group" name="Trampoline[email1]" required>
+            </div>
+            <div>
+                <label>地址 Address:</label>
+                <input type="text" class="form-group" name="Trampoline[address1]" required>
+                <br>
+            </div>
+        </div>
+
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
+                Applicant(2)'s Personal Details</h6>
+            <h5>[正選 Current athlete]</h5>
+
+            <div>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="Trampoline[chiName2]" placeholder="(e.g. 陳大文)" required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Trampoline[engName2]" placeholder="(e.g. Chan Tai Man)"
+                    required>
+            </div>
+            <div>
+                <label>身份證號碼 ID card no.:</label>
+                <input type="text" class="form-group" name="Trampoline[ID2]" required>
+            </div>
+            <div>
+                <label>出生年份 Birthdate:</label>
+                <input type="date" class="form-group" name="Trampoline[birth2]" required>
+                <br>
+            </div>
+            <div>
+                <label>聯絡電話 Contact number:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone2]" required>
+            </div>
+            <div>
+                <label>電郵 Email:</label>
+                <input type="email" class="form-group" name="Trampoline[email2]" required>
+            </div>
+            <div>
+                <label>地址 Address:</label>
+                <input type="text" class="form-group" name="Trampoline[address2]" required>
+                <br>
+            </div>
+        </div>
+
+
+
+        <div class="col-12">
+            <br>
+            <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
+            <br>
+            <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
+            <div id="preview"></div>
+            <!-- <input type="file" accept="image/*" name="avatarfile" /> -->
+        </div>
+
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">所屬團體
+                Organization to which your body belongs</h5>
+        </div>
+
+
+        <div class="col-12 col-sm-6">
+            <label>團體名稱 Organization name:</label>
+            <input type="text" class="form-group" name="Trampoline[orgName]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>教練姓名 Coach name:</label>
+            <input type="text" class="form-group" name="Trampoline[coachName]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>聯絡電話 Contact number:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[coachPhone]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>地址 Address:</label>
+            <input type="text" class="form-group" name="Trampoline[coachAddress]" required>
+        </div>
+
+        <div class="col-12">
+            <label>註冊教練編號 Registered coach no.:</label>
+            <input type="text" class="form-group" name="Trampoline[coachNum]" required>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Cost</h5>
+        </div>
+
+
+        <div class="col-12 form-group">
+            <label>集體項目 Collective subject: $150 x </label>
+            <input id="teamNo" type="number" class="mx-sm-2" name="Trampoline[teamNo]" onblur="calculateF()" required>
+            <label>隊 Team = $</label>
+            <input id="teamFee" type="number" class="mx-sm-2" name="Trampoline[teamFee]" disabled />
+        </div>
+
+        <div class="col-12 form-group">
+            <label>保險 Insurance: $30 x </label>
+            <input id="people" type="number" class="mx-sm-2" name="Trampoline[people]" onblur="calculateI()" required>
+            <label>人 People = $</label>
+            <input id="insurance" type="number" class="mx-sm-2" name="Trampoline[insurance]" disabled />
+            <br><br>
+        </div>
+
+        <div class="col-12 form-group">
+            <label>總額 Total = $</label>
+            <input id="total" type="number" class="mx-sm-2" name="Trampoline[total]" disabled />
+        </div>
+
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
+                Terms of competition</h5>
+        </div>
+
+
+        <div class="col-12">
+            <label>*請下載 <a href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+                    style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
+                    href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+                    style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+            <div id="preview3"></div>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <input type="checkbox" required>
+            <label style="color: #656565;">我已閱讀並同意比賽規則及須知 I have read carefully and agreed with the rules and regulation
+                of the competition</label>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <button type="submit" class="btn btn-primary"
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
+                Submit</button>
+        </div>
+    </div>
+    <br>
+
+</form>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/previewForm.css" />
+<script type="text/javascript" src="js/previewForm.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myform').previewForm();
+    });
+</script>
