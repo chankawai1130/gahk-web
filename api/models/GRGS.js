@@ -1,5 +1,5 @@
 /**
- * RGT.js
+ * GRGS.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -15,7 +15,6 @@ module.exports = {
     teamName: {
       type: "string",
       required: true,
-      unique: true
     },
 
     phone: {
@@ -37,7 +36,6 @@ module.exports = {
     ID1: {
       type: "string",
       required: true,
-      unique: true
     },
 
     birth1: {
@@ -55,7 +53,6 @@ module.exports = {
     ID2: {
       type: "string",
       required: true,
-      unique: true
     },
 
     birth2: {
@@ -73,7 +70,6 @@ module.exports = {
     ID3: {
       type: "string",
       required: true,
-      unique: true
     },
 
     birth3: {
@@ -91,7 +87,6 @@ module.exports = {
     ID4: {
       type: "string",
       required: true,
-      unique: true,
     },
 
     birth4: {
@@ -109,7 +104,6 @@ module.exports = {
     ID5: {
       type: "string",
       required: true,
-      unique: true
     },
 
     birth5: {
@@ -127,7 +121,6 @@ module.exports = {
     ID6: {
       type: "string",
       required: true,
-      unique: true
     },
 
     birth6: {
@@ -150,7 +143,23 @@ module.exports = {
       type: "string"
     },
 
-    teamNo: {
+    NoOfTeam: {
+      type: "number"
+    },
+
+    teamFee: {
+      type: "number"
+    },
+
+    NoOfPeople: {
+      type: "number"
+    },
+
+    insurance: {
+      type: "number"
+    },
+
+    total: {
       type: "number"
     },
 
