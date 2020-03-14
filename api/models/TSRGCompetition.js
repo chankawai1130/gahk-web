@@ -14,115 +14,111 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
     //Team_School_HKRGAgeGroupCompetitionform attributes
-    TSSchoolChiName: {
+    SchoolChiName: {
       type: 'string',
     },
 
-    TSPhone: {
+    Phone: {
       type: 'string',
     },
 
-    TSEmail: {
+    Email: {
       type: 'string',
     },
 
-    TSCoachName: {
+    CoachName: {
       type: 'string',
     },
 
-    TSCoachPhone: {
+    CoachPhone: {
       type: 'string',
     },
 
-    TSCategory: { 
+    Category: { 
       type:'string', 
     },
 
-    TSMate1ChiName: {
+    Mate1ChiName: {
       type: 'string',
     },
 
-    TSMate1EngName: {
+    Mate1EngName: {
       type: 'string',
     },
 
-    TSMate1IDNo: {
+    Mate1IDNo: {
       type: 'string',
     },
 
-    TSMate1Date: {
+    Mate1Date: {
       type: 'ref',
       columnType: 'date'
     },
 
-    TSMate2ChiName: {
+    Mate2ChiName: {
       type: 'string',
     },
 
-    TSMate2EngName: {
+    Mate2EngName: {
       type: 'string',
     },
 
-    TSMate2IDNo: {
+    Mate2IDNo: {
       type: 'string',
     },
 
-    TSMate2Date: {
+    Mate2Date: {
       type: 'ref',
       columnType: 'date'
     },
 
-    TSMate3ChiName: {
+    Mate3ChiName: {
       type: 'string',
     },
 
-    TSMate3EngName: {
+    Mate3EngName: {
       type: 'string',
     },
 
-    TSMate3IDNo: {
+    Mate3IDNo: {
       type: 'string',
     },
 
-    TSMate3Date: {
+    Mate3Date: {
       type: 'ref',
       columnType: 'date'
     },
 
-    TSMate4ChiName: {
+    Mate4ChiName: {
       type: 'string',
     },
 
-    TSMate4EngName: {
+    Mate4EngName: {
       type: 'string',
     },
 
-    TSMate4IDNo: {
+    Mate4IDNo: {
       type: 'string',
     },
 
-    TSMate4Date: {
+    Mate4Date: {
       type: 'ref',
       columnType: 'date'
     },
 
-    TSTeamNumber: {
+    TeamNumber: {
       type: 'number',
     },
 
-    TSTeamPrice: {
+    TeamPrice: {
       type: 'number',
     },
 
-    TSTeamTotalPrice: {
+    TeamTotalPrice: {
       type: 'number',
     },
 
-    TSDeclaration: {
-      type: 'string',
-    },
-
-    TSBox: {
+    Declaration: {
       type: 'string',
     },
 
