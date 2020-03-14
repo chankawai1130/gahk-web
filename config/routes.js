@@ -69,7 +69,6 @@ module.exports.routes = {
   '/competition/annex1': { view: 'pages/competition/form/annex1' },
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
-  //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
@@ -151,7 +150,6 @@ module.exports.routes = {
   'POST /competition/form/gfa': 'ApplicationController.gfa',
 
   'POST /competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  //'POST /competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
   'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
 

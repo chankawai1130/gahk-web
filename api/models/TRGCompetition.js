@@ -35,7 +35,7 @@ module.exports = {
     },
 
     Category: { 
-      type:'string', //true, false
+      type:'string', 
     },
 
     Mate1ChiName: {
@@ -123,10 +123,6 @@ module.exports = {
     },
 
     Declaration: {
-      type: 'string',
-    },
-
-    Box: {
       type: 'string',
     },
 
