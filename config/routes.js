@@ -59,12 +59,16 @@ module.exports.routes = {
   '/badge': { view: 'pages/badge' },
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
-
+  
+  
+=======
   //********************Competition Application routes****************
   '/competition/2020/21': {view: 'pages/competition/2021'},
   
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
-
+   '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+  '/competition/form/notice': { view: 'pages/competition/form/notice' },
+  
 
   '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
 
