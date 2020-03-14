@@ -1,6 +1,7 @@
-<form action="/competition/form/team" method="POST">
+<form action="/competition/form/GRGS" method="POST" id=GRGS_form>
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
+            <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第 63 屆體育節 -
                     2020年全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表（學校組）</u></h2>
@@ -196,8 +197,10 @@
             <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
             <br>
             <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-            <div id="preview"></div>
-            <!-- <input type="file" accept="image/*" name="avatarfile" /> -->
+            <div id="preview0"></div>
+            <div id="preview1"></div>
+            <div id="preview2"></div>
+            <div id="preview3"></div>
         </div>
 
 
@@ -253,22 +256,23 @@
 
         <div class="col-12 form-group">
             <label>集體項目 Collective sunject: $150 x </label>
-            <input id="teamNo" type="number" class="mx-sm-2" name="RGT[teamNo]" onblur="calculateF()" required>
+            <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" onblur="calculateFee()" required>
             <label>隊 Team = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="RGT[teamFee]" disabled />
+            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" readonly />
         </div>
 
         <div class="col-12 form-group">
             <label>保險 Insurance: $30 x </label>
-            <input id="people" type="number" class="mx-sm-2" name="RGT[people]" onblur="calculateI()" required>
+            <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" onblur="calculateInsurance()"
+                required>
             <label>人 People = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="RGT[insurance]" disabled />
+            <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]" readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
             <label>總額 Total = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="RGT[total]" disabled />
+            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" readonly />
         </div>
 
 
@@ -309,112 +313,21 @@
 
 <script>
 
-    function calculateF() {
-        document.getElementById('teamFee').value = 150 * document.getElementById('teamNo').value;
-
-        insurance = document.getElementById('insurance').value;
-        fee = document.getElementById('teamFee').value;
-        document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
-    }
-
-    function calculateI() {
-        document.getElementById('insurance').value = 30 * document.getElementById('people').value;
-
+    function calculateFee() {
+        document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
         fee = document.getElementById('teamFee').value;
         insurance = document.getElementById('insurance').value;
         document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
     }
 
-    // function handleFile(files) {
-    //     alert(Array.from(files).length);
-    //     Array.from(files).forEach(function (file) {
-
-
-    //         // const file = files[0];
-    //         if (!file.type.startsWith('image/')) return;
-
-    //         if (file.size > 4194304) {
-    //             alert("請重新上載4MB相片 Plese reupload 4MB picture");
-    //             return;
-    //         }
-
-    //         var preview = document.getElementById('preview');
-    //         var reader = new FileReader();
-
-    //         reader.onload = function (e) {
-    //             preview.innerHTML = "";
-    //             var img = document.createElement('img');
-    //             img.src = e.target.result;
-    //             img.style = "max-width:33vw";
-    //             preview.appendChild(img);
-
-    //             var input = document.createElement('input');
-    //             input.type = 'hidden';
-    //             input.name = 'Form[avatar]';
-    //             input.value = e.target.result;
-    //             img.style.width = "150px";
-    //             img.style.height = "200px";
-    //             preview.appendChild(input);
-    //         }
-    //         reader.readAsDataURL(file);
-    //         alert("OO");
-    //     });
-
-    // }
-
-    // function handleFile2(files) {
-    //     const file = files[0];
-    //     if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-
-    //     if (file.size > 4194304) {
-    //         alert("請重新上載4MB相片");
-    //         return;
-    //     }
-    //     var preview = document.getElementById('preview2');
-    //     var reader = new FileReader();
-    //     reader.onload = function (e) {
-    //         preview.innerHTML = "";
-    //         var img = document.createElement('img');
-    //         img.src = e.target.result;
-    //         preview.appendChild(img);
-
-    //         var input = document.createElement('input');
-    //         input.type = 'hidden';
-    //         input.name = 'Form[confirm]';
-    //         input.value = e.target.result;
-    //         img.style.width = "150px";
-    //         img.style.height = "200px";
-    //         preview.appendChild(input);
-    //     }
-    //     reader.readAsDataURL(file);
-    // }
-
-    function handleFile3(files) {
-        const file = files[0];
-        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-
-        if (file.size > 4194304) {
-            alert("請重新上載4MB相片");
-            return;
-        }
-        var preview = document.getElementById('preview3');
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
-
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'RGT[constent]';
-            input.value = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(input);
-        }
-        reader.readAsDataURL(file);
+    function calculateInsurance() {
+        document.getElementById('insurance').value = 30 * document.getElementById('NoOfPeople').value;
+        fee = document.getElementById('teamFee').value;
+        insurance = document.getElementById('insurance').value;
+        document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
     }
+
+    
 
 
 </script>

@@ -63,7 +63,9 @@ module.exports.routes = {
   //********************Competition Application routes****************
   '/competition/2020/21': {view: 'pages/competition/2021'},
   
-  '/competition/form/rgt': { view: 'pages/competition/form/rgt' },
+  '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
+
+
   '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
 
   '/competition/annex1': { view: 'pages/competition/form/annex1' },
@@ -146,9 +148,12 @@ module.exports.routes = {
 
 
   //********************Competition Application routes****************
+  //'GET /competition/form/GRGS': 'GRGSController.GRGS_form',
+  'POST /competition/form/GRGS': 'GRGSController.GRGS_form',
+  'GET /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
+  'POST /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
 
-  'POST /competition/form/rgt': 'ApplicationController.create',
-  'POST /competition/form/gfa': 'ApplicationController.gfa',
+  //'POST /competition/form/gfa': 'ApplicationController.gfa',
 
   'POST /competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
   //'POST /competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
