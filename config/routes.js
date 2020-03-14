@@ -72,6 +72,7 @@ module.exports.routes = {
   //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
+  '/competition/form/test': { view: 'pages/competition/form/test' },
 
   /***************************************************************************
   *                                                                          *
@@ -102,7 +103,7 @@ module.exports.routes = {
 
 
 
-
+  'GET /membership/chinesememberform': 'MembershipController.chineseMemberForm',
   'GET /membership/admin/export.csv': 'MembershipController.csv',
   'GET /membership/chinesememberform_detail/:id': 'MembershipController.chineseMemberform_detail',
   'GET /membership/update_membership/:id': 'MembershipController.update_membership',

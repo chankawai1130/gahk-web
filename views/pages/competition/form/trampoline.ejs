@@ -16,22 +16,22 @@
 
         <div class="col-12">
             <p>
-                <label>性別 Gender </label>
-                <input type="radio" value="radio" id="male" />
+                <label for="gender">性別 Gender </label>
+                <input name="Trampoline[gender]" type="radio" value="Male" required />
                 <label for="male">男 Male</label>
-                <input type="radio" value="radio" id="female" />
+                <input name="Trampoline[gender]" type="radio" value="Female" required />
                 <label for="female">女 Female</label>
             </p>
             <p>
                 <label for="category">參賽組別 Category</label>
-                <input id="youngest" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Youngest" required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input id="median" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Median" required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input id="eldest" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Eldest" required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
             </p>
 
@@ -54,12 +54,8 @@
                     required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="Trampoline[ID1]" required>
-            </div>
-            <div>
-                <label>出生年份 Birthdate:</label>
-                <input type="date" class="form-group" name="Trampoline[birth1]" required>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year1" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
             <div>
@@ -93,12 +89,8 @@
                     required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="Trampoline[ID2]" required>
-            </div>
-            <div>
-                <label>出生年份 Birthdate:</label>
-                <input type="date" class="form-group" name="Trampoline[birth2]" required>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
             <div>
@@ -115,18 +107,6 @@
                 <br>
             </div>
         </div>
-
-
-
-        <div class="col-12">
-            <br>
-            <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
-            <br>
-            <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-            <div id="preview"></div>
-            <!-- <input type="file" accept="image/*" name="avatarfile" /> -->
-        </div>
-
 
         <div class="col-12">
             <br><br>
@@ -159,33 +139,6 @@
             <label>註冊教練編號 Registered coach no.:</label>
             <input type="text" class="form-group" name="Trampoline[coachNum]" required>
         </div>
-
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Cost</h5>
-        </div>
-
-
-        <div class="col-12 form-group">
-            <label>集體項目 Collective subject: $150 x </label>
-            <input id="teamNo" type="number" class="mx-sm-2" name="Trampoline[teamNo]" onblur="calculateF()" required>
-            <label>隊 Team = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="Trampoline[teamFee]" disabled />
-        </div>
-
-        <div class="col-12 form-group">
-            <label>保險 Insurance: $30 x </label>
-            <input id="people" type="number" class="mx-sm-2" name="Trampoline[people]" onblur="calculateI()" required>
-            <label>人 People = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="Trampoline[insurance]" disabled />
-            <br><br>
-        </div>
-
-        <div class="col-12 form-group">
-            <label>總額 Total = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="Trampoline[total]" disabled />
-        </div>
-
 
         <div class="col-12">
             <br><br>
@@ -229,4 +182,14 @@
     $(document).ready(function () {
         $('#myform').previewForm();
     });
+</script>
+<script>
+    var start = 1900;
+    var end = new Date().getFullYear();
+    var options = "";
+    for (var year = start; year <= end; year++) {
+        options += "<option>" + year + "</option>";
+    }
+    document.getElementById("year1").innerHTML = options;
+    document.getElementById("year2").innerHTML = options;
 </script>
