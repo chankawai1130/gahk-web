@@ -71,7 +71,7 @@ module.exports.routes = {
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
   //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
-  
+  '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
   /***************************************************************************
   *                                                                          *
