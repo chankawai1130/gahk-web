@@ -72,7 +72,7 @@ module.exports.routes = {
   //'/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
-  '/competition/form/test': { view: 'pages/competition/form/test' },
+  '/competition/appendix': { view: 'pages/competition/form/appendix' },
 
   /***************************************************************************
   *                                                                          *
@@ -159,6 +159,11 @@ module.exports.routes = {
   'POST /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
   'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
+
+
+  'POST /competition/form/trampoline': 'TrampolineController.trampoline',
+  'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
+  'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
 
 
 

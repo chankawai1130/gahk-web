@@ -7,6 +7,7 @@
 
 module.exports = {
 
+    //(preview)
     Team_HKRGAgeGroupCompetitionform: async function (req, res) {
 
         if (req.method == 'GET') { return res.view('competition/form/Team_HKRGAgeGroupCompetitionform'); }
@@ -16,7 +17,8 @@ module.exports = {
         return res.view('pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview', { 'data': req.session.data || {} });
     },
 
-    //action - create
+    //(create)
+    //action - create 
     Team_HKRGAgeGroupCompetitionFormPreview: async function (req, res) {
 
         if (req.method == 'POST') {
