@@ -197,11 +197,14 @@
             <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
             <br>
             <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-            <div id="preview0"></div>
-            <div id="preview1"></div>
-            <div id="preview2"></div>
-            <div id="preview3"></div>
         </div>
+
+        <div id="preview0" class="col-12 col-sm-2"></div>
+        <div id="preview1" class="col-12 col-sm-2"></div>
+        <div id="preview2" class="col-12 col-sm-2"></div>
+        <div id="preview3" class="col-12 col-sm-2"></div>
+        <div id="preview4" class="col-12 col-sm-2"></div>
+        <div id="preview5" class="col-12 col-sm-2"></div>
 
 
         <div class="col-12">
@@ -210,7 +213,6 @@
                 detail</h5>
         </div>
 
-
         <div class="col-12 col-sm-6">
             <label>教練姓名 Coach name:</label>
             <input type="text" class="form-group" name="GRGS[coachName]" required>
@@ -218,7 +220,7 @@
 
         <div class="col-12 col-sm-6">
             <label>教練聯絡電話 Coach phone:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="RGT[coachPhone]" required>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]" required>
         </div>
 
 
@@ -325,6 +327,51 @@
         fee = document.getElementById('teamFee').value;
         insurance = document.getElementById('insurance').value;
         document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
+    }
+
+    function handleFile(files) {
+        if (files.length > 6) {
+            alert("上載相片不可多於6張");
+            return;
+        }
+
+        var i = 0;
+        while (i < files.length) {
+
+            if (!files[i].type.startsWith('image/')) return;
+
+            if (files[i].size > 4194304) {
+                alert("請重新上載4MB相片");
+                return;
+            }
+
+
+            var reader = new FileReader();
+            var p = 0;
+            reader.onload = function (e) {
+                var preview = document.getElementById('preview' + p);
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[avatar' + p + ']';
+                alert(p)
+                input.value = e.target.result;
+                alert(input.value)
+
+                img.style.width = "150px";
+                img.style.height = "150px";
+                document.getElementById('GRGS_form').appendChild(input);
+
+                p = p + 1;
+            }
+            reader.readAsDataURL(files[i]);
+            i = i + 1;
+
+        }
     }
 
     function handleFile2(files) {
