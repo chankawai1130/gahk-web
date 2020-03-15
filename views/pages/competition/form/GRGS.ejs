@@ -46,11 +46,11 @@
         <div class="col-12">
             <br>
             <p>組別及比賽項目 Category and Competition's Subject:</p>
-            <input type="radio" name="GRGS[category]" value="A" required>
+            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" required>
             <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="B" required>
+            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" required>
             <label class="form-check-label" for="category">集體 B 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="C" required>
+            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" required>
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
@@ -70,7 +70,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName1]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -98,7 +98,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName2]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -126,7 +126,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName3]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -154,7 +154,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName4]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -182,7 +182,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName5]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -210,7 +210,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="GRGS[engName6]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
@@ -251,7 +251,7 @@
             <label>隊伍負責人職位 Leader's Position:</label>
             <input type="text" class="form-group" name="GRGS[leaderPosition]" required>
         </div>
-
+        
 
 
         <div class="col-12">
@@ -279,7 +279,7 @@
         </div>
 
         <div class="col-12 form-group">
-            <label>總額 Total = $</label>
+            <label>總額 Total price = $</label>
             <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" readonly />
         </div>
 
