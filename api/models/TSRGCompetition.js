@@ -122,6 +122,14 @@ module.exports = {
       type: 'string',
     },
 
+    leaderName: {
+      type: "string"
+    },
+
+    leaderPosition: {
+      type: "string"
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
