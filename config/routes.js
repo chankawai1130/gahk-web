@@ -65,6 +65,7 @@ module.exports.routes = {
   '/competition/2020/21': { view: 'pages/competition/2021' },
 
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
+  '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
 
   '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
   '/competition/form/notice': { view: 'pages/competition/form/notice' },
@@ -156,6 +157,10 @@ module.exports.routes = {
   'POST /competition/form/GRGS': 'GRGSController.GRGS_form',
   'GET /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
   'POST /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
+
+  'POST /competition/form/GRGP': 'GRGPController.GRGP_form',
+  'GET /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
+  'POST /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
 
   //'POST /competition/form/gfa': 'ApplicationController.gfa',
 
