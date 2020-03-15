@@ -163,18 +163,6 @@ module.exports = {
       type: "number"
     },
 
-    // avatar: {
-    //   type: 'string'
-    // },
-
-    // avatarPath: {
-    //   type: 'string'
-    // },
-
-    constent: {
-      type: 'string'
-    },
-
     confirm: {
       type: "string"
     },

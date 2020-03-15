@@ -61,7 +61,6 @@ module.exports.routes = {
   '/links': { view: 'pages/links' },
 
 
-
   //********************Competition Application routes****************
   '/competition/2020/21': { view: 'pages/competition/2021' },
 
@@ -78,6 +77,7 @@ module.exports.routes = {
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
   '/competition/form/Team_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform' },
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
+  '/competition/appendix': { view: 'pages/competition/form/appendix' },
 
   /***************************************************************************
   *                                                                          *
@@ -108,7 +108,7 @@ module.exports.routes = {
 
 
 
-
+  'GET /membership/chinesememberform': 'MembershipController.chineseMemberForm',
   'GET /membership/admin/export.csv': 'MembershipController.csv',
   'GET /membership/chinesememberform_detail/:id': 'MembershipController.chineseMemberform_detail',
   'GET /membership/update_membership/:id': 'MembershipController.update_membership',
@@ -170,6 +170,11 @@ module.exports.routes = {
 
   'GET /membership/clubMemberForm': 'MembershipController.clubMemberForm',
   'POST /membership/clubMemberForm': 'MembershipController.clubMemberForm',
+
+
+  'POST /competition/form/trampoline': 'TrampolineController.trampoline',
+  'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
+  'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
 
 
 

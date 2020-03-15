@@ -2,11 +2,12 @@
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第 63 屆體育節 -
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
                     2020年全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表（學校組）</u></h2>
             <br><br>
         </div>
+
 
 
         <div class="col-12">
@@ -15,53 +16,68 @@
         </div>
 
 
+
         <div class="col-12">
-            <label>隊伍名稱 Team name:</label>
-            <input type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;" required>
+            <label>隊伍名稱(中文) Team Name(Chinese):</label>
+            <input type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>聯絡電話 Phone:</label>
+            <label>聯絡電話 Contact Number:</label>
             <input type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>聯絡電郵 Email:</label>
-            <input type="email" class="form-group" name="GRGS[email]" style="width:230pt;" required>
+            <label>聯絡電郵 Email Address:</label>
+            <input type="email" class="form-group" name="GRGS[email]" style="width:195pt;" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>教練姓名 Coach Name:</label>
+            <input type="text" class="form-group" name="GRGS[coachName]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>教練聯絡電話 Coach Contact Number:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]" required>
         </div>
 
         <div class="col-12">
             <br>
-            <p>組別及比賽項目 Team and competition's subject:</p>
-            <input type="radio" name="GRGS[box]" value="A" required>
-            <label class="form-check-label" for="box">集體 A 組(五人圈操)</label>
-            <input type="radio" name="GRGS[box]" value="B" required>
-            <label class="form-check-label" for="box">集體 B 組(五人圈操)</label>
-            <input type="radio" name="GRGS[box]" value="C" required>
-            <label class="form-check-label" for="box">集體 C 組(三球兩帶)</label>
+            <p>組別及比賽項目 Category and Competition's Subject:</p>
+            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" required>
+            <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
+            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" required>
+            <label class="form-check-label" for="category">集體 B 組(五人圈操)</label>
+            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" required>
+            <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s personal detail</h6>
+                Applicant(1)'s Personal Details</h6>
             <h5>[正選 Current athlete]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName1]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName1]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName1]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName1]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID1]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID1]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth1]" required>
                 <br>
             </div>
@@ -70,23 +86,26 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s personal detail</h6>
+                Applicant(2)'s Personal Details</h6>
             <h5>[正選 Current athlete]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName2]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName2]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName2]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName2]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID2]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID2]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth2]" required>
                 <br>
             </div>
@@ -95,23 +114,26 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
-                Applicant(1)'s personal detail</h6>
+                Applicant(3)'s Personal Details</h6>
             <h5>[正選 Current athlete]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName3]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName3]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName3]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName3]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID3]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID3]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth3]" required>
                 <br>
             </div>
@@ -120,23 +142,26 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
-                Applicant(1)'s personal detail</h6>
+                Applicant(4)'s Personal Details</h6>
             <h5>[正選 Current athlete]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName4]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName4]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName4]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName4]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID4]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID4]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth4]" required>
                 <br>
             </div>
@@ -145,23 +170,26 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(5)個人資料
-                Applicant(5)'s personal detail</h6>
+                Applicant(5)'s Personal Details</h6>
             <h5>[正選 Current athlete]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName5]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName5]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName5]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName5]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID5]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID5]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth5]" required>
                 <br>
             </div>
@@ -170,56 +198,40 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(6)個人資料
-                Applicant(6)'s personal detail</h6>
+                Applicant(6)'s Personal Detail</h6>
             <h5>[後備 Back up]</h5>
+            <br>
 
             <div>
-                <label>中文姓名 Chinese name:</label>
-                <input type="text" class="form-group" name="GRGS[chiName6]" placeholder="(e.g. 陳大文)" required>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="GRGS[chiName6]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
-                <label>英文姓名 English name: </label>
-                <input type="text" class="form-group" name="GRGS[engName6]" placeholder="(e.g. Chan Tai Man)" required>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="GRGS[engName6]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="GRGS[ID6]" required>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="GRGS[ID6]" placeholder=" A123456(7)" required>
             </div>
             <div>
-                <label>出生日期 Birth date:</label>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
                 <input type="date" class="form-group" name="GRGS[birth6]" required>
                 <br>
             </div>
         </div>
 
-        <div class="col-12">
-            <br>
-            <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
-            <br>
-            <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-            <div id="preview0"></div>
-            <div id="preview1"></div>
-            <div id="preview2"></div>
-            <div id="preview3"></div>
+        <div class="form-group col-12">
+            <span>備註 Remarks:</span>
+            <ol>
+                <li>如有需要可自行影印表格<br>Applicant can make copy of form if need.</li>
+                <li>每張報名表只可報一個組別<br>A application form can only be applied for one category.</li>
+                <li>不可同時參加個人項目<br>Applicants cannot join individual competitoins.</li>
+            </ol>
         </div>
 
-
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">教練資料 Coach
-                detail</h5>
-        </div>
-
-
-        <div class="col-12 col-sm-6">
-            <label>教練姓名 Coach name:</label>
-            <input type="text" class="form-group" name="GRGS[coachName]" required>
-        </div>
-
-        <div class="col-12 col-sm-6">
-            <label>教練聯絡電話 Coach phone:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="RGT[coachPhone]" required>
-        </div>
 
 
         <div class="col-12">
@@ -229,81 +241,117 @@
         </div>
 
 
+
         <div class="col-12 col-sm-6">
-            <label>隊伍負責人姓名 Leader's name:</label>
+            <label>隊伍負責人姓名 Leader's Name:</label>
             <input type="text" class="form-group" name="GRGS[leaderName]" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>隊伍負責人職位 Leader's position:</label>
+            <label>隊伍負責人職位 Leader's Position:</label>
             <input type="text" class="form-group" name="GRGS[leaderPosition]" required>
         </div>
-
-        <div class="col-12">
-            <br>
-            <label>*請附上含有隊伍負責人簽署及學校蓋章之文件</label>
-            <br>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
-            <div id="HF2preview"></div>
-        </div>
+        
 
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Cost</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
         </div>
 
 
+
         <div class="col-12 form-group">
-            <label>集體項目 Collective sunject: $150 x </label>
-            <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" onblur="calculateFee()" required>
-            <label>隊 Team = $</label>
+            <label>集體項目 Collective Subject: $150 X </label>
+            <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" min=1 max=100
+                onblur="calculateFee()" required>
+            <label>隊 team(s) = $</label>
             <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" readonly />
         </div>
 
         <div class="col-12 form-group">
-            <label>保險 Insurance: $30 x </label>
-            <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" onblur="calculateInsurance()"
-                required>
-            <label>人 People = $</label>
+            <label>保險 Insurance: $30 X </label>
+            <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" min=1 max=100
+                onblur="calculateInsurance()" required>
+            <label>人 people = $</label>
             <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]" readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
-            <label>總額 Total = $</label>
+            <label>總額 Total price = $</label>
             <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" readonly />
         </div>
 
-
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
-                Terms of competition</h5>
+        <div class="col-12 form-group">
+            <span style="font-style: italic;">*請以支票郵寄或逕交 Please submit the cheque by mail or in person</span>
         </div>
 
 
-        <div class="col-12">
-            <label>*請下載 <a href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
-                    style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
-                    href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
-                    style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="HF3preview"></div>
-        </div>
 
         <div class="col-12">
             <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
+                Documents</h5>
+        </div>
+
+
+
+        <b><ol>
+            <li>
+                <div class="col-12">
+                    <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>ALL</b></u>
+                        applicants</label>
+                    <br>
+                    <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
+                    <br>
+                    <div id="preview0" style="float: left;"></div>
+                    <div id="preview1" style="float: left;"></div>
+                    <div id="preview2" style="float: left;"></div>
+                    <div id="preview3" style="float: left;"></div>
+                    <div id="preview4" style="float: left;"></div>
+                    <div id="preview5" style="float: left;"></div>
+                </div>
+                <br>
+            </li>
+            <li>
+                <div class="col-12">
+                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school's
+                        stamp</label>
+                    <br>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
+                    <br>
+                    <div id="HF2preview0" style="float: left;"></div>
+                    <div id="HF2preview1" style="float: left;"></div>
+                </div>
+                <br>
+            </li>
+            <li>
+                <div class="col-12">
+                    <label>請下載 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲名.pdf</u></a>
+                        後簽署並上載 Please download the <a href="/formDoc/GRGS_declaration.pdf" download
+                            style="color:#83a70c"><u>declaration.pdf</u></a> and upload it with signature</label>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
+                    <div id="HF3preview"></div>
+                </div>
+            </li>
+        </ol></b>
+
+
+        <div class="col-12">
+            <br><br><br>
             <input type="checkbox" required>
-            <label style="color: #656565;">我已閱讀並同意比賽規則及須知 I have read carefully and agreed with the rules and regulation
+            <label>我已閱讀並同意<a href="/competition/annex1" target="_blank"><u>比賽規則及須知</u></a>
+                <br> I have read carefully and agreed with the rules and regulation
                 of the competition</label>
         </div>
+
 
         <div class="col-12">
             <br><br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
-                Submit</button>
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
+                >></button>
         </div>
     </div>
     <br>
@@ -327,26 +375,87 @@
         document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
     }
 
-    function handleFile2(files) {
-        const file = files[0];
-        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('HF2preview');
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(img);
-
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'GRGS[document]';
-            input.value = e.target.result;
-            preview.appendChild(input);
+    function handleFile(files) {
+        if (files.length > 6) {
+            alert("上載相片不可多於6張");
+            return;
         }
-        reader.readAsDataURL(file);
+
+        var i = 0;
+        while (i < files.length) {
+
+            if (!files[i].type.startsWith('image/')) return;
+
+            if (files[i].size > 4194304) {
+                alert("請重新上載4MB相片");
+                return;
+            }
+
+
+            var reader = new FileReader();
+            var p = 0;
+            reader.onload = function (e) {
+                var preview = document.getElementById('preview' + p);
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[imgIDCard' + p + ']';
+                alert(p)
+                input.value = e.target.result;
+                alert(input.value)
+
+                img.style.width = "150px";
+                img.style.height = "150px";
+                document.getElementById('GRGS_form').appendChild(input);
+
+                p = p + 1;
+            }
+            reader.readAsDataURL(files[i]);
+            i = i + 1;
+
+        }
+    }
+
+    function handleFile2(files) {
+        if (files.length > 2) {
+            alert("上載相片不可多於2張");
+            return;
+        }
+
+        var i = 0;
+        while (i < files.length) {
+
+            if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
+
+            var reader = new FileReader();
+            var p = 0;
+            reader.onload = function (e) {
+                var preview = document.getElementById('HF2preview' + p);
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[document' + p + ']';
+                alert(p)
+                input.value = e.target.result;
+                alert(input.value)
+
+                img.style.width = "150px";
+                img.style.height = "150px";
+                document.getElementById('GRGS_form').appendChild(input);
+
+                p = p + 1;
+            }
+            reader.readAsDataURL(files[i]);
+            i = i + 1;
+        }
     }
 
     function handleFile3(files) {

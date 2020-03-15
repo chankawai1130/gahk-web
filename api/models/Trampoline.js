@@ -20,12 +20,6 @@ module.exports = {
       type: "string"
     },
 
-    ID1: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-
     birth1: {
       type: "string"
     },
@@ -48,12 +42,6 @@ module.exports = {
 
     engName2: {
       type: "string"
-    },
-
-    ID2: {
-      type: "string",
-      required: true,
-      unique: true
     },
 
     birth2: {

@@ -7,17 +7,28 @@
 
 module.exports = {
   
-    create: async function (req, res) {
+    //(preview)
+    trampoline: async function (req, res) {
 
-        if (req.method == 'GET')
-            return res.view('competition/form/trampoline');
+        if (req.method == 'GET') { return res.view('competition/form/trampoline'); }
 
-        await Trampoline.create(req.body.Trampoline);
+        req.session.data = req.body.Trampoline;
 
-        return res.ok("Successfully created!");
-    
+        return res.view('pages/competition/form/TrampolinePreviewForm', { 'data': req.session.data || {} });
     },
 
+    //(create)
+    //action - create 
+    trampolinePreviewForm: async function (req, res) {
+
+        if (req.method == 'POST') {
+            await Trampoline.create(req.session.data);
+
+            req.session.data = {};  //clear data of session
+
+            return res.redirect('/competition/form/confirm_form');
+        }
+    },
 
 };
 
