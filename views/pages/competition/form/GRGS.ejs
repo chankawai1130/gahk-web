@@ -319,8 +319,10 @@
                     <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school's
                         stamp</label>
                     <br>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
-                    <div id="HF2preview"></div>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
+                    <br>
+                    <div id="HF2preview0" style="float: left;"></div>
+                    <div id="HF2preview1" style="float: left;"></div>
                 </div>
                 <br>
             </li>
@@ -329,7 +331,7 @@
                     <label>請下載 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲名.pdf</u></a>
                         後簽署並上載 Please download the <a href="/formDoc/GRGS_declaration.pdf" download
                             style="color:#83a70c"><u>declaration.pdf</u></a> and upload it with signature</label>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
                     <div id="HF3preview"></div>
                 </div>
             </li>
@@ -401,7 +403,7 @@
 
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'GRGS[avatar' + p + ']';
+                input.name = 'GRGS[imgIDCard' + p + ']';
                 alert(p)
                 input.value = e.target.result;
                 alert(input.value)
@@ -419,25 +421,41 @@
     }
 
     function handleFile2(files) {
-        const file = files[0];
-        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('HF2preview');
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(img);
-
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'GRGS[document]';
-            input.value = e.target.result;
-            preview.appendChild(input);
+        if (files.length > 2) {
+            alert("上載相片不可多於2張");
+            return;
         }
-        reader.readAsDataURL(file);
+
+        var i = 0;
+        while (i < files.length) {
+
+            if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
+
+            var reader = new FileReader();
+            var p = 0;
+            reader.onload = function (e) {
+                var preview = document.getElementById('HF2preview' + p);
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[document' + p + ']';
+                alert(p)
+                input.value = e.target.result;
+                alert(input.value)
+
+                img.style.width = "150px";
+                img.style.height = "150px";
+                document.getElementById('GRGS_form').appendChild(input);
+
+                p = p + 1;
+            }
+            reader.readAsDataURL(files[i]);
+            i = i + 1;
+        }
     }
 
     function handleFile3(files) {
