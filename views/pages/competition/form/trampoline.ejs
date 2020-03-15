@@ -16,22 +16,22 @@
 
         <div class="col-12">
             <p>
-                <label>性別 Gender </label>
-                <input type="radio" value="radio" id="male" />
+                <label for="gender">性別 Gender </label>
+                <input name="Trampoline[gender]" type="radio" value="Male" required />
                 <label for="male">男 Male</label>
-                <input type="radio" value="radio" id="female" />
+                <input name="Trampoline[gender]" type="radio" value="Female" required />
                 <label for="female">女 Female</label>
             </p>
             <p>
                 <label for="category">參賽組別 Category</label>
-                <input id="youngest" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Youngest" required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input id="median" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Median" required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input id="eldest" type="radio" value="radio" />
+                <input name="Trampoline[category]" type="radio" value="Eldest" required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
             </p>
 
@@ -40,7 +40,7 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s Personal Details</h6>
+                Applicant(1)'s personal details</h6>
             <h5>[正選 Current athlete]</h5>
 
             <div>
@@ -54,12 +54,8 @@
                     required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="Trampoline[ID1]" required>
-            </div>
-            <div>
-                <label>出生年份 Birthdate:</label>
-                <input type="date" class="form-group" name="Trampoline[birth1]" required>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year1" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
             <div>
@@ -80,7 +76,7 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s Personal Details</h6>
+                Applicant(2)'s personal details</h6>
             <h5>[正選 Current athlete]</h5>
 
             <div>
@@ -93,12 +89,8 @@
                     required>
             </div>
             <div>
-                <label>身份證號碼 ID card no.:</label>
-                <input type="text" class="form-group" name="Trampoline[ID2]" required>
-            </div>
-            <div>
-                <label>出生年份 Birthdate:</label>
-                <input type="date" class="form-group" name="Trampoline[birth2]" required>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
             <div>
@@ -115,18 +107,6 @@
                 <br>
             </div>
         </div>
-
-
-
-        <div class="col-12">
-            <br>
-            <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>AL</b>L</u> applicants</label>
-            <br>
-            <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-            <div id="preview"></div>
-            <!-- <input type="file" accept="image/*" name="avatarfile" /> -->
-        </div>
-
 
         <div class="col-12">
             <br><br>
@@ -162,52 +142,25 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Cost</h5>
-        </div>
-
-
-        <div class="col-12 form-group">
-            <label>集體項目 Collective subject: $150 x </label>
-            <input id="teamNo" type="number" class="mx-sm-2" name="Trampoline[teamNo]" onblur="calculateF()" required>
-            <label>隊 Team = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="Trampoline[teamFee]" disabled />
-        </div>
-
-        <div class="col-12 form-group">
-            <label>保險 Insurance: $30 x </label>
-            <input id="people" type="number" class="mx-sm-2" name="Trampoline[people]" onblur="calculateI()" required>
-            <label>人 People = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="Trampoline[insurance]" disabled />
-            <br><br>
-        </div>
-
-        <div class="col-12 form-group">
-            <label>總額 Total = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="Trampoline[total]" disabled />
-        </div>
-
-
-        <div class="col-12">
-            <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
-                Terms of competition</h5>
+                Terms of the competition</h5>
         </div>
 
 
         <div class="col-12">
-            <label>*請下載 <a href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+            <label>*請下載 <a href="pages/competition/form/TRAagegroup2020form-4.pdf" download
                     style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
-                    href="/competition/form/GroupApplication_HKRGAgeGroupCompetition-page3.pdf" download
+                    href="pages/competition/form/TRAagegroup2020form-4.pdf" download
                     style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" />
         </div>
 
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
-            <label style="color: #656565;">我已閱讀並同意比賽規則及須知 I have read carefully and agreed with the rules and regulation
-                of the competition</label>
+            <span style="color: #656565;">我已仔細閱讀並清楚明白參加者健康及體能須知。
+                I have read and understood the <a href="/competition/appendix" target="_blank"><u>Health and
+                        Fitness Guideline</u></a> for participants. </span>
         </div>
 
         <div class="col-12">
@@ -225,8 +178,51 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/previewForm.css" />
 <script type="text/javascript" src="js/previewForm.js"></script>
+
 <script>
     $(document).ready(function () {
         $('#myform').previewForm();
     });
+</script>
+
+<script>
+
+    var start = 1900;
+    var end = new Date().getFullYear();
+    var options = "";
+    for (var year = start; year <= end; year++) {
+        options += "<option>" + year + "</option>";
+    }
+    document.getElementById("year1").innerHTML = options;
+    document.getElementById("year2").innerHTML = options;
+
+</script>
+
+<script>
+    function handleFile(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
+            return;
+        }
+        var preview = document.getElementById('preview3');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'RGT[constent]';
+            input.value = e.target.result;
+            img.style.width = "150px";
+            img.style.height = "200px";
+            preview.appendChild(input);
+        }
+        reader.readAsDataURL(file);
+    }
 </script>
