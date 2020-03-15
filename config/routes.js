@@ -59,23 +59,23 @@ module.exports.routes = {
   '/badge': { view: 'pages/badge' },
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
-  
-  
+
 
   //********************Competition Application routes****************
-  '/competition/2020/21': {view: 'pages/competition/2021'},
-  
+  '/competition/2020/21': { view: 'pages/competition/2021' },
+
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
-   '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+
+  '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
   '/competition/form/notice': { view: 'pages/competition/form/notice' },
-  
+
 
   '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
 
   '/competition/annex1': { view: 'pages/competition/form/annex1' },
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
-  '/competition/form/Team_HKRGAgeGroupCompetitionform': {view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform'},
+  '/competition/form/Team_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform' },
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
   '/competition/appendix': { view: 'pages/competition/form/appendix' },
 
@@ -163,9 +163,13 @@ module.exports.routes = {
   'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
 
+  //'GET /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
   'POST /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
   'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
+
+  'GET /membership/clubMemberForm': 'MembershipController.clubMemberForm',
+  'POST /membership/clubMemberForm': 'MembershipController.clubMemberForm',
 
 
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
