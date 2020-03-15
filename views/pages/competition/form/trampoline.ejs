@@ -41,17 +41,16 @@
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
                 Applicant(1)'s personal details</h6>
-            <h5>[正選 Current athlete]</h5>
 
             <div>
                 <label for="chiName1">中文姓名 Name in Chinese:</label>
-                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="(e.g. 陳大文)"
-                    required>
+                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="Trampoline[engName1]" placeholder="(e.g. Chan Tai Man)"
-                    required>
+                <input type="text" class="form-group" name="Trampoline[engName1]" placeholder="e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
                 <label>出生年份 Year of Birth:</label>
@@ -64,11 +63,11 @@
             </div>
             <div>
                 <label>電郵 Email:</label>
-                <input type="email" class="form-group" name="Trampoline[email1]" required>
+                <input type="email" class="form-group" name="Trampoline[email1]" style="width: 250pt;" required>
             </div>
             <div>
                 <label>地址 Address:</label>
-                <input type="text" class="form-group" name="Trampoline[address1]" required>
+                <input type="text" class="form-group" name="Trampoline[address1]" style="width:350pt" required>
                 <br>
             </div>
         </div>
@@ -77,15 +76,14 @@
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
                 Applicant(2)'s personal details</h6>
-            <h5>[正選 Current athlete]</h5>
 
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="Trampoline[chiName2]" placeholder="(e.g. 陳大文)" required>
+                <input type="text" class="form-group" name="Trampoline[chiName2]" placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="Trampoline[engName2]" placeholder="(e.g. Chan Tai Man)"
+                <input type="text" class="form-group" name="Trampoline[engName2]"  placeholder="e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
                     required>
             </div>
             <div>
@@ -99,13 +97,19 @@
             </div>
             <div>
                 <label>電郵 Email:</label>
-                <input type="email" class="form-group" name="Trampoline[email2]" required>
+                <input type="email" class="form-group" name="Trampoline[email2]" style="width: 250pt;" required>
             </div>
             <div>
                 <label>地址 Address:</label>
-                <input type="text" class="form-group" name="Trampoline[address2]" required>
+                <input type="text" class="form-group" name="Trampoline[address2]" style="width: 350pt;" required>
                 <br>
             </div>
+        </div>
+        <div class="form-group col-12">
+            <span>備註 Remarks:</span><br>
+            <span>請填妥<a href="/formDoc/trampoline_comp.card.pdf" download>比賽動作卡</a>連同劃線支票郵寄或親臨辦公室遞交<br>Please fill in the competition card and cheque and send it by mail or in person</span>
+
+            <br>
         </div>
 
         <div class="col-12">
@@ -115,9 +119,9 @@
         </div>
 
 
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
             <label>團體名稱 Organization name:</label>
-            <input type="text" class="form-group" name="Trampoline[orgName]" required>
+            <input type="text" class="form-group" name="Trampoline[orgName]" style="width: 400pt;" required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -130,15 +134,17 @@
             <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[coachPhone]" required>
         </div>
 
-        <div class="col-12 col-sm-6">
-            <label>地址 Address:</label>
-            <input type="text" class="form-group" name="Trampoline[coachAddress]" required>
+        <div class="col-12">
+            <label>註冊教練編號(如適用) Registered coach no.(If applicable):</label>
+            <input type="text" class="form-group" name="Trampoline[coachNum]">
         </div>
+        
 
         <div class="col-12">
-            <label>註冊教練編號 Registered coach no.:</label>
-            <input type="text" class="form-group" name="Trampoline[coachNum]" required>
+            <label>地址 Address:</label>
+            <input type="text" class="form-group" name="Trampoline[coachAddress]" style="width: 400pt;" required>
         </div>
+        
 
         <div class="col-12">
             <br><br>
@@ -148,19 +154,19 @@
 
 
         <div class="col-12">
-            <label>*請下載 <a href="pages/competition/form/TRAagegroup2020form-4.pdf" download
-                    style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
-                    href="pages/competition/form/TRAagegroup2020form-4.pdf" download
-                    style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
+            <label>*請下載 <a href="/formDoc/trampoline_declaration.pdf" download
+                    style="color:rgb(159, 209, 60);">聲明.pdf.pdf</a> 後簽署並上載 Please download the <a
+                    href="/formDoc/trampoline_declaration.pdf" download
+                    style="color:rgb(159, 209, 60);">declaration.pdf</a> and upload it with signature</label>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" />
         </div>
 
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
-            <span style="color: #656565;">我已仔細閱讀並清楚明白參加者健康及體能須知。
-                I have read and understood the <a href="/competition/appendix" target="_blank"><u>Health and
-                        Fitness Guideline</u></a> for participants. </span>
+            <label>我已閱讀及同意<a href="/competition/annex1" target="_blank"><u>比賽規則及章程</u></a><br> I have read carefully and
+                agreed with the <a href="/competition/annex1" target="_blank"><u>Rules and Regulation</u></a> of the
+                competition</label>
         </div>
 
         <div class="col-12">
