@@ -1,0 +1,30 @@
+<form action="/pages/competition/form/GRGS_Preview" method="POST">
+
+    <div class="card col-12" style="width: 740pt;">
+        <% req.session.data = req.session.data || {} %>
+        <br>
+        <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
+        <br>
+        <h1 style="color: #888888; font-size: 16pt; font-weight: 200;"><b>第63屆體育節 - 2020年全港藝術體操分齡比賽</b></h1>
+        <h2 style="color: #888888; font-size:14pt; font-weight: 200;"><u><b>團體項目報名表(學校組)</b></u></h2>
+        <br>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" style="background-color: #83a70c; border-color: #83a70c;width: 150px;"
+                onclick="message()">Submit 提交</button>
+            <button type="button" class="btn btn-danger" style="width: 150px;" onclick="history.back()">Cancel
+                取消</button>
+        </div>
+
+
+    </div>
+
+</form>
+
+<script>
+    function message() {
+        alert("提交成功!!");
+    }
+
+</script>

@@ -1,12 +1,11 @@
 /**
- * RGTController
+ * ApplicationController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-
 
     create: async function (req, res) {
 
@@ -27,20 +26,19 @@ module.exports = {
         // });
     },
 
-    gfa: async function (req, res) {
+    // acroage: async function (req, res) {
 
-        if (req.method == "GET")
-            return res.view('competition/form/gfa');
+    //     if (req.method == "GET")
+    //         return res.view('competition/form/acroage');
 
-        if (typeof req.body.Competition === "undefined")
-            return res.badRequest("Form-data not received.");
+    //     if (typeof req.body.Competition === "undefined")
+    //         return res.badRequest("Form-data not received.");
 
-        await Application.create(req.body.Application)
+    //     await Application.create(req.body.Application)
 
-        return res.ok("Successfully submitted!");
-    },
-
-
+    //     return res.ok("Successfully submitted!");
+    // },
+  
 
 };
 
