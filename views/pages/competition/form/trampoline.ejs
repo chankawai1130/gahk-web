@@ -157,8 +157,8 @@
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
-            <span style="color: #656565;">我已仔細閱讀並清楚明白<a href="/competition/appendix">參加者健康及體能須知</a> I have read and understood the <a
-                    href="/competition/appendix" target="_blank"><u>Health and
+            <span style="color: #656565;">我已仔細閱讀並清楚明白<a href="/competition/appendix">參加者健康及體能須知</a> I have read and
+                understood the <a href="/competition/appendix" target="_blank"><u>Health and
                         Fitness Guideline</u></a> for participants</span>
         </div>
 
@@ -188,7 +188,7 @@
 
     var start = 1900;
     var end = new Date().getFullYear();
-    var options = "";
+    var options = "<option disabled selected>" + " " + "</option>";
     for (var year = start; year <= end; year++) {
         options += "<option>" + year + "</option>";
     }
