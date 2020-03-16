@@ -53,13 +53,13 @@
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>出生年份 Year of Birth:</label>
-                <select id="year1" class="form-group" name="Trampoline[birth2]" required></select>
+                <label>出生年份 Year of birth:</label>
+                <select id="year1" class="form-group" name="Trampoline[birth1]" required></select>
                 <br>
             </div>
             <div>
                 <label>聯絡電話 Contact number:</label>
-                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone2]" required>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone1]" required>
             </div>
             <div>
                 <label>電郵 Email:</label>
@@ -87,7 +87,7 @@
                     required>
             </div>
             <div>
-                <label>出生年份 Year of Birth:</label>
+                <label>出生年份 Year of birth:</label>
                 <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
@@ -147,32 +147,36 @@
         
 
         <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
-                Terms of the competition</h5>
+            <br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
         </div>
 
-
         <div class="col-12">
-            <label>*請下載 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">聲明.pdf.pdf</a> 後簽署並上載 Please download the <a
+
+            <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
+                    style="color:rgb(159, 209, 60);">聲明書.pdf</a>,簽署後把文件上載 Please download and print the <a
                     href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">declaration.pdf</a> and upload it with signature</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" />
+                    style="color:rgb(159, 209, 60);">declaration.pdf</a>,then sign and upload it</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+
         </div>
 
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
+
+
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
                 understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+
         </div>
 
         <div class="col-12">
             <br><br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
-                Submit</button>
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
+                >></button>
         </div>
     </div>
     <br>
@@ -194,7 +198,7 @@
 
     var start = 1900;
     var end = new Date().getFullYear();
-    var options = "";
+    var options = "<option disabled selected>" + " " + "</option>";
     for (var year = start; year <= end; year++) {
         options += "<option>" + year + "</option>";
     }
@@ -207,26 +211,32 @@
     function handleFile(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-
-        if (file.size > 4194304) {
-            alert("請重新上載4MB相片");
-            return;
-        }
-        var preview = document.getElementById('preview3');
+        var preview = document.getElementById('preview');
         var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
 
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'RGT[constent]';
-            input.value = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(input);
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'TRGCompetition[VBRC]';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "150px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'TRGCompetition[VBRC]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
         }
         reader.readAsDataURL(file);
     }
