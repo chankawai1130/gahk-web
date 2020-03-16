@@ -205,36 +205,28 @@
         <div class="form-group col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
                 Documents</h5>
+            <div class="form-group">
+                <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
+                    (pdf檔)</label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)" required />
+                <div id="preview1"></div>
+            </div>
+        </div>
 
-            <ol style="font-weight: bold;">
-                <li>
-                    <div class="form-group">
-                        <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
-                                (pdf檔)</label>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)"
-                            required />
-                        <div id="preview1"></div>
-                    </div>
-                </li>
+        <div class="form-group col-12">
+                <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                    Declaration</h5>
 
-                <li>
-                    <div class="form-group">
-                        <label>請下載<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                                        style="color: #83a70c;">聲明.pdf</u></a>後簽署並上載 Please download the <a
-                                    href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                                        style="color: #83a70c;">declaration.pdf</u></a> and upload it with
-                                signature</label>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
-                            required />
-                        <div id="preview2"></div>
-                    </div>
-                </li>
-            </ol>
-
-
-
-
-
+                <div class="form-group">
+                    <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                            href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                            style="color:rgb(159, 209, 60);">declaration.pdf</u></a> and upload it with
+                        signature</label>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+                    <div id="preview2"></div>
+                </div>
+            
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <label>機構負責人姓名 Leader's name:</label>
@@ -245,14 +237,15 @@
                     <input type="text" class="form-group" name="TRGCompetition[leaderPosition]" required>
                 </div>
             </div>
-
         </div>
 
         <br>
         <div class="form-group col-12">
             <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
         </div>
 
         <div class="col-12">
