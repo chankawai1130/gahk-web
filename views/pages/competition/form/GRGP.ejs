@@ -4,7 +4,8 @@
             <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
                     2020年全港藝術體操分齡比賽</b></h1>
-            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表（公開組︰學校以外之團體）</u></h2>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表（公開組︰學校以外之團體）</u>
+            </h2>
             <br><br>
         </div>
 
@@ -251,7 +252,7 @@
             <label>隊伍負責人職位 Leader's Position:</label>
             <input type="text" class="form-group" name="GRGP[leaderPosition]" required>
         </div>
-        
+
 
 
         <div class="col-12">
@@ -297,52 +298,60 @@
 
 
 
-        <b><ol>
-            <li>
-                <div class="col-12">
-                    <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>ALL</b></u>
-                        applicants</label>
+        <b>
+            <ol>
+                <li>
+                    <div class="col-12">
+                        <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>ALL</b></u>
+                            applicants</label>
+                        <br>
+                        <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
+                        <br>
+                        <div id="preview0" style="float: left;"></div>
+                        <div id="preview1" style="float: left;"></div>
+                        <div id="preview2" style="float: left;"></div>
+                        <div id="preview3" style="float: left;"></div>
+                        <div id="preview4" style="float: left;"></div>
+                        <div id="preview5" style="float: left;"></div>
+                    </div>
                     <br>
-                    <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
+                </li>
+                <li>
+                    <div class="col-12">
+                        <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school's
+                            stamp</label>
+                        <br>
+                        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple
+                            required />
+                        <br>
+                        <div id="HF2preview0" style="float: left;"></div>
+                        <div id="HF2preview1" style="float: left;"></div>
+                    </div>
                     <br>
-                    <div id="preview0" style="float: left;"></div>
-                    <div id="preview1" style="float: left;"></div>
-                    <div id="preview2" style="float: left;"></div>
-                    <div id="preview3" style="float: left;"></div>
-                    <div id="preview4" style="float: left;"></div>
-                    <div id="preview5" style="float: left;"></div>
-                </div>
-                <br>
-            </li>
-            <li>
-                <div class="col-12">
-                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school's
-                        stamp</label>
-                    <br>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
-                    <br>
-                    <div id="HF2preview0" style="float: left;"></div>
-                    <div id="HF2preview1" style="float: left;"></div>
-                </div>
-                <br>
-            </li>
-            <li>
-                <div class="col-12">
-                    <label>請下載 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲名.pdf</u></a>
-                        後簽署並上載 Please download the <a href="/formDoc/GRGS_declaration.pdf" download
-                            style="color:#83a70c"><u>declaration.pdf</u></a> and upload it with signature</label>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
-                    <div id="HF3preview"></div>
-                </div>
-            </li>
-        </ol></b>
+                </li>
+                <li>
+                    <div class="col-12">
+                        <label>請下載及列印<a href="/formDoc/GRGS_declaration.pdf" download><u
+                                    style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print
+                            the <a href="/formDoc/GRGS_declaration.pdf" download><u
+                                    style="color:rgb(159, 209, 60);">declaration.pdf</u></a> and upload it with
+                            signature</label>
+                        <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)"
+                            required />
+                        <div id="HF3preview"></div>
+                    </div>
+                </li>
+            </ol>
+        </b>
 
 
         <div class="col-12">
             <br><br><br>
             <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
         </div>
 
 

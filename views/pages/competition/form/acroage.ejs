@@ -1,4 +1,4 @@
-<form action="/competition/form/team" method="POST">
+<form action="/competition/form/acroage" method="POST">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年度全港技巧體操分齡賽</b></h1>
@@ -13,7 +13,8 @@
         <!-- Person Details -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">個人資料 Personal
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">個人資料
+                Personal
                 Details</h5>
         </div>
 
@@ -26,7 +27,7 @@
         </div>
 
         <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>性別 Gender </label> 
+            <label><span style="font-size:14px;color:red"> * </span>性別 Gender </label>
             <input type="radio" name="Acroage[gender]" id="male" value="male" required>
             <label class="gender">男 Male</label>
             <input type="radio" name="Acroage[gender]" id="female" value="female" required>
@@ -55,7 +56,7 @@
         </div>
 
         <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>聯絡地址 Contact  Address:</label>
+            <label><span style="font-size:14px;color:red"> * </span>聯絡地址 Contact Address:</label>
             <input type="email" class="form-group" name="Acroage[address]" style="width:230pt;" required>
         </div>
 
@@ -78,7 +79,8 @@
             <label class="form-check-label" for="levelCategory">3 級(8 歲或以上)</label>
 
             <input type="radio" name="Acroage[levelCategory]" value="4 級(9 歲或以上)" required />
-            <label class="form-check-label" for="levelCategory">4 級(9 歲或以上)</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="form-check-label" for="levelCategory">4 級(9
+                歲或以上)</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <input type="radio" name="Acroage[levelCategory]" value="5 級(10 歲或以上)" required />
             <label class="form-check-label" for="levelCategory">5 級(10 歲或以上)</label>
@@ -122,10 +124,10 @@
         </div>
 
         <div class="col-12">
-            <label>收據臺頭<br>Receipt header: </label> 
-            <input type="radio" value="radio" name="receiptHeader"/>
+            <label>收據臺頭<br>Receipt header: </label>
+            <input type="radio" value="radio" name="receiptHeader" />
             <label class="Receipt">運動員姓名<br>Athlete name</label>
-            <input type="radio" class="form-group" value="radio" name="receiptHeader"/>
+            <input type="radio" class="form-group" value="radio" name="receiptHeader" />
             <label class="Receipt">學校/機構名稱<br>School/Institution Name</label>
             <input type="text" class="form-group" name="Acroage[receiptName]" />
         </div>
@@ -160,7 +162,7 @@
 
         <div class="col-12 form-group">
             5. 1-3 級賽事每名運動員只可參加一個組別的一個項目。4-5 級賽事每名運動員在同一個級別內可參加最多兩個不同項
-            目，並需分別繳付兩個項目之報名費。            
+            目，並需分別繳付兩個項目之報名費。
         </div>
 
         <div class="col-12 form-group">
@@ -190,7 +192,7 @@
             或課程而由任何原因，包括疏忽，所引致之疾病、死亡、個人損失之任何法律責任，以及放棄任何有關之
             權利、索償及追究行動。本人／敝子女亦同時聲明本人／敝子女身體狀況良好及具備足夠之體能及技術完
             成賽事或訓練課程。本人／敝子女願意授權大會及傳媒在無須本人／敝子女審查而可以使用本人／敝子女
-            的肖像、姓名、聲線及個人資料作為活動籌辦及推廣之用。            
+            的肖像、姓名、聲線及個人資料作為活動籌辦及推廣之用。
         </div>
 
         <div class="col-12 form-group">
@@ -241,10 +243,11 @@
         </div>
 
         <div class="col-12">
-            <label>*請下載 <a href="/formDoc/acroage_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">同意書.pdf</a> 後簽署並上載 Please download the <a
-                    href="/formDoc/acroage_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">consent.pdf</a> and upload it with signature</label>
+            <label>請下載及列印<a href="/formDoc/acroage_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                    href="/formDoc/acroage_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">declaration.pdf</u></a> and upload it with
+                signature</label>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
             <div id="preview3"></div>
         </div>
@@ -252,8 +255,10 @@
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
         </div>
 
         <div class="col-12">
@@ -267,7 +272,7 @@
 </form>
 
 <script>
-    
+
     function handleFile3(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
