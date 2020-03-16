@@ -1,9 +1,55 @@
-<%- partial('../partial/sidemenu.ejs') %>
-<form action="/admin/applyHandle/search" method="GET">
-    <div>
-        <h5 class="main-heading1">
-            申請處理管理<span class="highlight">系統</span>
-          </h5>
-    </div>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-</form>
+    th, td{
+        padding: 10px;
+        text-align:center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #subjects{
+        background-color: #f5f5f5;
+    }
+
+    #btns{
+        padding: 8px;
+        text-align: right;
+        border-bottom: 1px solid #ddd;
+    }
+
+</style>
+
+<%- partial('../partial/sidemenu.ejs') %>
+<div class="content admin w-100">
+    <h5 class="main-heading1">
+        申請處理管理<span class="highlight">系統</span>
+    </h5>
+
+    <form action="/admin/applyHandle/search" method="GET">
+        <br>
+        <table>
+            <tr id="subjects">
+                <th>隊伍/團體<br>Team/Organisation</th>
+                <th>組別/項目<br>Category/Subject</th>
+                <th>款項<br>Payment</th>
+                <th>提交日期<br>Apply Date</th>
+                <th>狀態<br>Status</th>
+            </tr>
+            <tr>
+                <td>vv</td>
+                <td>XXXXXX</td>
+                <td>Received</td>
+                <td>DD/MM/YYYY</td>
+                <td id="btns">
+                    <a class="btn btn-primary" href="">確定</a>
+                    <a class="btn btn-success" href="">編輯</a>
+                    <a class="btn btn-danger" href="">取消</a>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
