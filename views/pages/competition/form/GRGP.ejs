@@ -4,7 +4,7 @@
             <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
                     2020年全港藝術體操分齡比賽</b></h1>
-            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表（公開組︰學校以外之團體）</u>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表(公開組︰學校以外之團體)</u>
             </h2>
             <br><br>
         </div>
@@ -13,7 +13,7 @@
 
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
-                details</h5>
+                Details</h5>
         </div>
 
 
@@ -82,6 +82,14 @@
                 <input type="date" class="form-group" name="GRGP[birth1]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
+                <br>
+                <div id="preview0"></div>
+            </div>
+            <br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -110,6 +118,14 @@
                 <input type="date" class="form-group" name="GRGP[birth2]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
+                <br>
+                <div id="preview1"></div>
+            </div>
+            <br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -138,6 +154,14 @@
                 <input type="date" class="form-group" name="GRGP[birth3]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
+                <br>
+                <div id="preview2"></div>
+            </div>
+            <br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -166,6 +190,14 @@
                 <input type="date" class="form-group" name="GRGP[birth4]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,3)" required />
+                <br>
+                <div id="preview3"></div>
+            </div>
+            <br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -194,12 +226,20 @@
                 <input type="date" class="form-group" name="GRGP[birth5]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,4)" required />
+                <br>
+                <div id="preview4"></div>
+            </div>
+            <br>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(6)個人資料
-                Applicant(6)'s Personal Detail</h6>
+                Applicant(6)'s Personal Details</h6>
             <h5>[後備 Back up]</h5>
             <br>
 
@@ -222,6 +262,14 @@
                 <input type="date" class="form-group" name="GRGP[birth6]" required>
                 <br>
             </div>
+            <div>
+                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,5)" required />
+                <br>
+                <div id="preview5"></div>
+            </div>
+            <br>
         </div>
 
         <div class="form-group col-12">
@@ -238,7 +286,7 @@
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料
-                Team's leader detail</h5>
+                Team's Leader Details</h5>
         </div>
 
 
@@ -280,7 +328,7 @@
         </div>
 
         <div class="col-12 form-group">
-            <label>總額 Total price = $</label>
+            <label>總額 Total Price = $</label>
             <input id="total" type="number" class="mx-sm-2" name="GRGP[total]" readonly />
         </div>
 
@@ -292,57 +340,21 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
-                Documents</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
         </div>
 
+        <div class="col-12">
+             <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
+                    style="color:rgb(159, 209, 60);">聲明書.pdf</a> 後簽署並上載文件 Please download and print the <a
+                    href="/formDoc/trampoline_declaration.pdf" download
+                    style="color:rgb(159, 209, 60);">declaration.pdf</a> and upload it with signature</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required />
+            <br>
+            <div id="HF2preview0" style="float: left;"></div>
+            <div id="HF2preview1" style="float: left;"></div>
+        </div>
 
-
-        <b>
-            <ol>
-                <li>
-                    <div class="col-12">
-                        <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload ID copies of <u><b>ALL</b></u>
-                            applicants</label>
-                        <br>
-                        <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-                        <br>
-                        <div id="preview0" style="float: left;"></div>
-                        <div id="preview1" style="float: left;"></div>
-                        <div id="preview2" style="float: left;"></div>
-                        <div id="preview3" style="float: left;"></div>
-                        <div id="preview4" style="float: left;"></div>
-                        <div id="preview5" style="float: left;"></div>
-                    </div>
-                    <br>
-                </li>
-                <li>
-                    <div class="col-12">
-                        <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school's
-                            stamp</label>
-                        <br>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple
-                            required />
-                        <br>
-                        <div id="HF2preview0" style="float: left;"></div>
-                        <div id="HF2preview1" style="float: left;"></div>
-                    </div>
-                    <br>
-                </li>
-                <li>
-                    <div class="col-12">
-                        <label>請下載及列印<a href="/formDoc/GRGS_declaration.pdf" download><u
-                                    style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print
-                            the <a href="/formDoc/GRGS_declaration.pdf" download><u
-                                    style="color:rgb(159, 209, 60);">declaration.pdf</u></a> and upload it with
-                            signature</label>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)"
-                            required />
-                        <div id="HF3preview"></div>
-                    </div>
-                </li>
-            </ol>
-        </b>
 
 
         <div class="col-12">
@@ -383,54 +395,40 @@
         document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
     }
 
-    function handleFile(files) {
-        if (files.length > 6) {
-            alert("上載相片不可多於6張");
+    function handleFile(files, p) {
+        const file = files[0];
+        if (!file.type.startsWith('image/')) return;
+
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
             return;
         }
 
-        var i = 0;
-        while (i < files.length) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var preview = document.getElementById('preview' + p);
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
 
-            if (!files[i].type.startsWith('image/')) return;
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'GRGP[imgIDCard' + p + ']';
+            alert(p)
+            input.value = e.target.result;
+            alert(input.value)
 
-            if (files[i].size > 4194304) {
-                alert("請重新上載4MB相片");
-                return;
-            }
-
-
-            var reader = new FileReader();
-            var p = 0;
-            reader.onload = function (e) {
-                var preview = document.getElementById('preview' + p);
-                preview.innerHTML = "";
-                var img = document.createElement('img');
-                img.src = e.target.result;
-                preview.appendChild(img);
-
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'GRGP[imgIDCard' + p + ']';
-                alert(p)
-                input.value = e.target.result;
-                alert(input.value)
-
-                img.style.width = "150px";
-                img.style.height = "150px";
-                document.getElementById('GRGP_form').appendChild(input);
-
-                p = p + 1;
-            }
-            reader.readAsDataURL(files[i]);
-            i = i + 1;
-
+            img.style.width = "150px";
+            img.style.height = "150px";
+            document.getElementById('GRGP_form').appendChild(input);
         }
+        reader.readAsDataURL(file);
     }
 
     function handleFile2(files) {
         if (files.length > 2) {
-            alert("上載相片不可多於2張");
+            alert("上載檔案不可多於2個");
             return;
         }
 
@@ -441,13 +439,29 @@
 
             var reader = new FileReader();
             var p = 0;
-            reader.onload = function (e) {
-                var preview = document.getElementById('HF2preview' + p);
-                preview.innerHTML = "";
-                var img = document.createElement('img');
-                img.src = e.target.result;
-                preview.appendChild(img);
 
+            if (files[i].type.startsWith('image/')) {
+                reader.onload = function (e) {
+                    var preview = document.getElementById('HF2preview' + p);
+                    preview.innerHTML = "";
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'GRGP[document' + p + ']';
+                    alert(p)
+                    input.value = e.target.result;
+                    alert(input.value)
+
+                    img.style.width = "150px";
+                    img.style.height = "150px";
+                    document.getElementById('GRGP_form').appendChild(input);
+
+                    p = p + 1;
+                }
+            } else if (files[i].type == 'application/pdf') {
                 var input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = 'GRGP[document' + p + ']';
@@ -455,8 +469,6 @@
                 input.value = e.target.result;
                 alert(input.value)
 
-                img.style.width = "150px";
-                img.style.height = "150px";
                 document.getElementById('GRGP_form').appendChild(input);
 
                 p = p + 1;
@@ -465,28 +477,5 @@
             i = i + 1;
         }
     }
-
-    function handleFile3(files) {
-        const file = files[0];
-        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('HF3preview');
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(img);
-
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'GRGP[constent]';
-            input.value = e.target.result;
-            preview.appendChild(input);
-        }
-        reader.readAsDataURL(file);
-    }
-
 
 </script>
