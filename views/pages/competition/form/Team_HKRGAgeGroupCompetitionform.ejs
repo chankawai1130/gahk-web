@@ -19,12 +19,13 @@
         <div class="form-group col-12">
             <label>機構名稱(中文) Organization Name(Chinese):</label>
             <input type="text" name="TRGCompetition[OrgChiName]" style="width:450pt"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="text" name="TRGCompetition[Phone]" maxlength="8" pattern="\d{8}" required>
+            <input type="text" name="TRGCompetition[Phone]" maxlength="8"
+                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
@@ -39,7 +40,8 @@
 
         <div class="form-group col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="text" name="TRGCompetition[CoachPhone]" maxlength="8" pattern="\d{8}" required>
+            <input type="text" name="TRGCompetition[CoachPhone]" maxlength="8"
+                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12">
@@ -80,7 +82,7 @@
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGCompetition[Mate1EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
@@ -106,7 +108,7 @@
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGCompetition[Mate2EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
@@ -132,7 +134,7 @@
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGCompetition[Mate3EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
@@ -158,7 +160,7 @@
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGCompetition[Mate4EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
@@ -204,25 +206,54 @@
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
                 Documents</h5>
 
-            <div class="form-group">
-                <label><b>1. 請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate (pdf檔)</b></label>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)" required />
-                <div id="preview"></div>
-            </div>
-            <br>
+            <ol style="font-weight: bold;">
+                <li>
+                    <div class="form-group">
+                        <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
+                                (pdf檔)</label>
+                        <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)"
+                            required />
+                        <div id="preview1"></div>
+                    </div>
+                </li>
 
-            <div class="form-group">
-                <label><b>2. 請下載<a href="/formDoc/Team_HKRG_declaration.pdf" download><u style="color: #83a70c;" >聲明.pdf</u></a>後簽署並上載 Please download the declaration.pdf and upload it with signature</b></label>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
-                <div id="preview"></div>
+                <li>
+                    <div class="form-group">
+                        <label>請下載<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                                        style="color: #83a70c;">聲明.pdf</u></a>後簽署並上載 Please download the <a
+                                    href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                                        style="color: #83a70c;">declaration.pdf</u></a> and upload it with
+                                signature</label>
+                        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
+                            required />
+                        <div id="preview2"></div>
+                    </div>
+                </li>
+            </ol>
+
+
+
+
+
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <label>機構負責人姓名 Leader's name:</label>
+                    <input type="text" class="form-group" name="TRGCompetition[leaderName]" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label>機構負責人職位 Leader's position:</label>
+                    <input type="text" class="form-group" name="TRGCompetition[leaderPosition]" required>
+                </div>
             </div>
+
         </div>
 
         <br>
         <div class="form-group col-12">
             <input type="checkbox" required>
-            <label>我已閱讀及同意<a href="/competition/annex1" target="_blank"><u>比賽規則及章程</u></a><br> I have read carefully and
-                agreed with the rules and regulation of the competition</label>
+            <label>我已閱讀及同意<a href="/competition/appendix2" target="_blank"><u>比賽規則及章程</u></a><br> I have read carefully and
+                agreed with the <a href="/competition/appendix2" target="_blank"><u>Rules and Regulation</u></a> of the
+                competition</label>
         </div>
 
         <div class="col-12">
@@ -245,10 +276,10 @@
     }
 
 
-    function handleFile2(files) {
+    function handleFile1(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('preview');
+        var preview = document.getElementById('preview1');
         var reader = new FileReader();
 
         if (file.type.startsWith('image/')) {
@@ -281,7 +312,7 @@
     function handleFile2(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('preview');
+        var preview = document.getElementById('preview2');
         var reader = new FileReader();
 
         if (file.type.startsWith('image/')) {

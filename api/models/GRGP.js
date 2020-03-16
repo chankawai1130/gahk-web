@@ -1,5 +1,5 @@
 /**
- * Trampoline.js
+ * GRGP.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,6 +12,19 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    teamName: {
+      type: "string",
+      required: true,
+    },
+
+    phone: {
+      type: "number"
+    },
+
+    email: {
+      type: "string"
+    },
+
     chiName1: {
       type: "string"
     },
@@ -20,19 +33,12 @@ module.exports = {
       type: "string"
     },
 
+    ID1: {
+      type: "string",
+      required: true,
+    },
+
     birth1: {
-      type: "string"
-    },
-
-    email1: {
-      type: "string"
-    }, 
-
-    phone1: {
-      type: "number"
-    },
-
-    address1: {
       type: "string"
     },
 
@@ -44,32 +50,81 @@ module.exports = {
       type: "string"
     },
 
+    ID2: {
+      type: "string",
+      required: true,
+    },
+
     birth2: {
       type: "string"
     },
 
-    email2: {
-      type: "string"
-    }, 
-
-    phone2: {
-      type: "number"
-    },
-
-    address2: {
+    chiName3: {
       type: "string"
     },
 
-    orgName: {
+    engName3: {
       type: "string"
     },
 
-    coachAddress:{
+    ID3: {
+      type: "string",
+      required: true,
+    },
+
+    birth3: {
       type: "string"
     },
 
-    coachNum:{
-      type: "number"
+    chiName4: {
+      type: "string"
+    },
+
+    engName4: {
+      type: "string"
+    },
+
+    ID4: {
+      type: "string",
+      required: true,
+    },
+
+    birth4: {
+      type: "string"
+    },
+
+    chiName5: {
+      type: "string"
+    },
+
+    engName5: {
+      type: "string"
+    },
+
+    ID5: {
+      type: "string",
+      required: true,
+    },
+
+    birth5: {
+      type: "string"
+    },
+
+    chiName6: {
+      type: "string"
+    },
+
+    engName6: {
+      type: "string"
+    },
+
+    ID6: {
+      type: "string",
+      required: true,
+    },
+
+    birth6: {
+      type: "string"
     },
 
     coachName: {
@@ -78,6 +133,38 @@ module.exports = {
 
     coachPhone: {
       type: "number"
+    },
+
+    leaderName: {
+      type: "string"
+    },
+
+    leaderPosition: {
+      type: "string"
+    },
+
+    NoOfTeam: {
+      type: "number"
+    },
+
+    teamFee: {
+      type: "number"
+    },
+
+    NoOfPeople: {
+      type: "number"
+    },
+
+    insurance: {
+      type: "number"
+    },
+
+    total: {
+      type: "number"
+    },
+
+    confirm: {
+      type: "string"
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
