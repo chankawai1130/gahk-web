@@ -11,7 +11,7 @@
 
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
-                details</h5>
+                Details</h5>
         </div>
 
         <div class="col-12">
@@ -40,7 +40,8 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s personal details</h6>
+                Applicant(1)'s Personal Details</h6>
+                <br>
 
             <div>
                 <label for="chiName1">中文姓名 Name in Chinese:</label>
@@ -53,17 +54,17 @@
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div>
-                <label>出生年份 Year of birth:</label>
+                <label>出生年份 Year of Birth:</label>
                 <select id="year1" class="form-group" name="Trampoline[birth1]" required></select>
                 <br>
             </div>
             <div>
-                <label>聯絡電話 Contact number:</label>
+                <label>聯絡電話 Contact Number:</label>
                 <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone1]" required>
             </div>
             <div>
-                <label>電郵 Email:</label>
-                <input type="email" class="form-group" name="Trampoline[email1]" style="width: 250pt;" required>
+                <label>電郵 Email Address:</label>
+                <input type="email" class="form-group" name="Trampoline[email1]" style="width: 195pt;" required>
             </div>
             <div>
                 <label>地址 Address:</label>
@@ -75,7 +76,8 @@
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s personal details</h6>
+                Applicant(2)'s Personal Details</h6>
+                <br>
 
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -87,17 +89,17 @@
                     required>
             </div>
             <div>
-                <label>出生年份 Year of birth:</label>
+                <label>出生年份 Year of Birth:</label>
                 <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
                 <br>
             </div>
             <div>
-                <label>聯絡電話 Contact number:</label>
+                <label>聯絡電話 Contact Number:</label>
                 <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone2]" required>
             </div>
             <div>
-                <label>電郵 Email:</label>
-                <input type="email" class="form-group" name="Trampoline[email2]" style="width: 250pt;" required>
+                <label>電郵 Email Address:</label>
+                <input type="email" class="form-group" name="Trampoline[email2]" style="width: 195pt;" required>
             </div>
             <div>
                 <label>地址 Address:</label>
@@ -120,22 +122,22 @@
 
 
         <div class="col-12">
-            <label>團體名稱 Organization name:</label>
+            <label>團體名稱 Organization Name:</label>
             <input type="text" class="form-group" name="Trampoline[orgName]" style="width: 400pt;" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>教練姓名 Coach name:</label>
+            <label>教練姓名 Coach Name:</label>
             <input type="text" class="form-group" name="Trampoline[coachName]" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>聯絡電話 Contact number:</label>
+            <label>聯絡電話 Contact Number:</label>
             <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[coachPhone]" required>
         </div>
 
         <div class="col-12">
-            <label>註冊教練編號(如適用) Registered coach no.(If applicable):</label>
+            <label>註冊教練編號(如適用) Registered Coach No.(If applicable):</label>
             <input type="text" class="form-group" name="Trampoline[coachNum]">
         </div>
         
@@ -147,7 +149,7 @@
         
 
         <div class="col-12">
-            <br>
+            <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
                 Declaration</h5>
         </div>
@@ -155,15 +157,15 @@
         <div class="col-12">
 
             <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">聲明書.pdf</a>,簽署後把文件上載 Please download and print the <a
+                    style="color:rgb(159, 209, 60);">聲明書.pdf</a> 簽署後把文件上載 Please download and print the <a
                     href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">declaration.pdf</a>,then sign and upload it</label>
+                    style="color:rgb(159, 209, 60);">declaration.pdf</a> then sign and upload it</label>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
 
         </div>
 
         <div class="col-12">
-            <br><br>
+            <br><br><br>
             <input type="checkbox" required>
 
 
@@ -222,7 +224,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'Trampoline[VBRC]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -233,7 +235,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'Trampoline[VBRC]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
