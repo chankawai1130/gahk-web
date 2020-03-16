@@ -60,8 +60,7 @@ module.exports.routes = {
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
   
-  
-=======
+
   //********************Competition Application routes****************
   '/competition/2020/21': {view: 'pages/competition/2021'},
   
