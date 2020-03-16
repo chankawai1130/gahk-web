@@ -85,6 +85,91 @@ module.exports = {
       type: 'string',
     },
 
+    //clubMemberForm attribute
+    OrgEngName: {
+      type: 'string',
+    },
+
+    OrgChiName: {
+      type: 'string',
+    },
+
+    AppEngName: {
+      type: 'string',
+    },
+
+    AppChiName: {
+      type: 'string',
+    },
+
+    clubAddr: {
+      type: 'string',
+    },
+
+    clubTel: {
+      type: 'string',
+    },
+
+    clubFax: {
+      type: 'string',
+    },
+
+    clubEmail: {
+      type: 'string',
+    },
+
+    clubWeb: {
+      type: 'string',
+    },
+
+    MemberNo: {
+      type: 'number',
+    },
+
+    brefDes: {
+      type: 'string'
+    },
+
+    resEngName: {
+      type: 'string',
+    },
+
+    resChiName: {
+      type: 'string',
+    },
+
+    position: {
+      type: 'string',
+    },
+
+    resAddr: {
+      type: 'string',
+    },
+
+    resTel: {
+      type: 'string',
+    },
+
+    resFax: {
+      type: 'string',
+    },
+
+    resEmail: {
+      type: 'string',
+    },
+
+    year: {
+      type: 'number',
+    },
+
+    clubFee: {
+      type: 'string',
+    },
+
+    partD: {
+      type: 'string',
+    },
+    
 
 
 

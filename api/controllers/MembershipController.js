@@ -411,6 +411,21 @@ module.exports = {
   },
 
 
+  //clubMembership Application
+  // action - create
+  clubMemberForm: async function (req, res) {
+
+    if (req.method == 'GET')
+    {return res.view('membership/clubMemberform', { 'data': req.session.data || {} });}
+
+    req.session.data = req.body.Membership;
+
+    return res.view('membership/clubMemberFormPreview', { 'data': req.session.data || {} });
+
+
+  },
+
+
 
 
 
