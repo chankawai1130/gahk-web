@@ -1,9 +1,35 @@
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #subjects {
+        background-color: #f5f5f5;
+    }
+
+    #btns {
+        padding: 8px;
+        text-align: right;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
 <%- partial('../partial/sidemenu.ejs') %>
 <div class="content admin w-100">
     <h5 class="main-heading1">
         申請處理管理<span class="highlight">系統</span>
     </h5>
+
     <form action="/admin/applyHandle/search" method="GET">
+
         <div class="row mx-sm-2">
             <div class="form-group col-12">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">Activity/Competition
@@ -51,12 +77,39 @@
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; margin-left:auto; margin-right:auto;">搜尋
                 Search</button>
+
         </div>
 
 
-    </form>
+        
+        <br><br>
+        <table>
+            <tr id="subjects">
+                <th>隊伍/團體<br>Team/Organisation</th>
+                <th>組別/項目<br>Category/Subject</th>
+                <th>款項<br>Payment</th>
+                <th>提交日期<br>Apply Date</th>
+                <th>狀態<br>Status</th>
+            </tr>
+            <tr>
+                <td>vv</td>
+                <td>XXXXXX</td>
+                <td>Received</td>
+                <td>DD/MM/YYYY</td>
+                <td id="btns">
+                    <a class="btn btn-primary" href="">確定</a>
+                    <a class="btn btn-success" href="">編輯</a>
+                    <a class="btn btn-danger" href="">取消</a>
+                </td>
+            </tr>
+        </table>
+        <br>
 
 </div>
+
+</form>
+
+
 
 <script>
     var acrCategory = ["1級(6至14歲) Level1(6-14 years old)", "2級(6至14歲) Level2(6-14 years old)", "3級(8歲或以上) Level3(8 or above)", "4級(9歲或以上) Level4(9 or above)", "5級(10歲或以上) Level5(10 or above)"];
