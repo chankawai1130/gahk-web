@@ -345,7 +345,7 @@
         </div>
 
         <div class="col-12">
-             <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
+            <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
                     style="color:rgb(159, 209, 60);">聲明書.pdf</a> 後簽署並上載文件 Please download and print the <a
                     href="/formDoc/trampoline_declaration.pdf" download
                     style="color:rgb(159, 209, 60);">declaration.pdf</a> and upload it with signature</label>
@@ -462,16 +462,18 @@
                     p = p + 1;
                 }
             } else if (files[i].type == 'application/pdf') {
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'GRGP[document' + p + ']';
-                alert(p)
-                input.value = e.target.result;
-                alert(input.value)
+                reader.onload = function (e) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'GRGP[document' + p + ']';
+                    alert(p)
+                    input.value = e.target.result;
+                    alert(input.value)
 
-                document.getElementById('GRGP_form').appendChild(input);
+                    document.getElementById('GRGP_form').appendChild(input);
 
-                p = p + 1;
+                    p = p + 1;
+                }
             }
             reader.readAsDataURL(files[i]);
             i = i + 1;
