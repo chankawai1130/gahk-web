@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-12">
-            <p>參賽組別 Category:</p>
+            <span>參賽組別 Category:</span>
             <input type="radio" name="application[box]" value="A" required>
             <label class="form-check-label" for="box">幼稚園 Kindergarten</label>
             <input type="radio" name="application[box]" value="B" required>
@@ -40,7 +40,7 @@
 
         <!-- Contact Person -->
         <div class="col-12">
-            <br><br>
+            <br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聯絡人 Contact
                 Person</h5>
         </div>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="col-12">
-            <label>聯絡電話Contact No.:</label>
+            <label>聯絡電話 Contact Number:</label>
             <input type="tel" pattern=[0-9]{8} class="form-group" name="application[cpDayPhone]" required>
             <label>日間 Office Hour</label>
             <input type="tel" pattern=[0-9]{8} class="form-group" name="application[cpMobilePhone]" required>
@@ -101,59 +101,38 @@
             閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
         </div>
 
-        <!-- Declaration -->
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲 明
-                Declaration</h5>
-        </div>
-
-        <div class="col-12 form-group">
-            1. 謹證明本團體之參加者是自願參加是項活動，並願意自行承擔所有責任。本團體之參加者亦謹遵守貴會之一切規則、
-            決定，包括藥物檢查條例。
-            本團體之參加者、本團體之參加者之繼承人、本團體之參加者之遺囑執行人及本團體之參加者之管理人謹此豁免中國
-            香港體操總會、所有贊助商、支持是項活動之團體及任何有關之團體對於本團體之參加者因參加是項活動而由任何原
-            因，包括疏忽，所引致之疾病、死亡、個人損失之任何法律責任，以及放棄任何有關之權利、索償及追究行動。
-            本團體之參加者亦同時聲明本團體之參加者身體狀況良好及具備足夠之體能及技術完成是項活動。(附件一)
-            本團體之參加者願意授權大會及傳媒在無須本團體之參加者審查而可以使用本團體之參加者的肖像、姓名、聲線及個
-            人資料作為活動籌辦及推廣之用。
-        </div>
-
-        <div class="col-12 form-group">
-            2. 本團體之參加者明白在此報名表上提供之資料均屬正確及完備，如有任何虛假及誤導性資料，本團體之參加者的申請
-            將被取消。如已接納，均屬無效。
-        </div>
-
-        <!-- 團體蓋章 -->
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體蓋章</h5>
-        </div>
-
-        <div class="col-12">
-            <br>
-            <label>*請附上含有團體蓋章及團體負責人簽署之文件</label>
-            <br>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
-            <div id="preview2"></div>
-        </div>
-
         <!-- Terms of Competition -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽及參賽條款
-                Terms of Competition</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載 
+                Documents Upload</h5>
         </div>
 
-        <div class="col-12">
-            <label>請下載及列印<a href="/formDoc/gfa_declaration.pdf" download><u
-                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                    href="/formDoc/gfa_declaration.pdf" download><u
-                        style="color:rgb(159, 209, 60);">declaration.pdf</u></a> and upload it with
-                signature</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
-        </div>
+        <ol>
+            <li>
+                <div class="col-12">
+                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school
+                        stamp</label>
+                    <br>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
+                    <br>
+                    <div id="HF2preview0" style="float: left;"></div>
+                    <div id="HF2preview1" style="float: left;"></div>
+                </div>
+                <br>
+            </li>
+            
+            <li>
+                <div class="col-12">
+                    <label>請下載及列印 <a href="/formDoc/gfa_declaration.pdf" download
+                            style="color:#83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                            href="/formDoc/gfa_declaration.pdf" download
+                            style="color:#83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
+                    <div id="preview3"></div>
+                </div>
+            </li>
+        </ol>
 
         <div class="col-12">
             <br><br>
