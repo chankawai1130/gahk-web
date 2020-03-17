@@ -1,0 +1,130 @@
+<form action="/pages/competition/form/acroage_preview" method="POST">
+
+    <div class="card col-12" style="width: 740pt; background: transparent;">
+        <% req.session.data = req.session.data || {} %>
+        <br>
+        <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
+        <br>
+        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
+            2020年香港技巧體操公開賽</b></h1>
+        <br>
+
+
+        <div class="form-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">組別資料 Category Details</label>
+            <br>
+            <sapn>組別 Category:</sapn> <b><%= req.session.data.levelCategory%></b>
+            <br>
+            <sapn>項目 Item:</sapn> <b><%= req.session.data.itemCategory%></b>
+        </div>
+
+        <div class="form-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
+                Details</label>
+
+            <div class="form-group">
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName1%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName1%></b>
+                <br>
+                <span>性別 Gender:</span> <b><%= req.session.data.gender1%></b>
+                <br>
+                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday1%></b>
+                <br>
+                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo1%></b>
+                <br>
+                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo1%></b>
+                <br>
+                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email1%></b>
+                <br>
+                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName2%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName2%></b>
+                <br>
+                <span>性別 Gender:</span> <b><%= req.session.data.gender2%></b>
+                <br>
+                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday2%></b>
+                <br>
+                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo2%></b>
+                <br>
+                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo2%></b>
+                <br>
+                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email2%></b>
+                <br>
+                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b>
+                <br>
+                <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b>
+                <br>
+                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b>
+                <br>
+                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b>
+                <br>
+                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b>
+                <br>
+                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b>
+                <br>
+                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
+            </div>
+
+        </div>
+
+        <div class="from-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
+            <br>
+            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
+            <br>
+            <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.cContactNo%></b>
+            <br>
+            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span> <b><%= req.session.data.organName%></b>
+            <br>
+            <span>收據臺頭 Receipt header:</span> <b><%= req.session.data.receiptHeader%></b>
+            <span> --> </span> <b><%= req.session.data.receiptName%></b>
+        </div>
+        <br>
+
+        <br><br>
+
+        <div class="row">
+            <div class="form-group col-sm-10">
+                <button type="submit" class="btn btn-info"
+                    style="background-color: #83a70c; border-color: #83a70c;width: 150px; float:right"
+                    onclick="message()">Submit
+                    提交</button>
+
+            </div>
+
+            <div class="form-group col-sm-2">
+                <button type="button" class="btn btn-danger" style="width: 150px; float:right"
+                    onclick="history.back()">Cancel
+                    取消</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</form>
+
+<script>
+    function message() {
+        alert("提交成功!! Successfully Submitted!");
+    }
+
+</script>
