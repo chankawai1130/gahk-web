@@ -89,18 +89,21 @@
 
         <div class="col-12">
             <label><span style="font-size:14px;color:red"> * </span>項目 Item:</label>
-            <input type="radio" name="Acroage[itemCategory]" value="男子雙人" required />
+            <input type="radio" name="Acroage[itemCategory]" value="男子雙人" id="menDou" onclick="extraCard()" required />
             <label class="form-check-label" for="itemCategory">男子雙人<br>Men's Double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="女子雙人" required />
+            <input type="radio" name="Acroage[itemCategory]" value="女子雙人" id="womenDou" onclick="extraCard()" required />
             <label class="form-check-label" for="itemCategory">女子雙人<br>Women's Double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="混合雙人" required />
+            <input type="radio" name="Acroage[itemCategory]" value="混合雙人" id="mixDou" onclick="extraCard()" required />
             <label class="form-check-label" for="itemCategory">混合雙人<br>Mixed double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="女子三人" required />
-            <label class="form-check-label" for="itemCategory">女子三人<br>Women's trio</label>
+            <input type="radio" name="Acroage[itemCategory]" value="女子三人" id="womenTri" onclick="extraCard()" required />
+            <label class="form-check-label" for="itemCategory">女子三人<br>Women's
+                trio</label>
         </div>
+
+        <div id="extra"></div>
 
         <!-- Coach Details -->
         <div class="col-12">
@@ -144,8 +147,9 @@
 
             <ol>
                 <li>請填妥<a href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;"
-                    download>比賽卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
-                    href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;" download>competition card</a> and submit it along with cheque by post or in person</li>
+                        download>比賽卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
+                        href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;" download>competition card</a>
+                    and submit it along with cheque by post or in person</li>
                 <li>參加者需填寫「運動員、家長或監護人聲明」，如參加者<u>未滿18歲，則由家長填寫</u>。所有參加者需附上年齡證明副
                     本(包括身份證、出世紙、護照)與報名時一併遞交。</li>
                 <li>如有需要，請自行影印表格。</li>
@@ -168,9 +172,9 @@
             <div class="form-group">
                 <br>
                 <label>請<u>每名申請人</u>下載及列印<a href="/formDoc/acroage_declaration.pdf" download><u
-                    style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print the <a
-                        href="/formDoc/acroage_declaration.pdf" download><u
-                        style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
+                            style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please
+                    download and print the <a href="/formDoc/acroage_declaration.pdf" download><u
+                            style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
                 <div id="preview"></div>
 
@@ -292,5 +296,20 @@
             preview.appendChild(input);
         }
         reader.readAsDataURL(file);
+    }
+
+    function extraCard() {
+        var womenTri_check = document.getElementById("womenTri");
+        var mixDou_check = document.getElementById("mixDou");
+        var womenDou_check = document.getElementById("womenDou");
+        var menDou_check = document.getElementById("menDou");
+        
+        var womenTri = document.getElementById("extra");
+
+        if (womenTri_check.checked == true) {
+            womenTri.innerHTML = "<span>hi</span>";
+        } else if (mixDou_check.checked == true||womenDou_check.checked == true ||menDou_check.checked == true) {
+            womenTri.innerHTML = "";
+        }
     }
 </script>
