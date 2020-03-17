@@ -1,5 +1,107 @@
-<div class="col-12" style="color: #888888; ">
-    <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港彈網分齡賽</b></h1>
-    <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>雙人同步 報名表格</u></h2>
-    <br><br>
-</div>
+<form action="/pages/competition/form/TrampolinePreviewForm" method="POST">
+
+    <div class="card col-12" style="width: 740pt;">
+        <% req.session.data = req.session.data || {} %>
+        <br>
+        <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
+        <br>
+        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>2020年香港彈網分齡賽</b></h1>
+        <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
+            <u>雙人同步 報名表格</u></h2>
+        <br>
+
+
+        <div class="form-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">隊伍資料 Group Details</label>
+            <br>
+            <span>性別 Gender:</span> <b><%= req.session.data.gender%></b>
+            <br>
+            <span>參賽組別 Category:</span> <b><%= req.session.data.category%></b>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
+                Details</label>
+
+            <div class="form-group">
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName1%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName1%></b>
+                <br>
+                <span>出生年份 Year of Birth:</span> <b><%= req.session.data.birth1%></b>
+                <br>
+                <span>聯絡電話 Contact number:</span> <b><%= req.session.data.phone1%></b>
+                <br>
+                <span>電郵 Email address:</span> <b><%= req.session.data.email1%></b>
+                <br>
+                <span>通訊地址 Postal address:</span> <b><%= req.session.data.address1%></b>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName2%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName2%></b>
+                <br>
+                <span>出生年份 Year of Birth:</span> <b><%= req.session.data.birth2%></b>
+                <br>
+                <span>聯絡電話 Contact number:</span> <b><%= req.session.data.phone2%></b>
+                <br>
+                <span>電郵 Email address:</span> <b><%= req.session.data.email2%></b>
+                <br>
+                <span>通訊地址 Postal address:</span> <b><%= req.session.data.address2%></b>
+                <br>
+            </div>
+
+        </div>
+
+        <div class="from-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">所屬團體
+                Organization to which your body belongs</label>
+            <br>
+            <span>團體名稱 Organization name: </span> <b><%= req.session.data.orgName%></b>
+            <br>
+            <span>教練姓名 Coach name:</span> <b><%= req.session.data.coachName%></b>
+            <br>
+            <span>聯絡電話 Contact number:</span> <b><%= req.session.data.coachPhone%></b>
+            <br>
+            <span>註冊教練編號 Registered coach no.:</span> <b><%= req.session.data.coachNum%></b>
+            <br>
+            <span>通訊地址 Postal Address:</span> <b><%= req.session.data.coachAddress%></b>
+        </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="form-group col-sm-10">
+                <button type="submit" class="btn btn-info"
+                    style="background-color: #83a70c; border-color: #83a70c;width: 150px; float:right"
+                    onclick="message()">Submit
+                    提交</button>
+
+            </div>
+
+            <div class="form-group col-sm-2">
+                <button type="button" class="btn btn-danger" style="width: 150px; float:right"
+                    onclick="history.back()">Cancel
+                    取消</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</form>
+
+<script>
+    function message() {
+        alert("提交成功!! Successfully Submitted!");
+    }
+
+</script>

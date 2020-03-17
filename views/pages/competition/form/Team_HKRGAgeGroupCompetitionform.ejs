@@ -13,7 +13,7 @@
 
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
-                details</h5>
+                Details</h5>
         </div>
 
         <div class="form-group col-12">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group col-12">
-            <label>組別 Category:</label>
+            <label>參賽組別 Category:</label>
             <input type="radio" name="TRGCompetition[Category]" value="預備A,B組" required />
             <label class="form-check-label" for="Category">預備A,B組</label>
 
@@ -67,6 +67,12 @@
             <input type="radio" name="TRGCompetition[Category]" value="高級B組" required />
             <label class="form-check-label" for="Category">高級B組</label>
         </div>
+
+        <style type="text/css">
+            .card {
+                border-radius: 0;
+            }
+        </style>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
@@ -175,8 +181,8 @@
         <div class="form-group col-12">
             <span>備註 Remarks:</span>
             <ol>
-                <li>如有需要可自行影印表格<br>Applicant can make copy of form if need.</li>
-                <li>每張報名表只可報一個組別<br>A application form can only be applied for one category.</li>
+                <li>如有需要，可自行影印表格<br>Applicants can make copy of the form if needed.</li>
+                <li>每張報名表只可報<u>一個</u>組別<br>An application form can be applied for <u>one</u> category only.</li>
             </ol>
 
             <br>
@@ -190,69 +196,64 @@
                 <input id="teamNo" type="number" name="TRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
-                <input id="teamPrice" type="number" name="TRGCompetition[TeamPrice]" required>
+                <input id="teamPrice" type="number" name="TRGCompetition[TeamPrice]" readonly required>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
-                <input id="total" type="number" name="TRGCompetition[TeamTotalPrice]" required>
+                <input id="total" type="number" name="TRGCompetition[TeamTotalPrice]" readonly required>
             </div>
 
-            <span style="font-style: italic;">*請以支票郵寄或逕交 Please submit the cheque by mail or in person</span>
+            <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by
+                post or in person</span>
             <br><br><br>
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
-                Documents</h5>
 
-            <ol style="font-weight: bold;">
-                <li>
-                    <div class="form-group">
-                        <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
-                                (pdf檔)</label>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)"
-                            required />
-                        <div id="preview1"></div>
-                    </div>
-                </li>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載
+                Document Upload</h5>
+            <div class="form-group">
+                <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
+                    (pdf檔)</label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)" required />
+                <div id="preview1"></div>
+            </div>
+        </div>
 
-                <li>
-                    <div class="form-group">
-                        <label>請下載<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                                        style="color: #83a70c;">聲明.pdf</u></a>後簽署並上載 Please download the <a
-                                    href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                                        style="color: #83a70c;">declaration.pdf</u></a> and upload it with
-                                signature</label>
-                        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
-                            required />
-                        <div id="preview2"></div>
-                    </div>
-                </li>
-            </ol>
+        <div class="form-group col-12">
+                <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                    Declaration</h5>
 
-
-
-
+                <div class="form-group">
+                    <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                            href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                            style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+                    <div id="preview2"></div>
+                </div>
+            
 
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <label>機構負責人姓名 Leader's name:</label>
+                    <label>機構負責人姓名 Leader's Name:</label>
                     <input type="text" class="form-group" name="TRGCompetition[leaderName]" required>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label>機構負責人職位 Leader's position:</label>
+                    <label>機構負責人職位 Leader's Position:</label>
                     <input type="text" class="form-group" name="TRGCompetition[leaderPosition]" required>
                 </div>
             </div>
-
         </div>
 
-        <br>
         <div class="form-group col-12">
+            <br>
             <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
         </div>
 
         <div class="col-12">

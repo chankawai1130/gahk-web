@@ -12,6 +12,14 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    category: { 
+      type:'string', 
+    },
+
+    gender: { 
+      type:'string', 
+    },
+
     chiName1: {
       type: "string"
     },
@@ -69,7 +77,7 @@ module.exports = {
     },
 
     coachNum:{
-      type: "number"
+      type: "string"
     },
 
     coachName: {

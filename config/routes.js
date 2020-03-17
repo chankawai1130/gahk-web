@@ -60,10 +60,10 @@ module.exports.routes = {
   '/downloads': { view: 'pages/downloads' },
   '/links': { view: 'pages/links' },
 
-
   //********************Competition Application routes****************
   '/competition/2020/21': { view: 'pages/competition/2021' },
   '/competition/annex1': { view: 'pages/competition/form/annex1' },
+  '/membership/clubMemberFormConfirm': {view: 'membership/clubMemberFormConfirm'},
 
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
   '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
@@ -173,11 +173,14 @@ module.exports.routes = {
 
   'GET /membership/clubMemberForm': 'MembershipController.clubMemberForm',
   'POST /membership/clubMemberForm': 'MembershipController.clubMemberForm',
-
+  'GET /membership/clubMemberFormPreview': 'MembershipController.clubMemberFormPreview',
+  'POST /membership/clubMemberFormPreview': 'MembershipController.clubMemberFormPreview',
 
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
+
+  'GET /admin/applyHandle/search': 'AdminController.apply_search',
 
 
 

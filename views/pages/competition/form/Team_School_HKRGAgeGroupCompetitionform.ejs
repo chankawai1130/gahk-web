@@ -13,7 +13,7 @@
 
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
-                details</h5>
+                Details</h5>
         </div>
 
         <div class="form-group col-12">
@@ -24,7 +24,8 @@
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="text" name="TSRGCompetition[Phone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
+            <input type="text" name="TSRGCompetition[Phone]" maxlength="8"
+                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
@@ -39,7 +40,8 @@
 
         <div class="form-group col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="text" name="TSRGCompetition[CoachPhone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
+            <input type="text" name="TSRGCompetition[CoachPhone]" maxlength="8"
+                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12">
@@ -173,8 +175,8 @@
         <div class="form-group col-12">
             <span>備註 Remarks:</span>
             <ol>
-                <li>如有需要可自行影印表格<br>Applicant can make copy of form if need.</li>
-                <li>每張報名表只可報一個組別<br>A application form can only be applied for one category.</li>
+                <li>如有需要可自行影印表格<br>Applicants can make copy of the form if needed.</li>
+                <li>每張報名表只可報<u>一個</u>組別<br>An application form can be applied for <u>one</u> category only.</li>
             </ol>
 
             <br>
@@ -188,27 +190,31 @@
                 <input id="teamNo" type="number" name="TSRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
-                <input id="teamPrice" type="number" name="TSRGCompetition[TeamPrice]" required>
+                <input id="teamPrice" type="number" name="TSRGCompetition[TeamPrice]" readonly required>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
-                <input id="total" type="number" name="TSRGCompetition[TeamTotalPrice]" required>
+                <input id="total" type="number" name="TSRGCompetition[TeamTotalPrice]" readonly required>
             </div>
 
-            <span style="font-style: italic;">*請以支票郵寄或逕交 Please submit the cheque by mail or in person</span>
+            <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it
+                by post or in person</span>
             <br><br><br>
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">上載文件 Upload
-                Documents</h5>
-    
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載 
+                Documents Upload</h5>
+
             <div class="form-group">
-                <label><b>1. 請下載<a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
-                                style="color: #83a70c;">聲明.pdf</u></a>後簽署並上載 Please download the <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
-                                    style="color: #83a70c;">declaration.pdf</u></a> and upload it with signature</b></label>
+
+                <label><b>1. 請下載及列印 <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
+                                style="color: #83a70c;">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                            href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
+                                style="color: #83a70c;">declaration.pdf</u></a>,then sign and upload it</b></label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+
                 <div id="preview"></div>
             </div>
 
@@ -227,8 +233,10 @@
         <br>
         <div class="form-group col-12">
             <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
         </div>
 
         <div class="col-12">
