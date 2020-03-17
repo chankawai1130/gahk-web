@@ -118,10 +118,6 @@ module.exports = {
       type: 'number',
     },
 
-    Declaration: {
-      type: 'string',
-    },
-
     leaderName: {
       type: "string"
     },

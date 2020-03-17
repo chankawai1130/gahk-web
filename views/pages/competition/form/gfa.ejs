@@ -1,6 +1,7 @@
 <form action="/competition/form/team" method="POST">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
+            <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港普及體操節</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
             <br><br>
@@ -19,22 +20,22 @@
 
         <div class="col-12">
             <label>收據抬頭 Receipt Header:</label>
-            <input type="text" class="form-group" name="application[receiptHeader]" required>
+            <input type="text" class="form-group" name="application[receiptHeader]" style="width: 350pt;" required>
         </div>
 
         <div class="col-12">
             <label>聯絡地址 Address:</label>
-            <input type="text" class="form-group" name="application[address]" style="width:230pt;" required>
+            <input type="text" class="form-group" name="application[address]" style="width:450pt;" required>
         </div>
 
         <div class="col-12">
             <span>參賽組別 Category:</span>
-            <input type="radio" name="application[box]" value="A" required>
-            <label class="form-check-label" for="box">幼稚園 Kindergarten</label>
-            <input type="radio" name="application[box]" value="B" required>
-            <label class="form-check-label" for="box">小學組 Primary School</label>
-            <input type="radio" name="application[box]" value="C" required>
-            <label class="form-check-label" for="box">公開組 Open Group</label>
+            <input type="radio" name="application[category]" value="Kindergarten" required>
+            <label class="form-check-label" for="category">幼稚園 Kindergarten</label>
+            <input type="radio" name="application[category]" value="Primary" required>
+            <label class="form-check-label" for="category">小學組 Primary School</label>
+            <input type="radio" name="application[category]" value="Open" required>
+            <label class="form-check-label" for="category">公開組 Open Group</label>
             <br><br>
         </div>
 
@@ -79,12 +80,12 @@
 
         <div class="col-12 col-sm-6">
             <label>表演者人數 No. of Performers</label>
-            <input type="number" class="form-group" name="application[performerNum]" required>
+            <input type="number" class="form-group" name="application[performerNum]" min="1" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>工作人員人數 No. of Crews:</label>
-            <input type="number" class="form-group" name="application[crewNum]" required>
+            <input type="number" class="form-group" name="application[crewNum]" min="0" required>
         </div>
 
         <div class="col-12 col-sm-6">
