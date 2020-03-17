@@ -48,6 +48,7 @@
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
                 Applicant(1)'s Personal Details</h6>
 
+
             <div>
                 <label for="chiName1">中文姓名 Name in Chinese:</label>
                 <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="e.g. 陳大文"
@@ -69,7 +70,9 @@
             </div>
             <div>
                 <label>電郵 Email Address:</label>
+
                 <input type="email" class="form-group" name="Trampoline[email1]" style="width: 220pt;" required>
+
             </div>
             <div>
                 <label>通訊地址 Postal Address:</label>
@@ -82,6 +85,7 @@
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
                 Applicant(2)'s Personal Details</h6>
+
 
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -104,7 +108,9 @@
             </div>
             <div>
                 <label>電郵 Email Address:</label>
+
                 <input type="email" class="form-group" name="Trampoline[email2]" style="width: 220pt;" required>
+
             </div>
             <div>
                 <label>通訊地址 Postal Address:</label>
@@ -163,7 +169,7 @@
 
 
         <div class="col-12">
-            <br>
+            <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
                 Declaration</h5>
         </div>
@@ -171,15 +177,16 @@
         <div class="col-12">
 
             <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color: #83a70c;"><u>聲明書.pdf</u></a>,簽署後把文件上載 Please download and print the <a
+                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
                     href="/formDoc/trampoline_declaration.pdf" download
                     style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
+
             <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
 
         </div>
 
         <div class="col-12">
-            <br><br>
+            <br><br><br>
             <input type="checkbox" required>
 
 
@@ -193,7 +200,7 @@
         <div class="col-12">
             <br><br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
+                style="background: #83a70c; border: none; float: right;">預覽 Preview
                 >></button>
         </div>
     </div>
@@ -240,7 +247,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'Trampoline[VBRC]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -251,7 +258,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'Trampoline[VBRC]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }

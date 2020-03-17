@@ -77,7 +77,7 @@ module.exports = {
     },
 
     coachNum:{
-      type: "number"
+      type: "string"
     },
 
     coachName: {

@@ -190,12 +190,12 @@
                 <input id="teamNo" type="number" name="TSRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
-                <input id="teamPrice" type="number" name="TSRGCompetition[TeamPrice]" required>
+                <input id="teamPrice" type="number" name="TSRGCompetition[TeamPrice]" readonly required>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
-                <input id="total" type="number" name="TSRGCompetition[TeamTotalPrice]" required>
+                <input id="total" type="number" name="TSRGCompetition[TeamTotalPrice]" readonly required>
             </div>
 
             <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it
@@ -208,11 +208,13 @@
                 Documents Upload</h5>
 
             <div class="form-group">
+
                 <label><b>1. 請下載及列印 <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
-                                style="color: #83a70c;">聲明書.pdf</u></a>,簽署後把文件上載 Please download and print the <a
+                                style="color: #83a70c;">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
                             href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
                                 style="color: #83a70c;">declaration.pdf</u></a>,then sign and upload it</b></label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+
                 <div id="preview"></div>
             </div>
 

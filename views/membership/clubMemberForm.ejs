@@ -24,14 +24,14 @@
             </li>
             <div class="form-group col-12 partA">
                 <br>
-                <label>機構(英文) Organization (English):</label>
-                <input type="text" name="Membership[OrgEngName]" style="width:450pt"
+                <label>機構 Organization:</label>
+                <input type="text" name="Membership[OrgEngName]" style="width:450pt" placeholder="         (英文 English)"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ \(\)]/g,'')" required>
             </div>
 
             <div class="form-group col-12 partA">
-                <label>機構(中文) Organization (Chinese):</label>
-                <input type="text" name="Membership[OrgChiName]" style="width:450pt"
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="Membership[OrgChiName]" style="width:450pt" placeholder="         (中文 Chinese)"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
             </div>
 
@@ -53,8 +53,8 @@
 
             <div class="form-group col-12 col-sm-6 partA">
                 <label>電話 Tel:</label>
-                <input type="text" name="Membership[clubTel]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt"
-                    required>
+                <input type="text" name="Membership[clubTel]" maxlength="8"
+                    onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt" required>
             </div>
 
             <div class="form-group col-12 col-sm-6 partA">
@@ -64,12 +64,12 @@
 
             <div class="form-group col-12 col-sm-6 partA">
                 <label>電郵 E-mail:</label>
-                <input type="email" name="Membership[clubEmail]" style="width:250pt" required>
+                <input type="email" name="Membership[clubEmail]" style="width:200pt" required>
             </div>
 
             <div class="form-group col-12 col-sm-6 partA">
                 <label>網址 Web-site:</label>
-                <input type="url" name="Membership[clubWeb]" style="width:250pt" required>
+                <input type="url" name="Membership[clubWeb]" style="width:200pt" required>
             </div>
 
             <div class="form-group col-12 partA">
@@ -116,7 +116,8 @@
 
             <div class="form-group col-12 col-sm-6 partC">
                 <label>電話 Tel:</label>
-                <input type="text" name="Membership[resTel]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt" required>
+                <input type="text" name="Membership[resTel]" maxlength="8"
+                    onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt" required>
             </div>
 
             <div class="form-group col-12 col-sm-6 partC">
@@ -135,19 +136,28 @@
             </li>
 
             <div class="form-group col-12 partD">
-                <br>
-                <p>本人/我們(以下簽名人)謹此申請GAHK的團體會員資格，謹證明本人/我們在A，B和C部分所提供的資料正確無誤及完成。<br>I/We, the undersigned, hereby would like to apply for the Club Membership of the GAHK and I/We, certify that the information given in paragraphs A, B & C is correct and complete.</p>
-                <br>
-                <p>The prescribed membership fee for the year of <span><input type="number" name="Membership[year]" style="width: 30pt;" min="1" required></span> at 
+                <input type="checkbox" required>
+                <label>本人/我們(以下簽名人)謹此申請GAHK的團體會員資格，謹證明本人/我們在A，B和C部分所提供的資料正確無誤及完成。<br>I/We, the undersigned, hereby
+                    would like to apply for the Club Membership of the GAHK and I/We, certify that the information
+                    given in paragraphs A, B & C is correct and complete.</label>
+
+
+                <br><br>
+                <p>The prescribed membership fee for the year of <span><input type="number" name="Membership[year]"
+                            style="width: 30pt;" min="1" required></span> at
                     <span><select name="Membership[clubFee]" required>
-                        <option value="">Choose Amount</option>
-                        <option value="1000">HK$1,000</option>
-                        <option value="150">HK$150</option>
-                    </select></span> and details of the Organization is attached.</p>
+                            <option value="">Choose Amount</option>
+                            <option value="1000">HK$1,000</option>
+                            <option value="150">HK$150</option>
+                        </select></span> and details of the Organization is attached.</p>
             </div>
 
             <div class="form-group col-12 partD">
-                <label><b>*請下載<a href="/formDoc/clubMembership_partD.pdf" download><u style="color: #83a70c;">D部分.pdf</u></a>後簽署及蓋章並上載 Please download the <a href="/formDoc/clubMembership_partD.pdf" download><u style="color: #83a70c;">partD.pdf</u></a> and upload it with signature and stamp</b></label>
+                <label><b>*請下載<a href="/formDoc/clubMembership_partD.pdf" download><u
+                                style="color: #83a70c;">D部分.pdf</u></a>後簽署及蓋章並上載 Please download the <a
+                            href="/formDoc/clubMembership_partD.pdf" download><u
+                                style="color: #83a70c;">partD.pdf</u></a> and upload it with signature and
+                        stamp</b></label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
                 <div id="preview"></div>
             </div>
@@ -156,12 +166,17 @@
                 <br><br>
                 <span><b>備註 Note:</b></span>
                 <ol>
-                    <li>有關團體的詳細資料（併購，章程和計劃傳單）和會員費以及此表格將會發送給本會的義務秘書。<br>Details of the Organization (M&A, Constitution & Programme leaflet) and membership fee together with this form should be sent to the Honorary Secretary of GAHK.</li>
+                    <li>有關團體的詳細資料（併購，章程和計劃傳單）和會員費以及此表格將會發送給本會的義務秘書。<br>Details of the Organization (M&A, Constitution &
+                        Programme leaflet) and membership fee together with this form should be sent to the Honorary
+                        Secretary of GAHK.</li>
                     <li>團體會員 Club Membership:
                         <ul>
-                            <li>牟利協會或組織每年HK $ 1,000會費<br>HK$1,000/per year for those Profit Making Association / Organization</li>
-                            <li>非牟利協會或組織每年HK $ 150會費<br>HK$150/per year for those Non-profit Making Association / Schools</li>
-                            <li>所有劃線支票抬頭<b>「中國香港體操總會」</b><br>All cheques should be crossed and made payable to <b>"The Gymnastics Association of Hong Kong, China"</b></li>
+                            <li>牟利協會或組織每年HK $ 1,000會費<br>HK$1,000/per year for those Profit Making Association /
+                                Organization</li>
+                            <li>非牟利協會或組織每年HK $ 150會費<br>HK$150/per year for those Non-profit Making Association /
+                                Schools</li>
+                            <li>所有劃線支票抬頭<b>「中國香港體操總會」</b><br>All cheques should be crossed and made payable to <b>"The
+                                    Gymnastics Association of Hong Kong, China"</b></li>
                         </ul>
                     </li>
                     <li>如有查詢,請致電2504 8233<br>For any enquiries, please call 2504 8233.</li>
@@ -215,4 +230,3 @@
         reader.readAsDataURL(file);
     }
 </script>
-
