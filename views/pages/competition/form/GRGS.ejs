@@ -12,7 +12,7 @@
 
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
-                details</h5>
+                Details</h5>
         </div>
 
 
@@ -25,7 +25,7 @@
 
         <div class="col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]" required>
+            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]" required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -35,17 +35,17 @@
 
         <div class="col-12 col-sm-6">
             <label>教練姓名 Coach Name:</label>
-            <input type="text" class="form-group" name="GRGS[coachName]" required>
+            <input style="width: 172px;" type="text" class="form-group" name="GRGS[coachName]" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]" required>
+            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]" required>
         </div>
 
         <div class="col-12">
             <br>
-            <p>組別及比賽項目 Category and Competition's Subject:</p>
+            <p>組別及比賽項目 Category and Competition Item:</p>
             <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" required>
             <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
             <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" required>
@@ -55,6 +55,12 @@
             <br><br>
         </div>
 
+        <style type="text/css">
+            .card {
+                border-radius: 0;
+            }
+        </style>
+        
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
@@ -274,8 +280,8 @@
         <div class="form-group col-12">
             <span>備註 Remarks:</span>
             <ol>
-                <li>如有需要可自行影印表格<br>Applicant can make copy of form if need.</li>
-                <li>每張報名表只可報一個組別<br>A application form can only be applied for one category.</li>
+                <li>如有需要可自行影印表格<br>Applicants can make copy of the form if needed.</li>
+                <li>每張報名表只可報<u>一個</u>組別<br>An application form can be applied for <u>one</u> category only.</li>
                 <li>不可同時參加個人項目<br>Applicants cannot join individual competitoins.</li>
             </ol>
         </div>
@@ -285,7 +291,8 @@
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料
-                Team's Leader Details</h5>
+
+                Team Leader Details</h5>
         </div>
 
 
@@ -332,33 +339,61 @@
         </div>
 
         <div class="col-12 form-group">
-            <span style="font-style: italic;">*請以支票郵寄或逕交 Please submit the cheque by mail or in person</span>
+            <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by post or in person</span>
         </div>
 
 
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
-                Declaration</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載 
+                Documents Upload</h5>
+
         </div>
 
 
+        <ol>
+            <li>
+                <div class="col-12">
+                    <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload the ID copies of <u><b>ALL</b></u>
+                        applicants</label>
+                    <br>
+                    <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
+                    <br>
+                    <div id="preview0" style="float: left;"></div>
+                    <div id="preview1" style="float: left;"></div>
+                    <div id="preview2" style="float: left;"></div>
+                    <div id="preview3" style="float: left;"></div>
+                    <div id="preview4" style="float: left;"></div>
+                    <div id="preview5" style="float: left;"></div>
+                </div>
+                <br>
+            </li>
+            <li>
+                <div class="col-12">
+                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school
+                        stamp</label>
+                    <br>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
+                    <br>
+                    <div id="HF2preview0" style="float: left;"></div>
+                    <div id="HF2preview1" style="float: left;"></div>
+                </div>
+                <br>
+            </li>
+            <li>
+                <div class="col-12">
+                    <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a href="/formDoc/GRGS_declaration.pdf" download
+                            style="color:#83a70c"><u>declaration.pdf</u></a>,then sign and upload it</label>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
+                    <div id="HF3preview"></div>
+                </div>
+            </li>
+        </ol>
+
 
         <div class="col-12">
-            <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">聲明書.pdf</a> 後簽署並上載文件 Please download and print the <a
-                    href="/formDoc/trampoline_declaration.pdf" download
-                    style="color:rgb(159, 209, 60);">declaration.pdf</a> and upload it with signature</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required />
-            <br>
-            <div id="HF2preview0" style="float: left;"></div>
-            <div id="HF2preview1" style="float: left;"></div>
-        </div>
-
-
-        <div class="col-12">
-            <br><br><br>
+            <br><br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
                 carefully and
