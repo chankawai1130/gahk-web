@@ -1,143 +1,196 @@
 <form action="/competition/form/acroage" method="POST">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
-            <br>
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年度全港技巧體操分齡賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港技巧體操公開賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
             <br>
         </div>
 
-        <div class="col-12"><br>
+        <!-- <div class="col-12"><br>
             <span style="font-size:14px;color:red"> * 必須填寫 *Must provide</span>
-        </div>
+        </div> -->
 
-        <!-- Person Details -->
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">個人資料
-                Personal
-                Details</h5>
-        </div>
 
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>姓名 Name:</label>
-            <input type="text" class="form-group" name="Acroage[cpChiName]" required>
-            <label>中文 Chinese</label>
-            <input type="text" class="form-group" name="Acroage[cpEngName]" required>
-            <label>英文 English</label>
-        </div>
 
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>性別 Gender </label>
-            <input type="radio" name="Acroage[gender]" id="male" value="male" required>
-            <label class="gender">男 Male</label>
-            <input type="radio" name="Acroage[gender]" id="female" value="female" required>
-            <label class="gender">女 Female</label>
-        </div>
-
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>出生日期 Date of birth:</label>
-            <input type="date" class="form-group" name="Acroage[birthday]" required>
-        </div>
-
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>身份證號碼 ID Card No.:</label>
-            <input type="text" class="form-group" name="Acroage[idNo]" required>
-            <label>XXX( X )</label>
-        </div>
-
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>聯絡電話 Contact No.:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[contactNo]" required>
-        </div>
-
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>電郵地址 Email Address:</label>
-            <input type="email" class="form-group" name="Acroage[email]" style="width:230pt;" required>
-        </div>
-
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>聯絡地址 Contact Address:</label>
-            <input type="email" class="form-group" name="Acroage[address]" style="width:230pt;" required>
-        </div>
-
-        <div class="col-12">
+        <!-- Category Details -->
+        <div class="card col-12" style="background: transparent;">
             <br>
-            <label><span style="font-size:14px;color:red"> * </span>運動員簽署 Athlete sign: </label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">組別資料
+                Category Details</h6>
+            <br>
+            <div>
+                <label>組別/年齡 Category/Age:</label>
+                <input type="radio" name="Acroage[levelCategory]" value="1 級(6 至 14 歲)" id="level1"
+                    onclick="extraCard()" required />
+                <label class="form-check-label" for="levelCategory">1 級(6 至 14 歲)</label>
+
+                <input type="radio" name="Acroage[levelCategory]" value="2 級(6 至 14 歲)" id="level2"
+                    onclick="extraCard()" required />
+                <label class="form-check-label" for="levelCategory">2 級(6 至 14 歲)</label>
+
+                <input type="radio" name="Acroage[levelCategory]" value="3 級(8 歲或以上)" id="level3" onclick="extraCard()"
+                    required />
+                <label class="form-check-label" for="levelCategory">3 級(8 歲或以上)</label>
+
+                <input type="radio" name="Acroage[levelCategory]" value="4 級(9 歲或以上)" id="level4" onclick="extraCard()"
+                    required />
+                <label class="form-check-label" for="levelCategory">4 級(9
+                    歲或以上)</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input type="radio" name="Acroage[levelCategory]" value="5 級(10 歲或以上)" id="level5" onclick="extraCard()"
+                    required />
+                <label class="form-check-label" for="levelCategory">5 級(10 歲或以上)</label>
+            </div><br>
+
+            <div id="extra1"></div>
+
+            <div id="extra2"></div>
+
         </div>
 
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>組別/年齡 Category/Age:</label>
-            <input type="radio" name="Acroage[levelCategory]" value="1 級(6 至 14 歲)" required />
-            <label class="form-check-label" for="levelCategory">1 級(6 至 14 歲)</label>
 
-            <input type="radio" name="Acroage[levelCategory]" value="2 級(6 至 14 歲)" required />
-            <label class="form-check-label" for="levelCategory">2 級(6 至 14 歲)</label>
+        <!-- Personal Details -->
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)的個人資料
+                Applicant(1)'s Personal Details</h6>
+            <br>
 
-            <input type="radio" name="Acroage[levelCategory]" value="3 級(8 歲或以上)" required />
-            <label class="form-check-label" for="levelCategory">3 級(8 歲或以上)</label>
+            <div>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="Acroage[cpChiName1]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Acroage[cpEngName1]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+            <div>
+                <label>性別 Gender: </label>
+                <input type="radio" name="Acroage[gender1]" id="male" value="male" required>
+                <label class="gender">男 Male</label>
+                <input type="radio" name="Acroage[gender1]" id="female" value="female" required>
+                <label class="gender">女 Female</label>
+            </div>
+            <div>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
+                <input type="date" class="form-group" name="Acroage[birthday1]" required>
+                <br>
+            </div>
+            <div>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="Acroage[idNo1]" placeholder=" A123456(7)" required>
+            </div>
+            <div>
+                <label>聯絡電話 Contact No.:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[contactNo1]" placeholder="12345678"
+                    required>
+            </div>
+            <div>
+                <label>電郵地址 Email Address:</label>
+                <input type="email" class="form-group" name="Acroage[email1]" placeholder="example@gmail.com" required>
+            </div>
+            <div>
+                <label>聯絡地址 Contact Address:</label>
+                <input type="text" class="form-group" name="Acroage[address1]" required>
+            </div>
+            <div>
+                <label>運動員(1)相片 Athlete(1) photo: </label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required/>
+                <div id="preview1"></div><br>
+            </div>
 
-            <input type="radio" name="Acroage[levelCategory]" value="4 級(9 歲或以上)" required />
-            <label class="form-check-label" for="levelCategory">4 級(9
-                歲或以上)</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            <input type="radio" name="Acroage[levelCategory]" value="5 級(10 歲或以上)" required />
-            <label class="form-check-label" for="levelCategory">5 級(10 歲或以上)</label>
         </div>
 
-        <div class="col-12">
-            <label><span style="font-size:14px;color:red"> * </span>項目 Item:</label>
-            <input type="radio" name="Acroage[itemCategory]" value="男子雙人" id="menDou" onclick="extraCard()" required />
-            <label class="form-check-label" for="itemCategory">男子雙人<br>Men's Double</label>
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)的個人資料
+                Applicant(2)'s Personal Details</h6>
+            <br>
 
-            <input type="radio" name="Acroage[itemCategory]" value="女子雙人" id="womenDou" onclick="extraCard()" required />
-            <label class="form-check-label" for="itemCategory">女子雙人<br>Women's Double</label>
+            <div>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="Acroage[cpChiName2]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Acroage[cpEngName2]" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+            <div>
+                <label>性別 Gender: </label>
+                <input type="radio" name="Acroage[gender2]" id="male" value="male" required>
+                <label class="gender">男 Male</label>
+                <input type="radio" name="Acroage[gender2]" id="female" value="female" required>
+                <label class="gender">女 Female</label>
+            </div>
+            <div>
+                <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
+                <input type="date" class="form-group" name="Acroage[birthday2]" required>
+                <br>
+            </div>
+            <div>
+                <label>身份證號碼 ID Card Number:</label>
+                <input type="text" class="form-group" name="Acroage[idNo2]" placeholder=" A123456(7)" required>
+            </div>
+            <div>
+                <label>聯絡電話 Contact No.:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[contactNo2]" placeholder="12345678"
+                    required>
+            </div>
+            <div>
+                <label>電郵地址 Email Address:</label>
+                <input type="email" class="form-group" name="Acroage[email2]" placeholder="example@gmail.com" required>
+            </div>
+            <div>
+                <label>聯絡地址 Contact Address:</label>
+                <input type="text" class="form-group" name="Acroage[address2]" required>
+            </div>
+            <div>
+                <label>運動員(2)相片 Athlete(2) photo: </label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
+                <div id="preview2"></div><br>
+            </div>
 
-            <input type="radio" name="Acroage[itemCategory]" value="混合雙人" id="mixDou" onclick="extraCard()" required />
-            <label class="form-check-label" for="itemCategory">混合雙人<br>Mixed double</label>
-
-            <input type="radio" name="Acroage[itemCategory]" value="女子三人" id="womenTri" onclick="extraCard()" required />
-            <label class="form-check-label" for="itemCategory">女子三人<br>Women's
-                trio</label>
         </div>
 
-        <div id="extra"></div>
+        <div id="extra3" class="card col-12 col-sm-6" style="background: transparent;"></div>
+
+
 
         <!-- Coach Details -->
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">教練資料
-                Coach Details</h5>
-        </div>
-
-        <div class="col-12">
-            <label>教練姓名 Coach Name: </label>
-            <input type="text" class="form-group" name="Acroage[coachName]" required>
-        </div>
-
-        <div class="col-12">
-            <label>教練聯絡電話 Coach Contact Number: </label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[cContactNo]" required>
-        </div>
-
-        <div class="col-12">
-            <label>學校/機構名稱(如適用) School/Organization Name(If applicable): </label>
-            <input type="text" class="form-group" name="Acroage[organName]" style="width:300pt">
-        </div>
-
-        <div class="col-12">
-            <label>收據臺頭<br>Receipt header: </label>
-            <input type="radio" value="AthleteName" name="Acroage[receiptHeader]" required />
-            <label class="Receipt">運動員姓名<br>Athlete name</label>
-            <input type="radio" class="form-group" value="OrgName" name="Acroage[receiptHeader]" required />
-            <label class="Receipt">學校/機構名稱<br>School/Institution Name</label>
-            <input type="text" class="form-group" name="Acroage[receiptName]" style="width: 300pt;" />
+        <div class="card col-12" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">教練資料
+                Coach Details</h6>
+            <br>
+            <div>
+                <label>教練姓名 Coach Name: </label>
+                <input type="text" class="form-group" name="Acroage[coachName]" required>
+            </div>
+            <div>
+                <label>教練聯絡電話 Coach Contact Number: </label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Acroage[cContactNo]" required>
+            </div>
+            <div>
+                <label>學校/機構名稱(如適用) School/Organization Name(If applicable): </label>
+                <input type="text" class="form-group" name="Acroage[organName]" placeholder=" e.g. 陳大文" required>
+            </div>
+            <div>
+                <label>收據臺頭<br>Receipt header: </label>
+                <input type="radio" value="運動員姓名 Athlete name" name="receiptHeader" required />
+                <label class="Receipt">運動員姓名<br>Athlete name</label>
+                <input type="radio" class="form-group" value="學校/機構名稱 School/Institution Name" name="receiptHeader"
+                    required />
+                <label class="Receipt">學校/機構名稱<br>School/Institution Name</label>
+                <input type="text" class="form-group" name="Acroage[receiptName]" required />
+            </div>
         </div>
 
         <div class="col-12"><br>
-            閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
+            <span style="font-size:14px;color:red"> * </span>閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
         </div>
 
         <!-- Note -->
@@ -163,6 +216,8 @@
             </ol>
         </div>
 
+
+        <!-- Declaration -->
         <div class="form-group col-12">
             <br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
@@ -175,8 +230,8 @@
                             style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please
                     download and print the <a href="/formDoc/acroage_declaration.pdf" download><u
                             style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
-                <div id="preview"></div>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+                <div id="HF2preview"></div>
 
                 <div class="col-12">
                     <br>
@@ -186,84 +241,22 @@
             </div>
         </div>
 
-        <!-- Declaration of Applicant -->
-        <!-- <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">申 請 人 聲 明
-                Declaration of Applicant</h5>
-        </div>
 
-        <div class="col-12 form-group">
-            （如申請人未滿十八歲，請由家長或監護人填寫）
-        </div>
-
-        <div class="col-12 form-group">
-            1. 謹證明本人／敝子女是自願參加比賽或訓練課程，並願意自行承擔所有責任。敝子女亦謹遵守貴會之一切
-            規則、決定，包括藥物檢查條例。
-            本人／敝子女、本人／敝子女之繼承人、本人／敝子女之遺囑執行人及本人／敝子女之管理人謹此豁免中
-            國香港體操總會、所有贊助商、支持是項活動之團體及任何有關之團體對於本人／敝子女因參加是項比賽
-            或課程而由任何原因，包括疏忽，所引致之疾病、死亡、個人損失之任何法律責任，以及放棄任何有關之
-            權利、索償及追究行動。本人／敝子女亦同時聲明本人／敝子女身體狀況良好及具備足夠之體能及技術完
-            成賽事或訓練課程。本人／敝子女願意授權大會及傳媒在無須本人／敝子女審查而可以使用本人／敝子女
-            的肖像、姓名、聲線及個人資料作為活動籌辦及推廣之用。
-        </div>
-
-        <div class="col-12 form-group">
-            2. 本人／敝子女明白在此報名表上提供之資料均屬正確及完備，如有任何虛假及誤導性資料，本人／敝子女
-            的申請將被取消。如已接納，均屬無效。
-        </div>
-
-        <div class="col-12 form-group">
-            3. 本人／敝子女已細閱及明瞭<a href="/competition/annex1">[參加者健康及體能須知]</a>，並同時聲明本人/敝子女身體狀況良好及具備足夠之
-            體能及技術完成賽事或訓練課程。
-        </div> -->
-
-        <!-- 團體蓋章
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體蓋章</h5>
-        </div> -->
-
-        <!-- <div class="col-12">
-            <br>
-            <label>運動員簽署 Athlete sign: </label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
-        </div>
-
-        <div class="col-12">
-            <label>家長姓名 Parent Name: </label>
-            <input type="text" class="form-group" name="Acroage[parentName]">
-        </div>
-
-        <div class="col-12">
-            <br>
-            <label>家長簽署 Parent's signature: </label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
-        </div>
-
-        <div class="col-12">
-            <label>日期 Date:</label>
-            <input type="date" class="form-group" name="Acroage[date]">
-        </div> -->
-
-        <!-- Terms of Competition -->
-
+        <!-- Preview -->
         <div class="col-12">
             <br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
                 carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
-                participants</label>
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a>
+                for participants</label>
         </div>
 
         <div class="col-12">
-            <br>
-            <button type="submit" class="btn btn-primary"
-                style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
             <br><br>
+            <button type="submit" class="btn btn-primary"
+                style="background-color: #83a70c; border-color: #83a70c; float:right">預覽
+                Preview >></button>
         </div>
     </div>
     <br>
@@ -271,7 +264,7 @@
 
 <script>
 
-    function handleFile(files) {
+function handleFile(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
 
@@ -279,7 +272,7 @@
             alert("請重新上載4MB相片");
             return;
         }
-        var preview = document.getElementById('preview');
+        var preview = document.getElementById('preview1');
         var reader = new FileReader();
         reader.onload = function (e) {
             preview.innerHTML = "";
@@ -298,18 +291,231 @@
         reader.readAsDataURL(file);
     }
 
+    function handleFile3(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
+            return;
+        }
+        var preview = document.getElementById('preview2');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Acroage[constent]';
+            input.value = e.target.result;
+            img.style.width = "150px";
+            img.style.height = "200px";
+            preview.appendChild(input);
+        }
+        reader.readAsDataURL(file);
+    }
+
+    // function handleFile(files) {
+    //     if (files.length > 3) {
+    //         alert("上載相片不可多於3張");
+    //         return;
+    //     }
+
+    //     var i = 0;
+    //     while (i < files.length) {
+
+    //         if (!files[i].type.startsWith('image/')) return;
+
+    //         if (files[i].size > 4194304) {
+    //             alert("請重新上載4MB相片");
+    //             return;
+    //         }
+
+    //         var reader = new FileReader();
+
+
+    //         var p = 0;
+    //         reader.onload = function (e) {
+    //             var preview = document.getElementById('preview' + p);
+    //             preview.innerHTML = "";
+    //             var img = document.createElement('img');
+    //             img.src = e.target.result;
+    //             preview.appendChild(img);
+
+    //             var input = document.createElement('input');
+    //             input.type = 'hidden';
+    //             input.name = 'GRGP[imgIDCard' + p + ']';
+    //             alert(p)
+    //             input.value = e.target.result;
+    //             alert(input.value)
+
+    //             img.style.width = "150px";
+    //             img.style.height = "150px";
+    //             document.getElementById('GRGP_form').appendChild(input);
+
+    //             p = p + 1;
+    //         }
+    //         reader.readAsDataURL(files[i]);
+    //         i = i + 1;
+
+    //     }
+    // }
+
+    function handleFile2(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+
+        // if (file.size > 4194304) {
+        //     alert("請重新上載4MB相片");
+        //     return;
+        // }
+        var preview = document.getElementById('HF2preview');
+        var reader = new FileReader();
+
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Acroage[Declaration]';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "200px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'TRGCompetition[Declaration]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+
     function extraCard() {
+        var level1_check = document.getElementById("level1");
+        var level2_check = document.getElementById("level2");
+        var level3_check = document.getElementById("level3");
+        var level4_check = document.getElementById("level4");
+        var level5_check = document.getElementById("level5");
+
+        var item1 = document.getElementById("extra1");
+        var item2 = document.getElementById("extra2");
+
+
+        if (level4_check.checked == true || level5_check.checked == true) {
+            item1.innerHTML = "";
+            item2.innerHTML = "<label>項目 Item:</label>&nbsp;<input type=\"checkbox\" name=\"Acroage[itemCategory]\" value=\"男子雙人 Men's Double\" id=\"menDou\" onclick=\"check_count(this)\"  />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">男子雙人<br>Men's Double</label>&nbsp;<input type=\"checkbox\" name=\"Acroage[itemCategory]\" value=\"女子雙人 Women's Double\" id=\"womenDou\" onclick=\"check_count(this)\"  />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">女子雙人<br>Women's Double</label>&nbsp;<input type=\"checkbox\" name=\"Acroage[itemCategory]\" value=\"混合雙人 Mixed double\" id=\"mixDou\" onclick=\"check_count(this)\"  />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">混合雙人<br>Mixed double</label>&nbsp;<input type=\"checkbox\" name=\"Acroage[itemCategory]\" value=\"女子三人 Women's trio\" id=\"womenTri\" onclick=\"check_count(this)\"  />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">女子三人<br>Women's trio</label>";
+
+        } else if (level1_check.checked == true || level2_check.checked == true || level3_check.checked == true) {
+            item1.innerHTML = "<label>項目 Item:</label>&nbsp;<input type=\"radio\" name=\"Acroage[itemCategory]\" value=\"男子雙人 Men's Double\" required />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">男子雙人<br>Men's Double</label>&nbsp;<input type=\"radio\" name=\"Acroage[itemCategory]\" value=\"女子雙人 Women's Double\" required />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">女子雙人<br>Women's Double</label>&nbsp;<input type=\"radio\" name=\"Acroage[itemCategory]\" value=\"混合雙人 Mixed double\" required />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">混合雙人<br>Mixed double</label>&nbsp;<input type=\"radio\" name=\"Acroage[itemCategory]\" value=\"女子三人 Women's trio\" required />&nbsp;<label class=\"form-check-label\" for=\"itemCategory\">女子三人<br>Women's trio</label>";
+            item2.innerHTML = "";
+
+        }
+
+
         var womenTri_check = document.getElementById("womenTri");
         var mixDou_check = document.getElementById("mixDou");
         var womenDou_check = document.getElementById("womenDou");
         var menDou_check = document.getElementById("menDou");
-        
-        var womenTri = document.getElementById("extra");
 
-        if (womenTri_check.checked == true) {
-            womenTri.innerHTML = "<span>hi</span>";
-        } else if (mixDou_check.checked == true||womenDou_check.checked == true ||menDou_check.checked == true) {
-            womenTri.innerHTML = "";
+        var participant3 = document.getElementById("extra3");
+
+        if (womenTri_check.checked == true && mixDou_check.checked == true || womenTri_check.checked == true && womenDou_check.checked == true || womenTri_check.checked == true && menDou_check.checked == true || womenTri_check.checked == true) {
+            participant3.innerHTML = "<br><h6 style=\"color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;\">參加者(3)的個人資料 Applicant(3)'s Personal Details</h6><h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br><div><label>中文姓名 Name in Chinese:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpChiName3]\" placeholder=\" e.g. 陳大文\" onkeyup=\"value=value.replace(/[^\u4E00-\u9FA5]/g,'')\" required></div><div><label>英文姓名 Name in English: </label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpEngName3]\" placeholder=\" e.g. Chan Tai Man\" onkeyup=\"value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')\" required></div><div><label>性別 Gender: </label><input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label><input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" required><label class=\"gender\">女 Female</label></div><div><label>出生日期 Date of Birth (dd/mm/yyyy):</label><input type=\"date\" class=\"form-group\" name=\"Acroage[birthday3]\" required><br></div><div><label>身份證號碼 ID Card Number:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[idNo3]\" placeholder=\" A123456(7)\" required></div><div><label>聯絡電話 Contact No.:</label><input type=\"tel\" pattern=[0-9]{8} class=\"form-group\" name=\"Acroage[contactNo3]\" placeholder=\"12345678\" required></div><div><label>電郵地址 Email Address:</label><input type=\"email\" class=\"form-group\" name=\"Acroage[email3]\" placeholder=\"example@gmail.com\" required></div><div><label>聯絡地址 Contact Address:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[address3]\" required></div><div><label>運動員(3)相片 Athlete(3) photo: </label><input type=\"file\" accept=\"image/*,application/pdf\" onchange=\"handleFile4(this.files)\" required/><div id=\"preview3\"></div><br></div>";
+
+        } else if (mixDou_check.checked == true || womenDou_check.checked == true || menDou_check.checked == true || mixDou_check.checked == true && womenDou_check.checked == true || womenDou_check.checked == true && menDou_check.checked == true || mixDou_check.checked == true && menDou_check.checked == true) {
+            participant3.innerHTML = "";
+
         }
+
+    }
+
+    function handleFile4(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
+            return;
+        }
+        var preview = document.getElementById('preview3');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Acroage[constent]';
+            input.value = e.target.result;
+            img.style.width = "150px";
+            img.style.height = "200px";
+            preview.appendChild(input);
+        }
+        reader.readAsDataURL(file);
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    var p_tag, inputs, selectInputs = [];
+    window.onload = function () {
+        p_tag = document.getElementById("extra2");
+        inputs = p_tag.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].checked == true) selectInputs.push(inputs[i]);
+        }
+    }
+
+    function check_count(th) {
+        var i = n = 0;
+
+        var womenTri_check = document.getElementById("womenTri");
+        var mixDou_check = document.getElementById("mixDou");
+        var womenDou_check = document.getElementById("womenDou");
+        var menDou_check = document.getElementById("menDou");
+
+        var participant3 = document.getElementById("extra3");
+
+
+        if (th.checked == true) {
+            selectInputs.push(th);
+            if (selectInputs.length > 2) {
+                selectInputs[0].checked = false;
+                selectInputs.shift();
+            }
+        } else {
+            if (selectInputs.length > 1) {
+                for (var i = 0; i < selectInputs.length; i++) {
+                    if (th == selectInputs[i]) selectInputs.splice(i, 1);
+                }
+            } else {
+                th.checked = true;
+                return false;
+            }
+        }
+
+        if (womenTri_check.checked == true && mixDou_check.checked == true || womenTri_check.checked == true && womenDou_check.checked == true || womenTri_check.checked == true && menDou_check.checked == true || womenTri_check.checked == true) {
+            participant3.innerHTML = "<br><h6 style=\"color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;\">參加者(3)的個人資料 Applicant(3)'s Personal Details</h6><h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br><div><label>中文姓名 Name in Chinese:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpChiName3]\" placeholder=\" e.g. 陳大文\" onkeyup=\"value=value.replace(/[^\u4E00-\u9FA5]/g,'')\" required></div><div><label>英文姓名 Name in English: </label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpEngName3]\" placeholder=\" e.g. Chan Tai Man\" onkeyup=\"value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')\" required></div><div><label>性別 Gender: </label><input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label><input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" required><label class=\"gender\">女 Female</label></div><div><label>出生日期 Date of Birth (dd/mm/yyyy):</label><input type=\"date\" class=\"form-group\" name=\"Acroage[birthday3]\" required><br></div><div><label>身份證號碼 ID Card Number:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[idNo3]\" placeholder=\" A123456(7)\" required></div><div><label>聯絡電話 Contact No.:</label><input type=\"tel\" pattern=[0-9]{8} class=\"form-group\" name=\"Acroage[contactNo3]\" placeholder=\"12345678\" required></div><div><label>電郵地址 Email Address:</label><input type=\"email\" class=\"form-group\" name=\"Acroage[email3]\" placeholder=\"example@gmail.com\" required></div><div><label>聯絡地址 Contact Address:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[address3]\" required></div>";
+
+        } else if (mixDou_check.checked == true || womenDou_check.checked == true || menDou_check.checked == true || mixDou_check.checked == true && womenDou_check.checked == true || womenDou_check.checked == true && menDou_check.checked == true || mixDou_check.checked == true && menDou_check.checked == true) {
+            participant3.innerHTML = "";
+        }
+
+
     }
 </script>
