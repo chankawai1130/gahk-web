@@ -165,10 +165,6 @@ module.exports = {
     clubFee: {
       type: 'string',
     },
-
-    partD: {
-      type: 'string',
-    },
     
 
 
