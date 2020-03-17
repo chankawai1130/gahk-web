@@ -118,14 +118,6 @@ module.exports = {
       type: 'number',
     },
 
-    VBRC: {
-      type: 'string',
-    },
-
-    Declaration: {
-      type: 'string',
-    },
-
     leaderName: {
       type: "string"
     },

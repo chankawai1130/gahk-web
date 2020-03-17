@@ -1,6 +1,7 @@
 <form action="/competition/form/acroage" method="POST">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
+            <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年度全港技巧體操分齡賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
             <br>
@@ -88,16 +89,16 @@
 
         <div class="col-12">
             <label><span style="font-size:14px;color:red"> * </span>項目 Item:</label>
-            <input type="radio" name="Acroage[itemCategory]" value="1 級(6 至 14 歲)" required />
+            <input type="radio" name="Acroage[itemCategory]" value="男子雙人" required />
             <label class="form-check-label" for="itemCategory">男子雙人<br>Men's Double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="2 級(6 至 14 歲)" required />
+            <input type="radio" name="Acroage[itemCategory]" value="女子雙人" required />
             <label class="form-check-label" for="itemCategory">女子雙人<br>Women's Double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="3 級(8 歲或以上)" required />
+            <input type="radio" name="Acroage[itemCategory]" value="混合雙人" required />
             <label class="form-check-label" for="itemCategory">混合雙人<br>Mixed double</label>
 
-            <input type="radio" name="Acroage[itemCategory]" value="4 級(9 歲或以上)" required />
+            <input type="radio" name="Acroage[itemCategory]" value="女子三人" required />
             <label class="form-check-label" for="itemCategory">女子三人<br>Women's trio</label>
         </div>
 
@@ -120,16 +121,16 @@
 
         <div class="col-12">
             <label>學校/機構名稱(如適用) School/Organization Name(If applicable): </label>
-            <input type="text" class="form-group" name="Acroage[organName]" required>
+            <input type="text" class="form-group" name="Acroage[organName]" style="width:300pt">
         </div>
 
         <div class="col-12">
             <label>收據臺頭<br>Receipt header: </label>
-            <input type="radio" value="radio" name="receiptHeader" />
+            <input type="radio" value="AthleteName" name="Acroage[receiptHeader]" required />
             <label class="Receipt">運動員姓名<br>Athlete name</label>
-            <input type="radio" class="form-group" value="radio" name="receiptHeader" />
+            <input type="radio" class="form-group" value="OrgName" name="Acroage[receiptHeader]" required />
             <label class="Receipt">學校/機構名稱<br>School/Institution Name</label>
-            <input type="text" class="form-group" name="Acroage[receiptName]" />
+            <input type="text" class="form-group" name="Acroage[receiptName]" style="width: 300pt;" />
         </div>
 
         <div class="col-12"><br>
@@ -139,42 +140,50 @@
         <!-- Note -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">註
-                Note</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">註 Note</h5>
+
+            <ol>
+                <li>請填妥<a href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;"
+                    download>比賽卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
+                    href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;" download>competition card</a> and submit it along with cheque by post or in person</li>
+                <li>參加者需填寫「運動員、家長或監護人聲明」，如參加者<u>未滿18歲，則由家長填寫</u>。所有參加者需附上年齡證明副
+                    本(包括身份證、出世紙、護照)與報名時一併遞交。</li>
+                <li>如有需要，請自行影印表格。</li>
+                <li>不上載相片及資料不全，恕不受理。</li>
+                <li>每名參賽者需填寫一份報名表，並以每隊為單位，將整隊之運動員報名表連同比賽卡交予本會。</li>
+                <li>1-3 級賽事每名運動員只可參加一個組別的<u>一個</u>項目。</li>
+                <li>4-5 級賽事每名運動員在同一個級別內可參加<u>最多兩個</u>不同項
+                    目，並<u>需分別繳付兩個項目之報名費</u>。</li>
+                <li>如 4-5 級運動員參加兩個項目，需填寫兩份報名表。</li>
+                <li>所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。</li>
+            </ol>
         </div>
 
-        <div class="col-12 form-group">
-            1. 參加者需填寫「運動員、家長或監護人聲明」，如參加者未滿 18 歲，則由家長填寫。所有參加者需附上年齡證明副
-            本(包括身份證、出世紙、護照) 與報名時一併遞交。
-        </div>
+        <div class="form-group col-12">
+            <br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
+            <span><b>*如申請人未滿十八歲，請由家長或監護人填寫</b></span>
 
-        <div class="col-12 form-group">
-            2. 如有需要，請自行影印表格。
-        </div>
+            <div class="form-group">
+                <br>
+                <label>請<u>每名申請人</u>下載及列印<a href="/formDoc/acroage_declaration.pdf" download><u
+                    style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print the <a
+                        href="/formDoc/acroage_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+                <div id="preview"></div>
 
-        <div class="col-12 form-group">
-            3. 不貼相片及資料不全，恕不受理。
-        </div>
-
-        <div class="col-12 form-group">
-            4. 每名參賽者需填寫一份報名表，並以每隊為單位，將整隊之運動員報名表連同比賽卡交予本會。
-        </div>
-
-        <div class="col-12 form-group">
-            5. 1-3 級賽事每名運動員只可參加一個組別的一個項目。4-5 級賽事每名運動員在同一個級別內可參加最多兩個不同項
-            目，並需分別繳付兩個項目之報名費。
-        </div>
-
-        <div class="col-12 form-group">
-            6. 如 4-5 級運動員參加兩個項目，需填寫兩份報名表。
-        </div>
-
-        <div class="col-12 form-group">
-            7. 所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。
+                <div class="col-12">
+                    <br>
+                    <label>家長姓名 Parent Name: </label>
+                    <input type="text" class="form-group" name="Acroage[parentName]">
+                </div>
+            </div>
         </div>
 
         <!-- Declaration of Applicant -->
-        <div class="col-12">
+        <!-- <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">申 請 人 聲 明
                 Declaration of Applicant</h5>
@@ -203,7 +212,7 @@
         <div class="col-12 form-group">
             3. 本人／敝子女已細閱及明瞭<a href="/competition/annex1">[參加者健康及體能須知]</a>，並同時聲明本人/敝子女身體狀況良好及具備足夠之
             體能及技術完成賽事或訓練課程。
-        </div>
+        </div> -->
 
         <!-- 團體蓋章
         <div class="col-12">
@@ -211,7 +220,7 @@
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體蓋章</h5>
         </div> -->
 
-        <div class="col-12">
+        <!-- <div class="col-12">
             <br>
             <label>運動員簽署 Athlete sign: </label>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
@@ -233,27 +242,12 @@
         <div class="col-12">
             <label>日期 Date:</label>
             <input type="date" class="form-group" name="Acroage[date]">
-        </div>
+        </div> -->
 
         <!-- Terms of Competition -->
-        <div class="col-12">
-            <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明 Declaration</h5>
-        </div>
 
         <div class="col-12">
-
-            <label>*請下載及列印 <a href="/formDoc/acroage_declaration.pdf" download
-                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                    href="/formDoc/acroage_declaration.pdf" download
-                    style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
-
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-            <div id="preview3"></div>
-        </div>
-
-        <div class="col-12">
-            <br><br>
+            <br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
                 carefully and
@@ -262,10 +256,10 @@
         </div>
 
         <div class="col-12">
-            <br><br>
+            <br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
-                Submit</button>
+                style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
+            <br><br>
         </div>
     </div>
     <br>
@@ -273,7 +267,7 @@
 
 <script>
 
-    function handleFile3(files) {
+    function handleFile(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
 
@@ -281,7 +275,7 @@
             alert("請重新上載4MB相片");
             return;
         }
-        var preview = document.getElementById('preview3');
+        var preview = document.getElementById('preview');
         var reader = new FileReader();
         reader.onload = function (e) {
             preview.innerHTML = "";

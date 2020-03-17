@@ -123,12 +123,7 @@
             <span>請填妥<a href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;"
                     download>比賽動作卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
                     href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;" download>competition
-                    action card</a> and submit it
-                along with cheque by post or in person
-
-
-
-
+                    action card</a> and submit it along with cheque by post or in person
             </span>
 
             <br>
@@ -182,7 +177,7 @@
                     style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
 
             <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
-
+            <div id="preview"></div>
         </div>
 
         <div class="col-12">
@@ -221,7 +216,7 @@
 
 <script>
 
-    var start = 1900;
+    var start = 1950;
     var end = new Date().getFullYear();
     var options = "<option disabled selected>" + " " + "</option>";
     for (var year = start; year <= end; year++) {
@@ -247,7 +242,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[VBRC]';
+                input.name = 'Trampoline[declaration]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -258,7 +253,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[VBRC]';
+                input.name = 'Trampoline[declaration]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
