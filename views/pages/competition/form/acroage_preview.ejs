@@ -40,6 +40,8 @@
                 <span>電郵地址 Email Address:</span> <b><%= req.session.data.email1%></b>
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
+                <br>
+                <span>運動員(1)相片 Athlete(1) photo:</span> <img src="<%= req.session.data.photo1%>" style="max-width:20vw" />
             </div>
 
             <div class="form-group">
@@ -60,6 +62,8 @@
                 <span>電郵地址 Email Address:</span> <b><%= req.session.data.email2%></b>
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
+                <br>
+                <span>運動員(2)相片 Athlete(2) photo:</span> <img src="<%= req.session.data.photo2%>" style="max-width:20vw" />
             </div>
 
             <div class="form-group">
@@ -80,6 +84,8 @@
                 <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b>
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
+                <br>
+                <span>運動員(3)相片 Athlete(3) photo:</span> <img src="<%= req.session.data.photo3%>" style="max-width:20vw" />
             </div>
 
         </div>
@@ -95,6 +101,18 @@
             <br>
             <span>收據臺頭 Receipt header:</span> <b><%= req.session.data.receiptHeader%></b>
             <span> --> </span> <b><%= req.session.data.receiptName%></b>
+        </div>
+        <br>
+
+        <div class="from-group">
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聲明 Declaration</label>
+            <br>
+            <span>參加者(1)家長姓名 Applicant(1)'s Parent Name:</span> <b><%= req.session.data.parentName1%></b>
+            <br>
+            <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
+            <br>
+            <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
+            <br>
         </div>
         <br>
 
