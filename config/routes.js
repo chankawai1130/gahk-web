@@ -180,6 +180,11 @@ module.exports.routes = {
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
 
+  //'GET /competition/form/acroage': 'AcroageController.acroage',
+  'POST /competition/form/acroage': 'AcroageController.acroage',
+  'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
+  'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
+
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
 
 
