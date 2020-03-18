@@ -4,10 +4,21 @@
         <div class="col-12" style="color: #888888; ">
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港技巧體操公開賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
-            <br>
         </div>
 
         <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
+                Rules and Regulation</h5>
+        </div>
+
+        <div class="col-12">
+            <a href="/formDoc/AcroOpen2020_Prospectus.pdf" style="text-align: center;"><u>2020年香港技巧體操公開賽章程
+                    Prospectus of AcrobaticOpenCompetition</u></a>
+        </div>
+
+        <div class="col-12">
+            <br><br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">組別資料
                 Category Details</h6>
         </div>
@@ -241,8 +252,8 @@
                 <label>收據臺頭<br>Receipt header: </label>
                 <input type="radio" value="運動員姓名 Athlete name" name="Acroage[receiptHeader]" required />
                 <label class="Receipt">運動員姓名<br>Athlete name</label>
-                &nbsp;<input type="radio" class="form-group" value="學校/機構名稱 School/Institution Name" name="Acroage[receiptHeader]"
-                    required />
+                &nbsp;<input type="radio" class="form-group" value="學校/機構名稱 School/Institution Name"
+                    name="Acroage[receiptHeader]" required />
                 <label class="Receipt">學校/機構名稱<br>School/Institution Name:</label>
                 <input type="text" class="form-group" style="width: 300pt;" name="Acroage[receiptName]" />
             </div>
@@ -255,7 +266,8 @@
         <!-- Note -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">備註 Remarks</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">備註 Remarks
+            </h5>
 
             <ol>
                 <li>請填妥<a href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;"
@@ -344,18 +356,18 @@
         if (womenTri_check.checked == true) {
             extraCard.innerHTML = "<br><h6 style=\"color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;\">參加者(3)的個人資料 Applicant(3)'s Personal Details</h6>"
                 + "<h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>中文姓名 Name in Chinese:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpChiName3]\" placeholder=\" e.g. 陳大文\" onkeyup=\"value=value.replace(/[^\u4E00-\u9FA5]/g,'')\" required></div>"
                 + "<div><label>英文姓名 Name in English: </label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpEngName3]\" placeholder=\" e.g. Chan Tai Man\" onkeyup=\"value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')\" required></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"form-group col-12 col-sm-6\"><label>性別 Gender: </label>"
                 + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label>"
                 + "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" required><label class=\"gender\">女 Female</label></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>出生日期 Date of Birth (dd/mm/yyyy):</label><input type=\"date\" class=\"form-group\" name=\"Acroage[birthday3]\" required><br></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>身份證號碼 ID Card Number:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[idNo3]\" placeholder=\" A123456(7)\" required></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>聯絡電話 Contact No.:</label><input type=\"tel\" pattern=[0-9]{8} class=\"form-group\" name=\"Acroage[contactNo3]\" placeholder=\"12345678\" required></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>電郵 Email Address:</label><input type=\"email\" class=\"form-group\" name=\"Acroage[email3]\" placeholder=\"example@gmail.com\" style=\"width: 300pt;\" required></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>聯絡地址 Contact Address:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[address3]\" style=\"width: 350pt;\" required></div></div>"
                 + "<div><label>運動員(3)相片 Athlete(3) photo: </label><input type=\"file\" accept=\"image/*\" onchange=\"handleFile(this.files,3)\" required/><div id=\"ph_preview3\"></div><br></div>"
