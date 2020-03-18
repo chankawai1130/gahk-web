@@ -241,36 +241,52 @@
                 <label>收據臺頭<br>Receipt header: </label>
                 <input type="radio" value="運動員姓名 Athlete name" name="Acroage[receiptHeader]" required />
                 <label class="Receipt">運動員姓名<br>Athlete name</label>
-                &nbsp;<input type="radio" class="form-group" value="學校/機構名稱 School/Institution Name" name="Acroage[receiptHeader]"
-                    required />
+                &nbsp;<input type="radio" class="form-group" value="學校/機構名稱 School/Institution Name"
+                    name="Acroage[receiptHeader]" required />
                 <label class="Receipt">學校/機構名稱<br>School/Institution Name:</label>
                 <input type="text" class="form-group" style="width: 300pt;" name="Acroage[receiptName]" />
             </div>
         </div>
 
-        <div class="col-12"><br>
-            <span style="font-size:14px;color:red"> * </span>閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
-        </div>
-
         <!-- Note -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">備註 Remarks</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">備註 Remarks
+            </h5>
 
             <ol>
                 <li>請填妥<a href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;"
                         download>比賽卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
                         href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;" download>competition card</a>
                     and submit it along with cheque by post or in person</li>
-                <li>參加者需填寫「運動員、家長或監護人聲明」，如參加者<u>未滿18歲，則由家長填寫</u>。所有參加者需附上年齡證明副本(包括身份證、出世紙、護照)與報名時一併遞交。</li>
-                <li>如有需要，請自行影印表格。</li>
-                <li>不上載相片及資料不全，恕不受理。</li>
-                <li>每名參賽者需填寫一份報名表，並以每隊為單位，將整隊之運動員報名表連同比賽卡交予本會。</li>
-                <li>1-3 級賽事每名運動員只可參加一個組別的<u>一個</u>項目。</li>
+                <br>
+                <li>參加者需填寫「運動員、家長或監護人聲明」，如參加者<u>未滿18歲，則由家長填寫</u>。所有參加者需附上年齡證明副本(包括身份證、出世紙、護照)與報名時一併遞交。<br>
+                    Applicant should fill in the Declaration of Athlete, Parents or Guardians. <u> The declaration must
+                        be signed by parents if the applicant is aged below 18.</u> All applicants should submit the
+                    copy of valid photo-bearing identity documents (including ID card, birth certificate or passport) by
+                    proving the age of applicants.</li>
+                <br>
+                <li>如有需要，請自行影印表格。<br>Applicants can make copy of the form if needed.</li>
+                <br>
+                <li>不上載相片及資料不全，恕不受理。<br>The application will not be accepted if the personal photo is not uploaded and
+                    has missing information.</li>
+                <br>
+                <li>1-3 級賽事每名運動員只可參加一個組別的<u>一個</u>項目。<br>
+                    The athlete in category of level 1 to leverl 3 can only apply for <u>one</u> event in a category.
+                </li>
+                <br>
                 <li>4-5 級賽事每名運動員在同一個級別內可參加<u>最多兩個</u>不同項
-                    目，並<u>需分別繳付兩個項目之報名費</u>。</li>
-                <li>如 4-5 級運動員參加兩個項目，需填寫<u>兩份</u>報名表。</li>
-                <li>所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。</li>
+                    目，並<u>需分別繳付兩個項目之報名費</u>。<br>
+                    The athlete in category of level 4 to leverl 5 can only apply for <u>at most two</u> differsent
+                    events in a category and should pay for application fee of two events respectively.</li>
+                <br>
+                <li>如 4-5 級運動員參加兩個項目，需填寫<u>兩份</u>報名表。<br>
+                    If the athlete apply for two events in category of level 4 to leverl 5, he/she should fill in two
+                    application forms.</li>
+                <br>
+                <li>所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。<br>
+                    The personal details provided by all applicants will only be used for the purpose of promotion
+                    relating to this competition and later activities of our organisation.</li>
             </ol>
         </div>
 
@@ -322,6 +338,14 @@
 
         <div class="col-12">
             <br><br>
+            <p>* 閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
+                <br>
+                The details provided by applicants will only be used by the promotions of our organisation. Please
+                contact with our staff if you want to correct your personal information.</p>
+        </div>
+
+        <div class="col-12">
+            <br><br>
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽
                 Preview >></button>
@@ -344,18 +368,18 @@
         if (womenTri_check.checked == true) {
             extraCard.innerHTML = "<br><h6 style=\"color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;\">參加者(3)的個人資料 Applicant(3)'s Personal Details</h6>"
                 + "<h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>中文姓名 Name in Chinese:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpChiName3]\" placeholder=\" e.g. 陳大文\" onkeyup=\"value=value.replace(/[^\u4E00-\u9FA5]/g,'')\" required></div>"
                 + "<div><label>英文姓名 Name in English: </label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpEngName3]\" placeholder=\" e.g. Chan Tai Man\" onkeyup=\"value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')\" required></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"form-group col-12 col-sm-6\"><label>性別 Gender: </label>"
                 + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label>"
                 + "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" required><label class=\"gender\">女 Female</label></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>出生日期 Date of Birth (dd/mm/yyyy):</label><input type=\"date\" class=\"form-group\" name=\"Acroage[birthday3]\" required><br></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>身份證號碼 ID Card Number:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[idNo3]\" placeholder=\" A123456(7)\" required></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>聯絡電話 Contact No.:</label><input type=\"tel\" pattern=[0-9]{8} class=\"form-group\" name=\"Acroage[contactNo3]\" placeholder=\"12345678\" required></div></div>"
-                +"<div class = \"row\">"
+                + "<div class = \"row\">"
                 + "<div class = \"col-12 col-sm-6\"><label>電郵 Email Address:</label><input type=\"email\" class=\"form-group\" name=\"Acroage[email3]\" placeholder=\"example@gmail.com\" style=\"width: 300pt;\" required></div>"
                 + "<div class = \"col-12 col-sm-6\"><label>聯絡地址 Contact Address:</label><input type=\"text\" class=\"form-group\" name=\"Acroage[address3]\" style=\"width: 350pt;\" required></div></div>"
                 + "<div><label>運動員(3)相片 Athlete(3) photo: </label><input type=\"file\" accept=\"image/*\" onchange=\"handleFile(this.files,3)\" required/><div id=\"ph_preview3\"></div><br></div>"
