@@ -1,5 +1,5 @@
 /**
- * TSRGCompetition.js
+ * Acroage.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,118 +13,150 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    //Team_School_HKRGAgeGroupCompetitionform attributes
-    SchoolChiName: {
+    levelCategory: {
       type: 'string',
     },
 
-    Phone: {
+    itemCategory: {
       type: 'string',
     },
 
-    Email: {
-      type: 'string',
-    },
-
-    CoachName: {
-      type: 'string',
-    },
-
-    CoachPhone: {
-      type: 'string',
-    },
-
-    Category: { 
-      type:'string', 
-    },
-
-    Mate1ChiName: {
-      type: 'string',
-    },
-
-    Mate1EngName: {
-      type: 'string',
-    },
-
-    Mate1IDNo: {
-      type: 'string',
-    },
-
-    Mate1Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate2ChiName: {
-      type: 'string',
-    },
-
-    Mate2EngName: {
-      type: 'string',
-    },
-
-    Mate2IDNo: {
-      type: 'string',
-    },
-
-    Mate2Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate3ChiName: {
-      type: 'string',
-    },
-
-    Mate3EngName: {
-      type: 'string',
-    },
-
-    Mate3IDNo: {
-      type: 'string',
-    },
-
-    Mate3Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate4ChiName: {
-      type: 'string',
-    },
-
-    Mate4EngName: {
-      type: 'string',
-    },
-
-    Mate4IDNo: {
-      type: 'string',
-    },
-
-    Mate4Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    TeamNumber: {
-      type: 'number',
-    },
-
-    TeamPrice: {
-      type: 'number',
-    },
-
-    TeamTotalPrice: {
-      type: 'number',
-    },
-
-    leaderName: {
+    //Applicant 1
+    cpChiName1: {
       type: "string"
     },
 
-    leaderPosition: {
+    cpEngName1: {
       type: "string"
     },
+
+    gender1: {
+      type: "string"
+    },
+
+    birthday1: {
+      type: "ref",
+      columnType: "date"
+    },
+
+    idNo1: {
+      type: 'string',
+    },
+
+    contactNo1: {
+      type: 'string',
+    },
+
+    email1: {
+      type: 'string',
+    },
+
+    address1: {
+      type: 'string',
+    },
+
+    //Applicant 2
+    cpChiName2: {
+      type: "string"
+    },
+
+    cpEngName2: {
+      type: "string"
+    },
+
+    gender2: {
+      type: "string"
+    },
+
+    birthday2: {
+      type: "ref",
+      columnType: "date"
+    },
+
+    idNo2: {
+      type: 'string',
+    },
+
+    contactNo2: {
+      type: 'string',
+    },
+
+    email2: {
+      type: 'string',
+    },
+
+    address2: {
+      type: 'string',
+    },
+
+    //Applicant 3
+    cpChiName3: {
+      type: "string"
+    },
+
+    cpEngName3: {
+      type: "string"
+    },
+
+    gender3: {
+      type: "string"
+    },
+
+    birthday3: {
+      type: "ref",
+      columnType: "date"
+    },
+
+    idNo3: {
+      type: 'string',
+    },
+
+    contactNo3: {
+      type: 'string',
+    },
+
+    email3: {
+      type: 'string',
+    },
+
+    address3: {
+      type: 'string',
+    },
+
+    //coach
+    coachName: {
+      type: 'string',
+    },
+
+    cContactNo: {
+      type: 'string',
+    },
+
+    organName: {
+      type: 'string',
+    },
+
+    receiptHeader: {
+      type: 'string',
+    },
+
+    receiptName: {
+      type: 'string',
+    },
+
+    //declaration
+    parentName1: {
+      type: 'string',
+    },
+
+    parentName2: {
+      type: 'string',
+    },
+
+    parentName3: {
+      type: 'string',
+    },
+
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

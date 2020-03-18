@@ -1,5 +1,5 @@
 /**
- * RGT.js
+ * Trampoline.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,18 +12,12 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    teamName: {
-      type: "string",
-      required: true,
-      unique: true
+    category: { 
+      type:'string', 
     },
 
-    phone: {
-      type: "number"
-    },
-
-    email: {
-      type: "string"
+    gender: { 
+      type:'string', 
     },
 
     chiName1: {
@@ -34,13 +28,19 @@ module.exports = {
       type: "string"
     },
 
-    ID1: {
-      type: "string",
-      required: true,
-      unique: true
+    birth1: {
+      type: "string"
     },
 
-    birth1: {
+    email1: {
+      type: "string"
+    }, 
+
+    phone1: {
+      type: "number"
+    },
+
+    address1: {
       type: "string"
     },
 
@@ -52,85 +52,31 @@ module.exports = {
       type: "string"
     },
 
-    ID2: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-
     birth2: {
       type: "string"
     },
 
-    chiName3: {
+    email2: {
+      type: "string"
+    }, 
+
+    phone2: {
+      type: "number"
+    },
+
+    address2: {
       type: "string"
     },
 
-    engName3: {
+    orgName: {
       type: "string"
     },
 
-    ID3: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-
-    birth3: {
+    coachAddress:{
       type: "string"
     },
 
-    chiName4: {
-      type: "string"
-    },
-
-    engName4: {
-      type: "string"
-    },
-
-    ID4: {
-      type: "string",
-      required: true,
-      unique: true,
-    },
-
-    birth4: {
-      type: "string"
-    },
-
-    chiName5: {
-      type: "string"
-    },
-
-    engName5: {
-      type: "string"
-    },
-
-    ID5: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-
-    birth5: {
-      type: "string"
-    },
-
-    chiName6: {
-      type: "string"
-    },
-
-    engName6: {
-      type: "string"
-    },
-
-    ID6: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-
-    birth6: {
+    coachNum:{
       type: "string"
     },
 
@@ -142,32 +88,12 @@ module.exports = {
       type: "number"
     },
 
-    leaderName: {
-      type: "string"
+    parentName1: {
+      type: 'string',
     },
 
-    leaderPosition: {
-      type: "string"
-    },
-
-    teamNo: {
-      type: "number"
-    },
-
-    // avatar: {
-    //   type: 'string'
-    // },
-
-    // avatarPath: {
-    //   type: 'string'
-    // },
-
-    constent: {
-      type: 'string'
-    },
-
-    confirm: {
-      type: "string"
+    parentName2: {
+      type: 'string',
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

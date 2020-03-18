@@ -1,0 +1,282 @@
+<form action="/competition/form/trampoline" method="POST">
+    <br>
+
+    <div class="row mx-sm-2">
+        <div class="col-12" style="color: #888888; ">
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港彈網分齡賽</b></h1>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>雙人同步 報名表格</u></h2>
+            <br><br>
+        </div>
+
+
+        <div class="col-12">
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
+                Details</h5>
+        </div>
+
+        <div class="col-12">
+            <p>
+                <label for="gender">性別 Gender </label>
+                <input name="Trampoline[gender]" type="radio" value="男 Male" required />
+                <label for="male">男 Male</label>
+                <input name="Trampoline[gender]" type="radio" value="女 Female" required />
+                <label for="female">女 Female</label>
+            </p>
+            <p>
+                <label for="category">參賽組別 Category</label>
+                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" required />
+                <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
+                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" required />
+                <label for="median">15 至 16 歲 15 to 16 years old</label>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" required />
+                <label for="eldest">17 歲或以上 17 years old or above</label>
+            </p>
+
+        </div>
+
+        <style type="text/css">
+            .card {
+                border-radius: 0;
+            }
+        </style>
+
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
+                Applicant(1)'s Personal Details</h6>
+
+
+            <div>
+                <label for="chiName1">中文姓名 Name in Chinese:</label>
+                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Trampoline[engName1]" placeholder="e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+            <div>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year1" class="form-group" name="Trampoline[birth1]" required></select>
+                <br>
+            </div>
+            <div>
+                <label>聯絡電話 Contact Number:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone1]" required>
+            </div>
+            <div>
+                <label>電郵 Email Address:</label>
+
+                <input type="email" class="form-group" name="Trampoline[email1]" style="width: 220pt;" required>
+
+            </div>
+            <div>
+                <label>通訊地址 Postal Address:</label>
+                <input type="text" class="form-group" name="Trampoline[address1]" style="width:340pt" required>
+                <br>
+            </div>
+        </div>
+
+        <div class="card col-12 col-sm-6" style="background: transparent;">
+            <br>
+            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
+                Applicant(2)'s Personal Details</h6>
+
+
+            <div>
+                <label>中文姓名 Name in Chinese:</label>
+                <input type="text" class="form-group" name="Trampoline[chiName2]" placeholder="e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+            <div>
+                <label>英文姓名 Name in English: </label>
+                <input type="text" class="form-group" name="Trampoline[engName2]" placeholder="e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+            <div>
+                <label>出生年份 Year of Birth:</label>
+                <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
+                <br>
+            </div>
+            <div>
+                <label>聯絡電話 Contact Number:</label>
+                <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[phone2]" required>
+            </div>
+            <div>
+                <label>電郵 Email Address:</label>
+
+                <input type="email" class="form-group" name="Trampoline[email2]" style="width: 220pt;" required>
+
+            </div>
+            <div>
+                <label>通訊地址 Postal Address:</label>
+                <input type="text" class="form-group" name="Trampoline[address2]" style="width: 340pt;" required>
+                <br>
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <span>備註 Remarks:</span><br>
+            <span>請填妥<a href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;"
+                    download>比賽動作卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
+                    href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;" download>competition
+                    action card</a> and submit it along with cheque by post or in person
+            </span>
+
+            <br>
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">所屬團體
+                Organization to which your body belongs</h5>
+        </div>
+
+
+        <div class="col-12">
+            <label>團體名稱 Organization Name:</label>
+            <input type="text" class="form-group" name="Trampoline[orgName]" style="width: 400pt;" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>教練姓名 Coach Name:</label>
+            <input type="text" class="form-group" name="Trampoline[coachName]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>聯絡電話 Contact Number:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="Trampoline[coachPhone]" required>
+        </div>
+
+        <div class="col-12">
+            <label>註冊教練編號(如適用) Registered Coach No.(If applicable):</label>
+            <input type="text" class="form-group" name="Trampoline[coachNum]">
+        </div>
+
+
+        <div class="col-12">
+            <label>通訊地址 Postal Address:</label>
+            <input type="text" class="form-group" name="Trampoline[coachAddress]" style="width: 400pt;" required>
+        </div>
+
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
+            <span><b>*如申請人未滿十八歲，請由家長或監護人填寫</b></span>
+
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label>請<u>每名申請人</u>下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
+                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print the <a
+                    href="/formDoc/trampoline_declaration.pdf" download
+                    style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
+
+            <!-- <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+            <div id="preview"></div> -->
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
+            <input type="text" class="form-group" name="Trampoline[parentName1]" required>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" required />
+            <div id="preview1"></div>
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label>參加者(2)家長姓名 Applicant(1)'s Parent Name: </label>
+            <input type="text" class="form-group" name="Trampoline[parentName2]" required>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,2)" required />
+            <div id="preview2"></div>
+        </div>
+
+        <div class="col-12">
+            <br><br><br>
+            <input type="checkbox" required>
+
+
+            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
+                carefully and
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                participants</label>
+
+        </div>
+
+        <div class="col-12">
+            <br><br>
+            <button type="submit" class="btn btn-primary" style="background: #83a70c; border: none; float: right;">預覽
+                Preview
+                >></button>
+        </div>
+    </div>
+    <br>
+
+</form>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/previewForm.css" />
+<script type="text/javascript" src="js/previewForm.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myform').previewForm();
+    });
+</script>
+
+<script>
+
+    var start = 1950;
+    var end = new Date().getFullYear();
+    var options = "<option disabled selected>" + " " + "</option>";
+    for (var year = start; year <= end; year++) {
+        options += "<option>" + year + "</option>";
+    }
+    document.getElementById("year1").innerHTML = options;
+    document.getElementById("year2").innerHTML = options;
+
+</script>
+
+<script>
+    //handle multi declaration upload (img/pdf) (id="preview+p") **未改**
+    function handleFile(files) { 
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+        var preview = document.getElementById('preview');
+        var reader = new FileReader();
+
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Trampoline[declaration]';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "150px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Trampoline[declaration]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+</script>

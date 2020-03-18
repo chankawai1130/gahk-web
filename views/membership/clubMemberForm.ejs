@@ -1,0 +1,232 @@
+<div class="default-page" style=" width: 800pt;">
+    <table style="width: 700pt;">
+        <tr>
+            <br>
+            <td style="text-align:center">
+                <img src="/images/logoNew.png" alt="logo" width="100px" height="100px">
+            </td>
+        </tr>
+        <tr>
+            <td
+                style="font-family: Verdana,Arial, Helvetica, sans-serif;  color: #888888;font-size:19px;text-align:center">
+                <b>中國香港體操總會 The Gymnastics Association of Hong Kong, China
+                </b><br><br> <b><u>Application for Club Membership</u> </b><br> <b><u>團體註冊申請</u></b>
+                <br><br>
+            </td>
+        </tr>
+    </table>
+
+    <form action="/membership/clubMemberForm" method="POST">
+        <ol class="row mx-sm-2" type="A">
+            <li class="col-12 partA"
+                style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
+                申請者資料 Particulars of Applicant
+            </li>
+            <div class="form-group col-12 partA">
+                <br>
+                <label>機構 Organization:</label>
+                <input type="text" name="Membership[OrgEngName]" style="width:450pt" placeholder="         (英文 English)"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ \(\)]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 partA">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="Membership[OrgChiName]" style="width:450pt" placeholder="         (中文 Chinese)"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-7 partA">
+                <label>申請者姓名 Name of Applicant:</label>
+                <input type="text" name="Membership[AppEngName]" style="width:200pt" placeholder="         (英文 English)"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-5 partA">
+                <input type="text" name="Membership[AppChiName]" style="width:200pt" placeholder="         (中文 Chinese)"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 partA">
+                <label>地址 Address:</label>
+                <input type="text" name="Membership[clubAddr]" style="width:450pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partA">
+                <label>電話 Tel:</label>
+                <input type="text" name="Membership[clubTel]" maxlength="8"
+                    onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partA">
+                <label>傳真 Fax:</label>
+                <input type="text" name="Membership[clubFax]" style="width:150pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partA">
+                <label>電郵 E-mail:</label>
+                <input type="email" name="Membership[clubEmail]" style="width:200pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partA">
+                <label>網址 Web-site:</label>
+                <input type="url" name="Membership[clubWeb]" style="width:200pt" required>
+            </div>
+
+            <div class="form-group col-12 partA">
+                <label>機構成員人數 No. of Members in the Organization:</label>
+                <input type="number" name="Membership[MemberNo]" min="1" required>
+            </div>
+
+            <li class="col-12 partB" for="brefDes"
+                style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
+                請簡單描述貴機構/團體/學校曾舉辦或參與的體操活動 <br> Brief description of gymnastic activities which the Organization /
+                Club / School has organized / taken part
+            </li>
+            <div class="col-12 partB"><textarea id="brefDes" type="text" name="Membership[brefDes]" cols=100
+                    rows=5></textarea><br><br></div>
+
+
+            <li class="col-12 partC"
+                style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
+                體操活動的機構代表/負責人資料<br>Particulars of Organization Representative / Person in charge of the gymnastic
+                activities</li>
+
+            <div class="form-group col-12 col-sm-6 partC">
+                <br>
+                <label>姓名 Name:</label>
+                <input type="text" name="Membership[resEngName]" style="width:200pt" placeholder="         (英文 English)"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partC">
+                <br>
+                <input type="text" name="Membership[resChiName]" style="width:200pt" placeholder="         (中文 Chinese)"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            </div>
+
+            <div class="form-group col-12 partC">
+                <label>職位 Position held:</label>
+                <input type="text" name="Membership[position]" style="width:450pt" required>
+            </div>
+
+            <div class="form-group col-12 partC">
+                <label>地址 Address:</label>
+                <input type="text" name="Membership[resAddr]" style="width:500pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partC">
+                <label>電話 Tel:</label>
+                <input type="text" name="Membership[resTel]" maxlength="8"
+                    onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" style="width:150pt" required>
+            </div>
+
+            <div class="form-group col-12 col-sm-6 partC">
+                <label>傳真 Fax:</label>
+                <input type="text" name="Membership[resFax]" style="width:150pt" required>
+            </div>
+
+            <div class="form-group col-12 partC">
+                <label>電郵 E-mail:</label>
+                <input type="email" name="Membership[resEmail]" style="width:500pt" required>
+            </div>
+
+            <li class="col-12 partD"
+                style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
+                致中國香港體操總會主席 To the Chairperson of GAHK
+            </li>
+
+            <div class="form-group col-12 partD">
+                <input type="checkbox" required>
+                <label>本人/我們(以下簽名人)謹此申請GAHK的團體會員資格，謹證明本人/我們在A，B和C部分所提供的資料正確無誤及完成。<br>I/We, the undersigned, hereby
+                    would like to apply for the Club Membership of the GAHK and I/We, certify that the information
+                    given in paragraphs A, B & C is correct and complete.</label>
+
+
+                <br><br>
+                <p>The prescribed membership fee for the year of <span><input type="number" name="Membership[year]"
+                            style="width: 30pt;" min="1" required></span> at
+                    <span><select name="Membership[clubFee]" required>
+                            <option value="">Choose Amount</option>
+                            <option value="1000">HK$1,000</option>
+                            <option value="150">HK$150</option>
+                        </select></span> and details of the Organization is attached.</p>
+            </div>
+
+            <div class="form-group col-12 partD">
+                <label><b>*請下載<a href="/formDoc/clubMembership_partD.pdf" download><u
+                                style="color: #83a70c;">D部分.pdf</u></a>後簽署及蓋章並上載 Please download the <a
+                            href="/formDoc/clubMembership_partD.pdf" download><u
+                                style="color: #83a70c;">partD.pdf</u></a> and upload it with signature and
+                        stamp</b></label>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+                <div id="preview"></div>
+            </div>
+
+            <div class="form-group col-12">
+                <br><br>
+                <span><b>備註 Note:</b></span>
+                <ol>
+                    <li>有關團體的詳細資料（併購，章程和計劃傳單）和會員費以及此表格將會發送給本會的義務秘書。<br>Details of the Organization (M&A, Constitution &
+                        Programme leaflet) and membership fee together with this form should be sent to the Honorary
+                        Secretary of GAHK.</li>
+                    <li>團體會員 Club Membership:
+                        <ul>
+                            <li>牟利協會或組織每年HK $ 1,000會費<br>HK$1,000/per year for those Profit Making Association /
+                                Organization</li>
+                            <li>非牟利協會或組織每年HK $ 150會費<br>HK$150/per year for those Non-profit Making Association /
+                                Schools</li>
+                            <li>所有劃線支票抬頭<b>「中國香港體操總會」</b><br>All cheques should be crossed and made payable to <b>"The
+                                    Gymnastics Association of Hong Kong, China"</b></li>
+                        </ul>
+                    </li>
+                    <li>如有查詢,請致電2504 8233<br>For any enquiries, please call 2504 8233.</li>
+                </ol>
+            </div>
+
+        </ol>
+
+        <div class="col-12">
+            <br>
+            <button type="submit" class="btn btn-primary"
+                style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
+            <br><br>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+    function handleFile(files) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+        var preview = document.getElementById('preview');
+        var reader = new FileReader();
+
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Membership[partD]';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "150px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Membership[partD]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+</script>

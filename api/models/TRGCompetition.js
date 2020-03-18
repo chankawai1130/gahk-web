@@ -35,7 +35,7 @@ module.exports = {
     },
 
     Category: { 
-      type:'string', //true, false
+      type:'string', 
     },
 
     Mate1ChiName: {
@@ -118,16 +118,12 @@ module.exports = {
       type: 'number',
     },
 
-    VBRC: {
-      type: 'string',
+    leaderName: {
+      type: "string"
     },
 
-    Declaration: {
-      type: 'string',
-    },
-
-    Box: {
-      type: 'string',
+    leaderPosition: {
+      type: "string"
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
