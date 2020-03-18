@@ -1,4 +1,4 @@
-<form action="/competition/form/team" method="POST">
+<form action="/competition/form/GFA" method="POST">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
@@ -13,63 +13,75 @@
                 Details</h5>
         </div>
 
+
         <div class="col-12">
             <label>團體名稱 Group Name:</label>
-            <input type="text" class="form-group" name="application[teamName]" style="width:350pt;" required>
+            <input type="text" class="form-group" name="GFA[teamName]" style="width:350pt;" required>
         </div>
 
         <div class="col-12">
             <label>收據抬頭 Receipt Header:</label>
-            <input type="text" class="form-group" name="application[receiptHeader]" style="width: 350pt;" required>
+            <input type="text" class="form-group" name="GFA[receiptHeader]" style="width: 350pt;" required>
         </div>
 
         <div class="col-12">
             <label>聯絡地址 Address:</label>
-            <input type="text" class="form-group" name="application[address]" style="width:450pt;" required>
+            <input type="text" class="form-group" name="GFA[address]" style="width:450pt;" required>
         </div>
 
         <div class="col-12">
             <span>參賽組別 Category:</span>
-            <input type="radio" name="application[category]" value="Kindergarten" required>
+            <input type="radio" name="GFA[category]" value="幼稚園 Kindergarten" required>
             <label class="form-check-label" for="category">幼稚園 Kindergarten</label>
-            <input type="radio" name="application[category]" value="Primary" required>
+            <input type="radio" name="GFA[category]" value="小學組 Primary School" required>
             <label class="form-check-label" for="category">小學組 Primary School</label>
-            <input type="radio" name="application[category]" value="Open" required>
+            <input type="radio" name="GFA[category]" value="公開組 Open Group" required>
             <label class="form-check-label" for="category">公開組 Open Group</label>
+        </div>
+
+
+
+        <!-- Contact Person Details -->
+        <div class="col-12">
             <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聯絡人資料
+                Contact Person Details</h5>
         </div>
 
-        <!-- Contact Person -->
+
+        <div class="col-12 col-sm-6">
+            <label>中文姓名 Name in Chinese:</label>
+            <input type="text" class="form-group" name="GFA[cpChiName]"
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>英文姓名 Name in English:</label>
+            <input type="text" class="form-group" name="GFA[cpEngName]"
+                onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+        </div>
+
         <div class="col-12">
+            <label>聯絡電話 Contact Number</label>
             <br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聯絡人 Contact
-                Person</h5>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>日間 Office Hour:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpDayPhone]" required>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <label>手提 Mobile:</label>
+            <input type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpMobilePhone]" required>
         </div>
 
         <div class="col-12">
-            <label>姓名 Name:</label>
-            <input type="text" class="form-group" name="application[cpChiName]" required>
-            <label>中文 Chinese</label>
-            <input type="text" class="form-group" name="application[cpEngName]" required>
-            <label>英文 English</label>
+            <label>電郵地址 Email Address:</label>
+            <input type="email" class="form-group" name="GFA[email]" style="width:250pt;" required>
         </div>
 
-        <div class="col-12">
-            <label>聯絡電話 Contact Number:</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="application[cpDayPhone]" required>
-            <label>日間 Office Hour</label>
-            <input type="tel" pattern=[0-9]{8} class="form-group" name="application[cpMobilePhone]" required>
-            <label>手提 Mobile</label>
-        </div>
 
-        <div class="col-12">
-            <label>*電郵地址 Email Address:</label>
-            <input type="email" class="form-group" name="application[email]" style="width:230pt;" required>
-        </div>
-
-        <div class="col-12"><br>
-            註：*必須填寫, 以便作為是次活動的主要聯絡方式。
-        </div>
 
         <!-- Competition Details -->
         <div class="col-12">
@@ -78,122 +90,105 @@
                 Competition Details</h5>
         </div>
 
+
         <div class="col-12 col-sm-6">
-            <label>表演者人數 No. of Performers</label>
-            <input type="number" class="form-group" name="application[performerNum]" min="1" required>
+            <label>參加人數 Number of Applicants:</label>
+            <input type="number" class="form-group" name="GFA[applicantNum]" min="1" max="100" required>
         </div>
 
         <div class="col-12 col-sm-6">
-            <label>工作人員人數 No. of Crews:</label>
-            <input type="number" class="form-group" name="application[crewNum]" min="0" required>
+            <label>工作人員人數 Number of Crews:</label>
+            <input type="number" class="form-group" name="GFA[crewNum]" min="0" max="100" required>
         </div>
 
-        <div class="col-12 col-sm-6">
-            <label>支票編號 Check No.:</label>
-            <input type="text" class="form-group" name="application[checkNum]" required>
+        <div class="col-12">
+            <label>支票編號 Check Number:</label>
+            <input type="text" class="form-group" name="GFA[checkNum]" style="width:350pt;" required>
         </div>
 
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
             <label>銀行名稱 Name of Bank:</label>
-            <input type="text" class="form-group" name="application[bankName]" required>
+            <input type="text" class="form-group" name="GFA[bankName]" style="width:350pt;" required>
         </div>
 
-        <div class="col-12"><br>
-            閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
-        </div>
 
         <!-- Terms of Competition -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載 
-                Documents Upload</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
         </div>
 
-        <ol>
-            <li>
-                <div class="col-12">
-                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school
-                        stamp</label>
-                    <br>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
-                    <br>
-                    <div id="HF2preview0" style="float: left;"></div>
-                    <div id="HF2preview1" style="float: left;"></div>
-                </div>
-                <br>
-            </li>
-            
-            <li>
-                <div class="col-12">
-                    <label>請下載及列印 <a href="/formDoc/gfa_declaration.pdf" download
-                            style="color:#83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                            href="/formDoc/gfa_declaration.pdf" download
-                            style="color:#83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" />
-                    <div id="preview3"></div>
-                </div>
-            </li>
-        </ol>
+
+        <div class="col-12">
+            <label>請下載及列印 <a href="/formDoc/gfa_declaration.pdf" download
+                    style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                    href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
+                sign and upload it</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+            <div id="preview"></div>
+        </div>
+
 
         <div class="col-12">
             <br><br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
                 carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
+                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a>
+                for
                 participants</label>
         </div>
 
         <div class="col-12">
             <br><br>
+            <p>* 閣下所提供的資料只會用於本會之活動宣傳事宜，如欲更改或查詢閣下所申報的個人資料，請與本會職員聯絡。
+                <br>
+                The details provided by applicants will only be used by the promotions of our organisation. Please
+                contact with our staff if you want to correct your personal information.</p>
+        </div>
+
+        <div class="col-12">
+            <br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">提交
-                Submit</button>
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
+                >></button>
         </div>
     </div>
     <br>
 </form>
 
 <script>
-    function calculateF() {
-        document.getElementById('teamFee').value = 150 * document.getElementById('teamNo').value;
 
-        insurance = document.getElementById('insurance').value;
-        fee = document.getElementById('teamFee').value;
-        document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
-    }
-
-    function calculateI() {
-        document.getElementById('insurance').value = 30 * document.getElementById('people').value;
-
-        fee = document.getElementById('teamFee').value;
-        insurance = document.getElementById('insurance').value;
-        document.getElementById('total').value = parseInt(insurance) + parseInt(fee);
-    }
-
-    function handleFile3(files) {
+    function handleFile(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-
-        if (file.size > 4194304) {
-            alert("請重新上載4MB相片");
-            return;
-        }
-        var preview = document.getElementById('preview3');
+        var preview = document.getElementById('preview');
         var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
 
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'RGT[constent]';
-            input.value = e.target.result;
-            img.style.width = "150px";
-            img.style.height = "200px";
-            preview.appendChild(input);
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GFA[document]';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "150px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GFA[document]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
         }
         reader.readAsDataURL(file);
     }
