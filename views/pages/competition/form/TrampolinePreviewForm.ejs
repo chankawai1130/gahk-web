@@ -5,7 +5,8 @@
         <br>
         <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
         <br>
-        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>2020年香港彈網分齡賽</b></h1>
+        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;">
+            <b>2020年香港彈網分齡賽</b></h1>
         <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
             <u>雙人同步 報名表格</u></h2>
         <br>
@@ -70,14 +71,20 @@
             <br>
             <span>聯絡電話 Contact number:</span> <b><%= req.session.data.coachPhone%></b>
             <br>
-            <span>註冊教練編號 Registered coach no.:</span> <b><%=req.session.data.coachNum%></b>
+            <span>註冊教練編號 Registered coach no.:</span>
+            <% if(req.session.data.coachNum == ""){%>
+            <span><b>N/A</b></span>
+            <%} else {%>
+                <b><%=req.session.data.coachNum%></b>
+            <%}%>
             <br>
             <span>通訊地址 Postal Address:</span> <b><%= req.session.data.coachAddress%></b>
         </div>
 
         <div class="from-group">
             <br>
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者家長資料 Applicant's Parent Details</label>
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者家長資料 Applicant's Parent
+                Details</label>
             <br>
             <span>參加者(1)家長姓名 Applicant(1)'s Parent Name:</span> <b><%= req.session.data.parentName1%></b>
             <br>
