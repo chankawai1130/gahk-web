@@ -73,9 +73,11 @@ module.exports = {
     //   return res.view('admin/applyHandle/search');
 
     var condition = {};
+    var form;
 
     if (req.query.application == "TRGA") {
-      if (req.query.category) condition.Category = req.query.category;
+      form = req.query.application;
+      if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
@@ -83,15 +85,16 @@ module.exports = {
         where: condition
       });
     } else if (req.query.application == "TSRGA") {
-      if (req.query.category) condition.Category = req.query.category;
+      form = req.query.application;
+      if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
       var models = await TSRGCompetition.find({
         where: condition
       });
-    } 
-    return res.view('admin/applyHandle/search', { applications: models });
+    }
+    return res.view('admin/applyHandle/search', { applications: models, form });
 
 
   },
