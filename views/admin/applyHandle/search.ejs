@@ -33,7 +33,8 @@
         <div class="row mx-sm-2">
             <div class="form-group col-12">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
-                <select class="form-control" id="competition" name="competition" onchange="compSelected(this.value);">
+                <select class="form-control" id="application" name="application" onchange="appSelected(this.value);"
+                    required>
                     <option value="">請選擇申請項目 Select Application Project</option>
                     <option value="competition" disabled>---Activity/Competition 活動/比賽---</option>
                     <option value="acroage">2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</option>
@@ -63,7 +64,7 @@
 
             <div class="form-group col-12 col-sm-6">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">Apply Status 申請狀況</label>
-                <select class="form-control" id="appStatus" name="appStatus">
+                <select class="form-control" id="formStatus" name="formStatus">
                     <option value="">請選擇申請狀況 Select Apply Status</option>
                     <option value="accepted">已確認 Accepted</option>
                     <option value="ToBeCon">待確認 To be confirmed</option>
@@ -78,14 +79,22 @@
 
         </div>
 
+        <div>
+            <% applications.forEach( function(model) { %>
+            <span>1</span><span><%= model.Category %></span>
+            <% }); %>
+        </div>
+
 
 
         <br><br>
         <table>
+            <button type="button" class="btn btn-info">Excel Export</button>
+            <br><br>
             <tr id="subjects">
                 <th>隊伍/團體<br>Team/Organisation</th>
                 <th>組別/項目<br>Category/Subject</th>
-                <th>款項<br>Payment</th>
+                <th>付款狀況<br>Payment Status</th>
                 <th>提交日期<br>Apply Date</th>
                 <th>狀態<br>Status</th>
             </tr>
@@ -102,21 +111,21 @@
             </tr>
         </table>
         <br>
-
+    </form>
 </div>
 
-</form>
+
 
 
 
 <script>
-    var acrCategory = ["1級(6至14歲) Level1(6-14 years old)", "2級(6至14歲) Level2(6-14 years old)", "3級(8歲或以上) Level3(8 or above)", "4級(9歲或以上) Level4(9 or above)", "5級(10歲或以上) Level5(10 or above)"];
+    var acrCategory = ["1級(6至14歲) Level 1(6-14 years old)", "2級(6至14歲) Level 2(6-14 years old)", "3級(8歲或以上) Level 3(8 or above)", "4級(9歲或以上) Level 4(9 or above)", "5級(10歲或以上) Level 5(10 or above)"];
     var gfaCategory = ["幼稚園 Kindergarten", "小學組 Primary School", "公開組 Open Group"];
     var traCategory = ["14歲或以下 14 or below", "15至16歲 15-16 years old", "17歲或以上 17 or above"];
     var trgaCategory = ["預備A,B組", "預備C,D組", "預備E組", "初級A組", "初級B組", "高級A組", "高級B組"];
     var grgCategory = ["集體A組(五人圈操)", "集體B組(五人圈操)", "集體C組(三球兩帶)"];
 
-    function compSelected(compValue) {
+    function appSelected(compValue) {
         var event = document.getElementById("extraEvent");
 
         if (compValue == "acroage") {

@@ -69,10 +69,26 @@ module.exports = {
   //applyHandle
   apply_search: async function (req, res) {
 
-    if (req.method == "GET")
-      return res.view('admin/applyHandle/search')
+    // if (req.method == "GET")
+    //   return res.view('admin/applyHandle/search');
 
-  }
+    var condition = {};
+
+    
+    if (req.query.category) condition.Category = req.query.category;
+    if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+    if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+    var models = await TRGCompetition.find({
+      where: condition
+    });
+
+    return res.view('admin/applyHandle/search', { applications: models });
+
+
+  },
+
+
 
 };
 

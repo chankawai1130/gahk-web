@@ -119,11 +119,19 @@ module.exports = {
     },
 
     leaderName: {
-      type: "string"
+      type: "string",
     },
 
     leaderPosition: {
-      type: "string"
+      type: "string",
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
