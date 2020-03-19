@@ -80,9 +80,11 @@
         </div>
 
         <div>
+            <%if (applications){%>
             <% applications.forEach( function(model) { %>
             <span>1</span><span><%= model.Category %></span>
-            <% }); %>
+            <% });} %>
+           
         </div>
 
 

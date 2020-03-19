@@ -74,15 +74,23 @@ module.exports = {
 
     var condition = {};
 
-    
-    if (req.query.category) condition.Category = req.query.category;
-    if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-    if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+    if (req.query.application == "TRGA") {
+      if (req.query.category) condition.Category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
-    var models = await TRGCompetition.find({
-      where: condition
-    });
+      var models = await TRGCompetition.find({
+        where: condition
+      });
+    } else if (req.query.application == "TSRGA") {
+      if (req.query.category) condition.Category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
+      var models = await TSRGCompetition.find({
+        where: condition
+      });
+    } 
     return res.view('admin/applyHandle/search', { applications: models });
 
 
