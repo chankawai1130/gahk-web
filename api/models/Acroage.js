@@ -12,75 +12,152 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    cpChiName: {
+
+    levelCategory: {
+      type: 'string',
+    },
+
+    itemCategory: {
+      type: 'string',
+    },
+
+    //Applicant 1
+    cpChiName1: {
       type: "string"
     },
 
-    cpEngName: {
+    cpEngName1: {
       type: "string"
     },
 
-    gender: {
+    gender1: {
       type: "string"
     },
 
-    birthday: {
+    birthday1: {
       type: "ref",
       columnType: "date"
     },
 
-    idNo: {
+    idNo1: {
       type: 'string',
     },
 
-    contactNo: {
+    contactNo1: {
       type: 'string',
     },
 
-    email: {
+    email1: {
       type: 'string',
     },
 
-    address: {
+    address1: {
       type: 'string',
     },
 
-    levelCategory: { 
-      type:'string', 
+
+    //Applicant 2
+    cpChiName2: {
+      type: "string"
     },
 
-    itemCategory: { 
-      type:'string', 
+    cpEngName2: {
+      type: "string"
     },
 
-    coachName: { 
-      type:'string', 
-    },
-    
-    cContactNo: { 
-      type:'string', 
+    gender2: {
+      type: "string"
     },
 
-    organName: { 
-      type:'string', 
+    birthday2: {
+      type: "ref",
+      columnType: "date"
     },
 
-    receiptHeader: { 
-      type:'string', 
+    idNo2: {
+      type: 'string',
     },
 
-    receiptName: { 
-      type:'string', 
+    contactNo2: {
+      type: 'string',
     },
 
-    parentName: { 
-      type:'string', 
+    email2: {
+      type: 'string',
     },
 
-    date: {
-      type: 'ref',
-      columnType: 'date'
+    address2: {
+      type: 'string',
     },
+
+    //Applicant 3
+    cpChiName3: {
+      type: "string"
+    },
+
+    cpEngName3: {
+      type: "string"
+    },
+
+    gender3: {
+      type: "string"
+    },
+
+    birthday3: {
+      type: "ref",
+      columnType: "date"
+    },
+
+    idNo3: {
+      type: 'string',
+    },
+
+    contactNo3: {
+      type: 'string',
+    },
+
+    email3: {
+      type: 'string',
+    },
+
+    address3: {
+      type: 'string',
+    },
+
+    //coach
+    coachName: {
+      type: 'string',
+    },
+
+    cContactNo: {
+      type: 'string',
+    },
+
+    organName: {
+      type: 'string',
+    },
+
+    receiptHeader: {
+      type: 'string',
+    },
+
+    receiptName: {
+      type: 'string',
+    },
+
+    //declaration
+    parentName1: {
+      type: 'string',
+    },
+
+    parentName2: {
+      type: 'string',
+    },
+
+    parentName3: {
+      type: 'string',
+    },
+
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

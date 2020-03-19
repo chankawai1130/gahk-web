@@ -32,10 +32,10 @@
 
         <div class="row mx-sm-2">
             <div class="form-group col-12">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Activity/Competition
-                    活動/比賽</label>
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
                 <select class="form-control" id="competition" name="competition" onchange="compSelected(this.value);">
-                    <option value="">請選擇活動/比賽 Select Activity/Competition</option>
+                    <option value="">請選擇申請項目 Select Application Project</option>
+                    <option value="competition" disabled>---Activity/Competition 活動/比賽---</option>
                     <option value="acroage">2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</option>
                     <option value="gfa">2020年香港普及體操節 GFAFestival2020</option>
                     <option value="trampoline">2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</option>
@@ -43,15 +43,13 @@
                     <option value="TSRGA">2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</option>
                     <option value="GRGP">2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</option>
                     <option value="GRGS">2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</option>
+                    <option value="other" disabled>---Membership 會員---</option>
+                    <option value="clubMem">團體註冊申請 Application for Club Membership</option>
                 </select>
             </div>
 
-            <div class="form-group col-12" id="acrEvent"></div>
-
-            <div class="form-group col-12">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Category 組別</label>
-                <select class="form-control" id="category" name="category" disabled></select>
-            </div>
+            <div class="form-group col-12" id="extraEvent"></div>
+            <div class="form-group col-12" id="extraCat"></div>
 
             <div class="form-group col-12 col-sm-6">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">Payment Status 付款狀況</label>
@@ -81,7 +79,7 @@
         </div>
 
 
-        
+
         <br><br>
         <table>
             <tr id="subjects">
@@ -119,7 +117,7 @@
     var grgCategory = ["集體A組(五人圈操)", "集體B組(五人圈操)", "集體C組(三球兩帶)"];
 
     function compSelected(compValue) {
-        var event = document.getElementById("acrEvent");
+        var event = document.getElementById("extraEvent");
 
         if (compValue == "acroage") {
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">項目 Event</label>"
@@ -142,54 +140,58 @@
 
 
         //Category
-        var gpSelect = document.getElementById("category");
-        gpSelect.options.length = 0;
+        var appSelect = document.getElementById("extraCat");
 
-        if (compValue == "acroage") {
-            acrCategory.forEach(function (item) {
-                var option = document.createElement("option");
-                option.text = item;
-                option.value = item;
-                gpSelect.add(option);
-            });
+        if (compValue == "clubMem" || compValue == "") {
+            appSelect.innerHTML = "";
+        } else {
+            appSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">Category 組別</label>"
+                + "<select class=\"form-control\" id=\"category\" name=\"category\"></select>"
 
-            gpSelect.disabled = false;
-        } else if (compValue == "gfa") {
-            gfaCategory.forEach(function (item) {
-                var option = document.createElement("option");
-                option.text = item;
-                option.value = item;
-                gpSelect.add(option);
-            });
+            var gpSelect = document.getElementById("category");
 
-            gpSelect.disabled = false;
-        } else if (compValue == "trampoline") {
-            traCategory.forEach(function (item) {
-                var option = document.createElement("option");
-                option.text = item;
-                option.value = item;
-                gpSelect.add(option);
-            });
+            gpSelect.options.length = 0;
 
-            gpSelect.disabled = false;
-        } else if (compValue == "TRGA" || compValue == "TSRGA") {
-            trgaCategory.forEach(function (item) {
-                var option = document.createElement("option");
-                option.text = item;
-                option.value = item;
-                gpSelect.add(option);
-            });
+            if (compValue == "acroage") {
+                acrCategory.forEach(function (item) {
+                    var option = document.createElement("option");
+                    option.text = item;
+                    option.value = item;
+                    gpSelect.add(option);
+                });
 
-            gpSelect.disabled = false;
-        } else if (compValue == "GRGP" || compValue == "GRGS") {
-            grgCategory.forEach(function (item) {
-                var option = document.createElement("option");
-                option.text = item;
-                option.value = item;
-                gpSelect.add(option);
-            });
+            } else if (compValue == "gfa") {
+                gfaCategory.forEach(function (item) {
+                    var option = document.createElement("option");
+                    option.text = item;
+                    option.value = item;
+                    gpSelect.add(option);
+                });
 
-            gpSelect.disabled = false;
+            } else if (compValue == "trampoline") {
+                traCategory.forEach(function (item) {
+                    var option = document.createElement("option");
+                    option.text = item;
+                    option.value = item;
+                    gpSelect.add(option);
+                });
+
+            } else if (compValue == "TRGA" || compValue == "TSRGA") {
+                trgaCategory.forEach(function (item) {
+                    var option = document.createElement("option");
+                    option.text = item;
+                    option.value = item;
+                    gpSelect.add(option);
+                });
+
+            } else if (compValue == "GRGP" || compValue == "GRGS") {
+                grgCategory.forEach(function (item) {
+                    var option = document.createElement("option");
+                    option.text = item;
+                    option.value = item;
+                    gpSelect.add(option);
+                });
+            }
         }
     }
 </script>

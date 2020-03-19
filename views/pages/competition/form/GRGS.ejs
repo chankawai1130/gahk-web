@@ -1,3 +1,10 @@
+<style type="text/css">
+    .card {
+        border-radius: 0;
+    }
+</style>
+
+
 <form action="/competition/form/GRGS" method="POST" id=GRGS_form>
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -11,11 +18,23 @@
 
 
         <div class="col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
-                Details</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
+                Rules and Regulation</h5>
+        </div>
+
+        <div class="col-12">
+            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf"
+                style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
+                </u></a>
         </div>
 
 
+
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
+                Details</h5>
+        </div>
 
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
@@ -54,12 +73,6 @@
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
-
-        <style type="text/css">
-            .card {
-                border-radius: 0;
-            }
-        </style>
         
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
@@ -290,12 +303,8 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料
-
-                Team Leader Details</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料 Team Leader Details</h5>
         </div>
-
-
 
         <div class="col-12 col-sm-6">
             <label>隊伍負責人姓名 Leader's Name:</label>
@@ -313,8 +322,6 @@
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
         </div>
-
-
 
         <div class="col-12 form-group">
             <label>集體項目 Collective Subject: $150 X </label>
@@ -346,50 +353,17 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載 
-                Documents Upload</h5>
-
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明 Declaration</h5>
         </div>
 
+        <div class="col-12">
+            <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a href="/formDoc/GRGS_declaration.pdf" download
+                    style="color:#83a70c"><u>declaration.pdf</u></a>,then sign and upload it</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required/>
+            <div id="HF2preview0"></div>
+            <div id="HF2preview1"></div>
+        </div>
 
-        <ol>
-            <li>
-                <div class="col-12">
-                    <label>請附上<u><b>每位</b></u>參加者的身份證副本 Please upload the ID copies of <u><b>ALL</b></u>
-                        applicants</label>
-                    <br>
-                    <input type="file" accept="image/*" onchange="handleFile(this.files)" multiple required />
-                    <br>
-                    <div id="preview0" style="float: left;"></div>
-                    <div id="preview1" style="float: left;"></div>
-                    <div id="preview2" style="float: left;"></div>
-                    <div id="preview3" style="float: left;"></div>
-                    <div id="preview4" style="float: left;"></div>
-                    <div id="preview5" style="float: left;"></div>
-                </div>
-                <br>
-            </li>
-            <li>
-                <div class="col-12">
-                    <label>請附上含有隊伍負責人簽署及學校蓋章之文件 Please sumbit doucments with leader's signature and school
-                        stamp</label>
-                    <br>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" multiple required/>
-                    <br>
-                    <div id="HF2preview0" style="float: left;"></div>
-                    <div id="HF2preview1" style="float: left;"></div>
-                </div>
-                <br>
-            </li>
-            <li>
-                <div class="col-12">
-                    <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a href="/formDoc/GRGS_declaration.pdf" download
-                            style="color:#83a70c"><u>declaration.pdf</u></a>,then sign and upload it</label>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files)" required/>
-                    <div id="HF3preview"></div>
-                </div>
-            </li>
-        </ol>
 
 
         <div class="col-12">
@@ -400,6 +374,7 @@
                 understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
                 participants</label>
         </div>
+
 
 
         <div class="col-12">

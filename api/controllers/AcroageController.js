@@ -20,17 +20,18 @@ module.exports = {
     //     return res.ok("Successfully submitted!");
     // },
 
+    //(preview)
     acroage: async function (req, res) {
 
         if (req.method == 'GET') { return res.view('competition/form/acroage'); }
 
         req.session.data = req.body.Acroage;
 
-        return res.view('pages/competition/form/acroage', { 'data': req.session.data || {} });
+        return res.view('pages/competition/form/acroage_preview', { 'data': req.session.data || {} });
     },
 
     //action - create
-    acroage: async function (req, res) {
+    acroage_preview: async function (req, res) {
 
         if (req.method == 'POST') {
             await Acroage.create(req.session.data);

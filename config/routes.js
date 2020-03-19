@@ -70,7 +70,7 @@ module.exports.routes = {
 
   '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
 
-  '/competition/form/gfa': { view: 'pages/competition/form/gfa' },
+  '/competition/form/GFA': { view: 'pages/competition/form/GFA' },
 
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
   '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
@@ -160,7 +160,9 @@ module.exports.routes = {
   'GET /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
   'POST /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
 
-  //'POST /competition/form/gfa': 'ApplicationController.gfa',
+  'POST /competition/form/GFA': 'GFAController.GFA_form',
+  'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
+  'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
 
   'POST /competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
   'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
@@ -179,6 +181,11 @@ module.exports.routes = {
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
+
+  //'GET /competition/form/acroage': 'AcroageController.acroage',
+  'POST /competition/form/acroage': 'AcroageController.acroage',
+  'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
+  'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
 
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
 

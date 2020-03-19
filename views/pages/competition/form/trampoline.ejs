@@ -8,8 +8,19 @@
             <br><br>
         </div>
 
+        <div class="col-12">
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
+                Rules and Regulation</h5>
+        </div>
 
         <div class="col-12">
+            <a href="/formDoc/TRAagegroup2020.pdf" style="text-align: center;"><u>2020年香港彈網分齡賽章程 Prospectus of
+                TrampolineAgeGroupCompetition</u></a>
+        </div>
+
+
+        <div class="col-12">
+            <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
                 Details</h5>
         </div>
@@ -123,12 +134,7 @@
             <span>請填妥<a href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;"
                     download>比賽動作卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
                     href="/formDoc/trampoline_comp.card.pdf" style="color: #83a70c;" download>competition
-                    action card</a> and submit it
-                along with cheque by post or in person
-
-
-
-
+                    action card</a> and submit it along with cheque by post or in person
             </span>
 
             <br>
@@ -172,17 +178,35 @@
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
                 Declaration</h5>
+            <span><b>*如申請人未滿十八歲，請由家長或監護人填寫</b></span>
+
         </div>
 
         <div class="col-12">
-
-            <label>*請下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+            <br>
+            <label>請<u>每名申請人</u>下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
+                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print the <a
                     href="/formDoc/trampoline_declaration.pdf" download
                     style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
 
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+            <!-- <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
+            <div id="preview"></div> -->
+        </div>
 
+        <div class="col-12">
+            <br>
+            <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
+            <input type="text" class="form-group" name="Trampoline[parentName1]" required>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" required />
+            <div id="preview1"></div>
+        </div>
+
+        <div class="col-12">
+            <br>
+            <label>參加者(2)家長姓名 Applicant(1)'s Parent Name: </label>
+            <input type="text" class="form-group" name="Trampoline[parentName2]" required>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,2)" required />
+            <div id="preview2"></div>
         </div>
 
         <div class="col-12">
@@ -199,8 +223,8 @@
 
         <div class="col-12">
             <br><br>
-            <button type="submit" class="btn btn-primary"
-                style="background: #83a70c; border: none; float: right;">預覽 Preview
+            <button type="submit" class="btn btn-primary" style="background: #83a70c; border: none; float: right;">預覽
+                Preview
                 >></button>
         </div>
     </div>
@@ -221,7 +245,7 @@
 
 <script>
 
-    var start = 1900;
+    var start = 1950;
     var end = new Date().getFullYear();
     var options = "<option disabled selected>" + " " + "</option>";
     for (var year = start; year <= end; year++) {
@@ -233,7 +257,8 @@
 </script>
 
 <script>
-    function handleFile(files) {
+    //handle multi declaration upload (img/pdf) (id="preview+p") **未改**
+    function handleFile(files) { 
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
         var preview = document.getElementById('preview');
@@ -247,7 +272,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[VBRC]';
+                input.name = 'Trampoline[declaration]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -258,7 +283,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[VBRC]';
+                input.name = 'Trampoline[declaration]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }

@@ -88,6 +88,14 @@ module.exports = {
       type: "number"
     },
 
+    parentName1: {
+      type: 'string',
+    },
+
+    parentName2: {
+      type: 'string',
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
