@@ -93,7 +93,16 @@ module.exports = {
       var models = await TSRGCompetition.find({
         where: condition
       });
+    } else if(req.query.application == "clubMem") {
+      form = req.query.application;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      var models = await ClubMember.find({
+        where: condition
+      });
+
     }
+
     return res.view('admin/applyHandle/search', { applications: models, form });
 
 

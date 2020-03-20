@@ -1,7 +1,7 @@
 /**
- * Person.js
+ * ClubMember.js
  *
- * @description :: A model definition represents a coachbase table/collection.
+ * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
@@ -13,81 +13,94 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    check:{
-      type: 'string'
+    //clubMemberForm attribute
+    OrgEngName: {
+      type: 'string',
     },
 
-
-    comfirm_member:{
-      type: 'string'
+    OrgChiName: {
+      type: 'string',
     },
 
-    // upload attributes
-    avatar: {
-      type: 'string'
+    AppEngName: {
+      type: 'string',
     },
 
-
-    parentletter: {
-      type: 'string'
+    AppChiName: {
+      type: 'string',
     },
 
-
-
-
-    // chinese , english membership form attribute
-
-    Application: {
-      type: 'string', //true=new member, false= renewal
-
+    clubAddr: {
+      type: 'string',
     },
+
+    clubTel: {
+      type: 'string',
+    },
+
+    clubFax: {
+      type: 'string',
+    },
+
+    clubEmail: {
+      type: 'string',
+    },
+
+    clubWeb: {
+      type: 'string',
+    },
+
     MemberNo: {
       type: 'number',
-      autoIncrement:true
-
     },
 
-    RenewalMemberNo:{
-      type:'string',
+    brefDes: {
+      type: 'string'
     },
 
-
-    ChiName: {
-      type: 'string',
-
-    },
-    EngName: {
-      type: 'string',
-
-    },
-
-
-    Date: {
-      type: 'ref',
-      columnType: 'date'
-
-    },
-    CorrespondenceChi: {
-      type: 'string',
-
-    },
-
-    Mobile: {
-      type: 'string',
-
-    },
-    Hnumber: {
-      type: 'string',
-
-    },
-
-    Email: {
+    resEngName: {
       type: 'string',
     },
 
+    resChiName: {
+      type: 'string',
+    },
 
-    // },
+    position: {
+      type: 'string',
+    },
 
+    resAddr: {
+      type: 'string',
+    },
+
+    resTel: {
+      type: 'string',
+    },
+
+    resFax: {
+      type: 'string',
+    },
+
+    resEmail: {
+      type: 'string',
+    },
+
+    year: {
+      type: 'number',
+    },
+
+    clubFee: {
+      type: 'string',
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
+    },
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -99,13 +112,7 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    user: {
-      collection: 'User',
-      via: 'membership'
-    }
-
   },
-
 
 };
 
