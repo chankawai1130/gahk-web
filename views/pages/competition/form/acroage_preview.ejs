@@ -6,7 +6,7 @@
         <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
         <br>
         <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
-            2020年香港技巧體操公開賽</b></h1>
+                2020年香港技巧體操公開賽</b></h1>
         <br>
 
 
@@ -19,6 +19,7 @@
         </div>
 
         <div class="form-group">
+            <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
                 Details</label>
 
@@ -41,10 +42,12 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
                 <br>
-                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo1%>" style="max-width:20vw" height="150" width="150"/>
+                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo1%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
 
             <div class="form-group">
+                <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
                 <br>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName2%></b>
@@ -63,10 +66,13 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
                 <br>
-                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo2%>" style="max-width:20vw" height="150" width="150"/>
+                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo2%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
 
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
             <div class="form-group">
+                <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
                 <br>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b>
@@ -85,34 +91,48 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
                 <br>
-                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>" style="max-width:20vw" height="150" width="150"/>
+                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
-
+            <%}%>
         </div>
 
         <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
-            <br>
-            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
+        <br>
+        <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
+        <br>
+        <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
             <br>
             <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.cContactNo%></b>
             <br>
-            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span> <b><%= req.session.data.organName%></b>
+            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span>
+            <% if(req.session.data.organName == "") {%>
+            <b>N/A</b>
+            <%} else {%>
+            <b><%= req.session.data.organName%></b>
+            <%}%>
             <br>
-            <span>收據臺頭 Receipt header:</span> <b><%= req.session.data.receiptHeader%></b>
-            <span> --> </span> <b><%= req.session.data.receiptName%></b>
+            <span>收據臺頭 Receipt header:</span>
+            <% if(req.session.data.receiptHeader == "學校/機構名稱 School/Institution Name") {%>
+            <b><%= req.session.data.receiptHeader%></b><span> --> </span> <b><%= req.session.data.receiptName%></b>
+            <%} else {%>
+            <b><%= req.session.data.receiptHeader%></b>
+            <%}%>
         </div>
         <br>
 
         <div class="from-group">
+            <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聲明 Declaration</label>
             <br>
             <span>參加者(1)家長姓名 Applicant(1)'s Parent Name:</span> <b><%= req.session.data.parentName1%></b>
             <br>
             <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
             <br>
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
             <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
             <br>
+            <%}%>
         </div>
         <br>
 
