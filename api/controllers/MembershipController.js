@@ -402,28 +402,5 @@ module.exports = {
   },
 
 
-  //clubMembership Application - Apply process
-  // action - create
-  clubMemberForm: async function (req, res) {
-
-    if (req.method == 'GET') { return res.view('membership/clubMemberForm'); }
-
-    req.session.data = req.body.Membership;
-
-    return res.view('membership/clubMemberFormPreview', { 'data': req.session.data || {} });
-  },
-
-  clubMemberFormPreview: async function (req, res) {
-    if (req.method == 'POST') {
-      await Membership.create(req.session.data);
-
-      req.session.data = {};  //clear data of session
-
-      return res.redirect('/membership/clubMemberFormConfirm');
-    }
-
-  },
-
-
 
 };
