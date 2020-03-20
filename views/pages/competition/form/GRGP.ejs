@@ -432,9 +432,7 @@
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'GRGP[imgIDCard' + p + ']';
-            alert(p)
             input.value = e.target.result;
-            alert(input.value)
 
             img.style.width = "150px";
             img.style.height = "150px";
@@ -451,12 +449,10 @@
 
         var i = 0;
         while (i < files.length) {
-
             if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
 
             var reader = new FileReader();
             var p = 0;
-
             if (files[i].type.startsWith('image/')) {
                 reader.onload = function (e) {
                     var preview = document.getElementById('HF2preview' + p);
@@ -464,31 +460,24 @@
                     var img = document.createElement('img');
                     img.src = e.target.result;
                     preview.appendChild(img);
-
                     var input = document.createElement('input');
                     input.type = 'hidden';
-                    input.name = 'GRGP[document' + p + ']';
-                    alert(p)
+                    input.name = 'GRGP[declaration' + p + ']';
                     input.value = e.target.result;
-                    alert(input.value)
-
                     img.style.width = "150px";
                     img.style.height = "150px";
-                    document.getElementById('GRGP_form').appendChild(input);
-
+                    preview.appendChild(input);
                     p = p + 1;
                 }
             } else if (files[i].type == 'application/pdf') {
                 reader.onload = function (e) {
+                    var preview = document.getElementById('HF2preview' + p);
+                    preview.innerHTML = "";
                     var input = document.createElement('input');
                     input.type = 'hidden';
-                    input.name = 'GRGP[document' + p + ']';
-                    alert(p)
+                    input.name = 'GRGP[declaration' + p + ']';
                     input.value = e.target.result;
-                    alert(input.value)
-
-                    document.getElementById('GRGP_form').appendChild(input);
-
+                    preview.appendChild(input);
                     p = p + 1;
                 }
             }
