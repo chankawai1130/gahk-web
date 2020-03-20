@@ -70,6 +70,7 @@
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
             <div class="form-group">
                 <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
@@ -93,24 +94,29 @@
                 <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
-
+            <%}%>
         </div>
 
         <div class="from-group">
-            <br>
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
-            <br>
-            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
+        <br>
+        <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
+        <br>
+        <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
             <br>
             <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.cContactNo%></b>
             <br>
-            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span> <b><%= req.session.data.organName%></b>
+            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span>
+            <% if(req.session.data.organName == "") {%>
+            <b>N/A</b>
+            <%} else {%>
+            <b><%= req.session.data.organName%></b>
+            <%}%>
             <br>
             <span>收據臺頭 Receipt header:</span>
             <% if(req.session.data.receiptHeader == "學校/機構名稱 School/Institution Name") {%>
             <b><%= req.session.data.receiptHeader%></b><span> --> </span> <b><%= req.session.data.receiptName%></b>
             <%} else {%>
-                <b><%= req.session.data.receiptHeader%></b>
+            <b><%= req.session.data.receiptHeader%></b>
             <%}%>
         </div>
         <br>
@@ -123,8 +129,10 @@
             <br>
             <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
             <br>
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
             <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
             <br>
+            <%}%>
         </div>
         <br>
 
