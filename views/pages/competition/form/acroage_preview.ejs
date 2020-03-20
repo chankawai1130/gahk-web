@@ -68,22 +68,31 @@
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
             <div class="form-group">
-                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
-                    <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label><br>
-                    <h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br>
-                    <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b><br>
-                    <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b><br>
-                    <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b><br>"
-                    <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b><br>
-                    <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b><br>
-                    <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b><br>
-                    <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b><br>
-                    <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b><br>
-                    <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>" style="max-width:20vw" height="150" width="150"/>
-
-                <% } %>
+                <br>
+                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
+                <br>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b>
+                <br>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b>
+                <br>
+                <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b>
+                <br>
+                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b>
+                <br>
+                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b>
+                <br>
+                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b>
+                <br>
+                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b>
+                <br>
+                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
+                <br>
+                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
+            <%}%>
 
         </div>
 
@@ -108,16 +117,10 @@
             <br>
             <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
             <br>
-            <span>
-                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
-                    參加者(3)家長姓名 Applicant(3)'s Parent Name:
-                <% } %>
-            </span> 
-            <b>
-                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
-                    <%= req.session.data.parentName3%>
-                <% } %>
-            </b>
+            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
+            <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
+            <br>
+            <%}%>
             <br>
         </div>
         <br>
