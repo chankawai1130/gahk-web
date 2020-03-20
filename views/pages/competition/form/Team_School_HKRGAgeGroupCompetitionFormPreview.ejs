@@ -9,13 +9,25 @@
                 2020年全港藝術體操分齡比賽</b></h1>
         <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
             <u>團體項目報名表(學校組)</u></h2>
-        <br>
+        <br><br>
+
+        <div class="col-12">
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
+                Rules and Regulation</h5>
+        </div>
+
+        <div class="col-12">
+            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf"
+                style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
+                </u></a>
+        </div>
 
 
         <div class="form-group">
+            <br><br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group Details</label>
             <br>
-            <span>學校名稱(中文)<br>School Name(Chinese):</span> <b><%= req.session.data.SchoolChiName%></b>
+            <span>學校名稱(中文)<br>School Name(Chinese):</span> <b><%= req.session.data.teamName%></b>
             <br>
             <span>聯絡電話 Contact Number:</span> <b><%= req.session.data.Phone%></b>
             <br>
@@ -25,7 +37,7 @@
             <br>
             <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.CoachPhone%></b>
             <br>
-            <sapn>組別 Category:</sapn> <b><%= req.session.data.Category%></b>
+            <sapn>組別 Category:</sapn> <b><%= req.session.data.category%></b>
         </div>
 
         <div class="form-group">
@@ -92,6 +104,7 @@
         </div>
 
         <div class="from-group">
+            <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">學校負責人資料 School's leader detail</label>
             <br>
             <span>學校負責人姓名 Leader's Name:</span> <b><%= req.session.data.leaderName%></b>

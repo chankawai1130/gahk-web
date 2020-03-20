@@ -14,7 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
     //Team_School_HKRGAgeGroupCompetitionform attributes
-    SchoolChiName: {
+    teamName: {
       type: 'string',
     },
 
@@ -34,7 +34,7 @@ module.exports = {
       type: 'string',
     },
 
-    Category: { 
+    category: { 
       type:'string', 
     },
 
@@ -124,6 +124,14 @@ module.exports = {
 
     leaderPosition: {
       type: "string"
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
     },
 
 

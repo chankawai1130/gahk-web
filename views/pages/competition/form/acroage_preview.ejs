@@ -19,6 +19,7 @@
         </div>
 
         <div class="form-group">
+            <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
                 Details</label>
 
@@ -46,6 +47,7 @@
             </div>
 
             <div class="form-group">
+                <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
                 <br>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName2%></b>
@@ -96,20 +98,31 @@
         </div>
 
         <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
-            <br>
-            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
+        <br>
+        <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
+        <br>
+        <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
             <br>
             <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.cContactNo%></b>
             <br>
-            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span> <b><%= req.session.data.organName%></b>
+            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span>
+            <% if(req.session.data.organName == "") {%>
+            <b>N/A</b>
+            <%} else {%>
+            <b><%= req.session.data.organName%></b>
+            <%}%>
             <br>
-            <span>收據臺頭 Receipt header:</span> <b><%= req.session.data.receiptHeader%></b>
-            <span> --> </span> <b><%= req.session.data.receiptName%></b>
+            <span>收據臺頭 Receipt header:</span>
+            <% if(req.session.data.receiptHeader == "學校/機構名稱 School/Institution Name") {%>
+            <b><%= req.session.data.receiptHeader%></b><span> --> </span> <b><%= req.session.data.receiptName%></b>
+            <%} else {%>
+            <b><%= req.session.data.receiptHeader%></b>
+            <%}%>
         </div>
         <br>
 
         <div class="from-group">
+            <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聲明 Declaration</label>
             <br>
             <span>參加者(1)家長姓名 Applicant(1)'s Parent Name:</span> <b><%= req.session.data.parentName1%></b>
