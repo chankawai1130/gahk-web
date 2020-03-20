@@ -6,16 +6,16 @@
         <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
         <br>
         <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
-            2020年香港技巧體操公開賽</b></h1>
+                2020年香港技巧體操公開賽</b></h1>
         <br>
 
 
         <div class="form-group">
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">組別資料 Category Details</label>
             <br>
-            <sapn>組別 Category:</sapn> <b><%= req.session.data.levelCategory%></b>
+            <span>組別 Category:</span> <b><%= req.session.data.levelCategory%></b>
             <br>
-            <sapn>項目 Item:</sapn> <b><%= req.session.data.itemCategory%></b>
+            <span>項目 Item:</span> <b><%= req.session.data.itemCategory%></b>
         </div>
 
         <div class="form-group">
@@ -41,7 +41,8 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
                 <br>
-                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo1%>" style="max-width:20vw" height="150" width="150"/>
+                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo1%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
 
             <div class="form-group">
@@ -63,29 +64,25 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
                 <br>
-                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo2%>" style="max-width:20vw" height="150" width="150"/>
+                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo2%>"
+                    style="max-width:20vw" height="150" width="150" />
             </div>
 
             <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b>
-                <br>
-                <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b>
-                <br>
-                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b>
-                <br>
-                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b>
-                <br>
-                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
-                <br>
-                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>" style="max-width:20vw" height="150" width="150"/>
+                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
+                    <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label><br>
+                    <h6>[適用項目：女子三人 Applicable items：Women's trio]</h6><br>
+                    <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b><br>
+                    <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b><br>
+                    <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b><br>"
+                    <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b><br>
+                    <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b><br>
+                    <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b><br>
+                    <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b><br>
+                    <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b><br>
+                    <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>" style="max-width:20vw" height="150" width="150"/>
+
+                <% } %>
             </div>
 
         </div>
@@ -111,7 +108,16 @@
             <br>
             <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
             <br>
-            <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
+            <span>
+                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
+                    參加者(3)家長姓名 Applicant(3)'s Parent Name:
+                <% } %>
+            </span> 
+            <b>
+                <% if (req.session.data.itemCategory == "女子三人 Women's trio") { %>
+                    <%= req.session.data.parentName3%>
+                <% } %>
+            </b>
             <br>
         </div>
         <br>
@@ -144,5 +150,4 @@
     function message() {
         alert("提交成功!! Successfully Submitted!");
     }
-
 </script>
