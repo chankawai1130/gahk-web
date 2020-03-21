@@ -35,7 +35,6 @@ module.exports = {
 
     ID1: {
       type: "string",
-      required: true,
     },
 
     birth1: {
@@ -52,7 +51,6 @@ module.exports = {
 
     ID2: {
       type: "string",
-      required: true,
     },
 
     birth2: {
@@ -69,7 +67,6 @@ module.exports = {
 
     ID3: {
       type: "string",
-      required: true,
     },
 
     birth3: {
@@ -86,7 +83,6 @@ module.exports = {
 
     ID4: {
       type: "string",
-      required: true,
     },
 
     birth4: {
@@ -103,7 +99,6 @@ module.exports = {
 
     ID5: {
       type: "string",
-      required: true,
     },
 
     birth5: {
@@ -120,7 +115,6 @@ module.exports = {
 
     ID6: {
       type: "string",
-      required: true,
     },
 
     birth6: {
@@ -163,8 +157,12 @@ module.exports = {
       type: "number"
     },
 
-    confirm: {
-      type: "string"
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

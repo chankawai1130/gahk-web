@@ -34,6 +34,9 @@ module.exports = {
     acroage_preview: async function (req, res) {
 
         if (req.method == 'POST') {
+
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
             await Acroage.create(req.session.data);
 
             req.session.data = {};  //clear data of session
