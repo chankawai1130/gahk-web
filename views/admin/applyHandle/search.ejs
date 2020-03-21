@@ -86,6 +86,7 @@
 
             <%if (applications){%>
             <span>搜尋申請項目 Searching Application Project: </span><br>
+
             <% if (form == "TRGA"){%>
             <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
             <%} else if (form == "TSRGA"){%>
@@ -102,48 +103,63 @@
             <b>2020年香港普及體操節 GFAFestival2020</b>
             <%} else if (form == "acroage"){%>
             <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
-            <%} %>
+            <%} else if (form == "clubMem") {%>
+            <b>團體註冊申請 Application for Club Membership</b>
+            <%}%>
 
             <br><br>
 
             <tr id="subjects">
                 <% if (form != "trampoline" && form != "acroage"){ %>
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <% }else if (form == "trampoline"){ %>
-                <th>性別<br>Gender</th>
-                <% }else if (form == "acroage"){ %>
-                <th>項目<br>Event</th>
-                <%}%>
-                <th>組別<br>Category</th>
-                <th>付款<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
+            <th>隊伍/團體<br>Team/Organisation</th>
+            <% }else if (form == "trampoline"){ %>
+            <th>性別<br>Gender</th>
+            <% }else if (form == "acroage"){ %>
+            <th>項目<br>Event</th>
+            <%} if (form != "clubMem") {%>
+            <th>組別<br>Category</th>
+            <% } %>
+            <th>付款<br>Payment</th>
+            <th>提交日期<br>Apply Date</th>
+            <th>狀態<br>Status</th>
             </tr>
 
             <% applications.forEach( function(models) { %>
             <% var n = new Date(models.createdAt);
                 var month = n.getMonth() + 1;
                 var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
+
             <tr>
                 <% if (form != "trampoline" && form != "acroage"){ %>
                 <td width="25%" height="100"><%= models.teamName %></td>
                 <% }else if (form == "trampoline"){ %>
                 <td width="25%"><%= models.gender %></td>
                 <% }else if (form == "acroage"){ %>
-                    <td width="25%"><%= models.item %></td>
-                <%}%>
+                <td width="25%"><%= models.item %></td>
+                <%} if (form != "clubMem"){%>
                 <td width="25%"><%= models.category %></td>
-                <td width="10%"><%= models.payStatus %></td>
+                <%} if(models.payStatus == "paid") {%>
+                <td width="10%">Y</td>
+                <%} else if (models.payStatus == "unpaid"){%>
+                <td width="10%">N</td>
+                <%}%>
                 <td width="10%"><%= applyDate %></td>
+
+                <!-- button  -->
                 <td width="30%" id="btns">
-                    <a class="btn btn-primary" href="">確定</a>
+
+                    <%if (models.formStatus == "ToBeCon") {%>
+                    <a class="btn btn-primary" href="">確認</a>
+                    <%} else if (models.formStatus == "accepted"){%>
+                    <button type="button" class="btn btn-outline-primary" disabled>已確認</button>
+                    <%}%>
+
                     <a class="btn btn-success" href="">編輯</a>
                     <a class="btn btn-danger" href="">取消</a>
                 </td>
             </tr>
-
             <%});%>
-            <%} %>
+                    <%} %>
         </table>
         <br>
     </form>
@@ -190,10 +206,9 @@
             appSelect.innerHTML = "";
         } else {
             appSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">Category 組別</label>"
-                + "<select class=\"form-control\" id=\"category\" name=\"category\"></select>"
+                + "<select class=\"form-control\" id=\"category\" name=\"category\"></select>";
 
             var gpSelect = document.getElementById("category");
-
             gpSelect.options.length = 0;
 
             if (compValue == "acroage") {

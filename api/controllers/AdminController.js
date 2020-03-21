@@ -91,7 +91,8 @@ module.exports = {
       var models = await TSRGCompetition.find({
         where: condition
       });
-    } else if (req.query.application == "GRGS"){
+
+    } else if (req.query.application == "GRGS") {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
@@ -99,7 +100,7 @@ module.exports = {
       var models = await GRGS.find({
         where: condition
       });
-    }else if (req.query.application == "GRGP"){
+    } else if (req.query.application == "GRGP") {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
@@ -107,7 +108,7 @@ module.exports = {
       var models = await GRGP.find({
         where: condition
       });
-    }else if (req.query.application == "trampoline"){
+    } else if (req.query.application == "trampoline") {
       if (req.query.gender) condition.gender = req.query.gender;
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
@@ -116,7 +117,7 @@ module.exports = {
       var models = await Trampoline.find({
         where: condition
       });
-    }else if (req.query.application == "gfa"){
+    } else if (req.query.application == "gfa") {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
@@ -124,7 +125,7 @@ module.exports = {
       var models = await GFA.find({
         where: condition
       });
-    }else if (req.query.application == "acroage"){
+    } else if (req.query.application == "acroage") {
       if (req.query.item) condition.item = req.query.item;
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
@@ -133,8 +134,15 @@ module.exports = {
       var models = await Acroage.find({
         where: condition
       });
-    }
 
+    } else if (req.query.application == "clubMem") {
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      var models = await ClubMember.find({
+        where: condition
+      });
+
+    }
 
     return res.view('admin/applyHandle/search', { applications: models, form });
 
