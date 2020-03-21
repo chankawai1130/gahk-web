@@ -69,10 +69,46 @@ module.exports = {
   //applyHandle
   apply_search: async function (req, res) {
 
-    if (req.method == "GET")
-      return res.view('admin/applyHandle/search')
+    // if (req.method == "GET")
+    //   return res.view('admin/applyHandle/search');
 
-  }
+    var condition = {};
+    var form;
+
+    if (req.query.application == "TRGA") {
+      form = req.query.application;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await TRGCompetition.find({
+        where: condition
+      });
+    } else if (req.query.application == "TSRGA") {
+      form = req.query.application;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await TSRGCompetition.find({
+        where: condition
+      });
+    } else if(req.query.application == "clubMem") {
+      form = req.query.application;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      var models = await ClubMember.find({
+        where: condition
+      });
+
+    }
+
+    return res.view('admin/applyHandle/search', { applications: models, form });
+
+
+  },
+
+
 
 };
 

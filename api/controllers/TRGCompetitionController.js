@@ -22,6 +22,8 @@ module.exports = {
     Team_HKRGAgeGroupCompetitionFormPreview: async function (req, res) {
 
         if (req.method == 'POST') {
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon"; 
             await TRGCompetition.create(req.session.data);
 
             req.session.data = {};  //clear data of session

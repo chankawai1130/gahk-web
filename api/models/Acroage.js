@@ -55,6 +55,7 @@ module.exports = {
       type: 'string',
     },
 
+
     //Applicant 2
     cpChiName2: {
       type: "string"

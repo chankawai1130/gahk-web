@@ -173,10 +173,10 @@ module.exports.routes = {
   'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
   'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
 
-  'GET /membership/clubMemberForm': 'MembershipController.clubMemberForm',
-  'POST /membership/clubMemberForm': 'MembershipController.clubMemberForm',
-  'GET /membership/clubMemberFormPreview': 'MembershipController.clubMemberFormPreview',
-  'POST /membership/clubMemberFormPreview': 'MembershipController.clubMemberFormPreview',
+  'GET /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
+  'POST /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
+  'GET /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
+  'POST /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
 
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',

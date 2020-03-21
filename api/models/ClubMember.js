@@ -1,5 +1,5 @@
 /**
- * TSRGCompetition.js
+ * ClubMember.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,117 +13,85 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    //Team_School_HKRGAgeGroupCompetitionform attributes
-    teamName: {
+    //clubMemberForm attribute
+    OrgEngName: {
       type: 'string',
     },
 
-    Phone: {
+    OrgChiName: {
       type: 'string',
     },
 
-    Email: {
+    AppEngName: {
       type: 'string',
     },
 
-    CoachName: {
+    AppChiName: {
       type: 'string',
     },
 
-    CoachPhone: {
+    clubAddr: {
       type: 'string',
     },
 
-    category: { 
-      type:'string', 
-    },
-
-    Mate1ChiName: {
+    clubTel: {
       type: 'string',
     },
 
-    Mate1EngName: {
+    clubFax: {
       type: 'string',
     },
 
-    Mate1IDNo: {
+    clubEmail: {
       type: 'string',
     },
 
-    Mate1Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate2ChiName: {
+    clubWeb: {
       type: 'string',
     },
 
-    Mate2EngName: {
-      type: 'string',
-    },
-
-    Mate2IDNo: {
-      type: 'string',
-    },
-
-    Mate2Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate3ChiName: {
-      type: 'string',
-    },
-
-    Mate3EngName: {
-      type: 'string',
-    },
-
-    Mate3IDNo: {
-      type: 'string',
-    },
-
-    Mate3Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    Mate4ChiName: {
-      type: 'string',
-    },
-
-    Mate4EngName: {
-      type: 'string',
-    },
-
-    Mate4IDNo: {
-      type: 'string',
-    },
-
-    Mate4Date: {
-      type: 'ref',
-      columnType: 'date'
-    },
-
-    TeamNumber: {
+    MemberNo: {
       type: 'number',
     },
 
-    TeamPrice: {
+    brefDes: {
+      type: 'string'
+    },
+
+    resEngName: {
+      type: 'string',
+    },
+
+    resChiName: {
+      type: 'string',
+    },
+
+    position: {
+      type: 'string',
+    },
+
+    resAddr: {
+      type: 'string',
+    },
+
+    resTel: {
+      type: 'string',
+    },
+
+    resFax: {
+      type: 'string',
+    },
+
+    resEmail: {
+      type: 'string',
+    },
+
+    year: {
       type: 'number',
     },
 
-    TeamTotalPrice: {
-      type: 'number',
-    },
-
-    leaderName: {
-      type: "string"
-    },
-
-    leaderPosition: {
-      type: "string"
+    clubFee: {
+      type: 'string',
     },
 
     payStatus: {
