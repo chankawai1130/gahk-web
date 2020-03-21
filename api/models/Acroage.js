@@ -13,11 +13,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    levelCategory: {
+    category: {
       type: 'string',
     },
 
-    itemCategory: {
+    item: {
       type: 'string',
     },
 
