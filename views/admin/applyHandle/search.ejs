@@ -87,8 +87,6 @@
             <%if (applications){%>
             <span>搜尋申請項目 Searching Application Project: </span><br>
 
-            <% if(form == "TRGA" || form == "TSRGA" || form == "gfa" || form == "GRGP" || form == "GRGS"){%>
-            <!-- search result for TRGA/TSRGA/GFA/GRGP/GRGS -->
             <% if (form == "TRGA"){%>
             <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
             <%} else if (form == "TSRGA"){%>
@@ -99,38 +97,60 @@
             <b>2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</b>
             <%} else if (form == "GRGS"){%>
             <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
+            <%} else if (form == "trampoline"){%>
+            <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
+            <%} else if (form == "gfa"){%>
+            <b>2020年香港普及體操節 GFAFestival2020</b>
+            <%} else if (form == "acroage"){%>
+            <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
+            <%} else if (form == "clubMem") {%>
+            <b>團體註冊申請 Application for Club Membership</b>
             <%}%>
 
             <br><br>
 
             <tr id="subjects">
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <th>組別<br>Category</th>
-                <th>付款<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
+                <% if (form != "acroage"){ %>
+            <th>隊伍/團體<br>Team/Organisation</th>
+            <% } if (form == "trampoline"){ %>
+            <th>性別<br>Gender</th>
+            <% } if (form == "acroage"){ %>
+            <th>項目<br>Event</th>
+            <%} if (form != "clubMem") {%>
+            <th>組別<br>Category</th>
+            <% } %>
+            <th>付款<br>Payment</th>
+            <th>提交日期<br>Apply Date</th>
+            <th>狀態<br>Status</th>
             </tr>
 
-            <% applications.forEach( function(model) { %>
-            <% var n = new Date(model.createdAt);
+            <% applications.forEach( function(models) { %>
+            <% var n = new Date(models.createdAt);
                 var month = n.getMonth() + 1;
                 var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-            <tr>
-                <td width="25%" height="100"><%= model.teamName %></td>
 
-                <td width="25%"><%= model.category %></td>
-                <% if(model.payStatus == "paid") {%>
+            <tr>
+                <% if (form != "acroage"){ %>
+                <td width="25%" height="100"><%= models.teamName %></td>
+                <%} if (form == "trampoline"){ %>
+                <td width="25%"><%= models.gender %></td>
+                <%} if (form == "acroage"){ %>
+                <td width="25%"><%= models.item %></td>
+                <%} if (form != "clubMem"){%>
+                <td width="25%"><%= models.category %></td>
+                <%} if(models.payStatus == "paid") {%>
                 <td width="10%">Y</td>
-                <%} else if (model.payStatus == "unpaid"){%>
+                <%} else if (models.payStatus == "unpaid"){%>
                 <td width="10%">N</td>
                 <%}%>
-                
                 <td width="10%"><%= applyDate %></td>
+
+                <!-- button  -->
                 <td width="30%" id="btns">
 
-                    <%if (model.formStatus == "ToBeCon") {%>
+                    <%if (models.formStatus == "ToBeCon") {%>
                     <a class="btn btn-primary" href="">確認</a>
-                    <%} else if (model.formStatus == "accepted"){%>
+                    <%} else if (models.formStatus == "accepted"){%>
                     <button type="button" class="btn btn-outline-primary" disabled>已確認</button>
                     <%}%>
 
@@ -139,77 +159,7 @@
                 </td>
             </tr>
             <%});%>
-
-            <% } else if (form == "acroage") {%>
-            <!-- search result for Acroage -->
-            <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
-            <br><br>
-
-            <tr id="subjects">
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <th>項目<br>Event</th>
-                <th>組別<br>Category</th>
-                <th>付款<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
-            </tr>
-
-            <%} else if (form == "trampoline") {%>
-            <!-- search result for Trampoline -->
-            <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
-            <br><br>
-
-            <tr id="subjects">
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <th>性別<br>Gender</th>
-                <th>組別<br>Category</th>
-                <th>付款<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
-            </tr>
-
-            <%} else if (form == "clubMem") {%>
-            <!-- search result for ClubMember -->
-            <b>團體註冊申請 Application for Club Membership</b>
-            <br><br>
-
-            <tr id="subjects">
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <th>付款<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
-            </tr>
-
-            <% applications.forEach( function(model) { %>
-            <% var n = new Date(model.createdAt);
-                        var month = n.getMonth() + 1;
-                        var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-            <tr>
-                <td width="25%" height="100"><%= model.OrgChiName %><br><%= model.OrgEngName %></td>
-
-                <% if(model.payStatus == "paid") {%>
-                <td width="10%">Y</td>
-                <%} else if (model.payStatus == "unpaid"){%>
-                <td width="10%">N</td>
-                <%}%>
-                        
-                        <td width="10%"><%= applyDate %></td>
-                <td width="30%" id="btns">
-
-                    <%if (model.formStatus == "ToBeCon") {%>
-                    <a class="btn btn-primary" href="">確認</a>
-                    <%} else if (model.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" disabled>已確認</button>
-                    <%}%>
-        
-                            <a class="btn btn-success" href="">編輯</a>
-                            <a class="btn btn-danger" href="">取消</a>
-                        </td>
-                    </tr>
-            <%});%>
-            <%} %>
-
-            <%} %>
+                    <%} %>
         </table>
         <br>
     </form>
@@ -222,16 +172,16 @@
 <script>
     var acrCategory = ["1級(6至14歲) Level 1(6-14 years old)", "2級(6至14歲) Level 2(6-14 years old)", "3級(8歲或以上) Level 3(8 years old or above)", "4級(9歲或以上) Level 4(9 years old or above)", "5級(10歲或以上) Level 5(10 years old or above)"];
     var gfaCategory = ["幼稚園 Kindergarten", "小學組 Primary School", "公開組 Open Group"];
-    var traCategory = ["14歲或以下 14 or below", "15至16歲 15-16 years old", "17歲或以上 17 or above"];
+    var traCategory = ["14 歲或以下 14 years old or below", "15 至 16 歲 15 to 16 years old", "17 歲或以上 17 years old or above"];
     var trgaCategory = ["預備A,B組", "預備C,D組", "預備E組", "初級A組", "初級B組", "高級A組", "高級B組"];
-    var grgCategory = ["集體A組(五人圈操)", "集體B組(五人圈操)", "集體C組(三球兩帶)"];
+    var grgCategory = ["集體 A 組(五人圈操)", "集體 B 組(五人圈操)", "集體 C 組(三球兩帶)"];
 
     function appSelected(compValue) {
         var event = document.getElementById("extraEvent");
 
         if (compValue == "acroage") {
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">項目 Event</label>"
-                + "<select class=\"form-control\" id=\"event\" name=\"event\">"
+                + "<select class=\"form-control\" id=\"item\" name=\"item\">"
                 + "<option value=\"\">請選擇項目 Select Event</option>"
                 + "<option value=\"menDouble\">男子雙人 Men's Double</option>"
                 + "<option value=\"womenDouble\">女子雙人 Women's Double</option>"

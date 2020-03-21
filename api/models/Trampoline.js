@@ -68,7 +68,7 @@ module.exports = {
       type: "string"
     },
 
-    orgName: {
+    teamName: {
       type: "string"
     },
 
@@ -94,6 +94,14 @@ module.exports = {
 
     parentName2: {
       type: 'string',
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
