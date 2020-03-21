@@ -110,11 +110,11 @@
             <br><br>
 
             <tr id="subjects">
-                <% if (form != "trampoline" && form != "acroage"){ %>
+                <% if (form != "acroage"){ %>
             <th>隊伍/團體<br>Team/Organisation</th>
-            <% }else if (form == "trampoline"){ %>
+            <% } if (form == "trampoline"){ %>
             <th>性別<br>Gender</th>
-            <% }else if (form == "acroage"){ %>
+            <% } if (form == "acroage"){ %>
             <th>項目<br>Event</th>
             <%} if (form != "clubMem") {%>
             <th>組別<br>Category</th>
@@ -130,11 +130,11 @@
                 var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
 
             <tr>
-                <% if (form != "trampoline" && form != "acroage"){ %>
+                <% if (form != "acroage"){ %>
                 <td width="25%" height="100"><%= models.teamName %></td>
-                <% }else if (form == "trampoline"){ %>
+                <%} if (form == "trampoline"){ %>
                 <td width="25%"><%= models.gender %></td>
-                <% }else if (form == "acroage"){ %>
+                <%} if (form == "acroage"){ %>
                 <td width="25%"><%= models.item %></td>
                 <%} if (form != "clubMem"){%>
                 <td width="25%"><%= models.category %></td>

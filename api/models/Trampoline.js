@@ -68,7 +68,7 @@ module.exports = {
       type: "string"
     },
 
-    orgName: {
+    teamName: {
       type: "string"
     },
 
