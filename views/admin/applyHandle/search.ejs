@@ -99,8 +99,6 @@
             <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
             <%} else if (form == "trampoline"){%>
             <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
-            <%} else if (form == "gfa"){%>
-            <b>2020年香港普及體操節 GFAFestival2020</b>
             <%} else if (form == "acroage"){%>
             <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
             <%} else if (form == "clubMem") {%>
@@ -110,7 +108,7 @@
             <br><br>
 
             <tr id="subjects">
-                <% if (form != "acroage"){ %>
+            <% if (form != "acroage"){ %>
             <th>隊伍/團體<br>Team/Organisation</th>
             <% } if (form == "trampoline"){ %>
             <th>性別<br>Gender</th>
