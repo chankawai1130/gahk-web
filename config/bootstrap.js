@@ -42,6 +42,7 @@ module.exports.bootstrap = async function (done) {
     ]);
   }
 
+  //Testing for online application
   if (await GRGS.count() == 0) {
     await GRGS.createEach([
       { teamName: "香港浸會大學第一隊", phone: "12345678", email: "hkbuteam1@gmail.com", category: "集體 A 組(五人圈操)", chiName1: "陳一文", engName1: "Chan Yin Man", ID1: "A1111111", birth1: "2000-1-12", chiName2: "陳二文", engName2: "Chan Yi Man", ID2: "L2222222", birth2: "2000-2-12", chiName3: "陳三文", engName3: "Chan San Man", ID3: "N3333333", birth3: "2000-3-12", chiName4: "陳四文", engName4: "Chan Sai Man", ID4: "Y4444444", birth4: "2000-4-12", chiName5: "陳五文", engName5: "Chan Mon Man", ID5: "A5555555", birth5: "2000-5-12", chiName6: "陳六文", engName6: "Chan Loi Man", ID6: "B6666666", birth6: "2000-6-12", coachName: "陳大文", coachPhone: 22222222, leaderName: "浸大文", leaderPosition: "浸會大學體育教練", NoOfTeam: 1, teamFee: 150, NoOfPeople: 6, insurance: 180, total: 330, payStatus: "unpaid", formStatus: "ToBeCon" },
@@ -59,6 +60,33 @@ module.exports.bootstrap = async function (done) {
       // etc.
     ]);
   }
+
+  if (await TRGCompetition.count() == 0) {
+    await TRGCompetition.createEach([
+      {teamName: "機構一", Phone: "23456789", Email: "orgOne@gmail.com", CoachName: "張一一", CoachPhone: "91234567", category: "預備A,B組", Mate1ChiName: "王小明", Mate1EngName:"Wong Shui Ming", Mate1IDNo:"A123456(7)", Mate1Date:"2001-1-21", Mate2ChiName: "易千千", Mate2EngName: "Yik Ching Ching", Mate2IDNo: "B123456(7)", Mate2Date: "2000-11-28", Mate3ChiName: "陳大明", Mate3EngName: "Chan Tai Ming", Mate3IDNo: "C123456(7)", Mate3Date: "2001-4-5", Mate4ChiName: "王明明", Mate4EngName: "Wong Ming Ming", Mate4IDNo: "D123456(7)", Mate4Date: "2000-6-18", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "張進", leaderPosition: "機構一體操顧問", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {teamName: "機構二", Phone: "21855555", Email: "orgTwo@gmail.com", CoachName: "李二", CoachPhone: "61234567", category: "預備A,B組", Mate1ChiName: "陳嘉", Mate1EngName:"Cheng Ka", Mate1IDNo:"A234567(8)", Mate1Date:"2003-4-26", Mate2ChiName: "楊凡凡", Mate2EngName: "Yeung Fan Fan", Mate2IDNo: "B234567(8)", Mate2Date: "2001-10-29", Mate3ChiName: "李喜", Mate3EngName: "Lee Hei", Mate3IDNo: "C234567(8)", Mate3Date: "2000-12-5", Mate4ChiName: "方章", Mate4EngName: "Fong Cheung", Mate4IDNo: "D234567(8)", Mate4Date: "2002-7-12", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "陳明明", leaderPosition: "機構一體操部門主任", payStatus: "paid", formStatus: "accepted"},
+      {teamName: "機構三", Phone: "24443333", Email: "orgThree@gmail.com", CoachName: "陳三", CoachPhone: "90909090", category: "高級A組", Mate1ChiName: "林好", Mate1EngName:"Lam Ho", Mate1IDNo:"A345678(9)", Mate1Date:"2000-1-7", Mate2ChiName: "周年", Mate2EngName: "Chou Lin", Mate2IDNo: "B345678(9)", Mate2Date: "1999-9-28", Mate3ChiName: "李白白", Mate3EngName: "Lee Ba Ba", Mate3IDNo: "C345678(9)", Mate3Date: "1998-11-11", Mate4ChiName: "楊桃", Mate4EngName: "Yeung To", Mate4IDNo: "D345678(9)", Mate4Date: "1999-6-18", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "周月眉", leaderPosition: "行政體操顧問", payStatus: "unpaid", formStatus: "ToBeCon"},
+    ]);
+  }
+
+  if (await TSRGCompetition.count() == 0) {
+    await TSRGCompetition.createEach([
+      {teamName: "學校一", Phone: "27777777", Email: "schoolOne@gmail.com", CoachName: "周一", CoachPhone: "98765432", category: "初級A組", Mate1ChiName: "王小明", Mate1EngName:"Wong Shui Ming", Mate1IDNo:"A123456(7)", Mate1Date:"2001-1-21", Mate2ChiName: "易千千", Mate2EngName: "Yik Ching Ching", Mate2IDNo: "B123456(7)", Mate2Date: "2000-11-28", Mate3ChiName: "陳大明", Mate3EngName: "Chan Tai Ming", Mate3IDNo: "C123456(7)", Mate3Date: "2001-4-5", Mate4ChiName: "王明明", Mate4EngName: "Wong Ming Ming", Mate4IDNo: "D123456(7)", Mate4Date: "2000-6-18", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "張進", leaderPosition: "註校體操顧問", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {teamName: "學校二", Phone: "29056565", Email: "schoolTwo@gmail.com", CoachName: "超二二", CoachPhone: "64321123", category: "初級A組", Mate1ChiName: "陳嘉", Mate1EngName:"Cheng Ka", Mate1IDNo:"A234567(8)", Mate1Date:"2003-4-26", Mate2ChiName: "楊凡凡", Mate2EngName: "Yeung Fan Fan", Mate2IDNo: "B234567(8)", Mate2Date: "2001-10-29", Mate3ChiName: "李喜", Mate3EngName: "Lee Hei", Mate3IDNo: "C234567(8)", Mate3Date: "2000-12-5", Mate4ChiName: "方章", Mate4EngName: "Fong Cheung", Mate4IDNo: "D234567(8)", Mate4Date: "2002-7-12", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "陳明明", leaderPosition: "體操教練", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {teamName: "學校三", Phone: "23344344", Email: "schoolThree@gmail.com", CoachName: "李三", CoachPhone: "97717711", category: "初級A組", Mate1ChiName: "林好", Mate1EngName:"Lam Ho", Mate1IDNo:"A345678(9)", Mate1Date:"2000-1-7", Mate2ChiName: "周年", Mate2EngName: "Chou Lin", Mate2IDNo: "B345678(9)", Mate2Date: "1999-9-28", Mate3ChiName: "李白白", Mate3EngName: "Lee Ba Ba", Mate3IDNo: "C345678(9)", Mate3Date: "1998-11-11", Mate4ChiName: "楊桃", Mate4EngName: "Yeung To", Mate4IDNo: "D345678(9)", Mate4Date: "1999-6-18", TeamNumber: 1, TeamPrice: 150, TeamTotalPrice: 150, leaderName: "周月眉", leaderPosition: "學校活動主任", payStatus: "unpaid", formStatus: "ToBeCon"},
+    ]);
+  }
+
+  if (await ClubMember.count() == 0) {
+    await ClubMember.createEach([
+      {OrgEngName: "Hong Kong Baptist University Gymnastics Club", OrgChiName: "香港浸會大學體操會", AppEngName: "Chou Tai Tai", AppChiName: "周大大", clubAddr:"香港九龍九龍塘香港浸會大學", clubTel: "34110000", clubFax: "34117777", clubEmail: "hkbuGymClub@hkbu.edu.hk", clubWeb: "https://www.hkbu.edu.hk/tch/about/contact.jsp", MemberNo: 150, brefDes: "We are Hong Kong Baptist University Gymnastics Club.", resEngName: "Chan Kai Ki", resChiName: "陳佳淇", position: "學校活動主任", resAddr: "Flat 6E, 6/F, Chan Chan House, Hong Kong", resTel: "97788777", resFax: "21113111", resEmail: "chankaiki@gmail.com", year: 2, clubFee: "150", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {OrgEngName: "Mrs.LeeChan Gymnastics Company", OrgChiName: "李陳女士體操公司", AppEngName: "Lee Ming Wai", AppChiName: "李明惠", clubAddr:"香港中環李陳女士大廈21樓", clubTel: "24988899", clubFax: "24988877", clubEmail: "leechanGym@gmail.com", clubWeb: "https://www.leechanGym.org", MemberNo: 300, brefDes: "We are Mrs.LeeChan Gymnastics Company.", resEngName: "Yeung Ming Ka", resChiName: "楊明家", position: "李陳女士體操公司秘書長", resAddr: "Flat 22B, 2/F, Lee Chan House, Wai Chai, Hong Kong", resTel: "96667789", resFax: "96667744", resEmail: "yeungmingka@gmail.com", year: 5, clubFee: "100", payStatus: "unpaid", formStatus: "ToBeCon"},
+    ]);
+  }
+
+  
+
+
 
 
 
