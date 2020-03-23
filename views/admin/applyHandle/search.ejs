@@ -129,7 +129,12 @@
 
             <tr>
                 <% if (form != "acroage"){ %>
+                <%if(form == "clubMem") {%>
+                <td width="25%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
+                <% } else {%>
                 <td width="25%" height="100"><%= models.teamName %></td>
+                <%}%>
+                
                 <%} if (form == "trampoline"){ %>
                 <td width="25%"><%= models.gender %></td>
                 <%} if (form == "acroage"){ %>
@@ -181,17 +186,17 @@
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">項目 Event</label>"
                 + "<select class=\"form-control\" id=\"item\" name=\"item\">"
                 + "<option value=\"\">請選擇項目 Select Event</option>"
-                + "<option value=\"menDouble\">男子雙人 Men's Double</option>"
-                + "<option value=\"womenDouble\">女子雙人 Women's Double</option>"
-                + "<option value=\"mixDouble\">混合雙人 Mixed double</option>"
-                + "<option value=\"womenTri\">女子三人 Women's trio</option></select>";
+                + "<option value=\"男子雙人 Men's Double\">男子雙人 Men's Double</option>"
+                + "<option value=\"女子雙人 Women's Double\">女子雙人 Women's Double</option>"
+                + "<option value=\"混合雙人 Mixed double\">混合雙人 Mixed double</option>"
+                + "<option value=\"女子三人 Women's trio\">女子三人 Women's trio</option></select>";
 
         } else if (compValue == "trampoline") {
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">性別 Gender</label>"
                 + "<select class=\"form-control\" id=\"gender\" name=\"gender\">"
                 + "<option value=\"\">請選擇性別 Select Gender</option>"
-                + "<option value=\"man\">男 Man</option>"
-                + "<option value=\"female\">女 Female</option></select>";
+                + "<option value=\"男 Male\">男 Man</option>"
+                + "<option value=\"女 Female\">女 Female</option></select>";
         } else {
             event.innerHTML = "";
         }
@@ -204,10 +209,10 @@
             appSelect.innerHTML = "";
         } else {
             appSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">Category 組別</label>"
-                + "<select class=\"form-control\" id=\"category\" name=\"category\"></select>";
+                + "<select class=\"form-control\" id=\"category\" name=\"category\"><option value=\"\">請選擇組別 Select Category</option></select>";
 
             var gpSelect = document.getElementById("category");
-            gpSelect.options.length = 0;
+            //gpSelect.options.length = 0;
 
             if (compValue == "acroage") {
                 acrCategory.forEach(function (item) {

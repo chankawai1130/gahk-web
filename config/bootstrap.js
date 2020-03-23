@@ -84,7 +84,29 @@ module.exports.bootstrap = async function (done) {
     ]);
   }
 
-  
+  if (await Trampoline.count() == 0) {
+    await Trampoline.createEach([
+      {gender: "男 Male", category: "15 至 16 歲 15 to 16 years old", chiName1: "周小時", engName1: "Chou Shui Shi", birth1: "2005", email1: "choushuishi@gmail.com", phone1: "56777789", address1: "Flat 6E, 6/F, Happy Building, Kowloon Tang, Kowloon, Hong Kong", chiName2: "李清", engName2: "Lee Ching", birth2: "2005", email2: "leeching@gmail.com", phone2: "67788778", address2: "Flat 10G, 10/F, Crying Building, Kowloon Tang, Kowloon, Hong Kong", teamName: "雙人同步第一小隊", coachName: "曾昊", coachPhone: "97888903", coachNum: "", coachAddress: "Flat 1609, 16/F, Happy Estate, Happy House, Chai Wan, Hong Kong", parentName1: "周國恆", parentName2: "李建國", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {gender: "男 Male", category: "15 至 16 歲 15 to 16 years old", chiName1: "張三", engName1: "Cheung Sam", birth1: "2006", email1: "cheunsamsamson@gmail.com", phone1: "67888987", address1: "Flat 5F, 5/F, Happy Building, Kowloon Tang, Kowloon, Hong Kong", chiName2: "楊超", engName2: "Yeung Chiu", birth2: "2005", email2: "yeungchiu@gmail.com", phone2: "95477389", address2: "Flat 21A, 21/F, HaHa Building, Kowloon Tang, Kowloon, Hong Kong", teamName: "雙人同步第二小隊", coachName: "吳鳳", coachPhone: "67775555", coachNum: "A1112", coachAddress: "Flat 34A, 34/F, Happy Estate, Happy House, Chai Wan, Hong Kong", parentName1: "陳小寶", parentName2: "楊展桐", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {gender: "女 Female", category: "17 歲或以上 17 years old or above", chiName1: "向海晴", engName1: "Heung Hoi Ching", birth1: "2000", email1: "heunghoiching@gmail.com", phone1: "98666846", address1: "Flat 17B, 17/F, Happy Building, Kowloon Tang, Kowloon, Hong Kong", chiName2: "時子瑤", engName2: "Shi Zi You", birth2: "1999", email2: "shiziyou@gmail.com", phone2: "90774756", address2: "Flat 22A, 22/F, ABC Building, Kowloon Tang, Kowloon, Hong Kong", teamName: "雙人同步第三小隊", coachName: "曹芷芳", coachPhone: "67547668", coachNum: "A6776", coachAddress: "Flat 13E, 13/F, CCC Estate, Haha House, Chai Wan, Hong Kong", parentName1: "向豺生", parentName2: "時鑿", payStatus: "unpaid", formStatus: "ToBeCon"},
+    ]);
+  }
+
+  if (await Acroage.count() == 0) {
+    await Acroage.createEach([
+      {category: "4級(9歲或以上) Level 4(9 years old or above)", item: "男子雙人 Men's Double", cpChiName1: "景宇信", cpEngName1: "King Yu Shuen", gender1: "男 Male", birthday1: "2008-9-20", idNo1: "A456789(1)", contactNo1: "67888932", email1: "kingyushuen@gmail.com", address1: "Flat 1207, 12/F, See See Building, Wan Chai, Hong Kong", cpChiName2: "顧子恒", cpEngName2: "Koo Zi Wun", gender2: "男 Male", birthday2: "2010-11-25", idNo2: "B456789(1)", contactNo2: "98755567", email2: "kooziwun@gmail.com", address2: "Flat 23A, 23/F, See See Building, Wan Chai, Hong Kong", coachName: "白斯誠", cContactNo: "98000834", organName: "", receiptHeader: "運動員姓名 Athlete name", receiptName: "", parentName1: "趙俞", parentName2: "顧成功", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {category: "4級(9歲或以上) Level 4(9 years old or above)", item: "混合雙人 Mixed double", cpChiName1: "張日", cpEngName1: "Cheung Yak", gender1: "男 Male", birthday1: "2009-5-13", idNo1: "A567890(1)", contactNo1: "98886746", email1: "shinnecheung@gmail.com", address1: "Flat 13D, 13/F, See See Building, Wan Chai, Hong Kong", cpChiName2: "李晞晴", cpEngName2: "Lee Hei Ching", gender2: "女 Female", birthday2: "2010-8-11", idNo2: "B567890(1)", contactNo2: "94563665", email2: "heihinglee@gmail.com", address2: "Flat 21A, 21/F, See See Building, Wan Chai, Hong Kong", coachName: "劉裕", cContactNo: "63347589", organName: "劉李美惠體操學校", receiptHeader: "學校/機構名稱 School/Institution Name", receiptName: "劉李美惠體操學校行政部", parentName1: "張中中", parentName2: "李樹", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {category: "2級(6至14歲) Level 2(6-14 years old)", item: "女子三人 Women's trio", cpChiName1: "周一", cpEngName1: "Chou Yak", gender1: "女 Female", birthday1: "2013-5-13", idNo1: "A678901(2)", contactNo1: "67447576", email1: "chouone@gmail.com", address1: "Flat 1D, 1/F, See See Building, Wan Chai, Hong Kong", cpChiName2: "周二", cpEngName2: "Chou Yi", gender2: "女 Female", birthday2: "2012-8-11", idNo2: "B678901(2)", contactNo2: "97787790", email2: "choutwo@gmail.com", address2: "Flat 2A, 2/F, See See Building, Wan Chai, Hong Kong", cpChiName3: "周三", cpEngName3: "Chou Sam", gender3: "女 Female", birthday3: "2013-7-14", idNo3: "B678901(5)", contactNo3: "98657299", email3: "chouthree@gmail.com", address3: "Flat 3A, 3/F, See See Building, Wan Chai, Hong Kong", coachName: "曾文", cContactNo: "67755877", organName: "Mrs. Chan Cheung International School", receiptHeader: "運動員姓名 Athlete name", receiptName: "", parentName1: "周年", parentName2: "周刊", parentName3: "周邊",payStatus: "unpaid", formStatus: "ToBeCon"},   
+    ]);
+  }
+
+  if (await GFA.count() == 0) {
+    await GFA.createEach([
+      {teamName: "普及第一隊", receiptHeader: "普及第一隊行政部", address: "Flat 601, 6/F, Sun Sun Building, Hong Kong", category: "幼稚園 Kindergarten", cpChiName:"陳楚", cpEngName: "Chan Cho", cpDayPhone: "23567456", cpMobilePhone: "90786678", email: "chancho@gmail.com", applicantNum: 18, crewNum: 3, checkNum: "C1234567", bankName: "恒生銀行", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {teamName: "普及第二隊", receiptHeader: "普及第二隊行政部", address: "Flat 708, 7/F, Rainy Building, Hong Kong", category: "小學組 Primary School", cpChiName:"蔡芷芊", cpEngName: "Choy Ji Chin", cpDayPhone: "25567898", cpMobilePhone: "58339980", email: "jichinchoy@gmail.com", applicantNum: 20, crewNum: 5, checkNum: "A1234567", bankName: "中國銀行", payStatus: "unpaid", formStatus: "ToBeCon"},
+      {teamName: "普及第三隊", receiptHeader: "普及第三隊行政部", address: "Flat 2B, 2/F, SunShine Building, Hong Kong", category: "公開組 Open Group", cpChiName:"林木", cpEngName: "Lam Mo", cpDayPhone: "27654798", cpMobilePhone: "95657976", email: "momolam@gmail.com", applicantNum: 20, crewNum: 2, checkNum: "B12345677", bankName: "恒生銀行", payStatus: "unpaid", formStatus: "ToBeCon"},
+    ]);
+  }
 
 
 
