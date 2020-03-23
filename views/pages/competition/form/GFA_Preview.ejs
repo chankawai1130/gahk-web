@@ -2,140 +2,57 @@
 
     <div class="col-12" style="width: 740pt;">
         <% req.session.data = req.session.data || {} %>
-        <!-- <br>
+        <br>
         <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
         <br>
-        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
-                2020年全港藝術體操分齡比賽</b></h1>
+        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;">
+            <b>2020年香港普及體操節</b></h1>
         <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
-            <u>集體項目報名表(學校組)</u></h2>
+            <u>報名表格</u></h2>
         <br>
 
 
         <div class="form-group">
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group Details</label>
             <br>
-            <span>隊伍名稱(中文)<br>Team Name(Chinese):</span> <b><%= req.session.data.teamName%></b>
+            <span>團體名稱 Group Name:</span> <b><%= req.session.data.teamName%></b>
             <br>
-            <span>聯絡電話 Contact Number:</span> <b><%= req.session.data.phone%></b>
+            <span>收據抬頭 Receipt Header:</span> <b><%= req.session.data.receiptHeader%></b>
             <br>
-            <span>聯絡電郵 Email Address:</span> <b><%= req.session.data.email%></b>
+            <span>聯絡地址 Address:</span> <b><%= req.session.data.address%></b>
             <br>
-            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
-            <br>
-            <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.coachPhone%></b>
-            <br>
-            <sapn>組別及比賽項目 Category and Competition's Subject:</sapn> <b><%= req.session.data.category%></b>
+            <sapn>參賽組別 Category:</sapn> <b><%= req.session.data.category%></b>
             <br>
         </div>
 
         <div class="form-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
-                Details</label>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)<br>
-                    [正選 Current athlete]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName1%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName1%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID1%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth1%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)<br>
-                    [正選 Current athlete]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName2%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName2%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID2%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth2%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)<br>
-                    [正選 Current athlete]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName1%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName2%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID3%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth3%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(4) Applicant(4)<br>
-                    [正選 Current athlete]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName4%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName4%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID4%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth4%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(5) Applicant(5)<br>
-                    [正選 Current athlete]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName5%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName5%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID5%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth5%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(6) Applicant(6)<br>
-                    [後選 Back up]</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName6%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName6%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID6%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birth6%></b>
-            </div>
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聯絡人資料 Contact Person Details</label>
+            <br>
+            <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName%></b>
+            <br>
+            <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName%></b>
+            <br>
+            <span>聯絡電話 Contact Number</span>
+            <span>日間 Office Hour:</span> <b><%= req.session.data.cpDayPhone%></b>
+            <span>手提 Mobile:</span> <b><%= req.session.data.cpMobilePhone%></b>
+            <br>
+            <span>電郵地址 Email Address:</span> <b><%= req.session.data.email%></b>
+            <br>
         </div>
 
         <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">隊伍負責人資料
-                Team's leader detail</label>
+            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參賽資料 Competition Details</label>
             <br>
-            <span>隊伍負責人姓名 Leader's Name:</span> <b><%= req.session.data.leaderName%></b>
+            <span>參加人數 Number of Applicants:</span> <b><%= req.session.data.applicantNum%></b>
             <br>
-            <span>隊伍負責人職位 Leader's Position:</span> <b><%= req.session.data.leaderPosition%></b>
+            <span>工作人員人數 Number of Crews:</span> <b><%= req.session.data.crewNum%></b>
+            <br>
+            <span>支票編號 Check Number:</span> <b><%= req.session.data.checkNum%></b>
+            <br>
+            <span>銀行名稱 Name of Bank:</span> <b><%= req.session.data.bankName%></b>
         </div>
 
         <br>
-
-        <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">費用 Fee</label>
-            <br>
-            <span>集體項目 Collective Subject: $150 X</span> <b><%= req.session.data.NoOfTeam%></b>
-            <span>隊 team(s) = $</span> <b><%= req.session.data.teamFee%></b>
-            <br>
-            <span>保險 Insurance: $30 X</span> <b><%= req.session.data.NoOfPeople%></b>
-            <span>人 people = $</span> <b><%= req.session.data.insurance%></b>
-            <br>
-            <span>總額 Total price = $ </span> <b><%= req.session.data.total%></b>
-        </div>
-
-        <br><br> -->
 
         <div class="row">
             <div class="form-group col-sm-10">

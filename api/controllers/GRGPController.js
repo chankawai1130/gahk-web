@@ -19,6 +19,9 @@ module.exports = {
     GRGP_form_preview: async function (req, res) {
 
         if (req.method == 'POST') {
+
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
             await GRGP.create(req.session.data);
 
             req.session.data = {};  //clear data of session

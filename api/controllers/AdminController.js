@@ -73,10 +73,9 @@ module.exports = {
     //   return res.view('admin/applyHandle/search');
 
     var condition = {};
-    var form;
+    var form = req.query.application;
 
     if (req.query.application == "TRGA") {
-      form = req.query.application;
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
@@ -85,7 +84,6 @@ module.exports = {
         where: condition
       });
     } else if (req.query.application == "TSRGA") {
-      form = req.query.application;
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
@@ -93,8 +91,51 @@ module.exports = {
       var models = await TSRGCompetition.find({
         where: condition
       });
-    } else if(req.query.application == "clubMem") {
-      form = req.query.application;
+
+    } else if (req.query.application == "GRGS") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GRGS.find({
+        where: condition
+      });
+    } else if (req.query.application == "GRGP") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GRGP.find({
+        where: condition
+      });
+    } else if (req.query.application == "trampoline") {
+      if (req.query.gender) condition.gender = req.query.gender;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await Trampoline.find({
+        where: condition
+      });
+    } else if (req.query.application == "gfa") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GFA.find({
+        where: condition
+      });
+    } else if (req.query.application == "acroage") {
+      if (req.query.item) condition.item = req.query.item;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await Acroage.find({
+        where: condition
+      });
+
+    } else if (req.query.application == "clubMem") {
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
       var models = await ClubMember.find({
