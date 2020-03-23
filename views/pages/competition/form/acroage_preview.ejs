@@ -2,6 +2,18 @@
 
     <div class="card col-12" style="width: 740pt; background: transparent;">
         <% req.session.data = req.session.data || {} %>
+        <!-- handle gender option -->
+        <!-- <% if(req.session.data.item == "男子雙人 Men's Double") {
+        req.session.data.gender1 = "男 Male";
+        req.session.data.gender2 = "男 Male";
+        } else if (req.session.data.item == "女子三人 Women's trio"||req.session.data.item ==　"女子雙人 Women's Double"){
+            req.session.data.gender1 = "女 Female";
+            req.session.data.gender2 = "女 Female";
+
+            if(req.session.data.item ==　"女子三人 Women's trio") {
+                req.session.data.gender3 = "女 Female";
+            }
+        }%> -->
         <br>
         <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
         <br>
@@ -42,7 +54,7 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
                 <br>
-                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo1%>"
+                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo0%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
@@ -66,11 +78,11 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
                 <br>
-                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo2%>"
+                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo1%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
-            <% if(req.session.data.itemCategory == "女子三人 Women's trio") {%>
+            <% if(req.session.data.item == "女子三人 Women's trio") {%>
             <div class="form-group">
                 <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
@@ -91,7 +103,7 @@
                 <br>
                 <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
                 <br>
-                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo3%>"
+                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo2%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
             <%}%>
