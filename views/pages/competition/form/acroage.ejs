@@ -1,4 +1,4 @@
-<form action="/competition/form/acroage" method="POST">
+<form action="/competition/form/acroage" method="POST" id="acroage">
     <br>
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -25,40 +25,45 @@
 
         <div class="form-group col-12">
             <label>組別/年齡 Category/Age:</label>
-            <input type="radio" name="Acroage[levelCategory]" value="1級(6至14歲) Level 1(6-14 years old)" id="level1" required />
-            <label class="form-check-label" for="levelCategory">1 級(6 至 14 歲)</label>
+            <input type="radio" name="Acroage[category]" value="1級(6至14歲) Level 1(6-14 years old)" id="level1"
+                required />
+            <label class="form-check-label" for="category">1 級(6 至 14 歲)</label>
 
-            <input type="radio" name="Acroage[levelCategory]" value="2級(6至14歲) Level 2(6-14 years old)" id="level2" required />
-            <label class="form-check-label" for="levelCategory">2 級(6 至 14 歲)</label>
+            <input type="radio" name="Acroage[category]" value="2級(6至14歲) Level 2(6-14 years old)" id="level2"
+                required />
+            <label class="form-check-label" for="category">2 級(6 至 14 歲)</label>
 
-            <input type="radio" name="Acroage[levelCategory]" value="3級(8歲或以上) Level 3(8 years old or above)" id="level3" required />
-            <label class="form-check-label" for="levelCategory">3 級(8 歲或以上)</label>
+            <input type="radio" name="Acroage[category]" value="3級(8歲或以上) Level 3(8 years old or above)"
+                id="level3" required />
+            <label class="form-check-label" for="category">3 級(8 歲或以上)</label>
 
-            <input type="radio" name="Acroage[levelCategory]" value="4級(9歲或以上) Level 4(9 years old or above)" id="level4" required />
-            <label class="form-check-label" for="levelCategory">4 級(9
+            <input type="radio" name="Acroage[category]" value="4級(9歲或以上) Level 4(9 years old or above)"
+                id="level4" required />
+            <label class="form-check-label" for="category">4 級(9
                 歲或以上)</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <input type="radio" name="Acroage[levelCategory]" value="5級(10歲或以上) Level 5(10 years old or above)" id="level5" required />
-            <label class="form-check-label" for="levelCategory">5 級(10 歲或以上)</label>
+            <input type="radio" name="Acroage[category]" value="5級(10歲或以上) Level 5(10 years old or above)"
+                id="level5" required />
+            <label class="form-check-label" for="category">5 級(10 歲或以上)</label>
         </div>
 
         <div class="form-group col-12">
             <label>項目 Item:</label>
-            &nbsp;<input type="radio" name="Acroage[itemCategory]" value="男子雙人 Men's Double" id="menDou"
+            &nbsp;<input type="radio" name="Acroage[item]" value="男子雙人 Men's Double" id="menDou"
                 onclick="extraCard()" required />
-            &nbsp;<label class="form-check-label" for="itemCategory">男子雙人<br>Men's Double</label>
+            &nbsp;<label class="form-check-label" for="item">男子雙人<br>Men's Double</label>
 
-            &nbsp;<input type="radio" name="Acroage[itemCategory]" value="女子雙人 Women's Double" id="womenDou"
+            &nbsp;<input type="radio" name="Acroage[item]" value="女子雙人 Women's Double" id="womenDou"
                 onclick="extraCard()" required />
-            &nbsp;<label class="form-check-label" for="itemCategory">女子雙人<br>Women's Double</label>
+            &nbsp;<label class="form-check-label" for="item">女子雙人<br>Women's Double</label>
 
-            &nbsp;<input type="radio" name="Acroage[itemCategory]" value="混合雙人 Mixed double" id="mixDou"
+            &nbsp;<input type="radio" name="Acroage[item]" value="混合雙人 Mixed double" id="mixDou"
                 onclick="extraCard()" required />
-            &nbsp;<label class="form-check-label" for="itemCategory">混合雙人<br>Mixed double</label>
+            &nbsp;<label class="form-check-label" for="item">混合雙人<br>Mixed double</label>
 
-            &nbsp;<input type="radio" name="Acroage[itemCategory]" value="女子三人 Women's trio" id="womenTri"
+            &nbsp;<input type="radio" name="Acroage[item]" value="女子三人 Women's trio" id="womenTri"
                 onclick="extraCard()" required />
-            &nbsp;<label class="form-check-label" for="itemCategory">女子三人<br>Women's trio</label>
+            &nbsp;<label class="form-check-label" for="item">女子三人<br>Women's trio</label>
         </div>
 
 
@@ -148,15 +153,15 @@
             </div>
             <div>
                 <label>運動員(1)相片 Athlete(1) photo: </label>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
-                <div id="ph_preview1"></div><br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
+                <div id="ph_preview0"></div><br>
             </div>
             <div>
                 <label>請附上運動員的身份證副本 <br> Please upload ID copy of the athlete</label>
                 <br>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files,1)" required />
+                <input type="file" accept="image/*" onchange="handleFile2(this.files,0)" required />
                 <br>
-                <div id="ID_preview1"></div>
+                <div id="ID_preview0"></div>
                 <br>
             </div>
         </div>
@@ -209,15 +214,15 @@
             </div>
             <div>
                 <label>運動員(2)相片 Athlete(2) photo: </label>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
-                <div id="ph_preview2"></div><br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
+                <div id="ph_preview1"></div><br>
             </div>
             <div>
                 <label>請附上運動員的身份證副本 <br> Please upload ID copy of the athlete</label>
                 <br>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files,2)" required />
+                <input type="file" accept="image/*" onchange="handleFile2(this.files,1)" required />
                 <br>
-                <div id="ID_preview2"></div>
+                <div id="ID_preview1"></div>
                 <br>
             </div>
         </div>
@@ -270,31 +275,31 @@
                         download>比賽卡</a>連同劃線支票以郵寄方式或親臨辦公室遞交<br>Please fill in the <a
                         href="/formDoc/AcroOpen2020_comp.card.pdf" style="color: #83a70c;" download>competition card</a>
                     and submit it along with cheque by post or in person</li>
-                <br>
+                
                 <li>參加者需填寫「運動員、家長或監護人聲明」，如參加者<u>未滿18歲，則由家長填寫</u>。所有參加者需附上年齡證明副本(包括身份證、出世紙、護照)與報名時一併遞交。<br>
                     Applicant should fill in the Declaration of Athlete, Parents or Guardians. <u> The declaration must
                         be signed by parents if the applicant is aged below 18.</u> All applicants should submit the
                     copy of valid photo-bearing identity documents (including ID card, birth certificate or passport) by
                     proving the age of applicants.</li>
-                <br>
+                
                 <li>如有需要，請自行影印表格。<br>Applicants can make copy of the form if needed.</li>
-                <br>
+                
                 <li>不上載相片及資料不全，恕不受理。<br>The application will not be accepted if the personal photo is not uploaded and
                     has missing information.</li>
-                <br>
+                
                 <li>1-3 級賽事每名運動員只可參加一個組別的<u>一個</u>項目。<br>
                     The athlete in category of level 1 to leverl 3 can only apply for <u>one</u> event in a category.
                 </li>
-                <br>
+                
                 <li>4-5 級賽事每名運動員在同一個級別內可參加<u>最多兩個</u>不同項
                     目，並<u>需分別繳付兩個項目之報名費</u>。<br>
                     The athlete in category of level 4 to leverl 5 can only apply for <u>at most two</u> differsent
                     events in a category and should pay for application fee of two events respectively.</li>
-                <br>
+                
                 <li>如 4-5 級運動員參加兩個項目，需填寫<u>兩份</u>報名表。<br>
                     If the athlete apply for two events in category of level 4 to leverl 5, he/she should fill in two
                     application forms.</li>
-                <br>
+                
                 <li>所有參賽者資料只作是次比賽活動及日後活動宣傳之用，絕對保密。<br>
                     The personal details provided by all applicants will only be used for the purpose of promotion
                     relating to this competition and later activities of our organisation.</li>
@@ -321,16 +326,16 @@
                     <br>
                     <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
                     <input type="text" class="form-group" name="Acroage[parentName1]" required>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files,1)" required />
-                    <div id="D_preview1"></div>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files,0)" required />
+                    <div id="D_preview0"></div>
                 </div>
 
                 <div class="col-12">
                     <br>
                     <label>參加者(2)家長姓名 Applicant(2)'s Parent Name: </label>
                     <input type="text" class="form-group" name="Acroage[parentName2]" required>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files,2)" required />
-                    <div id="D_preview2"></div>
+                    <input type="file" accept="image/*,application/pdf" onchange="handleFile3(this.files,1)" required />
+                    <div id="D_preview1"></div>
                 </div>
                 <div class="col-12" id="extraD"></div>
             </div>
@@ -425,25 +430,83 @@
             var img = document.createElement('img');
             img.src = e.target.result;
             preview.appendChild(img);
+
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'Acroage[photo' + p + ']';
             input.value = e.target.result;
+
             img.style.width = "150px";
             img.style.height = "150px";
-            preview.appendChild(input);
+
+            document.getElementById('acroage').appendChild(input);
         }
         reader.readAsDataURL(file);
     }
 
-    //handle multi ID card upload (img/pdf) (id="ID_prevew+p")
+    //handle multi ID card upload (only img) (id="ID_prevew+p")
     function handleFile2(files, p) {
+        const file = files[0];
+        if (!file.type.startsWith('image/')) return;
 
+        if (file.size > 4194304) {
+            alert("請重新上載4MB相片");
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var preview = document.getElementById('ID_preview' + p);
+            preview.innerHTML = "";
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            preview.appendChild(img);
+
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'Acroage[imgIDCard' + p + ']';
+            input.value = e.target.result;
+
+            img.style.width = "150px";
+            img.style.height = "150px";
+
+            document.getElementById('acroage').appendChild(input);
+        }
+        reader.readAsDataURL(file);
     }
 
     //handle multi declaration uploas (img/pdf) (id="D_preview+p")
     function handleFile3(files, p) {
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+        var preview = document.getElementById('D_preview' + p);
+        var reader = new FileReader();
 
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Acroage[declaration' + p + ']';
+                input.value = e.target.result;
+                img.style.width = "150px";
+                img.style.height = "150px";
+                preview.appendChild(input);
+            }
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'Acroage[declaration' + p + ']';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
+        }
+        reader.readAsDataURL(file);
     }
 
 

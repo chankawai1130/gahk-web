@@ -13,11 +13,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    levelCategory: {
+    category: {
       type: 'string',
     },
 
-    itemCategory: {
+    item: {
       type: 'string',
     },
 
@@ -156,6 +156,14 @@ module.exports = {
 
     parentName3: {
       type: 'string',
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
     },
 
 

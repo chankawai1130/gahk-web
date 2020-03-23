@@ -1,4 +1,4 @@
-<form action="/competition/form/trampoline" method="POST">
+<form action="/competition/form/trampoline" method="POST" id="trampolne">
     <br>
 
     <div class="row mx-sm-2">
@@ -15,7 +15,7 @@
 
         <div class="col-12">
             <a href="/formDoc/TRAagegroup2020.pdf" style="text-align: center;"><u>2020年香港彈網分齡賽章程 Prospectus of
-                TrampolineAgeGroupCompetition</u></a>
+                    TrampolineAgeGroupCompetition</u></a>
         </div>
 
 
@@ -149,7 +149,7 @@
 
         <div class="col-12">
             <label>團體名稱 Organization Name:</label>
-            <input type="text" class="form-group" name="Trampoline[orgName]" style="width: 400pt;" required>
+            <input type="text" class="form-group" name="Trampoline[teamName]" style="width: 400pt;" required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -185,8 +185,8 @@
         <div class="col-12">
             <br>
             <label>請<u>每名申請人</u>下載及列印 <a href="/formDoc/trampoline_declaration.pdf" download
-                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print the <a
-                    href="/formDoc/trampoline_declaration.pdf" download
+                    style="color: #83a70c;"><u>聲明書.pdf</u></a>後簽署並上載文件 <u>All Applicants</u> please download and print
+                the <a href="/formDoc/trampoline_declaration.pdf" download
                     style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
 
             <!-- <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
@@ -197,16 +197,16 @@
             <br>
             <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
             <input type="text" class="form-group" name="Trampoline[parentName1]" required>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" required />
-            <div id="preview1"></div>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,0)" required />
+            <div id="preview0"></div>
         </div>
 
         <div class="col-12">
             <br>
             <label>參加者(2)家長姓名 Applicant(1)'s Parent Name: </label>
             <input type="text" class="form-group" name="Trampoline[parentName2]" required>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,2)" required />
-            <div id="preview2"></div>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" required />
+            <div id="preview1"></div>
         </div>
 
         <div class="col-12">
@@ -257,11 +257,11 @@
 </script>
 
 <script>
-    //handle multi declaration upload (img/pdf) (id="preview+p") **未改**
-    function handleFile(files) { 
+    //handle multi declaration upload (img/pdf) (id="preview+p") 
+    function handleFile(files, p) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('preview');
+        var preview = document.getElementById('preview' + p);
         var reader = new FileReader();
 
         if (file.type.startsWith('image/')) {
@@ -272,7 +272,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[declaration]';
+                input.name = 'Trampoline[declaration' + p + ']';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -283,7 +283,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'Trampoline[declaration]';
+                input.name = 'Trampoline[declaration' + p + ']';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
