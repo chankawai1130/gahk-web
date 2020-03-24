@@ -13,7 +13,7 @@
         </div>
 
         <div class="col-12">
-            <a href="/formDoc/AcroOpen2020_Prospectus.pdf" style="text-align: center;"><u>2020年香港技巧體操公開賽章程
+            <a href="/formDoc/AcroOpen2020_Prospectus.pdf" target="_blank" style="text-align: center;"><u>2020年香港技巧體操公開賽章程
                     Prospectus of AcrobaticOpenCompetition</u></a>
         </div>
 
@@ -36,12 +36,10 @@
             <input type="radio" name="Acroage[category]" value="3級(8歲或以上) Level 3(8 years old or above)" id="level3"
                 required />
             <label class="form-check-label" for="category">3 級(8 歲或以上)<br>Level 3(8 years old or above)</label>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="Acroage[category]" value="4級(9歲或以上) Level 4(9 years old or above)" id="level4"
                 required />
-            <label class="form-check-label" for="category">4 級(9
-                歲或以上)<br>Level 4(9 years old or
-                above)</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="form-check-label" for="category">4 級(9歲或以上)<br>Level 4(9 years old or above)</label>
 
             <input type="radio" name="Acroage[category]" value="5級(10歲或以上) Level 5(10 years old or above)" id="level5"
                 required />
@@ -50,20 +48,20 @@
 
         <div class="form-group col-12">
             <label>項目 Item:</label>
-            &nbsp;<input type="radio" name="Acroage[item]" value="男子雙人 Men's Double" id="menDou"
-                onclick="extraCard()" required />
+            &nbsp;<input type="radio" name="Acroage[item]" value="男子雙人 Men's Double" id="menDou" onclick="extraCard()"
+                required />
             &nbsp;<label class="form-check-label" for="item">男子雙人<br>Men's Double</label>
 
             &nbsp;<input type="radio" name="Acroage[item]" value="女子雙人 Women's Double" id="womenDou"
                 onclick="extraCard()" required />
             &nbsp;<label class="form-check-label" for="item">女子雙人<br>Women's Double</label>
 
-            &nbsp;<input type="radio" name="Acroage[item]" value="混合雙人 Mixed double" id="mixDou"
-                onclick="extraCard()" required />
+            &nbsp;<input type="radio" name="Acroage[item]" value="混合雙人 Mixed double" id="mixDou" onclick="extraCard()"
+                required />
             &nbsp;<label class="form-check-label" for="item">混合雙人<br>Mixed double</label>
 
-            &nbsp;<input type="radio" name="Acroage[item]" value="女子三人 Women's trio" id="womenTri"
-                onclick="extraCard()" required />
+            &nbsp;<input type="radio" name="Acroage[item]" value="女子三人 Women's trio" id="womenTri" onclick="extraCard()"
+                required />
             &nbsp;<label class="form-check-label" for="item">女子三人<br>Women's trio</label>
         </div>
 
@@ -418,7 +416,7 @@
                 + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label>"
                 + "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" checked required><label class=\"gender\">女 Female</label></div>"
 
-               // + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"gender3a\" value=\"male\" required disabled><label class=\"gender\">男 Male</label>"
+                // + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"gender3a\" value=\"male\" required disabled><label class=\"gender\">男 Male</label>"
                 //+ "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"gender3b\" value=\"female\" checked required disabled><label class=\"gender\">女 Female</label></div>"
 
                 + "<div class = \"col-12 col-sm-6\"><label>出生日期 Date of Birth (dd/mm/yyyy):</label><input type=\"date\" class=\"form-group\" name=\"Acroage[birthday3]\" required><br></div></div>"
@@ -437,7 +435,7 @@
                 + "&nbsp;<input type=\"file\" accept=\"image/*,application/pdf\" onchange=\"handleFile3(this.files,2)\" required />"
                 + "<div id=\"D_preview2\"></div>";
 
-                
+
 
             extraI1.innerHTML = "<label>性別 Gender: </label>"
                 + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" required>"
@@ -495,7 +493,7 @@
                 + "<label class=\"gender\">男 Male</label>"
                 + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" required>"
                 + "<label class=\"gender\">女 Female</label>";
-                
+
         } else {
 
             extraCard.innerHTML = "";
@@ -600,4 +598,3 @@
         reader.readAsDataURL(file);
     }
 </script>
-
