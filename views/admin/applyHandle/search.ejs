@@ -110,10 +110,13 @@
             <tr id="subjects">
             <% if (form != "acroage"){ %>
             <th>隊伍/團體<br>Team/Organisation</th>
+
             <% } if (form == "trampoline"){ %>
             <th>性別<br>Gender</th>
+
             <% } if (form == "acroage"){ %>
             <th>項目<br>Event</th>
+
             <%} if (form != "clubMem") {%>
             <th>組別<br>Category</th>
             <% } %>
@@ -128,27 +131,37 @@
                 var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
 
             <tr>
+                <!--Column: 隊伍/團體 Team/Organisation -->
                 <% if (form != "acroage"){ %>
                 <%if(form == "clubMem") {%>
-                <td width="25%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
+                <td width="50%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
                 <% } else {%>
                 <td width="25%" height="100"><%= models.teamName %></td>
                 <%}%>
                 
+                <!-- Column: 性別 Gender -->
                 <%} if (form == "trampoline"){ %>
                 <td width="25%"><%= models.gender %></td>
+
+                <!-- Column: 項目 Event -->
                 <%} if (form == "acroage"){ %>
                 <td width="25%"><%= models.item %></td>
+
+                <!-- Column:組別 Category -->
                 <%} if (form != "clubMem"){%>
                 <td width="25%"><%= models.category %></td>
+
+                <!-- Column:付款 Payment -->
                 <%} if(models.payStatus == "paid") {%>
                 <td width="10%">Y</td>
                 <%} else if (models.payStatus == "unpaid"){%>
                 <td width="10%">N</td>
                 <%}%>
+
+                <!-- Column:提交日期 Apply Date -->
                 <td width="10%"><%= applyDate %></td>
 
-                <!-- button  -->
+                <!-- Column:狀態 Status  -->
                 <td width="30%" id="btns">
 
                     <%if (models.formStatus == "ToBeCon") {%>
