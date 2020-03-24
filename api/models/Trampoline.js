@@ -73,14 +73,6 @@ module.exports = {
       type: "string"
     },
 
-    coachAddress:{
-      type: "string"
-    },
-
-    coachNum:{
-      type: "string"
-    },
-
     coachName: {
       type: "string"
     },
@@ -89,6 +81,15 @@ module.exports = {
       type: "number"
     },
 
+    coachNum:{
+      type: "string"
+    },
+
+    coachAddress:{
+      type: "string"
+    },
+
+    
     parentName1: {
       type: 'string',
     },
