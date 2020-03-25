@@ -28,6 +28,10 @@ module.exports = {
       type: "string"
     },
 
+    havecname: {
+      type: "string"
+    },
+
     cpChiName: {
       type: "string"
     },

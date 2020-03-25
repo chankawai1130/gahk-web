@@ -21,6 +21,11 @@ module.exports = {
       type:'string', 
     },
 
+    //Applicant(1)
+    havecname1: {
+      type: "string"
+    },
+
     chiName1: {
       type: "string"
     },
@@ -42,6 +47,11 @@ module.exports = {
     },
 
     address1: {
+      type: "string"
+    },
+
+    //Applicant(2)
+    havecname2: {
       type: "string"
     },
 

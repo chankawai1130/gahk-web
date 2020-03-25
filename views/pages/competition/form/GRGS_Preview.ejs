@@ -37,8 +37,12 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)<br>
                     [正選 Current athlete]</label>
                 <br>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname1%></b>
+                <br>
+                <% if(req.session.data.havecname1 == "是 Yes") {%>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName1%></b>
                 <br>
+                <%}%>
                 <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName1%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID1%></b>
@@ -50,8 +54,12 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)<br>
                     [正選 Current athlete]</label>
                 <br>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname2%></b>
+                <br>
+                <% if(req.session.data.havecname2 == "是 Yes") {%>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName2%></b>
                 <br>
+                <%}%>
                 <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName2%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID2%></b>
@@ -63,9 +71,13 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)<br>
                     [正選 Current athlete]</label>
                 <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName1%></b>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname3%></b>
                 <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName2%></b>
+                <% if(req.session.data.havecname3 == "是 Yes") {%>
+                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName3%></b>
+                <br>
+                <%}%>
+                <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName3%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID3%></b>
                 <br>
@@ -76,8 +88,12 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(4) Applicant(4)<br>
                     [正選 Current athlete]</label>
                 <br>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname4%></b>
+                <br>
+                <% if(req.session.data.havecname4 == "是 Yes") {%>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName4%></b>
                 <br>
+                <%}%>
                 <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName4%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID4%></b>
@@ -89,8 +105,12 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(5) Applicant(5)<br>
                     [正選 Current athlete]</label>
                 <br>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname5%></b>
+                <br>
+                <% if(req.session.data.havecname5 == "是 Yes") {%>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName5%></b>
                 <br>
+                <%}%>
                 <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName5%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID5%></b>
@@ -102,8 +122,12 @@
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(6) Applicant(6)<br>
                     [後選 Back up]</label>
                 <br>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname6%></b>
+                <br>
+                <% if(req.session.data.havecname6 == "是 Yes") {%>
                 <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.chiName6%></b>
                 <br>
+                <%}%>
                 <span>英文姓名 Name in English:</span> <b><%= req.session.data.engName6%></b>
                 <br>
                 <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.ID6%></b>
