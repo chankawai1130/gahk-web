@@ -28,8 +28,12 @@
         <div class="form-group">
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聯絡人資料 Contact Person Details</label>
             <br>
+            <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname%></b>
+            <br>
+            <% if(req.session.data.havecname == "是 Yes") {%>
             <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName%></b>
             <br>
+            <%}%>
             <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName%></b>
             <br>
             <span>聯絡電話 Contact Number</span>
