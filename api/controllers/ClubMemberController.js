@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-    //clubMembership Application - Apply process
+  //clubMembership Application - Apply process
   // action - create
   clubMemberForm: async function (req, res) {
 
@@ -20,16 +20,21 @@ module.exports = {
   clubMemberFormPreview: async function (req, res) {
     if (req.method == 'POST') {
       req.session.data.payStatus = "unpaid";
-      req.session.data.formStatus = "ToBeCon"; 
-      await ClubMember.create(req.session.data);
+      req.session.data.formStatus = "ToBeCon";
 
+      await ClubMember.create(req.session.data);
+      var model = await ClubMember.findOne(req.session.data);
+      await ClubMember.update(model.id).set({
+        idCode: "CLUBMem2020-" + model.id
+      })
+      model["idCode"] = "CLUBMem2020-" + model.id;
       req.session.data = {};  //clear data of session
 
-      return res.redirect('/membership/clubMemberFormConfirm');
+      return res.view('pages/competition/form/confirm_form', { 'form': model });
     }
 
   },
-  
+
 
 };
 

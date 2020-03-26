@@ -154,6 +154,10 @@ module.exports = {
       type: "string", //ToBeCon; accepted(decided by admin)
     },
 
+    idCode: {
+      type: "string"
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

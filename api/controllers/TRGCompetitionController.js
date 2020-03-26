@@ -23,12 +23,16 @@ module.exports = {
 
         if (req.method == 'POST') {
             req.session.data.payStatus = "unpaid";
-            req.session.data.formStatus = "ToBeCon"; 
+            req.session.data.formStatus = "ToBeCon";
             await TRGCompetition.create(req.session.data);
+            var model = await TRGCompetition.findOne(req.session.data);
+            await TRGCompetition.update(model.id).set({
+                idCode: "TRGP2020-" + model.id
+            })
+            model["idCode"] = "TRGP2020-" + model.id;
             req.session.data = {};  //clear data of session
 
-
-            return res.redirect('/competition/form/confirm_form');
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 
