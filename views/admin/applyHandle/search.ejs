@@ -53,7 +53,7 @@
             <div class="form-group col-12" id="extraCat"></div>
 
             <div class="form-group col-12 col-sm-6">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Payment Status 付款狀況</label>
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">付款狀況 Payment Status</label>
                 <select class="form-control" id="payStatus" name="payStatus">
                     <option value="">請選擇付款狀況 Select Payment Status</option>
                     <option value="paid">已付款 Paid</option>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="form-group col-12 col-sm-6">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Apply Status 申請狀況</label>
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請狀況 Apply Status</label>
                 <select class="form-control" id="formStatus" name="formStatus">
                     <option value="">請選擇申請狀況 Select Apply Status</option>
                     <option value="accepted">已確認 Accepted</option>
@@ -80,9 +80,22 @@
         </div>
 
         <br><br>
+
+
         <table>
-            <button type="button" class="btn btn-info">Excel Export</button>
+            <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
+            &nbsp;<button type="button" class="btn btn-primary" style="font-size: small;">全部確認<br>Confirm All</button>
             <br><br>
+            <!-- <div class="row">
+                <div class="col-sm-6">
+                    
+                </div>
+                <div class="col-sm-6">
+                    
+                    <br><br>
+                </div>
+            </div> -->
+
 
             <%if (applications){%>
             <span>搜尋申請項目 Searching Application Project: </span><br>
@@ -108,6 +121,7 @@
             <br><br>
 
             <tr id="subjects">
+            <th>申請編號<br>Apply No.</th>
             <% if (form != "acroage"){ %>
             <th>隊伍/團體<br>Team/Organisation</th>
 
@@ -121,7 +135,7 @@
             <th>組別<br>Category</th>
             <% } %>
             <th>付款<br>Payment</th>
-            <th>提交日期<br>Apply Date</th>
+            <th>提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
             <th>狀態<br>Status</th>
             </tr>
 
@@ -131,12 +145,15 @@
                 var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
 
             <tr>
+                <!-- 申請編號 Apply No. -->
+                <td width="10%">TRGS2020-1</td>
+
                 <!--Column: 隊伍/團體 Team/Organisation -->
                 <% if (form != "acroage"){ %>
                 <%if(form == "clubMem") {%>
-                <td width="50%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
+                <td width="40%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
                 <% } else {%>
-                <td width="25%" height="100"><%= models.teamName %></td>
+                <td width="30%" height="100"><%= models.teamName %></td>
                 <%}%>
                 
                 <!-- Column: 性別 Gender -->
@@ -159,19 +176,20 @@
                 <%}%>
 
                 <!-- Column:提交日期 Apply Date -->
-                <td width="10%"><%= applyDate %></td>
+                <td width="15%"><%= applyDate %></td>
 
                 <!-- Column:狀態 Status  -->
-                <td width="30%" id="btns">
-
+                <td width="10%" id="btns">
                     <%if (models.formStatus == "ToBeCon") {%>
-                    <a class="btn btn-primary" href="">確認</a>
+                    <a type="button" class="btn btn-primary" style="width: 60pt; font-size: small;"
+                        href="">確認<br>Confirm</a>
                     <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" disabled>已確認</button>
+                    <button type="button" class="btn btn-outline-primary" style="width: 60pt; font-size: small;"
+                        disabled>已確認<br>Accepted</button>
                     <%}%>
-
-                    <a class="btn btn-success" href="">編輯</a>
-                    <a class="btn btn-danger" href="">取消</a>
+                        
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;" href="">編輯<br>Edit</a>
+                    <a type="button" class="btn btn-danger" style="width: 60pt; font-size: small;" href="">取消<br>Delete</a>
                 </td>
             </tr>
             <%});%>
