@@ -145,11 +145,12 @@ module.exports = {
     }
 
     return res.view('admin/applyHandle/search', { applications: models, form });
-
-
   },
 
+  apply_confirm: async function (req, res) {
+    if (req.method == "POST") {
 
-
+    }
+  },
 };
 

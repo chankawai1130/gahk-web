@@ -86,15 +86,6 @@
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
             &nbsp;<button type="button" class="btn btn-primary" style="font-size: small;">全部確認<br>Confirm All</button>
             <br><br>
-            <!-- <div class="row">
-                <div class="col-sm-6">
-                    
-                </div>
-                <div class="col-sm-6">
-                    
-                    <br><br>
-                </div>
-            </div> -->
 
 
             <%if (applications){%>
@@ -146,7 +137,7 @@
 
             <tr>
                 <!-- 申請編號 Apply No. -->
-                <td width="10%">TRGS2020-1</td>
+                <td width="10%"><%= models.id%></td>
 
                 <!--Column: 隊伍/團體 Team/Organisation -->
                 <% if (form != "acroage"){ %>
