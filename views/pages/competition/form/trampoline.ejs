@@ -14,7 +14,8 @@
         </div>
 
         <div class="col-12">
-            <a href="/formDoc/TRAagegroup2020.pdf" target="_blank" style="text-align: center;"><u>2020年香港彈網分齡賽章程 Prospectus of
+            <a href="/formDoc/TRAagegroup2020.pdf" target="_blank" style="text-align: center;"><u>2020年香港彈網分齡賽章程
+                    Prospectus of
                     TrampolineAgeGroupCompetition</u></a>
         </div>
 
@@ -61,9 +62,19 @@
 
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="Trampoline[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+
+                &nbsp;<input type="radio" name="Trampoline[havecname1]" value="否 No" id="No1"
+                    onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname1">否 No</label>
+            </div>
+            <div>
                 <label for="chiName1">中文姓名 Name in Chinese:</label>
-                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" placeholder="e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" id="chiName1"
+                    placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -99,8 +110,18 @@
 
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="Trampoline[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname2">是 Yes</label>
+
+                &nbsp;<input type="radio" name="Trampoline[havecname2]" value="否 No" id="No2"
+                    onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname2">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="Trampoline[chiName2]" placeholder="e.g. 陳大文"
+                <input type="text" class="form-group" name="Trampoline[chiName2]" id="chiName2" placeholder="e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -290,4 +311,34 @@
         }
         reader.readAsDataURL(file);
     }
+
+    //handle have chinese name option
+    function havechinesename() {
+        var yes1_check = document.getElementById("Yes1");
+        var no1_check = document.getElementById("No1");
+        var yes2_check = document.getElementById("Yes2");
+        var no2_check = document.getElementById("No2");
+        var chineseNameDis1 = document.getElementById("chiName1")
+        var chineseNameDis2 = document.getElementById("chiName2")
+
+        if (yes1_check.checked == true) {
+            chineseNameDis1.checked = false;
+            chineseNameDis1.disabled = false;
+
+        } else if (no1_check.checked == true) {
+            chineseNameDis1.checked = true; //disable chinese name
+            chineseNameDis1.disabled = true;
+
+        }
+        
+        if (yes2_check.checked == true) {
+            chineseNameDis2.checked = false;
+            chineseNameDis2.disabled = false;
+
+        } else if (no2_check.checked == true) {
+            chineseNameDis2.checked = true; //disable chinese name
+            chineseNameDis2.disabled = true;
+
+        }
+    } 
 </script>

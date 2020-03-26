@@ -21,7 +21,12 @@ module.exports = {
       type: 'string',
     },
 
+
     //Applicant 1
+    havecname1: {
+      type: 'string',
+    },
+
     cpChiName1: {
       type: "string"
     },
@@ -57,6 +62,11 @@ module.exports = {
 
 
     //Applicant 2
+    havecname2: {
+      type: 'string',
+    },
+
+
     cpChiName2: {
       type: "string"
     },
@@ -91,6 +101,11 @@ module.exports = {
     },
 
     //Applicant 3
+    havecname3: {
+      type: 'string',
+    },
+
+
     cpChiName3: {
       type: "string"
     },

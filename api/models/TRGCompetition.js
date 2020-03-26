@@ -38,6 +38,11 @@ module.exports = {
       type:'string', 
     },
 
+    //Applicant(1)
+    havecname1: {
+      type: "string"
+    },
+
     Mate1ChiName: {
       type: 'string',
     },
@@ -53,6 +58,11 @@ module.exports = {
     Mate1Date: {
       type: 'ref',
       columnType: 'date'
+    },
+
+    //Applicant(2)
+    havecname2: {
+      type: "string"
     },
 
     Mate2ChiName: {
@@ -72,6 +82,11 @@ module.exports = {
       columnType: 'date'
     },
 
+    //Applicant(3)
+    havecname3: {
+      type: "string"
+    },
+
     Mate3ChiName: {
       type: 'string',
     },
@@ -87,6 +102,11 @@ module.exports = {
     Mate3Date: {
       type: 'ref',
       columnType: 'date'
+    },
+
+    //Applicant(4)
+    havecname4: {
+      type: "string"
     },
 
     Mate4ChiName: {

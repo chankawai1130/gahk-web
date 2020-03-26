@@ -25,9 +25,9 @@
         <div class="form-group">
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">組別資料 Category Details</label>
             <br>
-            <span>組別 Category:</span> <b><%= req.session.data.category%></b>
+            <span>組別 Category: </span> <b><%= req.session.data.category%></b>
             <br>
-            <span>項目 Item:</span> <b><%= req.session.data.item%></b>
+            <span>項目 Item: </span> <b><%= req.session.data.item%></b>
         </div>
 
         <div class="form-group">
@@ -38,23 +38,27 @@
             <div class="form-group">
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)</label>
                 <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName1%></b>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname1%></b>
                 <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName1%></b>
+                <% if(req.session.data.havecname1 == "是 Yes") {%>
+                <span>中文姓名 Name in Chinese: </span> <b><%= req.session.data.cpChiName1%></b>
                 <br>
-                <span>性別 Gender:</span> <b><%= req.session.data.gender1%></b>
+                <%}%>
+                <span>英文姓名 Name in English: </span> <b><%= req.session.data.cpEngName1%></b>
                 <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday1%></b>
+                <span>性別 Gender: </span> <b><%= req.session.data.gender1%></b>
                 <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo1%></b>
+                <span>出生日期 Date of Birth (yyyy-mm-dd): </span> <b><%= req.session.data.birthday1%></b>
                 <br>
-                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo1%></b>
+                <span>身分證號碼 ID Card Number: </span> <b><%= req.session.data.idNo1%></b>
                 <br>
-                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email1%></b>
+                <span>聯絡電話 Contact No.: </span> <b><%= req.session.data.contactNo1%></b>
                 <br>
-                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address1%></b>
+                <span>電郵地址 Email Address: </span> <b><%= req.session.data.email1%></b>
                 <br>
-                <span>運動員(1)相片 Athlete(1) photo:</span><br><img src="<%= req.session.data.photo0%>"
+                <span>聯絡地址 Contact Address: </span> <b><%= req.session.data.address1%></b>
+                <br>
+                <span>運動員(1)相片 Athlete(1) photo: </span><br><img src="<%= req.session.data.photo0%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
@@ -62,23 +66,27 @@
                 <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
                 <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName2%></b>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname2%></b>
                 <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName2%></b>
+                <% if(req.session.data.havecname2 == "是 Yes") {%>
+                <span>中文姓名 Name in Chinese: </span> <b><%= req.session.data.cpChiName2%></b>
                 <br>
-                <span>性別 Gender:</span> <b><%= req.session.data.gender2%></b>
+                <%}%>
+                <span>英文姓名 Name in English: </span> <b><%= req.session.data.cpEngName2%></b>
                 <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday2%></b>
+                <span>性別 Gender: </span> <b><%= req.session.data.gender2%></b>
                 <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo2%></b>
+                <span>出生日期 Date of Birth (yyyy-mm-dd): </span> <b><%= req.session.data.birthday2%></b>
                 <br>
-                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo2%></b>
+                <span>身分證號碼 ID Card Number: </span> <b><%= req.session.data.idNo2%></b>
                 <br>
-                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email2%></b>
+                <span>聯絡電話 Contact No.: </span> <b><%= req.session.data.contactNo2%></b>
                 <br>
-                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address2%></b>
+                <span>電郵地址 Email Address: </span> <b><%= req.session.data.email2%></b>
                 <br>
-                <span>運動員(2)相片 Athlete(2) photo:</span><br><img src="<%= req.session.data.photo1%>"
+                <span>聯絡地址 Contact Address: </span> <b><%= req.session.data.address2%></b>
+                <br>
+                <span>運動員(2)相片 Athlete(2) photo: </span><br><img src="<%= req.session.data.photo1%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
 
@@ -87,23 +95,27 @@
                 <br>
                 <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
                 <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.cpChiName3%></b>
+                <span>是否有中文姓名 Any Chinese name: </span> <b><%= req.session.data.havecname3%></b>
                 <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.cpEngName3%></b>
+                <% if(req.session.data.havecname3 == "是 Yes") {%>
+                <span>中文姓名 Name in Chinese: </span> <b><%= req.session.data.cpChiName3%></b>
                 <br>
-                <span>性別 Gender:</span> <b><%= req.session.data.gender3%></b>
+                <%}%>
+                <span>英文姓名 Name in English: </span> <b><%= req.session.data.cpEngName3%></b>
                 <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.birthday3%></b>
+                <span>性別 Gender: </span> <b><%= req.session.data.gender3%></b>
                 <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.idNo3%></b>
+                <span>出生日期 Date of Birth (yyyy-mm-dd): </span> <b><%= req.session.data.birthday3%></b>
                 <br>
-                <span>聯絡電話 Contact No.:</span> <b><%= req.session.data.contactNo3%></b>
+                <span>身分證號碼 ID Card Number: </span> <b><%= req.session.data.idNo3%></b>
                 <br>
-                <span>電郵地址 Email Address:</span> <b><%= req.session.data.email3%></b>
+                <span>聯絡電話 Contact No.: </span> <b><%= req.session.data.contactNo3%></b>
                 <br>
-                <span>聯絡地址 Contact Address:</span> <b><%= req.session.data.address3%></b>
+                <span>電郵地址 Email Address: </span> <b><%= req.session.data.email3%></b>
                 <br>
-                <span>運動員(3)相片 Athlete(3) photo:</span><br><img src="<%= req.session.data.photo2%>"
+                <span>聯絡地址 Contact Address: </span> <b><%= req.session.data.address3%></b>
+                <br>
+                <span>運動員(3)相片 Athlete(3) photo: </span><br><img src="<%= req.session.data.photo2%>"
                     style="max-width:20vw" height="150" width="150" />
             </div>
             <%}%>
@@ -113,18 +125,18 @@
         <br>
         <label style="color: #83a70c; font-weight: bold; font-size: 15px;">教練資料 Coach Details</label>
         <br>
-        <span>教練姓名 Coach Name:</span> <b><%= req.session.data.coachName%></b>
+        <span>教練姓名 Coach Name: </span> <b><%= req.session.data.coachName%></b>
             <br>
-            <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.cContactNo%></b>
+            <span>教練聯絡電話 Coach Contact Number: </span> <b><%= req.session.data.cContactNo%></b>
             <br>
-            <span>學校/機構名稱(如適用) School/Organization Name(If applicable):</span>
+            <span>學校/機構名稱(如適用) School/Organization Name(If applicable): </span>
             <% if(req.session.data.organName == "") {%>
             <b>N/A</b>
             <%} else {%>
             <b><%= req.session.data.organName%></b>
             <%}%>
             <br>
-            <span>收據臺頭 Receipt header:</span>
+            <span>收據枱頭 Receipt header: </span>
             <% if(req.session.data.receiptHeader == "學校/機構名稱 School/Institution Name") {%>
             <b><%= req.session.data.receiptHeader%></b><span> --> </span> <b><%= req.session.data.receiptName%></b>
             <%} else {%>
@@ -137,12 +149,12 @@
             <br>
             <label style="color: #83a70c; font-weight: bold; font-size: 15px;">聲明 Declaration</label>
             <br>
-            <span>參加者(1)家長姓名 Applicant(1)'s Parent Name:</span> <b><%= req.session.data.parentName1%></b>
+            <span>參加者(1)家長姓名 Applicant(1)'s Parent Name: </span> <b><%= req.session.data.parentName1%></b>
             <br>
-            <span>參加者(2)家長姓名 Applicant(2)'s Parent Name:</span> <b><%= req.session.data.parentName2%></b>
+            <span>參加者(2)家長姓名 Applicant(2)'s Parent Name: </span> <b><%= req.session.data.parentName2%></b>
             <br>
             <% if(req.session.data.item == "女子三人 Women's trio") {%>
-            <span>參加者(3)家長姓名 Applicant(3)'s Parent Name:</span> <b><%= req.session.data.parentName3%></b>
+            <span>參加者(3)家長姓名 Applicant(3)'s Parent Name: </span> <b><%= req.session.data.parentName3%></b>
             <br>
             <%}%>
             <br>
