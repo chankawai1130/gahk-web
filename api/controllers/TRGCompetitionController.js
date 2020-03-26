@@ -25,8 +25,8 @@ module.exports = {
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon"; 
             await TRGCompetition.create(req.session.data);
-
             req.session.data = {};  //clear data of session
+
 
             return res.redirect('/competition/form/confirm_form');
         }

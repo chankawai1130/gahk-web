@@ -25,6 +25,11 @@ module.exports = {
       type: "string"
     },
 
+    //Applicant(1)
+    havecname1: {
+      type: "string"
+    },
+
     chiName1: {
       type: "string"
     },
@@ -39,6 +44,11 @@ module.exports = {
     },
 
     birth1: {
+      type: "string"
+    },
+
+    //Applicant(2)
+    havecname2: {
       type: "string"
     },
 
@@ -59,6 +69,11 @@ module.exports = {
       type: "string"
     },
 
+    //Applicant(3)
+    havecname3: {
+      type: "string"
+    },
+    
     chiName3: {
       type: "string"
     },
@@ -73,6 +88,11 @@ module.exports = {
     },
 
     birth3: {
+      type: "string"
+    },
+
+    //Applicant(4)
+    havecname4: {
       type: "string"
     },
 
@@ -93,6 +113,11 @@ module.exports = {
       type: "string"
     },
 
+    //Applicant(5)
+    havecname5: {
+      type: "string"
+    },
+
     chiName5: {
       type: "string"
     },
@@ -107,6 +132,11 @@ module.exports = {
     },
 
     birth5: {
+      type: "string"
+    },
+
+    //Applicant(6)
+    havecname6: {
       type: "string"
     },
 
