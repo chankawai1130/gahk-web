@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  
+
     //(preview)
     trampoline: async function (req, res) {
 
@@ -26,10 +26,14 @@ module.exports = {
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
             await Trampoline.create(req.session.data);
-
+            var model = await Trampoline.findOne(req.session.data);
+            await Trampoline.update(model.id).set({
+                idCode: "TRA2020-" + model.id
+            })
+            model["idCode"] = "TRA2020-" + model.id;
             req.session.data = {};  //clear data of session
 
-            return res.redirect('/competition/form/confirm_form');
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 
