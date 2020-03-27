@@ -13,7 +13,8 @@
         </div>
 
         <div class="col-12">
-            <a href="/formDoc/AcroOpen2020_Prospectus.pdf" target="_blank" style="text-align: center;"><u>2020年香港技巧體操公開賽章程
+            <a href="/formDoc/AcroOpen2020_Prospectus.pdf" target="_blank"
+                style="text-align: center;"><u>2020年香港技巧體操公開賽章程
                     Prospectus of AcrobaticOpenCompetition</u></a>
         </div>
 
@@ -85,10 +86,12 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name:</label>
-                <input type="radio" name="Acroage[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required />
+                <input type="radio" name="Acroage[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div>
@@ -155,10 +158,12 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name:</label>
-                <input type="radio" name="Acroage[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required />
+                <input type="radio" name="Acroage[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="Acroage[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="Acroage[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div>
@@ -438,7 +443,7 @@
             chineseNameDis1.disabled = true;
 
         }
-        
+
         if (yes2_check.checked == true) {
             chineseNameDis2.checked = false;
             chineseNameDis2.disabled = false;
@@ -448,7 +453,7 @@
             chineseNameDis2.disabled = true;
 
         }
-        
+
         if (yes3_check.checked == true) {
             chineseNameDis3.checked = false;
             chineseNameDis3.disabled = false;
@@ -457,9 +462,9 @@
             chineseNameDis3.checked = true; //disable chinese name
             chineseNameDis3.disabled = true;
 
-        } 
+        }
 
-    } 
+    }
 
     //handle the option of 女子三人 Wonem's Trio
     function extraCard() {
@@ -484,8 +489,8 @@
                 + "<div><label>英文姓名 Name in English: </label><input type=\"text\" class=\"form-group\" name=\"Acroage[cpEngName3]\" placeholder=\" e.g. Chan Tai Man\" onkeyup=\"value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')\" required></div></div>"
                 + "<div class = \"row\">"
                 + "<div class = \"form-group col-12 col-sm-6\"><label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"male\" required><label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"female\" checked required><label class=\"gender\">女 Female</label></div>"
+                + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"male\" value=\"男 Male\" onclick=\"return false\" required><label class=\"gender\">男 Male</label>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"female\" value=\"女 Female\" checked onclick=\"return false\" required><label class=\"gender\">女 Female</label></div>"
 
                 // + "<input type=\"radio\" name=\"Acroage[gender3]\" id=\"gender3a\" value=\"male\" required disabled><label class=\"gender\">男 Male</label>"
                 //+ "&nbsp;<input type=\"radio\" name=\"Acroage[gender3]\" id=\"gender3b\" value=\"female\" checked required disabled><label class=\"gender\">女 Female</label></div>"
@@ -509,15 +514,15 @@
 
 
             extraI1.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" required>"
+                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" checked required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
             extraI2.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" required>"
+                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" checked required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
         } else if (mixDou_check.checked == true) {
@@ -538,15 +543,15 @@
 
         } else if (womenDou_check.checked == true) {
             extraI1.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" required>"
+                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" checked required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
             extraI2.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" required>"
+                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" checked required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
             extraCard.innerHTML = "";
@@ -554,19 +559,20 @@
 
         } else if (menDou_check.checked == true) {
             extraI1.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" checked required>"
+                + "<input type=\"radio\" name=\"Acroage[gender1]\" id=\"male\" value=\"男 Male\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender1]\" id=\"female\" value=\"女 Female\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
             extraI2.innerHTML = "<label>性別 Gender: </label>"
-                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" checked required>"
+                + "<input type=\"radio\" name=\"Acroage[gender2]\" id=\"male\" value=\"男 Male\" checked onclick=\"return false\" required>"
                 + "<label class=\"gender\">男 Male</label>"
-                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" required>"
+                + "&nbsp;<input type=\"radio\" name=\"Acroage[gender2]\" id=\"female\" value=\"女 Female\" onclick=\"return false\" required>"
                 + "<label class=\"gender\">女 Female</label>";
 
+            extraCard.innerHTML = "";
+            extraD.innerHTML = "";
         } else {
-
             extraCard.innerHTML = "";
             extraD.innerHTML = "";
         }

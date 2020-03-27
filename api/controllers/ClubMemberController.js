@@ -30,7 +30,7 @@ module.exports = {
       model["idCode"] = "CLUBMem2020-" + model.id;
       req.session.data = {};  //clear data of session
 
-      return res.view('pages/competition/form/confirm_form', { 'form': model });
+      return res.view('membership/clubMemberFormConfirm', { 'form': model });
     }
 
   },
