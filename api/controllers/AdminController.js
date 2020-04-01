@@ -69,10 +69,88 @@ module.exports = {
   //applyHandle
   apply_search: async function (req, res) {
 
-    if (req.method == "GET")
-      return res.view('admin/applyHandle/search')
+    // if (req.method == "GET")
+    //   return res.view('admin/applyHandle/search');
 
-  }
+    var condition = {};
+    var form = req.query.application;
 
+    if (req.query.application == "TRGA") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await TRGCompetition.find({
+        where: condition
+      });
+    } else if (req.query.application == "TSRGA") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await TSRGCompetition.find({
+        where: condition
+      });
+
+    } else if (req.query.application == "GRGS") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GRGS.find({
+        where: condition
+      });
+    } else if (req.query.application == "GRGP") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GRGP.find({
+        where: condition
+      });
+    } else if (req.query.application == "trampoline") {
+      if (req.query.gender) condition.gender = req.query.gender;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await Trampoline.find({
+        where: condition
+      });
+    } else if (req.query.application == "gfa") {
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await GFA.find({
+        where: condition
+      });
+    } else if (req.query.application == "acroage") {
+      if (req.query.item) condition.item = req.query.item;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+
+      var models = await Acroage.find({
+        where: condition
+      });
+
+    } else if (req.query.application == "clubMem") {
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      var models = await ClubMember.find({
+        where: condition
+      });
+
+    }
+
+    return res.view('admin/applyHandle/search', { applications: models, form });
+  },
+
+  apply_confirm: async function (req, res) {
+    if (req.method == "POST") {
+
+    }
+  },
 };
 

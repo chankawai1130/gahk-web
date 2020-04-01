@@ -20,11 +20,17 @@ module.exports = {
     Team_School_HKRGAgeGroupCompetitionFormPreview: async function (req, res) {
 
         if (req.method == 'POST') {
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
             await TSRGCompetition.create(req.session.data);
-
+            var model = await TSRGCompetition.findOne(req.session.data);
+            await TSRGCompetition.update(model.id).set({
+                idCode: "TRGS2020-" + model.id
+            })
+            model["idCode"] = "TRGS2020-" + model.id;
             req.session.data = {};  //clear data of session
 
-            return res.redirect('/competition/form/confirm_form');
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 

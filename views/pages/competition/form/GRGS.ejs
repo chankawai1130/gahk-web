@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-12">
-            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf"
+            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf" target="_blank"
                 style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
                 </u></a>
         </div>
@@ -59,7 +59,8 @@
 
         <div class="col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]" required>
+            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]"
+                required>
         </div>
 
         <div class="col-12">
@@ -73,7 +74,7 @@
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
-        
+
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
@@ -82,8 +83,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname1">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName1]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName1]" id="chiName1" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -118,8 +127,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname2">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname2">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName2]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -154,8 +171,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname3">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname3]" value="否 No" id="No3" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname3">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName3]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -190,8 +215,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname4">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname4]" value="否 No" id="No4" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname4">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName4]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -226,8 +259,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname5">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname5]" value="否 No" id="No5" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname5">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName5]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -262,8 +303,16 @@
             <br>
 
             <div>
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname6">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="GRGS[havecname6]" value="否 No" id="No6" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname6">否 No</label>
+            </div>
+            <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName6]" placeholder=" e.g. 陳大文"
+                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div>
@@ -303,7 +352,8 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料 Team Leader Details</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料 Team
+                Leader Details</h5>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -346,20 +396,24 @@
         </div>
 
         <div class="col-12 form-group">
-            <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by post or in person</span>
+            <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by
+                post or in person</span>
         </div>
 
 
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明 Declaration</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
         </div>
 
         <div class="col-12">
-            <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a href="/formDoc/GRGS_declaration.pdf" download
-                    style="color:#83a70c"><u>declaration.pdf</u></a>,then sign and upload it</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required/>
+            <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download
+                    style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                    href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
+                sign and upload it</label>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
             <div id="HF2preview0"></div>
             <div id="HF2preview1"></div>
         </div>
@@ -425,9 +479,7 @@
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'GRGS[imgIDCard' + p + ']';
-            alert(p)
             input.value = e.target.result;
-            alert(input.value)
 
             img.style.width = "150px";
             img.style.height = "150px";
@@ -444,12 +496,10 @@
 
         var i = 0;
         while (i < files.length) {
-
             if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
 
             var reader = new FileReader();
             var p = 0;
-
             if (files[i].type.startsWith('image/')) {
                 reader.onload = function (e) {
                     var preview = document.getElementById('HF2preview' + p);
@@ -457,31 +507,24 @@
                     var img = document.createElement('img');
                     img.src = e.target.result;
                     preview.appendChild(img);
-
                     var input = document.createElement('input');
                     input.type = 'hidden';
-                    input.name = 'GRGS[document' + p + ']';
-                    alert(p)
+                    input.name = 'GRGS[declaration' + p + ']';
                     input.value = e.target.result;
-                    alert(input.value)
-
                     img.style.width = "150px";
                     img.style.height = "150px";
-                    document.getElementById('GRGS_form').appendChild(input);
-
+                    preview.appendChild(input);
                     p = p + 1;
                 }
             } else if (files[i].type == 'application/pdf') {
                 reader.onload = function (e) {
+                    var preview = document.getElementById('HF2preview' + p);
+                    preview.innerHTML = "";
                     var input = document.createElement('input');
                     input.type = 'hidden';
-                    input.name = 'GRGS[document' + p + ']';
-                    alert(p)
+                    input.name = 'GRGS[declaration' + p + ']';
                     input.value = e.target.result;
-                    alert(input.value)
-
-                    document.getElementById('GRGS_form').appendChild(input);
-
+                    preview.appendChild(input);
                     p = p + 1;
                 }
             }
@@ -490,4 +533,86 @@
         }
     }
 
+    //handle have chinese name option
+    function havechinesename() {
+        var yes1_check = document.getElementById("Yes1");
+        var no1_check = document.getElementById("No1");
+        var yes2_check = document.getElementById("Yes2");
+        var no2_check = document.getElementById("No2");
+        var yes3_check = document.getElementById("Yes3");
+        var no3_check = document.getElementById("No3");
+        var yes4_check = document.getElementById("Yes4");
+        var no4_check = document.getElementById("No4");
+        var yes5_check = document.getElementById("Yes5");
+        var no5_check = document.getElementById("No5");
+        var yes6_check = document.getElementById("Yes6");
+        var no6_check = document.getElementById("No6");
+        var chineseNameDis1 = document.getElementById("chiName1")
+        var chineseNameDis2 = document.getElementById("chiName2")
+        var chineseNameDis3 = document.getElementById("chiName3")
+        var chineseNameDis4 = document.getElementById("chiName4")
+        var chineseNameDis5 = document.getElementById("chiName5")
+        var chineseNameDis6 = document.getElementById("chiName6")
+
+        if (yes1_check.checked == true) {
+            chineseNameDis1.checked = false;
+            chineseNameDis1.disabled = false;
+
+        } else if (no1_check.checked == true) {
+            chineseNameDis1.checked = true; //disable chinese name
+            chineseNameDis1.disabled = true;
+
+        }
+        
+        if (yes2_check.checked == true) {
+            chineseNameDis2.checked = false;
+            chineseNameDis2.disabled = false;
+
+        } else if (no2_check.checked == true) {
+            chineseNameDis2.checked = true; //disable chinese name
+            chineseNameDis2.disabled = true;
+
+        }
+        
+        if (yes3_check.checked == true) {
+            chineseNameDis3.checked = false;
+            chineseNameDis3.disabled = false;
+
+        } else if (no3_check.checked == true) {
+            chineseNameDis3.checked = true; //disable chinese name
+            chineseNameDis3.disabled = true;
+
+        } 
+
+        if (yes4_check.checked == true) {
+            chineseNameDis4.checked = false;
+            chineseNameDis4.disabled = false;
+
+        } else if (no4_check.checked == true) {
+            chineseNameDis4.checked = true; //disable chinese name
+            chineseNameDis4.disabled = true;
+
+        } 
+
+        if (yes5_check.checked == true) {
+            chineseNameDis5.checked = false;
+            chineseNameDis5.disabled = false;
+
+        } else if (no5_check.checked == true) {
+            chineseNameDis5.checked = true; //disable chinese name
+            chineseNameDis5.disabled = true;
+
+        } 
+
+        if (yes6_check.checked == true) {
+            chineseNameDis6.checked = false;
+            chineseNameDis6.disabled = false;
+
+        } else if (no6_check.checked == true) {
+            chineseNameDis6.checked = true; //disable chinese name
+            chineseNameDis6.disabled = true;
+
+        } 
+
+    } 
 </script>

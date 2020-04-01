@@ -34,14 +34,21 @@ module.exports = {
     acroage_preview: async function (req, res) {
 
         if (req.method == 'POST') {
-            await Acroage.create(req.session.data);
 
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
+            await Acroage.create(req.session.data);
+            var model = await Acroage.findOne(req.session.data);
+            await Acroage.update(model.id).set({
+                idCode: "AGO2020-" + model.id
+            })
+            model["idCode"] = "AGO2020-" + model.id;
             req.session.data = {};  //clear data of session
 
-            return res.redirect('/competition/form/confirm_form');
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
-  
+
 
 };
 

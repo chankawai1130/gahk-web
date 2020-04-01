@@ -33,7 +33,8 @@
         <div class="row mx-sm-2">
             <div class="form-group col-12">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
-                <select class="form-control" id="competition" name="competition" onchange="compSelected(this.value);">
+                <select class="form-control" id="application" name="application" onchange="appSelected(this.value);"
+                    required>
                     <option value="">請選擇申請項目 Select Application Project</option>
                     <option value="competition" disabled>---Activity/Competition 活動/比賽---</option>
                     <option value="acroage">2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</option>
@@ -52,7 +53,7 @@
             <div class="form-group col-12" id="extraCat"></div>
 
             <div class="form-group col-12 col-sm-6">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Payment Status 付款狀況</label>
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">付款狀況 Payment Status</label>
                 <select class="form-control" id="payStatus" name="payStatus">
                     <option value="">請選擇付款狀況 Select Payment Status</option>
                     <option value="paid">已付款 Paid</option>
@@ -62,8 +63,8 @@
             </div>
 
             <div class="form-group col-12 col-sm-6">
-                <label style="color: #888888; font-size: 16pt;" class="col-form-label">Apply Status 申請狀況</label>
-                <select class="form-control" id="appStatus" name="appStatus">
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請狀況 Apply Status</label>
+                <select class="form-control" id="formStatus" name="formStatus">
                     <option value="">請選擇申請狀況 Select Apply Status</option>
                     <option value="accepted">已確認 Accepted</option>
                     <option value="ToBeCon">待確認 To be confirmed</option>
@@ -78,62 +79,146 @@
 
         </div>
 
-
-
         <br><br>
+
+
         <table>
+            <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
+            &nbsp;<button type="button" class="btn btn-primary" style="font-size: small;">全部確認<br>Confirm All</button>
+            <br><br>
+
+
+            <%if (applications){%>
+            <span>搜尋申請項目 Searching Application Project: </span><br>
+
+            <% if (form == "TRGA"){%>
+            <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
+            <%} else if (form == "TSRGA"){%>
+            <b>2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</b>
+            <%} else if (form == "gfa"){%>
+            <b>2020年香港普及體操節 GFAFestival2020</b>
+            <%} else if (form == "GRGP"){%>
+            <b>2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</b>
+            <%} else if (form == "GRGS"){%>
+            <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
+            <%} else if (form == "trampoline"){%>
+            <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
+            <%} else if (form == "acroage"){%>
+            <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
+            <%} else if (form == "clubMem") {%>
+            <b>團體註冊申請 Application for Club Membership</b>
+            <%}%>
+
+            <br><br>
+
             <tr id="subjects">
-                <th>隊伍/團體<br>Team/Organisation</th>
-                <th>組別/項目<br>Category/Subject</th>
-                <th>款項<br>Payment</th>
-                <th>提交日期<br>Apply Date</th>
-                <th>狀態<br>Status</th>
+            <th>申請編號<br>Apply No.</th>
+            <% if (form != "acroage"){ %>
+            <th>隊伍/團體<br>Team/Organisation</th>
+
+            <% } if (form == "trampoline"){ %>
+            <th>性別<br>Gender</th>
+
+            <% } if (form == "acroage"){ %>
+            <th>項目<br>Event</th>
+
+            <%} if (form != "clubMem") {%>
+            <th>組別<br>Category</th>
+            <% } %>
+            <th>付款<br>Payment</th>
+            <th>提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
+            <th>狀態<br>Status</th>
             </tr>
+
+            <% applications.forEach( function(models) { %>
+            <% var n = new Date(models.createdAt);
+                var month = n.getMonth() + 1;
+                var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
+
             <tr>
-                <td>vv</td>
-                <td>XXXXXX</td>
-                <td>Received</td>
-                <td>DD/MM/YYYY</td>
-                <td id="btns">
-                    <a class="btn btn-primary" href="">確定</a>
-                    <a class="btn btn-success" href="">編輯</a>
-                    <a class="btn btn-danger" href="">取消</a>
+                <!-- 申請編號 Apply No. -->
+                <td width="10%"><%= models.idCode %></td>
+
+                <!--Column: 隊伍/團體 Team/Organisation -->
+                <% if (form != "acroage"){ %>
+                <%if(form == "clubMem") {%>
+                <td width="40%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
+                <% } else {%>
+                <td width="30%" height="100"><%= models.teamName %></td>
+                <%}%>
+                
+                <!-- Column: 性別 Gender -->
+                <%} if (form == "trampoline"){ %>
+                <td width="25%"><%= models.gender %></td>
+
+                <!-- Column: 項目 Event -->
+                <%} if (form == "acroage"){ %>
+                <td width="25%"><%= models.item %></td>
+
+                <!-- Column:組別 Category -->
+                <%} if (form != "clubMem"){%>
+                <td width="25%"><%= models.category %></td>
+
+                <!-- Column:付款 Payment -->
+                <%} if(models.payStatus == "paid") {%>
+                <td width="10%">Y</td>
+                <%} else if (models.payStatus == "unpaid"){%>
+                <td width="10%">N</td>
+                <%}%>
+
+                <!-- Column:提交日期 Apply Date -->
+                <td width="15%"><%= applyDate %></td>
+
+                <!-- Column:狀態 Status  -->
+                <td width="10%" id="btns">
+                    <%if (models.formStatus == "ToBeCon") {%>
+                    <a type="button" class="btn btn-primary" style="width: 60pt; font-size: small;"
+                        href="">確認<br>Confirm</a>
+                    <%} else if (models.formStatus == "accepted"){%>
+                    <button type="button" class="btn btn-outline-primary" style="width: 60pt; font-size: small;"
+                        disabled>已確認<br>Accepted</button>
+                    <%}%>
+                        
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;" href="">編輯<br>Edit</a>
+                    <a type="button" class="btn btn-danger" style="width: 60pt; font-size: small;" href="">刪除<br>Delete</a>
                 </td>
             </tr>
+            <%});%>
+                    <%} %>
         </table>
         <br>
-
+    </form>
 </div>
 
-</form>
+
 
 
 
 <script>
-    var acrCategory = ["1級(6至14歲) Level1(6-14 years old)", "2級(6至14歲) Level2(6-14 years old)", "3級(8歲或以上) Level3(8 or above)", "4級(9歲或以上) Level4(9 or above)", "5級(10歲或以上) Level5(10 or above)"];
+    var acrCategory = ["1級(6至14歲) Level 1(6-14 years old)", "2級(6至14歲) Level 2(6-14 years old)", "3級(8歲或以上) Level 3(8 years old or above)", "4級(9歲或以上) Level 4(9 years old or above)", "5級(10歲或以上) Level 5(10 years old or above)"];
     var gfaCategory = ["幼稚園 Kindergarten", "小學組 Primary School", "公開組 Open Group"];
-    var traCategory = ["14歲或以下 14 or below", "15至16歲 15-16 years old", "17歲或以上 17 or above"];
+    var traCategory = ["14 歲或以下 14 years old or below", "15 至 16 歲 15 to 16 years old", "17 歲或以上 17 years old or above"];
     var trgaCategory = ["預備A,B組", "預備C,D組", "預備E組", "初級A組", "初級B組", "高級A組", "高級B組"];
-    var grgCategory = ["集體A組(五人圈操)", "集體B組(五人圈操)", "集體C組(三球兩帶)"];
+    var grgCategory = ["集體 A 組(五人圈操)", "集體 B 組(五人圈操)", "集體 C 組(三球兩帶)"];
 
-    function compSelected(compValue) {
+    function appSelected(compValue) {
         var event = document.getElementById("extraEvent");
 
         if (compValue == "acroage") {
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">項目 Event</label>"
-                + "<select class=\"form-control\" id=\"event\" name=\"event\">"
+                + "<select class=\"form-control\" id=\"item\" name=\"item\">"
                 + "<option value=\"\">請選擇項目 Select Event</option>"
-                + "<option value=\"menDouble\">男子雙人 Men's Double</option>"
-                + "<option value=\"womenDouble\">女子雙人 Women's Double</option>"
-                + "<option value=\"mixDouble\">混合雙人 Mixed double</option>"
-                + "<option value=\"womenTri\">女子三人 Women's trio</option></select>";
+                + "<option value=\"男子雙人 Men's Double\">男子雙人 Men's Double</option>"
+                + "<option value=\"女子雙人 Women's Double\">女子雙人 Women's Double</option>"
+                + "<option value=\"混合雙人 Mixed double\">混合雙人 Mixed double</option>"
+                + "<option value=\"女子三人 Women's trio\">女子三人 Women's trio</option></select>";
 
         } else if (compValue == "trampoline") {
             event.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">性別 Gender</label>"
                 + "<select class=\"form-control\" id=\"gender\" name=\"gender\">"
                 + "<option value=\"\">請選擇性別 Select Gender</option>"
-                + "<option value=\"man\">男 Man</option>"
-                + "<option value=\"female\">女 Female</option></select>";
+                + "<option value=\"男 Male\">男 Man</option>"
+                + "<option value=\"女 Female\">女 Female</option></select>";
         } else {
             event.innerHTML = "";
         }
@@ -146,11 +231,10 @@
             appSelect.innerHTML = "";
         } else {
             appSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">Category 組別</label>"
-                + "<select class=\"form-control\" id=\"category\" name=\"category\"></select>"
+                + "<select class=\"form-control\" id=\"category\" name=\"category\"><option value=\"\">請選擇組別 Select Category</option></select>";
 
             var gpSelect = document.getElementById("category");
-
-            gpSelect.options.length = 0;
+            //gpSelect.options.length = 0;
 
             if (compValue == "acroage") {
                 acrCategory.forEach(function (item) {

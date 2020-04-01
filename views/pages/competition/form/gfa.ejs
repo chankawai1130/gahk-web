@@ -15,7 +15,7 @@
 
 
         <div class="col-12">
-            <a href="/formDoc/Prospectus_GFAFestival2020.pdf" style="text-align: center;"><u>2020年香港普及體操節章程
+            <a href="/formDoc/Prospectus_GFAFestival2020.pdf" target="_blank" style="text-align: center;"><u>2020年香港普及體操節章程
                     Prospectus of GFAFestival2020</u></a>
         </div>
 
@@ -61,10 +61,18 @@
                 Contact Person Details</h5>
         </div>
 
+        <div class="col-12">
+            <label>是否有中文姓名 Any Chinese name: </label>
+            <input type="radio" name="GFA[havecname]" value="是 Yes" id="Yes" onclick="havechinesename()" required />
+            <label class="form-check-label" for="havecname">是 Yes</label>
+
+            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No" onclick="havechinesename()" required />
+            <label class="form-check-label" for="havecname">否 No</label>
+        </div>
 
         <div class="col-12 col-sm-6">
             <label>中文姓名 Name in Chinese:</label>
-            <input type="text" class="form-group" name="GFA[cpChiName]"
+            <input type="text" class="form-group" name="GFA[cpChiName]" id="cpChiName"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
         </div>
 
@@ -166,8 +174,8 @@
         <div class="col-12">
             <br>
             <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
-                >></button>
+                style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
+            <br><br>
         </div>
     </div>
     <br>
@@ -207,4 +215,21 @@
         }
         reader.readAsDataURL(file);
     }
+
+    //handle have chinese name option
+    function havechinesename() {
+        var yes_check = document.getElementById("Yes");
+        var no_check = document.getElementById("No");
+        var chineseNameDis = document.getElementById("cpChiName")
+
+        if (yes_check.checked == true) {
+            chineseNameDis.checked = false;
+            chineseNameDis.disabled = false;
+
+        } else if (no_check.checked == true) {
+            chineseNameDis.checked = true; //disable chinese name
+            chineseNameDis.disabled = true;
+
+        }
+    } 
 </script>

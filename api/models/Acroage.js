@@ -13,15 +13,20 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    levelCategory: {
+    category: {
       type: 'string',
     },
 
-    itemCategory: {
+    item: {
       type: 'string',
     },
+
 
     //Applicant 1
+    havecname1: {
+      type: 'string',
+    },
+
     cpChiName1: {
       type: "string"
     },
@@ -57,6 +62,11 @@ module.exports = {
 
 
     //Applicant 2
+    havecname2: {
+      type: 'string',
+    },
+
+
     cpChiName2: {
       type: "string"
     },
@@ -91,6 +101,11 @@ module.exports = {
     },
 
     //Applicant 3
+    havecname3: {
+      type: 'string',
+    },
+
+
     cpChiName3: {
       type: "string"
     },
@@ -157,6 +172,19 @@ module.exports = {
     parentName3: {
       type: 'string',
     },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
+    },
+
+    idCode: {
+      type: "string"
+    },
+
 
 
 

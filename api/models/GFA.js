@@ -28,6 +28,10 @@ module.exports = {
       type: "string"
     },
 
+    havecname: {
+      type: "string"
+    },
+
     cpChiName: {
       type: "string"
     },
@@ -61,6 +65,18 @@ module.exports = {
     },
 
     bankName: {
+      type: "string"
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
+    },
+
+    idCode: {
       type: "string"
     },
 

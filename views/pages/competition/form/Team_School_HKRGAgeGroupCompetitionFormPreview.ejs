@@ -1,117 +1,131 @@
 <form action="/pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview" method="POST">
-
-    <div class="card col-12" style="width: 740pt; background: transparent;">
-        <% req.session.data = req.session.data || {} %>
-        <br>
-        <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
-        <br>
-        <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
-                2020年全港藝術體操分齡比賽</b></h1>
-        <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
-            <u>團體項目報名表(學校組)</u></h2>
-        <br><br>
-
-        <div class="col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
-                Rules and Regulation</h5>
+    <% req.session.data = req.session.data || {} %>
+    <div class="card border-0 col-12" style="width: 740pt; background: transparent;">
+        <div class="card-body col-12">
+            <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
+            <br>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
+                    2020年全港藝術體操分齡比賽</b></h1>
+            <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
+                <u>團體項目報名表(學校組)</u></h2>
         </div>
 
-        <div class="col-12">
-            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf"
-                style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
-                </u></a>
-        </div>
-
-
-        <div class="form-group">
-            <br><br>
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group Details</label>
-            <br>
-            <span>學校名稱(中文)<br>School Name(Chinese):</span> <b><%= req.session.data.SchoolChiName%></b>
-            <br>
-            <span>聯絡電話 Contact Number:</span> <b><%= req.session.data.Phone%></b>
-            <br>
-            <span>聯絡電郵 Email:</span> <b><%= req.session.data.Email%></b>
-            <br>
-            <span>教練姓名 Coach Name:</span> <b><%= req.session.data.CoachName%></b>
-            <br>
-            <span>教練聯絡電話 Coach Contact Number:</span> <b><%= req.session.data.CoachPhone%></b>
-            <br>
-            <sapn>組別 Category:</sapn> <b><%= req.session.data.Category%></b>
-        </div>
-
-        <div class="form-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants' Personal
-                Details</label>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1) Applicant(1)</label>
+        <div class="card-body col-12">
+            <div class="row">
+                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group
+                    Details</label>
                 <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.Mate1ChiName%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.Mate1EngName%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.Mate1IDNo%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.Mate1Date%></b>
+                <span class="col-12">學校名稱(中文) School Name(Chinese): <b><%= req.session.data.teamName%></b></span>
+                <span class="col-sm-6">聯絡電話 Contact Number: <b><%= req.session.data.Phone%></b></span>
+                <span class="col-sm-6">聯絡電郵 Email: <b><%= req.session.data.Email%></b></span>
+                <span class="col-sm-6">教練姓名 Coach Name: <b><%= req.session.data.CoachName%></b></span>
+                <span class="col-sm-6">教練聯絡電話 Coach Contact Number: <b><%= req.session.data.CoachPhone%></b></span>
+                <sapn class="col-12">組別 Category: <b><%= req.session.data.category%></b></sapn>
             </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2) Applicant(2)</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.Mate2ChiName%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.Mate2EngName%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.Mate2IDNo%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.Mate2Date%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3) Applicant(3)</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.Mate3ChiName%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.Mate3EngName%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.Mate3IDNo%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.Mate3Date%></b>
-            </div>
-
-            <div class="form-group">
-                <label style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(4) Applicant(4)</label>
-                <br>
-                <span>中文姓名 Name in Chinese:</span> <b><%= req.session.data.Mate4ChiName%></b>
-                <br>
-                <span>英文姓名 Name in English:</span> <b><%= req.session.data.Mate4EngName%></b>
-                <br>
-                <span>身分證號碼 ID Card Number:</span> <b><%= req.session.data.Mate4IDNo%></b>
-                <br>
-                <span>出生日期 Date of Birth (yyyy-mm-dd):</span> <b><%= req.session.data.Mate4Date%></b>
-            </div>
-
         </div>
 
-        <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">費用 Fee</label>
-            <br>
-            <span>團體項目 Group Event: $250 X</span> <b><%= req.session.data.TeamNumber%></b>
-            <span>隊 team(s) = $</span> <b><%= req.session.data.TeamPrice%></b>
-            <br>
-            <span>總額 Total price = $ </span> <b><%= req.session.data.TeamTotalPrice%></b>
+        <div class="card-body">
+            <div class="row">
+                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants'
+                    Personal
+                    Details</label>
+
+                <div class="form-group col-12">
+                    <div class="row">
+                        <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(1)
+                            Applicant(1)</label>
+                        <span class="col-12">是否有中文姓名 Any Chinese name: <b><%= req.session.data.havecname1%></b></span>
+                        <span class="col-sm-6">中文姓名 Name in Chinese:
+                            <% if(req.session.data.havecname1 == "是 Yes") {%>
+                            <b><%= req.session.data.Mate1ChiName%></b>
+                            <%} else if(req.session.data.havecname1 == "否 No"){%>
+                            <b>N/A</b>
+                            <%}%>
+                    </span>
+                    <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate1EngName%></b></span>
+                        <span class="col-sm-6">身分證號碼 ID Card Number: <b><%= req.session.data.Mate1IDNo%></b></span>
+                        <span class="col-sm-6">出生日期 Date of Birth (yyyy-mm-dd):
+                            <b><%= req.session.data.Mate1Date%></b></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="row">
+                        <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(2)
+                            Applicant(2)</label>
+                        <span class="col-12">是否有中文姓名 Any Chinese name: <b><%= req.session.data.havecname2%></b></span>
+                        <span class="col-sm-6">中文姓名 Name in Chinese:
+                            <% if(req.session.data.havecname2 == "是 Yes") {%>
+                            <b><%= req.session.data.Mate2ChiName%></b>
+                            <%} else if(req.session.data.havecname2 == "否 No"){%>
+                            <b>N/A</b>
+                            <%}%>
+                    </span>
+                    <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate2EngName%></b></span>
+                        <span class="col-sm-6">身分證號碼 ID Card Number: <b><%= req.session.data.Mate2IDNo%></b></span>
+                        <span class="col-sm-6">出生日期 Date of Birth (yyyy-mm-dd):
+                            <b><%= req.session.data.Mate2Date%></b></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="row">
+                        <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3)
+                            Applicant(3)</label>
+                        <span class="col-12">是否有中文姓名 Any Chinese name: <b><%= req.session.data.havecname3%></b></span>
+                        <span class="col-sm-6">中文姓名 Name in Chinese:
+                            <% if(req.session.data.havecname3 == "是 Yes") {%>
+                            <b><%= req.session.data.Mate3ChiName%></b>
+                            <%} else if(req.session.data.havecname3 == "否 No"){%>
+                            <b>N/A</b>
+                            <%}%>
+                    </span>
+                    <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate3EngName%></b></span>
+                        <span class="col-sm-6">身分證號碼 ID Card Number: <b><%= req.session.data.Mate3IDNo%></b></span>
+                        <span class="col-sm-6">出生日期 Date of Birth (yyyy-mm-dd):
+                            <b><%= req.session.data.Mate3Date%></b></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <div class="row">
+                        <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(4)
+                            Applicant(4)</label>
+                        <span class="col-12">是否有中文姓名 Any Chinese name: <b><%= req.session.data.havecname4%></b></span>
+                        <span class="col-sm-6">中文姓名 Name in Chinese:
+                            <% if(req.session.data.havecname4 == "是 Yes") {%>
+                            <b><%= req.session.data.Mate4ChiName%></b>
+                            <%} else if(req.session.data.havecname4 == "否 No"){%>
+                            <b>N/A</b>
+                            <%}%>
+                    </span>
+                    <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate4EngName%></b></span>
+                        <span class="col-sm-6">身分證號碼 ID Card Number: <b><%= req.session.data.Mate4IDNo%></b></span>
+                        <span class="col-sm-6">出生日期 Date of Birth (yyyy-mm-dd):
+                            <b><%= req.session.data.Mate4Date%></b></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="from-group">
-            <label style="color: #83a70c; font-weight: bold; font-size: 15px;">學校負責人資料 School's leader detail</label>
-            <br>
-            <span>學校負責人姓名 Leader's Name:</span> <b><%= req.session.data.leaderName%></b>
-            <br>
-            <span>學校負責人職位 Leader's Position:</span> <b><%= req.session.data.leaderPosition%></b>
-
+        <div class="card-body col-12">
+            <div class="row">
+                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">費用 Fee</label>
+                <span class="col-12">團體項目 Group Event: $250 X <b><%= req.session.data.TeamNumber%></b> 隊 team(s) =
+                    $<b><%= req.session.data.TeamPrice%></b></span>
+                <span class="col-12">總額 Total price = $ <b><%= req.session.data.TeamTotalPrice%></b></span>
+            </div>
         </div>
 
+        <div class="card-body col-12">
+            <div class="row">
+                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">學校負責人資料 School's
+                    leader
+                    detail</label>
+                <span class="col-sm-6">學校負責人姓名 Leader's Name: <b><%= req.session.data.leaderName%></b></span>
+                <span class="col-sm-6">學校負責人職位 Leader's Position: <b><%= req.session.data.leaderPosition%></b></span>
+            </div>
+        </div>
         <br><br>
 
         <div class="row">
@@ -120,7 +134,6 @@
                     style="background-color: #83a70c; border-color: #83a70c;width: 150px; float:right"
                     onclick="message()">Submit
                     提交</button>
-
             </div>
 
             <div class="form-group col-sm-2">
@@ -129,10 +142,7 @@
                     取消</button>
             </div>
         </div>
-
-
     </div>
-
 </form>
 
 <script>

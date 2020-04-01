@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-12">
-            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf"
+            <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf" target="_blank"
                 style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
                 </u></a>
         </div>
@@ -30,7 +30,7 @@
 
         <div class="form-group col-12">
             <label>學校名稱(中文) School Name(Chinese):</label>
-            <input type="text" name="TSRGCompetition[SchoolChiName]" style="width:450pt"
+            <input type="text" name="TSRGCompetition[teamName]" style="width:450pt"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
         </div>
 
@@ -58,26 +58,26 @@
 
         <div class="form-group col-12">
             <label>組別<br>Category:</label>
-            <input type="radio" name="TSRGCompetition[Category]" value="預備A,B組" required />
-            <label class="form-check-label" for="Category">預備A,B組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="預備A,B組" required />
+            <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="預備C,D組" required />
-            <label class="form-check-label" for="Category">預備C,D組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="預備C,D組" required />
+            <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="預備E組" required />
-            <label class="form-check-label" for="Category">預備E組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="預備E組" required />
+            <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="初級A組" required />
-            <label class="form-check-label" for="Category">初級A組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="初級A組" required />
+            <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="初級B組" required />
-            <label class="form-check-label" for="Category">初級B組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="初級B組" required />
+            <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="高級A組" required />
-            <label class="form-check-label" for="Category">高級A組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="高級A組" required />
+            <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TSRGCompetition[Category]" value="高級B組" required />
-            <label class="form-check-label" for="Category">高級B組</label>
+            <input type="radio" name="TSRGCompetition[category]" value="高級B組" required />
+            <label class="form-check-label" for="category">高級B組</label>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -87,8 +87,16 @@
             <br>
 
             <div class="form-group">
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="TSRGCompetition[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="TSRGCompetition[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname1">否 No</label>
+            </div>
+            <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TSRGCompetition[Mate1ChiName]" placeholder=" e.g. 陳大文"
+                <input type="text" name="TSRGCompetition[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
@@ -113,8 +121,16 @@
             <br>
 
             <div class="form-group">
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="TSRGCompetition[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname2">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="TSRGCompetition[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname2">否 No</label>
+            </div>
+            <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TSRGCompetition[Mate2ChiName]" placeholder=" e.g. 陳大文"
+                <input type="text" name="TSRGCompetition[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
@@ -139,8 +155,16 @@
             <br>
 
             <div class="form-group">
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="TSRGCompetition[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname3">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="TSRGCompetition[havecname3]" value="否 No" id="No3" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname3">否 No</label>
+            </div>
+            <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TSRGCompetition[Mate3ChiName]" placeholder=" e.g. 陳大文"
+                <input type="text" name="TSRGCompetition[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
@@ -165,8 +189,16 @@
             <br>
 
             <div class="form-group">
+                <label>是否有中文姓名 Any Chinese name: </label>
+                <input type="radio" name="TSRGCompetition[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname4">是 Yes</label>
+    
+                &nbsp;<input type="radio" name="TSRGCompetition[havecname4]" value="否 No" id="No4" onclick="havechinesename()" required />
+                <label class="form-check-label" for="havecname4">否 No</label>
+            </div>
+            <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TSRGCompetition[Mate4ChiName]" placeholder=" e.g. 陳大文"
+                <input type="text" name="TSRGCompetition[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
@@ -300,4 +332,61 @@
         }
         reader.readAsDataURL(file);
     }
+
+    //handle have chinese name option
+    function havechinesename() {
+        var yes1_check = document.getElementById("Yes1");
+        var no1_check = document.getElementById("No1");
+        var yes2_check = document.getElementById("Yes2");
+        var no2_check = document.getElementById("No2");
+        var yes3_check = document.getElementById("Yes3");
+        var no3_check = document.getElementById("No3");
+        var yes4_check = document.getElementById("Yes4");
+        var no4_check = document.getElementById("No4");
+        var chineseNameDis1 = document.getElementById("Mate1ChiName")
+        var chineseNameDis2 = document.getElementById("Mate2ChiName")
+        var chineseNameDis3 = document.getElementById("Mate3ChiName")
+        var chineseNameDis4 = document.getElementById("Mate4ChiName")
+
+        if (yes1_check.checked == true) {
+            chineseNameDis1.checked = false;
+            chineseNameDis1.disabled = false;
+
+        } else if (no1_check.checked == true) {
+            chineseNameDis1.checked = true; //disable chinese name
+            chineseNameDis1.disabled = true;
+
+        }
+        
+        if (yes2_check.checked == true) {
+            chineseNameDis2.checked = false;
+            chineseNameDis2.disabled = false;
+
+        } else if (no2_check.checked == true) {
+            chineseNameDis2.checked = true; //disable chinese name
+            chineseNameDis2.disabled = true;
+
+        }
+        
+        if (yes3_check.checked == true) {
+            chineseNameDis3.checked = false;
+            chineseNameDis3.disabled = false;
+
+        } else if (no3_check.checked == true) {
+            chineseNameDis3.checked = true; //disable chinese name
+            chineseNameDis3.disabled = true;
+
+        } 
+
+        if (yes4_check.checked == true) {
+            chineseNameDis4.checked = false;
+            chineseNameDis4.disabled = false;
+
+        } else if (no4_check.checked == true) {
+            chineseNameDis4.checked = true; //disable chinese name
+            chineseNameDis4.disabled = true;
+
+        } 
+
+    } 
 </script>

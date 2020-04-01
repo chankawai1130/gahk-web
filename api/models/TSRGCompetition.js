@@ -14,7 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
     //Team_School_HKRGAgeGroupCompetitionform attributes
-    SchoolChiName: {
+    teamName: {
       type: 'string',
     },
 
@@ -34,8 +34,13 @@ module.exports = {
       type: 'string',
     },
 
-    Category: { 
+    category: { 
       type:'string', 
+    },
+
+    //Applicant(1)
+    havecname1: {
+      type: "string"
     },
 
     Mate1ChiName: {
@@ -55,6 +60,11 @@ module.exports = {
       columnType: 'date'
     },
 
+    //Applicant(2)
+    havecname2: {
+      type: "string"
+    },
+
     Mate2ChiName: {
       type: 'string',
     },
@@ -72,6 +82,11 @@ module.exports = {
       columnType: 'date'
     },
 
+    //Applicant(3)
+    havecname3: {
+      type: "string"
+    },
+
     Mate3ChiName: {
       type: 'string',
     },
@@ -87,6 +102,11 @@ module.exports = {
     Mate3Date: {
       type: 'ref',
       columnType: 'date'
+    },
+
+    //Applicant(4)
+    havecname4: {
+      type: "string"
     },
 
     Mate4ChiName: {
@@ -123,6 +143,18 @@ module.exports = {
     },
 
     leaderPosition: {
+      type: "string"
+    },
+
+    payStatus: {
+      type: "string", //unpaid; paid (decided by admin)
+    },
+
+    formStatus: {
+      type: "string", //ToBeCon; accepted(decided by admin)
+    },
+
+    idCode: {
       type: "string"
     },
 

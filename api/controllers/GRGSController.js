@@ -19,13 +19,20 @@ module.exports = {
     GRGS_form_preview: async function (req, res) {
 
         if (req.method == 'POST') {
-            await GRGS.create(req.session.data);
 
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
+            await GRGS.create(req.session.data);
+            var model = await GRGS.findOne(req.session.data);
+            await GRGS.update(model.id).set({
+                idCode: "GRGS2020-" + model.id
+            })
+            model["idCode"] = "GRGS2020-" + model.id;
             req.session.data = {};  //clear data of session
 
-            return res.redirect('/competition/form/confirm_form');
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
-    },  
+    },
 
 };
 
