@@ -1,4 +1,10 @@
 <!-- Team_HKRGAgeGroupCompetitionform.ejs -->
+<style type="text/css">
+    .card {
+        border-radius: 0;
+    }
+</style>
+
 <form action="/competition/form/Team_HKRGAgeGroupCompetitionform" method="POST">
 
     <div class="row mx-sm-2">
@@ -58,33 +64,28 @@
 
         <div class="form-group col-12">
             <label>參賽組別 Category:</label>
-            <input type="radio" name="TRGCompetition[category]" value="預備A,B組" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備C,D組" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備E組" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備E組" id="preE" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級A組" required />
+            <input type="radio" name="TRGCompetition[category]" value="初級A組" id="junA" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級B組" required />
+            <input type="radio" name="TRGCompetition[category]" value="初級B組" id="junB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級A組" required />
+            <input type="radio" name="TRGCompetition[category]" value="高級A組" id="senA" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級B組" required />
+            <input type="radio" name="TRGCompetition[category]" value="高級B組" id="senB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
-        <style type="text/css">
-            .card {
-                border-radius: 0;
-            }
-        </style>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
@@ -94,10 +95,12 @@
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required />
+                <input type="radio" name="TRGCompetition[havecname1]" value="是 Yes" id="Yes1"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="TRGCompetition[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="TRGCompetition[havecname1]" value="否 No" id="No1"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div class="form-group">
@@ -116,7 +119,7 @@
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" name="TRGCompetition[Mate1Date]" required>
+                <input type="date" id="birth1" name="TRGCompetition[Mate1Date]" required>
             </div>
         </div>
 
@@ -128,10 +131,12 @@
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required />
+                <input type="radio" name="TRGCompetition[havecname2]" value="是 Yes" id="Yes2"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="TRGCompetition[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="TRGCompetition[havecname2]" value="否 No" id="No2"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div class="form-group">
@@ -150,7 +155,7 @@
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" name="TRGCompetition[Mate2Date]" required>
+                <input type="date" id="birth2" name="TRGCompetition[Mate2Date]" required>
             </div>
         </div>
 
@@ -162,10 +167,12 @@
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()" required />
+                <input type="radio" name="TRGCompetition[havecname3]" value="是 Yes" id="Yes3"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="TRGCompetition[havecname3]" value="否 No" id="No3" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="TRGCompetition[havecname3]" value="否 No" id="No3"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div class="form-group">
@@ -184,7 +191,7 @@
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" name="TRGCompetition[Mate3Date]" required>
+                <input type="date" id="birth3" name="TRGCompetition[Mate3Date]" required>
             </div>
         </div>
 
@@ -196,10 +203,12 @@
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()" required />
+                <input type="radio" name="TRGCompetition[havecname4]" value="是 Yes" id="Yes4"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
-    
-                &nbsp;<input type="radio" name="TRGCompetition[havecname4]" value="否 No" id="No4" onclick="havechinesename()" required />
+
+                &nbsp;<input type="radio" name="TRGCompetition[havecname4]" value="否 No" id="No4"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div class="form-group">
@@ -218,7 +227,7 @@
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" name="TRGCompetition[Mate4Date]" required>
+                <input type="date" id="birth4" name="TRGCompetition[Mate4Date]" required>
             </div>
         </div>
 
@@ -266,18 +275,18 @@
         </div>
 
         <div class="form-group col-12">
-                <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
-                    Declaration</h5>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
+                Declaration</h5>
 
-                <div class="form-group">
-                    <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                            href="/formDoc/Team_HKRG_declaration.pdf" download><u
+            <div class="form-group">
+                <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                            style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                        href="/formDoc/Team_HKRG_declaration.pdf" download><u
                             style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
-                    <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
-                    <div id="preview2"></div>
-                </div>
-            
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+                <div id="preview2"></div>
+            </div>
+
 
             <div class="row">
                 <div class="col-12 col-sm-6">
@@ -410,7 +419,7 @@
             chineseNameDis1.disabled = true;
 
         }
-        
+
         if (yes2_check.checked == true) {
             chineseNameDis2.checked = false;
             chineseNameDis2.disabled = false;
@@ -420,7 +429,7 @@
             chineseNameDis2.disabled = true;
 
         }
-        
+
         if (yes3_check.checked == true) {
             chineseNameDis3.checked = false;
             chineseNameDis3.disabled = false;
@@ -429,7 +438,7 @@
             chineseNameDis3.checked = true; //disable chinese name
             chineseNameDis3.disabled = true;
 
-        } 
+        }
 
         if (yes4_check.checked == true) {
             chineseNameDis4.checked = false;
@@ -439,7 +448,109 @@
             chineseNameDis4.checked = true; //disable chinese name
             chineseNameDis4.disabled = true;
 
-        } 
+        }
 
     } 
+
+    function limitBirth() {
+        var todayYear = new Date().getFullYear();
+        var preAB = document.getElementById("preAB");
+        var preCD = document.getElementById("preCD");
+        var preE = document.getElementById("preE");
+        var junA = document.getElementById("junA");
+        var junB = document.getElementById("junB");
+        var senA = document.getElementById("senA");
+        var senB = document.getElementById("senB");
+        var birth1 = document.getElementById("birth1");
+        var birth2 = document.getElementById("birth2");
+        var birth3 = document.getElementById("birth3");
+        var birth4 = document.getElementById("birth4");
+        
+        if (preAB.checked == true) {
+            var minYear = todayYear - 9; //2011
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 7; //2013
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate;    
+        } else if(preCD.checked == true) {
+            var minYear = todayYear - 12; //2008
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 10; //2010
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;  
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate;    
+        } else if(preE.checked == true) {
+            var minYear = todayYear - 18; //2002
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 13; //2007
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;  
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate; 
+        } else if (junA.checked == true) {
+            var minYear = todayYear - 9; //2011
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 7; //2013
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;  
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate;  
+        } else if (junB.checked == true) {
+            var minYear = todayYear - 12; //2008
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 10; //2010
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;  
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate; 
+        } else if (senA.checked == true) {
+            var minYear = todayYear - 15; //2005
+            var minDate = minYear + "-01-01";
+            var maxYear = todayYear - 13; //2007
+            var maxDate = maxYear + "-12-31";
+            birth1.min = minDate;
+            birth1.max = maxDate;  
+            birth2.min = minDate;
+            birth2.max = maxDate;
+            birth3.min = minDate;
+            birth3.max = maxDate;
+            birth4.min = minDate;
+            birth4.max = maxDate; 
+        } else if (senB.checked == true) {
+            var maxYear = todayYear - 16; //2004 or before
+            var maxDate = maxYear + "-12-31";
+            birth1.max = maxDate;  
+            birth2.max = maxDate;
+            birth3.max = maxDate;
+            birth4.max = maxDate; 
+        }
+    }
 </script>
