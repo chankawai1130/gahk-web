@@ -37,5 +37,13 @@ module.exports = {
         }
     },
 
+    view: async function (req, res) {
+
+        var model = await Trampoline.findOne(req.params.id);
+
+        if (!model) return res.notFound();
+
+        return res.view('admin/applyHandle/TrampolineEditForm', { trampoline: model});
+    },
 };
 
