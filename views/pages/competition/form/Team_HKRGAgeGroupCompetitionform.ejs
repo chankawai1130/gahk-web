@@ -3,6 +3,12 @@
     .card {
         border-radius: 0;
     }
+
+    #labelHead {
+        color: #83a70c;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+    }
 </style>
 
 <form action="/competition/form/Team_HKRGAgeGroupCompetitionform" method="POST">
@@ -18,8 +24,7 @@
         </div>
 
         <div class="col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
-                Rules and Regulation</h5>
+            <h5 id="labelHead">比賽規則及章程 Rules and Regulation</h5>
         </div>
 
         <div class="col-12">
@@ -30,8 +35,7 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
-                Details</h5>
+            <h5 id="labelHead">團體資料 Group Details</h5>
         </div>
 
         <div class="form-group col-12">
@@ -64,33 +68,39 @@
 
         <div class="form-group col-12">
             <label>參賽組別 Category:</label>
-            <input type="radio" name="TRGCompetition[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備A,B組" id="preAB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備C,D組" id="preCD" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備E組" id="preE" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="預備E組" id="preE" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級A組" id="junA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="初級A組" id="junA" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級B組" id="junB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="初級B組" id="junB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級A組" id="senA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="高級A組" id="senA" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級B組" id="senB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGCompetition[category]" value="高級B組" id="senB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -125,8 +135,7 @@
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -161,8 +170,7 @@
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
-                Applicant(3)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -197,8 +205,7 @@
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
-                Applicant(4)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -237,16 +244,15 @@
                 <li>如有需要，可自行影印表格<br>Applicants can make copy of the form if needed.</li>
                 <li>每張報名表只可報<u>一個</u>組別<br>An application form can be applied for <u>one</u> category only.</li>
             </ol>
-
             <br>
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
+            <h5 id="labelHead">費用 Fee</h5>
 
             <div class="form-group">
                 <label>團體項目 Group Event: $250 X </label>
-                <input id="teamNo" type="number" name="TRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
+                <input id="teamNo" type="number" name="TRGCompetition[TeamNumber]" min=1 style="width: 50pt;" onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
                 <input id="teamPrice" type="number" name="TRGCompetition[TeamPrice]" readonly required>
@@ -263,8 +269,7 @@
         </div>
 
         <div class="form-group col-12">
-
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載
+            <h5 id="labelHead">文件上載
                 Document Upload</h5>
             <div class="form-group">
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
@@ -275,8 +280,7 @@
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
-                Declaration</h5>
+            <h5 id="labelHead">聲明 Declaration</h5>
 
             <div class="form-group">
                 <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
@@ -304,9 +308,7 @@
             <br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
-                carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
-                participants</label>
+                carefully and understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
         </div>
 
         <div class="col-12">
@@ -417,7 +419,6 @@
         } else if (no1_check.checked == true) {
             chineseNameDis1.checked = true; //disable chinese name
             chineseNameDis1.disabled = true;
-
         }
 
         if (yes2_check.checked == true) {
@@ -427,7 +428,6 @@
         } else if (no2_check.checked == true) {
             chineseNameDis2.checked = true; //disable chinese name
             chineseNameDis2.disabled = true;
-
         }
 
         if (yes3_check.checked == true) {
@@ -437,7 +437,6 @@
         } else if (no3_check.checked == true) {
             chineseNameDis3.checked = true; //disable chinese name
             chineseNameDis3.disabled = true;
-
         }
 
         if (yes4_check.checked == true) {
@@ -449,8 +448,7 @@
             chineseNameDis4.disabled = true;
 
         }
-
-    } 
+    }
 
     function limitBirth() {
         var todayYear = new Date().getFullYear();
@@ -465,7 +463,7 @@
         var birth2 = document.getElementById("birth2");
         var birth3 = document.getElementById("birth3");
         var birth4 = document.getElementById("birth4");
-        
+
         if (preAB.checked == true) {
             var minYear = todayYear - 9; //2011
             var minDate = minYear + "-01-01";
@@ -478,79 +476,79 @@
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;    
-        } else if(preCD.checked == true) {
+            birth4.max = maxDate;
+        } else if (preCD.checked == true) {
             var minYear = todayYear - 12; //2008
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 10; //2010
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;    
-        } else if(preE.checked == true) {
+            birth4.max = maxDate;
+        } else if (preE.checked == true) {
             var minYear = todayYear - 18; //2002
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 13; //2007
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (junA.checked == true) {
             var minYear = todayYear - 9; //2011
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 7; //2013
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;  
+            birth4.max = maxDate;
         } else if (junB.checked == true) {
             var minYear = todayYear - 12; //2008
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 10; //2010
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (senA.checked == true) {
             var minYear = todayYear - 15; //2005
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 13; //2007
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (senB.checked == true) {
             var maxYear = todayYear - 16; //2004 or before
             var maxDate = maxYear + "-12-31";
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.max = maxDate;
             birth3.max = maxDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         }
     }
 </script>
