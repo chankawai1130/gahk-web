@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     table {
         border-collapse: collapse;
@@ -20,6 +21,14 @@
         text-align: right;
         border-bottom: 1px solid #ddd;
     }
+
+    .fa-check {
+        color: green;
+    }
+
+    .fa-remove {
+        color: red;
+    }
 </style>
 
 <%- partial('../partial/sidemenu.ejs') %>
@@ -29,7 +38,7 @@
     </h5>
 
     <form action="/admin/applyHandle/search" method="GET">
-
+        <!-- Search bar -->
         <div class="row mx-sm-2">
             <div class="form-group col-12">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
@@ -81,7 +90,7 @@
 
         <br><br>
 
-
+        <!-- Search result -->
         <table>
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
             &nbsp;<button type="button" class="btn btn-primary" style="font-size: small;">全部確認<br>Confirm All</button>
@@ -146,7 +155,7 @@
                 <% } else {%>
                 <td width="30%" height="100"><%= models.teamName %></td>
                 <%}%>
-                
+
                 <!-- Column: 性別 Gender -->
                 <%} if (form == "trampoline"){ %>
                 <td width="25%"><%= models.gender %></td>
@@ -161,9 +170,9 @@
 
                 <!-- Column:付款 Payment -->
                 <%} if(models.payStatus == "paid") {%>
-                <td width="10%">Y</td>
+                <td width="10%"><i class="fa fa-check"></i></td>
                 <%} else if (models.payStatus == "unpaid"){%>
-                <td width="10%">N</td>
+                <td width="10%"><i class="fa fa-remove"></i></td>
                 <%}%>
 
                 <!-- Column:提交日期 Apply Date -->

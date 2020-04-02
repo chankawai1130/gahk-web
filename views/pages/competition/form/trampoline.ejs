@@ -1,3 +1,9 @@
+<style type="text/css">
+    .card {
+        border-radius: 0;
+    }
+</style>
+
 <form action="/competition/form/trampoline" method="POST" id="trampolne">
     <br>
 
@@ -36,24 +42,18 @@
             </p>
             <p>
                 <label for="category">參賽組別 Category: </label>
-                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" required />
+                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" id="youngest" onclick="limitBirth()" required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" required />
+                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" id="median" onclick="limitBirth()" required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" required />
+                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" id="eldest" onclick="limitBirth()" required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
             </p>
 
         </div>
-
-        <style type="text/css">
-            .card {
-                border-radius: 0;
-            }
-        </style>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
@@ -263,15 +263,45 @@
 </script>
 
 <script>
+    birthYearOption(1950, new Date().getFullYear());
+    
+    function limitBirth() {
+        var todayYear = new Date().getFullYear();
+        var youngest = document.getElementById("youngest");
+        var median = document.getElementById("median");
+        var eldest = document.getElementById("eldest");
 
-    var start = 1990;
-    var end = new Date().getFullYear();
-    var options = "<option disabled selected>" + " " + "</option>";
-    for (var year = start; year <= end; year++) {
-        options += "<option>" + year + "</option>";
+        if(youngest.checked == true) { //14 years old or below
+            var minYear = todayYear - 14; 
+            birthYearOption(minYear, todayYear);
+        } else if (median.checked == true) { //15 to 16 years old
+            var minYear = todayYear - 16;
+            var maxYear = todayYear - 15;
+            birthYearOption(minYear, maxYear);
+        } else if (eldest.checked == true) { //17 years old or above
+            var maxYear = todayYear - 17;
+            birthYearOption(1950, maxYear);
+        } 
     }
-    document.getElementById("year1").innerHTML = options;
-    document.getElementById("year2").innerHTML = options;
+
+    function birthYearOption(start, end) {
+        var options = "<option disabled selected>" + " " + "</option>";
+        for (var year = start; year <= end; year++) {
+            options += "<option>" + year + "</option>";
+        }
+        document.getElementById("year1").innerHTML = options;
+        document.getElementById("year2").innerHTML = options;
+    }
+
+
+    // var start = 1990;
+    // var end = new Date().getFullYear();
+    // var options = "<option disabled selected>" + " " + "</option>";
+    // for (var year = start; year <= end; year++) {
+    //     options += "<option>" + year + "</option>";
+    // }
+    // document.getElementById("year1").innerHTML = options;
+    // document.getElementById("year2").innerHTML = options;
 
 </script>
 
@@ -328,7 +358,7 @@
             chineseNameDis1.disabled = true;
 
         }
-        
+
         if (yes2_check.checked == true) {
             chineseNameDis2.checked = false;
             chineseNameDis2.disabled = false;

@@ -66,11 +66,11 @@
         <div class="col-12">
             <br>
             <p>組別及比賽項目 Category and Competition Item:</p>
-            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" required>
+            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" id="gpA" onclick="limitBirth()" required>
             <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" required>
+            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" id="gpB" onclick="limitBirth()" required>
             <label class="form-check-label" for="category">集體 B 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" required>
+            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" id="gpC" onclick="limitBirth()" required>
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
@@ -106,7 +106,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth1]" required>
+                <input type="date" class="form-group" name="GRGS[birth1]" id="birth1" required>
                 <br>
             </div>
             <div>
@@ -150,7 +150,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth2]" required>
+                <input type="date" class="form-group" name="GRGS[birth2]" id="birth2" required>
                 <br>
             </div>
             <div>
@@ -194,7 +194,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth3]" required>
+                <input type="date" class="form-group" name="GRGS[birth3]" id="birth3" required>
                 <br>
             </div>
             <div>
@@ -238,7 +238,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth4]" required>
+                <input type="date" class="form-group" name="GRGS[birth4]" id="birth4" required>
                 <br>
             </div>
             <div>
@@ -282,7 +282,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth5]" required>
+                <input type="date" class="form-group" name="GRGS[birth5]" id="birth5" required>
                 <br>
             </div>
             <div>
@@ -326,7 +326,7 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth6]" required>
+                <input type="date" class="form-group" name="GRGS[birth6]" id="birth6" required>
                 <br>
             </div>
             <div>
@@ -615,4 +615,45 @@
         } 
 
     } 
+
+    function limitBirth() {
+        var todayYear = new Date().getFullYear();
+        var gpA = document.getElementById("gpA");
+        var gpB = document.getElementById("gpB");
+        var gpC = document.getElementById("gpC");
+        var birth1 = document.getElementById("birth1");
+        var birth2 = document.getElementById("birth2");
+        var birth3 = document.getElementById("birth3");
+        var birth4 = document.getElementById("birth4");
+        var birth5 = document.getElementById("birth5");
+        var birth6 = document.getElementById("birth6");
+
+        if (gpA.checked == true) { //2011-2013
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,7, 9); 
+        } else if (gpB.checked == true) { //2008-2010
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,10, 12);
+        } else if (gpC.checked == true) { //2002-2007
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,13, 18);
+        }
+
+    }
+
+    function birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear, minAge, maxAge) {
+        var minYear = todayYear - maxAge;
+        var minDate = minYear + "-01-01";
+        var maxYear = todayYear - minAge;
+        var maxDate = maxYear + "-12-31";
+        birth1.min = minDate;
+        birth1.max = maxDate;
+        birth2.min = minDate;
+        birth2.max = maxDate;
+        birth3.min = minDate;
+        birth3.max = maxDate;
+        birth4.min = minDate;
+        birth4.max = maxDate;
+        birth5.min = minDate;
+        birth5.max = maxDate;
+        birth6.min = minDate;
+        birth6.max = maxDate;
+    }
 </script>
