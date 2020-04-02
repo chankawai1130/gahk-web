@@ -188,6 +188,7 @@ module.exports.routes = {
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
 
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
+  'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
 
 
 

@@ -35,9 +35,9 @@
         <div class="col-12">
             <p>
                 <label for="gender">性別 Gender: </label>
-                <input name="Trampoline[gender]" type="radio" value="男 Male" required />
+                <input name="Trampoline[gender]" type="radio" id="male" value="男 Male" required />
                 <label for="male">男 Male</label>
-                <input name="Trampoline[gender]" type="radio" value="女 Female" required />
+                <input name="Trampoline[gender]" type="radio" id="female" value="女 Female" required />
                 <label for="female">女 Female</label>
             </p>
             <p>
@@ -224,7 +224,7 @@
 
         <div class="col-12">
             <br>
-            <label>參加者(2)家長姓名 Applicant(1)'s Parent Name: </label>
+            <label>參加者(2)家長姓名 Applicant(2)'s Parent Name: </label>
             <input type="text" class="form-group" name="Trampoline[parentName2]" required>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" required />
             <div id="preview1"></div>
@@ -233,8 +233,6 @@
         <div class="col-12">
             <br><br><br>
             <input type="checkbox" required>
-
-
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
                 carefully and
                 understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
