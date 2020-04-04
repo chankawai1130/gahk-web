@@ -134,6 +134,7 @@
             <%} if (form != "clubMem") {%>
             <th>組別<br>Category</th>
             <% } %>
+
             <th>付款<br>Payment</th>
             <th>提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
             <th>狀態<br>Status</th>
@@ -187,8 +188,11 @@
                     <button type="button" class="btn btn-outline-primary" style="width: 60pt; font-size: small;"
                         disabled>已確認<br>Accepted</button>
                     <%}%>
-                        
-                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;" href="">編輯<br>Edit</a>
+
+
+                    <%if (form == "GRGS") {%>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"  href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <%}%>
                     <a type="button" class="btn btn-danger" style="width: 60pt; font-size: small;" href="">刪除<br>Delete</a>
                 </td>
             </tr>
