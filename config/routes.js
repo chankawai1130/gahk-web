@@ -189,8 +189,14 @@ module.exports.routes = {
 
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
+  'DELETE /trampoline/:id': 'TrampolineController.delete',
+  'POST /trampoline/update/:id': 'TrampolineController.update',
+
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+
+ 
+
 
 
 
