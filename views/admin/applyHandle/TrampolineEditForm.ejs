@@ -1,5 +1,7 @@
-<form action="/competition/form/trampoline" method="POST" id="trampolne">
+<form action="/competition/form/trampoline/update/<%= trampoline.id %>" method="POST" id="trampolne">
     <br>
+
+    <p style="text-align: right;">Reference No.: <%=trampoline.idCode%> &nbsp</p>
 
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -48,40 +50,47 @@
 
                 <% if(trampoline.category == "14 歲或以下 14 years old or below") {%>
 
-                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" checked
-                    required />
+                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" id="youngest"
+                    onclick="limitBirth()" checked required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" required />
+                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" id="median"
+                    onclick="limitBirth()" required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" required />
+                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" id="eldest"
+                    onclick="limitBirth()" required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
 
                 <%} else if(trampoline.category == "15 至 16 歲 15 to 16 years old"){%>
 
-                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" required />
+                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" id="youngest"
+                    onclick="limitBirth()" required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" checked required />
+                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" id="median"
+                    onclick="limitBirth()" checked required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" required />
+                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" id="eldest"
+                    onclick="limitBirth()" required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
 
                 <%}else if(trampoline.category == "17 歲或以上 17 years old or above"){%>
 
-                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" required />
+                <input name="Trampoline[category]" type="radio" value="14 歲或以下 14 years old or below" id="youngest"
+                    onclick="limitBirth()" required />
                 <label for="youngest">14 歲或以下 14 years old or below &nbsp; </label>
-                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" required />
+                <input name="Trampoline[category]" type="radio" value="15 至 16 歲 15 to 16 years old" id="median"
+                    onclick="limitBirth()" required />
                 <label for="median">15 至 16 歲 15 to 16 years old</label>
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" checked
-                    required />
+                <input name="Trampoline[category]" type="radio" value="17 歲或以上 17 years old or above" id="eldest"
+                    onclick="limitBirth()" checked required />
                 <label for="eldest">17 歲或以上 17 years old or above</label>
 
                 <%}%>
@@ -105,25 +114,25 @@
                 <label>是否有中文姓名 Any Chinese name? </label>
                 <% if (trampoline.havecname1 == "是 Yes") { %>
                 <input type="radio" name="Trampoline[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
-                   checked required />
+                    checked required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
 
                 &nbsp;<input type="radio" name="Trampoline[havecname1]" value="否 No" id="No1"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">否 No</label>
                 <% }else {%>
-                    <input type="radio" name="Trampoline[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
-                     required />
-                 <label class="form-check-label" for="havecname1">是 Yes</label>
- 
-                 &nbsp;<input type="radio" name="Trampoline[havecname1]" value="否 No" id="No1"
-                     onclick="havechinesename()" checked required />
-                 <label class="form-check-label" for="havecname1">否 No</label>
-                 <% } %>
-            </div>
-            <div>
-                <label for="chiName1">中文姓名 Name in Chinese:</label>
-                <input id="chiName1" type="text" class="form-group" value=<%= trampoline.chiName1%>
+                <input type="radio" name="Trampoline[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+
+                &nbsp;<input type="radio" name="Trampoline[havecname1]" value="否 No" id="No1"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname1">否 No</label>
+                <% } %>
+        </div>
+        <div>
+            <label for="chiName1">中文姓名 Name in Chinese:</label>
+            <input id="chiName1" type="text" class="form-group" value=<%= trampoline.chiName1%>
                 name="Trampoline[chiName1]" id="chiName1" placeholder="e.g. 陳大文"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
         </div>
@@ -167,7 +176,7 @@
         <div>
             <label>是否有中文姓名 Any Chinese name? </label>
             <% if (trampoline.havecname2 == "是 Yes") { %>
-                <input type="radio" name="Trampoline[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+            <input type="radio" name="Trampoline[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
                 checked required />
             <label class="form-check-label" for="havecname2">是 Yes</label>
 
@@ -175,14 +184,14 @@
                 required />
             <label class="form-check-label" for="havecname2">否 No</label>
             <% }else { %>
-                <input type="radio" name="Trampoline[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+            <input type="radio" name="Trampoline[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
                 checked required />
             <label class="form-check-label" for="havecname2">是 Yes</label>
 
             &nbsp;<input type="radio" name="Trampoline[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
                 checked required />
             <label class="form-check-label" for="havecname2">否 No</label>
-            <% } %>           
+            <% } %>
         </div>
 
         <div>
@@ -197,8 +206,7 @@
         </div>
         <div>
             <label>出生年份 Year of Birth:</label>
-            <select id="year2" class="form-group" name="Trampoline[birth2]"
-                required></select>
+            <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
             <br>
         </div>
         <div>
@@ -254,21 +262,21 @@
         <input type="tel" pattern=[0-9]{8} class="form-group" value=<%= trampoline.coachPhone%>
             name="Trampoline[coachPhone]" required>
     </div>
-    
+
     <div class="col-12">
         <label>註冊教練編號(如適用) Registered Coach No.(If applicable):</label>
         <% if(trampoline.coachNum == ""){%>
-            <input type="text" class="form-group" name="Trampoline[coachNum]">
-            <%} else {%>
-            <b><input type="text" class="form-group" value=<%=trampoline.coachNum%> name="Trampoline[coachNum]"></b>
-            <%}%>
+        <input type="text" class="form-group" name="Trampoline[coachNum]">
+        <%} else {%>
+        <b><input type="text" class="form-group" value=<%=trampoline.coachNum%> name="Trampoline[coachNum]"></b>
+        <%}%>
     </div>
 
 
     <div class="col-12">
         <label>通訊地址 Postal Address:</label>
         <input type="text" class="form-group" value=<%= trampoline.coachAddress%> name="Trampoline[coachAddress]"
-            style="width: 400pt;" required>
+        style="width: 400pt;" required>
     </div>
 
 
@@ -318,9 +326,11 @@
 
     <div class="col-12">
         <br><br>
-        <button type="submit" class="btn btn-primary" style="background: #83a70c; border: none; float: right;">預覽
-            Preview
-            >></button>
+        <button type="submit" class="btn btn-primary" style="background: #83a70c; border: none; float: right;">遞交
+            Submit</button>
+        <button type="button" class="btn btn-danger" onclick="deleteApplication('<%= trampoline.id %>')">刪除
+            Delete</button>
+        <button type="button" class="btn btn-primary" style="background: #008CBA;">確定 Confirm</button>
     </div>
 
     </div>
@@ -328,7 +338,6 @@
     <br>
 
 </form>
-
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/previewForm.css" />
@@ -341,25 +350,45 @@
 </script>
 
 <script>
+    birthYearOption(1950, new Date().getFullYear());
 
-    var start = 1990;
-    var end = new Date().getFullYear();
-    var options1 = "<option disabled selected>" + " " + "</option>";
-    for (var year = start; year <= end; year++) {
-        options1 += "<option>" + year + "</option>";
-        if (year == "<%=trampoline.birth1%>"){
-        options1 = "<option selected>" + "<%=trampoline.birth1%>" + "</option>";
-        };
-    };
-    var options2 = "<option disabled selected>" + " " + "</option>";
-    for (var year = start; year <= end; year++) {
-        options2 += "<option>" + year + "</option>";
-        if (year == "<%=trampoline.birth2%>"){
-        options2 = "<option selected>" + "<%=trampoline.birth2%>" + "</option>";
-        };
+    function limitBirth() {
+        var todayYear = new Date().getFullYear();
+        var youngest = document.getElementById("youngest");
+        var median = document.getElementById("median");
+        var eldest = document.getElementById("eldest");
+
+        if (youngest.checked == true) { //14 years old or below
+            var minYear = todayYear - 14;
+            birthYearOption(minYear, todayYear);
+        } else if (median.checked == true) { //15 to 16 years old
+            var minYear = todayYear - 16;
+            var maxYear = todayYear - 15;
+            birthYearOption(minYear, maxYear);
+        } else if (eldest.checked == true) { //17 years old or above
+            var maxYear = todayYear - 17;
+            birthYearOption(1950, maxYear);
+        }
     }
-    document.getElementById("year1").innerHTML = options1;
-    document.getElementById("year2").innerHTML = options2;
+
+    function birthYearOption(start, end) {
+        var options1 = "<option disabled selected>" + " " + "</option>";
+        for (var year = start; year <= end; year++) {
+            options1 += "<option>" + year + "</option>";
+            if (year == "<%=trampoline.birth1%>") {
+                options1 = "<option selected>" + "<%=trampoline.birth1%>" + "</option>";
+            };
+        };
+        var options2 = "<option disabled selected>" + " " + "</option>";
+        for (var year = start; year <= end; year++) {
+            options2 += "<option>" + year + "</option>";
+            if (year == "<%=trampoline.birth2%>") {
+                options2 = "<option selected>" + "<%=trampoline.birth2%>" + "</option>";
+            };
+        }
+        document.getElementById("year1").innerHTML = options1;
+        document.getElementById("year2").innerHTML = options2;
+    }
 
 </script>
 
@@ -427,4 +456,36 @@
 
         }
     } 
+</script>
+
+<script>
+
+    async function deleteApplication(id) {
+
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/trampoline/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+
+            // var html = await response.text();
+            // alert(html);
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancelled.");
+        }
+
+    };
+
 </script>
