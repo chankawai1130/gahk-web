@@ -121,7 +121,7 @@
             <br><br>
 
             <tr id="subjects">
-            <th>申請編號<br>Apply No.</th>
+            <th>申請編號<br>Application No.</th>
             <% if (form != "acroage"){ %>
             <th>隊伍/團體<br>Team/Organisation</th>
 
@@ -187,13 +187,53 @@
                     <button type="button" class="btn btn-outline-primary" style="width: 60pt; font-size: small;"
                         disabled>已確認<br>Accepted</button>
                     <%}%>
-                        
-                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;" href="">編輯<br>Edit</a>
-                    <a type="button" class="btn btn-danger" style="width: 60pt; font-size: small;" href="">刪除<br>Delete</a>
+
+                    <% if (form == "trampoline") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "TRGA") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "TSRGA") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "gfa") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "GRGP") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "GRGS") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "acroage") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <% if (form == "clubMem") { %>
+                    <a type="button" class="btn btn-success" style="width: 60pt; font-size: small;"
+                        href="">編輯<br>Edit</a>
+                    <% } %>
+
+                    <a type=" button" class="btn btn-danger" style="width: 60pt; font-size: small;"
+                        href="">刪除<br>Delete</a>
                 </td>
             </tr>
             <%});%>
-                    <%} %>
+            <%} %>
         </table>
         <br>
     </form>

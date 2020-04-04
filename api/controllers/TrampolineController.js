@@ -46,20 +46,6 @@ module.exports = {
         return res.view('admin/applyHandle/TrampolineEditForm', { trampoline: model });
     },
 
-    json: async function (req, res) {
-
-        var trampolines = await Trampoline.find();
-
-        return res.json(trampolines);
-    },
-
-    admin: async function (req, res) {
-
-        var value = await Trampoline.find();
-        return res.view('admin/applyHandle/search', { trampolines: value });
-
-    },
-
     delete: async function (req, res) {
 
         if (req.method == "GET") return res.forbidden();
