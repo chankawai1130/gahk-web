@@ -146,6 +146,15 @@ module.exports = {
       type: "string",
     },
 
+    Declaration: {
+      type: "string"
+    },
+
+    VBRC: {
+      type: "string"
+    },
+
+
     payStatus: {
       type: "string", //unpaid; paid (decided by admin)
     },

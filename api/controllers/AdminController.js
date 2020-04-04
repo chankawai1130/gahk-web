@@ -68,10 +68,6 @@ module.exports = {
 
   //applyHandle
   apply_search: async function (req, res) {
-
-    // if (req.method == "GET")
-    //   return res.view('admin/applyHandle/search');
-
     var condition = {};
     var form = req.query.application;
 
@@ -145,12 +141,6 @@ module.exports = {
     }
 
     return res.view('admin/applyHandle/search', { applications: models, form });
-  },
-
-  apply_confirm: async function (req, res) {
-    if (req.method == "POST") {
-
-    }
   },
 };
 
