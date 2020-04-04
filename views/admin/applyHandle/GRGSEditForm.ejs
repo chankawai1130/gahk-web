@@ -120,13 +120,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard0) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy1_身份證副本1.jpg" href="<%= grgs.imgIDCard0%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
+                <img src="<%=grgs.imgIDCard0%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新附上參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" />
                 <br>
                 <div id="preview0"></div>
-            </div> -->
+            </div>
             <br>
         </div>
         <!-- 2 -->
@@ -167,13 +178,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard1) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy2_身份證副本2.jpg" href="<%= grgs.imgIDCard1%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
+                <img src="<%=grgs.imgIDCard1%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" />
                 <br>
                 <div id="preview1"></div>
-            </div> -->
+            </div>
             <br>
         </div>
         <!-- 3 -->
@@ -214,13 +236,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard2) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy3_身份證副本3.jpg" href="<%= grgs.imgIDCard2%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
+                <img src="<%=grgs.imgIDCard2%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" />
                 <br>
                 <div id="preview2"></div>
-            </div> -->
+            </div>
             <br>
         </div>
         <!-- 4 -->
@@ -261,13 +294,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard3) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy4_身份證副本4.jpg" href="<%= grgs.imgIDCard3%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,3)" required />
+                <img src="<%=grgs.imgIDCard3%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,3)" />
                 <br>
                 <div id="preview3"></div>
-            </div> -->
+            </div>
             <br>
         </div>
         <!-- 5 -->
@@ -308,13 +352,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard4) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy5_身份證副本5.jpg" href="<%= grgs.imgIDCard4%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,4)" required />
+                <img src="<%=grgs.imgIDCard4%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,4)" />
                 <br>
                 <div id="preview4"></div>
-            </div> -->
+            </div>
             <br>
         </div>
         <!-- 6 -->
@@ -355,13 +410,24 @@
                     required>
                 <br>
             </div>
-            <!-- <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+
+            <% if(grgs.imgIDCard5) { %>
+            <div>
+                <a download="<%= grgs.idCode %>_idCopy6_身份證副本6.jpg" href="<%= grgs.imgIDCard5%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,5)" required />
+                <img src="<%=grgs.imgIDCard5%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,5)" />
                 <br>
                 <div id="preview5"></div>
-            </div> -->
+            </div>
             <br>
         </div>
 
@@ -435,15 +501,45 @@
                 Declaration</h5>
         </div>
 
-        <!-- <div class="col-12">
-            <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download
-                    style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                    href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
-                sign and upload it</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+        <% if(grgs.declaration0) { 
+            var type = grgs.declaration0.split(';');%>
+        <div class="col-12 col-sm-6">
+            <% if(type[0] == 'data:application/pdf') { %>
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.pdf" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <% } else if(type[0] == 'data:image/jpeg') { %>
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.jpg" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <img src="<%=grgs.declaration0%>" style="height:150px; width:150px" />
+            <% } %>
+        </div>
+        <% } %>
+        <% if(grgs.declaration1) { 
+            var type = grgs.declaration1.split(';');%>
+        <div class="col-12 col-sm-6">
+            <% if(type[0] == 'data:application/pdf') { %>
+            <a download="<%= grgs.idCode %>_Declaration2_聲明2.pdf" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <% } else if(type[0] == 'data:image/jpeg') { %>
+            <a download="<%= grgs.idCode %>_Declaration2_聲明2.jpg" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <img src="<%=grgs.declaration1%>" style="height:150px; width:150px" />
+            <% } %>
+        </div>
+        <% } %>
+
+        <div class="col-12">
+            <br>
+            <label>重新上載聲明書 Reupload the declaration</label>
+            <br>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"/>
             <div id="HF2preview0"></div>
             <div id="HF2preview1"></div>
-        </div> -->
+        </div>
 
         <!-- Sumbit -->
         <div class="col-12">
@@ -497,7 +593,7 @@
 
             img.style.width = "150px";
             img.style.height = "150px";
-            document.getElementById('GRGS_form').appendChild(input);
+            document.getElementById('Admin_GRGS_form').appendChild(input);
         }
         reader.readAsDataURL(file);
     }
