@@ -188,6 +188,15 @@ module.exports.routes = {
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
 
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
+  'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
+  'DELETE /trampoline/:id': 'TrampolineController.delete',
+  'POST /trampoline/update/:id': 'TrampolineController.update',
+
+  'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+  'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+
+ 
+
 
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGCompetitionController.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGCompetitionController.TRGP_update',

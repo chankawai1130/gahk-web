@@ -5,7 +5,7 @@
 </style>
 
 
-<form action="/competition/form/GRGS" method="POST" id=GRGS_form>
+<form action="/admin/applyHandle/GRGSEditForm/<%= grgs.id %>" method="POST" id=Admin_GRGS_form>
     <div class="row mx-sm-2">
         <!-- Title -->
         <div class="col-12" style="color: #888888; ">
@@ -38,43 +38,50 @@
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
             <input type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.teamName %>" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]" required>
+            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]"
+                value="<%= grgs.phone %>" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>聯絡電郵 Email Address:</label>
-            <input type="email" class="form-group" name="GRGS[email]" style="width:195pt;" required>
+            <input type="email" class="form-group" name="GRGS[email]" style="width:195pt;" value="<%= grgs.email %>"
+                required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>教練姓名 Coach Name:</label>
-            <input style="width: 172px;" type="text" class="form-group" name="GRGS[coachName]" required>
+            <input style="width: 172px;" type="text" class="form-group" name="GRGS[coachName]"
+                value="<%= grgs.coachName %>" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
             <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]"
-                required>
+                value="<%= grgs.coachPhone %>" required>
         </div>
+
 
         <div class="col-12">
             <br>
             <p>組別及比賽項目 Category and Competition Item:</p>
-            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" id="gpA" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" id="gpA" onclick="limitBirth()" required
+                <% if ( grgs.category== "集體 A 組(五人圈操)" ) { %> checked <% } %>>
             <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" id="gpB" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" id="gpB" onclick="limitBirth()" required
+                <% if ( grgs.category== "集體 B 組(五人圈操)" ) { %> checked <% } %>>
             <label class="form-check-label" for="category">集體 B 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" id="gpC" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" id="gpC" onclick="limitBirth()" required
+                <% if ( grgs.category== "集體 C 組(三球兩帶)" ) { %> checked <% } %>>
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
 
-        <!-- Applicant details -->
+        <!-- Applicants details -->
         <!-- 1 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
@@ -85,36 +92,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required
+                    <% if ( grgs.havecname1== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
-                <input type="radio" name="GRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required
+                    <% if ( grgs.havecname1== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName1]" id="chiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName1]" id="chiName1"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName1 %>"
+                    <% if ( grgs.havecname1== "否 No" ) { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName1]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName1]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName1 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID1]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID1]" value="<%= grgs.ID1 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth1]" id="birth1" required>
+                <input type="date" class="form-group" name="GRGS[birth1]" id="birth1" value="<%= grgs.birth1 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard0) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy1_身份證副本1.jpg" href="<%= grgs.imgIDCard0%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
+                <img src="<%=grgs.imgIDCard0%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新附上參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" />
                 <br>
                 <div id="preview0"></div>
             </div>
@@ -130,36 +150,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required
+                    <% if ( grgs.havecname2== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
-                <input type="radio" name="GRGS[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required
+                    <% if ( grgs.havecname2== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName2 %>" required
+                    <% if ( grgs.havecname2== "否 No" ) { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName2]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName2]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName2 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID2]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID2]" value="<%= grgs.ID2 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth2]" id="birth2" required>
+                <input type="date" class="form-group" name="GRGS[birth2]" id="birth2" value="<%= grgs.birth2 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard1) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy2_身份證副本2.jpg" href="<%= grgs.imgIDCard1%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
+                <img src="<%=grgs.imgIDCard1%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,1)" />
                 <br>
                 <div id="preview1"></div>
             </div>
@@ -175,36 +208,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()" required
+                    <% if ( grgs.havecname3== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
-                <input type="radio" name="GRGS[havecname3]" value="否 No" id="No3" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname3]" value="否 No" id="No3" onclick="havechinesename()" required
+                    <% if ( grgs.havecname3== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName3 %>" required
+                    <% if ( grgs.havecname3== "否 No" ) { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName3]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName3]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName3 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID3]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID3]" value="<%= grgs.ID3 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth3]" id="birth3" required>
+                <input type="date" class="form-group" name="GRGS[birth3]" id="birth3" value="<%= grgs.birth3 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard2) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy3_身份證副本3.jpg" href="<%= grgs.imgIDCard2%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
+                <img src="<%=grgs.imgIDCard2%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,2)" />
                 <br>
                 <div id="preview2"></div>
             </div>
@@ -220,36 +266,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()" required
+                    <% if ( grgs.havecname4== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
-                <input type="radio" name="GRGS[havecname4]" value="否 No" id="No4" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname4]" value="否 No" id="No4" onclick="havechinesename()" required
+                    <% if ( grgs.havecname4== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName4 %>" required
+                    <% if ( grgs.havecname4== "否 No" ) { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName4]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName4]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName4 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID4]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID4]" value="<%= grgs.ID4 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth4]" id="birth4" required>
+                <input type="date" class="form-group" name="GRGS[birth4]" id="birth4" value="<%= grgs.birth4 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard3) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy4_身份證副本4.jpg" href="<%= grgs.imgIDCard3%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,3)" required />
+                <img src="<%=grgs.imgIDCard3%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,3)" />
                 <br>
                 <div id="preview3"></div>
             </div>
@@ -265,36 +324,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()" required
+                    <% if ( grgs.havecname5== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname5">是 Yes</label>
-                <input type="radio" name="GRGS[havecname5]" value="否 No" id="No5" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname5]" value="否 No" id="No5" onclick="havechinesename()" required
+                    <% if ( grgs.havecname5== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname5">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName5 %>" required
+                    <% if ( grgs.havecname5== "否 No" ) { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName5]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName5]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName5 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID5]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID5]" value="<%= grgs.ID5 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth5]" id="birth5" required>
+                <input type="date" class="form-group" name="GRGS[birth5]" id="birth5" value="<%= grgs.birth5 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard4) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy5_身份證副本5.jpg" href="<%= grgs.imgIDCard4%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,4)" required />
+                <img src="<%=grgs.imgIDCard4%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,4)" />
                 <br>
                 <div id="preview4"></div>
             </div>
@@ -310,36 +382,49 @@
 
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()" required
+                    <% if ( grgs.havecname6== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname6">是 Yes</label>
-                <input type="radio" name="GRGS[havecname6]" value="否 No" id="No6" onclick="havechinesename()"
-                    required />
+                <input type="radio" name="GRGS[havecname6]" value="否 No" id="No6" onclick="havechinesename()" required
+                    <% if ( grgs.havecname6== "否 No" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname6">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" value="<%= grgs.chiName6 %>" required
+                    <% if ( grgs.havecname6== "否 No" ) { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName6]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" class="form-group" name="GRGS[engName6]"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" value="<%= grgs.engName6 %>" required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID6]" placeholder=" A123456(7)" required>
+                <input type="text" class="form-group" name="GRGS[ID6]" value="<%= grgs.ID6 %>" required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth6]" id="birth6" required>
+                <input type="date" class="form-group" name="GRGS[birth6]" id="birth6" value="<%= grgs.birth6 %>"
+                    required>
                 <br>
             </div>
+
+            <% if(grgs.imgIDCard5) { %>
             <div>
-                <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
+                <a download="<%= grgs.idCode %>_idCopy6_身份證副本6.jpg" href="<%= grgs.imgIDCard5%>"
+                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    the applicant</a>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,5)" required />
+                <img src="<%=grgs.imgIDCard5%>" style="height:150px; width:150px" />
+            </div>
+            <br>
+            <% } %>
+            <div>
+                <label>重新上載參加者的身份證副本 <br> Reupload ID copy of the applicant</label>
+                <br>
+                <input type="file" accept="image/*" onchange="handleFile(this.files,5)" />
                 <br>
                 <div id="preview5"></div>
             </div>
@@ -365,12 +450,13 @@
 
         <div class="col-12 col-sm-6">
             <label>隊伍負責人姓名 Leader's Name:</label>
-            <input type="text" class="form-group" name="GRGS[leaderName]" required>
+            <input type="text" class="form-group" name="GRGS[leaderName]" value="<%= grgs.leaderName %>" required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>隊伍負責人職位 Leader's Position:</label>
-            <input type="text" class="form-group" name="GRGS[leaderPosition]" required>
+            <input type="text" class="form-group" name="GRGS[leaderPosition]" value="<%= grgs.leaderPosition %>"
+                required>
         </div>
 
         <!-- Fee -->
@@ -381,24 +467,26 @@
 
         <div class="col-12 form-group">
             <label>集體項目 Collective Subject: $150 X </label>
-            <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" min=1 max=100
-                onblur="calculateFee()" required>
+            <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" value="<%= grgs.NoOfTeam %>" min=1
+                max=100 onblur="calculateFee()" required>
             <label>隊 team(s) = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" readonly />
+            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" value="<%= grgs.teamFee %>"
+                readonly />
         </div>
 
         <div class="col-12 form-group">
             <label>保險 Insurance: $30 X </label>
-            <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" min=1 max=100
-                onblur="calculateInsurance()" required>
+            <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" value="<%= grgs.NoOfPeople %>"
+                min=1 max=100 onblur="calculateInsurance()" required>
             <label>人 people = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]" readonly />
+            <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]" value="<%= grgs.insurance %>"
+                readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
             <label>總額 Total Price = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" readonly />
+            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" value="<%= grgs.total %>" readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -413,32 +501,52 @@
                 Declaration</h5>
         </div>
 
+        <% if(grgs.declaration0) { 
+            var type = grgs.declaration0.split(';');%>
+        <div class="col-12 col-sm-6">
+            <% if(type[0] == 'data:application/pdf') { %>
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.pdf" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <% } else if(type[0] == 'data:image/jpeg') { %>
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.jpg" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <img src="<%=grgs.declaration0%>" style="height:150px; width:150px" />
+            <% } %>
+        </div>
+        <% } %>
+        <% if(grgs.declaration1) { 
+            var type = grgs.declaration1.split(';');%>
+        <div class="col-12 col-sm-6">
+            <% if(type[0] == 'data:application/pdf') { %>
+            <a download="<%= grgs.idCode %>_Declaration2_聲明2.pdf" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <% } else if(type[0] == 'data:image/jpeg') { %>
+            <a download="<%= grgs.idCode %>_Declaration2_聲明2.jpg" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
+                Download declartion</a>
+            <br>
+            <img src="<%=grgs.declaration1%>" style="height:150px; width:150px" />
+            <% } %>
+        </div>
+        <% } %>
+
         <div class="col-12">
-            <label>請下載及列印 <a href="/formDoc/GRGS_declaration.pdf" download
-                    style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                    href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
-                sign and upload it</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
+            <br>
+            <label>重新上載聲明書 Reupload the declaration</label>
+            <br>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"/>
             <div id="HF2preview0"></div>
             <div id="HF2preview1"></div>
-        </div>
-
-
-        <div class="col-12">
-            <br><br>
-            <input type="checkbox" required>
-            <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
-                carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
-                participants</label>
         </div>
 
         <!-- Sumbit -->
         <div class="col-12">
             <br><br>
-            <button type="submit" class="btn btn-primary"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
-                >></button>
+            <button type="sumbit" class="btn btn-primary"
+                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">儲存
+                Save</button>
         </div>
     </div>
     <br>
@@ -485,7 +593,7 @@
 
             img.style.width = "150px";
             img.style.height = "150px";
-            document.getElementById('GRGS_form').appendChild(input);
+            document.getElementById('Admin_GRGS_form').appendChild(input);
         }
         reader.readAsDataURL(file);
     }
