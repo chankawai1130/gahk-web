@@ -85,13 +85,13 @@ module.exports = {
                 leaderPosition: req.body.TRGCompetition.leaderPosition,
                 Declaration: req.body.TRGCompetition.Declaration,
                 VBRC: req.body.TRGCompetition.VBRC,
-
-                //formStatus: req.body.TRGCompetition.formStatus,
+                payStatus: req.body.TRGCompetition.payStatus,
+                formStatus: req.body.TRGCompetition.formStatus,
             }).fetch();
 
             if (models.length == 0) return res.notFound();
 
-            return res.redirect('/admin/applyHandle/search');  
+            return res.redirect('/admin/applyHandle/search');
 
             // if (req.wantsJSON) {
             //     return res.json({ message: "Successfully updated", url: '/admin/applyHandle/search' });    // for ajax request
@@ -101,22 +101,6 @@ module.exports = {
         }
     },
 
-    payment_update: async function (req, res) {
-        if (req.method == "GET") return res.forbidden();
-
-        var models = await TRGCompetition.update(req.params.id).set({ payStatus: 'paid' }).fetch();
-
-        var model = await TRGCompetition.findOne(req.params.id);
-        return res.view('admin/applyHandle/TRGPEdit', { TRGP: model });
-        
-
-        // if (req.wantsJSON) {
-        //     var model = await TRGCompetition.findOne(req.params.id);
-        //     return res.view('admin/applyHandle/TRGPEdit', { TRGP: model });
-        // } else {
-        //     return res.redirect('/admin/applyHandle/search');           // for normal request
-        // }
-    },
 
     delete: async function (req, res) {
 
