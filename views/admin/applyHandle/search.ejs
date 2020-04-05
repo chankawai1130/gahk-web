@@ -242,7 +242,7 @@
                        <%}%>
                             
                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
+                       <a type="button" class="btn btn-danger" id="statusBtn" onclick="deleteGRGSForm('<%= models.id%>')" style="color: white;">刪除<br>Delete</a>
                     </td>
            
                 <%} else if (form == "trampoline"){%>
@@ -381,4 +381,25 @@
             }
         }
     }
+
+    // Delete form
+    async function deleteGRGSForm(id) {
+        var r = confirm("確定要刪除這份申請表? Are you sure to delete this application?");
+
+        if (r) {
+            var response = await fetch("/admin/applyHandle/GRGSEditForm/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.statusText);
+            }
+        } else {
+            alert("取消 Cancelled");
+        }
+    };
 </script>
