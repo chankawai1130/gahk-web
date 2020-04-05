@@ -194,6 +194,7 @@ module.exports.routes = {
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+  'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
 
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGCompetitionController.TRGP_update',

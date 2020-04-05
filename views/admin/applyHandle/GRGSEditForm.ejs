@@ -5,8 +5,19 @@
 </style>
 
 
-<form action="/admin/applyHandle/GRGSEditForm/<%= grgs.id %>" method="POST" id=Admin_GRGS_form>
+<form id=Admin_GRGS_form>
     <div class="row mx-sm-2">
+
+        <!-- From detail -->
+        <div class="col-12" align="right">
+            <% var createTime = new Date(grgs.createdAt);
+            var month = createTime.getMonth() + 1;
+            var applyDate = createTime.getDate() + "/" + month + "/" + createTime.getFullYear(); %>
+            <br>
+            <h6>申請編號 Application No.: <%= grgs.idCode %></h6>
+            <p>提交日期 Apply Date: <%= applyDate %></p>
+        </div>
+
         <!-- Title -->
         <div class="col-12" style="color: #888888; ">
             <br>
@@ -124,7 +135,8 @@
             <% if(grgs.imgIDCard0) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy1_身份證副本1.jpg" href="<%= grgs.imgIDCard0%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard0%>" style="height:150px; width:150px" />
@@ -182,7 +194,8 @@
             <% if(grgs.imgIDCard1) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy2_身份證副本2.jpg" href="<%= grgs.imgIDCard1%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard1%>" style="height:150px; width:150px" />
@@ -240,7 +253,8 @@
             <% if(grgs.imgIDCard2) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy3_身份證副本3.jpg" href="<%= grgs.imgIDCard2%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard2%>" style="height:150px; width:150px" />
@@ -298,7 +312,8 @@
             <% if(grgs.imgIDCard3) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy4_身份證副本4.jpg" href="<%= grgs.imgIDCard3%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard3%>" style="height:150px; width:150px" />
@@ -356,7 +371,8 @@
             <% if(grgs.imgIDCard4) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy5_身份證副本5.jpg" href="<%= grgs.imgIDCard4%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard4%>" style="height:150px; width:150px" />
@@ -414,7 +430,8 @@
             <% if(grgs.imgIDCard5) { %>
             <div>
                 <a download="<%= grgs.idCode %>_idCopy6_身份證副本6.jpg" href="<%= grgs.imgIDCard5%>"
-                    target="_blank">下載參加者的身份證副本 Download ID copy of
+                    target="_blank">下載參加者的身份證副本
+                    Download ID copy of
                     the applicant</a>
                 <br>
                 <img src="<%=grgs.imgIDCard5%>" style="height:150px; width:150px" />
@@ -536,17 +553,32 @@
             <br>
             <label>重新上載聲明書 Reupload the declaration</label>
             <br>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"/>
+            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
             <div id="HF2preview0"></div>
             <div id="HF2preview1"></div>
         </div>
 
-        <!-- Sumbit -->
+        <!-- Update details-->
         <div class="col-12">
+            <% var updateTime = new Date(grgs.updatedAt);
+            var month = updateTime.getMonth() + 1;
+            var updateDate = updateTime.getDate() + "/" + month + "/" + updateTime.getFullYear() + " " + updateTime.getHours() + ":" + updateTime.getMinutes() + ":" + updateTime.getSeconds(); %>
             <br><br>
-            <button type="sumbit" class="btn btn-primary"
+            <p style="font-size: smaller;">上次更新 Last upadated: <%= updateDate%></p>
+        </div>
+
+        <!-- Button -->
+        <div class="col-12">
+            <!-- Sumbit -->
+            <button type="button" class="mx-sm-2 btn btn-primary" onclick="updateForm('<%= grgs.id%>')"
                 style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">儲存
                 Save</button>
+            <!-- Delete -->
+            <button type="button" class="mx-sm-2 btn btn-primary" onclick="deleteForm('<%= grgs.id%>')"
+                style="background: red repeat-x; border: none; float: right;">刪除
+                Delete</button>
+            <!-- Confirm paid -->
+
         </div>
     </div>
     <br>
@@ -555,6 +587,113 @@
 
 
 <script>
+    async function updateForm(id) {
+        var r = confirm("Confirm Update?");
+
+        if (r) {
+            var response = await fetch("/admin/applyHandle/GRGSEditForm/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+                body: "teamName=" + this.teamName
+                // + "&phone=" + this.phone + "&email=" + this.email +
+                //     "&havecname1=" + this.havecname1 + "&chiName1=" + this.chiName1 + "&engName1=" + this.engName1 + "&ID1=" + this.ID1 + "&birth1=" + this.birth1 + "&imgIDCard0" + this.imgIDCard0 +
+                //     "&havecname2=" + this.havecname2 + "&chiName2=" + this.chiName2 + "&engName2=" + this.engName2 + "&ID2=" + this.ID2 + "&birth2=" + this.birth2 + "&imgIDCard1" + this.imgIDCard1 +
+                //     "&havecname3=" + this.havecname3 + "&chiName3=" + this.chiName3 + "&engName3=" + this.engName3 + "&ID3=" + this.ID3 + "&birth3=" + this.birth3 + "&imgIDCard2" + this.imgIDCard2 +
+                //     "&havecname4=" + this.havecname4 + "&chiName4=" + this.chiName4 + "&engName4=" + this.engName4 + "&ID4=" + this.ID4 + "&birth4=" + this.birth4 + "&imgIDCard3" + this.imgIDCard3 +
+                //     "&havecname5=" + this.havecname5 + "&chiName5=" + this.chiName5 + "&engName5=" + this.engName5 + "&ID5=" + this.ID5 + "&birth5=" + this.birth5 + "&imgIDCard4" + this.imgIDCard4 +
+                //     "&havecname6=" + this.havecname6 + "&chiName6=" + this.chiName6 + "&engName6=" + this.engName6 + "&ID6=" + this.ID6 + "&birth6=" + this.birth6 + "&imgIDCard5" + this.imgIDCard5 +
+                //     "&coachName=" + this.coachName + "&coachPhone=" + this.coachPhone + "&leaderName=" + this.leaderName + "&leaderPosition=" + this.leaderPosition +
+                //     "&NoOfTeam=" + this.NoOfTeam + "&teamFee=" + this.teamFee + "&NoOfPeople=" + this.NoOfPeople + "&insurance=" + this.insurance + "&total=" + this.total +
+                //     "&declaration0=" + this.declaration0 + "&declaration1=" + this.declaration1
+            });
+
+            // var response = await GRGS.update(id).set({
+            //     teamName: this.teamName,
+            //     phone: this.phone,
+            //     email: this.email,
+            //     havecname1: this.havecname1,
+            //     chiName1: this.chiName1,
+            //     engName1: this.engName1,
+            //     ID1: this.ID1,
+            //     birth1: this.birth1,
+            //     imgIDCard0: this.imgIDCard0,
+            //     havecname2: this.havecname2,
+            //     chiName2: this.chiName2,
+            //     engName2: this.engName2,
+            //     ID2: this.ID2,
+            //     birth2: this.birth2,
+            //     imgIDCard1: this.imgIDCard1,
+            //     havecname3: this.havecname3,
+            //     chiName3: this.chiName3,
+            //     engName3: this.engName3,
+            //     ID3: this.ID3,
+            //     birth3: this.birth3,
+            //     imgIDCard2: this.imgIDCard2,
+            //     havecname4: this.havecname4,
+            //     chiName4: this.chiName4,
+            //     engName4: this.engName4,
+            //     ID4: this.ID4,
+            //     birth4: this.birth4,
+            //     imgIDCard3: this.imgIDCard3,
+            //     havecname5: this.havecname5,
+            //     chiName5: this.chiName5,
+            //     engName5: this.engName5,
+            //     ID5: this.ID5,
+            //     birth5: this.birth5,
+            //     imgIDCard4: this.imgIDCard4,
+            //     havecname6: this.havecname6,
+            //     chiName6: this.chiName6,
+            //     engName6: this.engName6,
+            //     ID6: this.ID6,
+            //     birth6: this.birth6,
+            //     imgIDCard5: this.imgIDCard5,
+            //     coachName: this.coachName,
+            //     coachPhone: this.coachPhone,
+            //     leaderName: this.leaderName,
+            //     leaderPosition: this.leaderPosition,
+            //     NoOfTeam: this.NoOfTeam,
+            //     teamFee: this.teamFee,
+            //     NoOfPeople: this.NoOfPeople,
+            //     insurance: this.insurance,
+            //     total: this.total,
+            //     declaration0: this.declaration0,
+            //     declaration1: this.declaration1,
+            // }).fetch();
+
+            if (response.ok) {
+                alert("res ok");
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancelled");
+        }
+    }
+
+    async function deleteForm(id) {
+        var r = confirm("確定要刪除這份申請表? Are you sure to delete this application?");
+
+        if (r) {
+            var response = await fetch("/admin/applyHandle/GRGSEditForm/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.statusText);
+            }
+        } else {
+            alert("取消 Cancelled");
+        }
+    };
+
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
         fee = document.getElementById('teamFee').value;
