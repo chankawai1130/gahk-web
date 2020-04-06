@@ -71,20 +71,20 @@ module.exports = {
     var condition = {};
     var form = req.query.application;
 
-    if (req.query.application == "TRGA") {
+    if (req.query.application == "TRGP") {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
-      var models = await TRGCompetition.find({
+      var models = await TRGP.find({
         where: condition
       });
-    } else if (req.query.application == "TSRGA") {
+    } else if (req.query.application == "TRGS") {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
 
-      var models = await TSRGCompetition.find({
+      var models = await TRGS.find({
         where: condition
       });
 
