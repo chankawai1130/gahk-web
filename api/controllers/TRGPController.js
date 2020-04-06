@@ -9,7 +9,7 @@ module.exports = {
     //(preview)
     TRGPForm: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/TRGPForm'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/TRGPForm', { 'data': req.session.data || {} }); }
 
         req.session.data = req.body.TRGP;
 
@@ -91,12 +91,6 @@ module.exports = {
             if (models.length == 0) return res.notFound();
 
             return res.redirect('/admin/applyHandle/search');
-
-            // if (req.wantsJSON) {
-            //     return res.json({ message: "Successfully updated", url: '/admin/applyHandle/search' });    // for ajax request
-            // } else {
-            //     return res.redirect('/admin/applyHandle/search');           // for normal request
-            // }
         }
     },
 

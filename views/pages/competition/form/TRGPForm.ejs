@@ -11,7 +11,7 @@
     }
 </style>
 
-<form action="/competition/form/TRGPForm" method="POST">
+<form action="/pages/competition/form/TRGPForm" method="POST">
 
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -46,8 +46,8 @@
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="text" name="TRGP[Phone]" maxlength="8"
-                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
+            <input type="text" name="TRGP[Phone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
+                required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
@@ -62,38 +62,31 @@
 
         <div class="form-group col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="text" name="TRGP[CoachPhone]" maxlength="8"
-                onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
+            <input type="text" name="TRGP[CoachPhone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
+                required>
         </div>
 
         <div class="form-group col-12">
             <label>參賽組別 Category:</label>
-            <input type="radio" name="TRGP[category]" value="預備A,B組" id="preAB" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TRGP[category]" value="預備C,D組" id="preCD" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TRGP[category]" value="預備E組" id="preE" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="預備E組" id="preE" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TRGP[category]" value="初級A組" id="junA" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="初級A組" id="junA" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TRGP[category]" value="初級B組" id="junB" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="初級B組" id="junB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TRGP[category]" value="高級A組" id="senA" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="高級A組" id="senA" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TRGP[category]" value="高級B組" id="senB" onclick="limitBirth()"
-                required />
+            <input type="radio" name="TRGP[category]" value="高級B組" id="senB" onclick="limitBirth()" required />
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
@@ -105,18 +98,28 @@
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGP[havecname1]" value="是 Yes" id="Yes1"
-                    onclick="havechinesename()" required />
+                <input type="radio" name="TRGP[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
 
-                &nbsp;<input type="radio" name="TRGP[havecname1]" value="否 No" id="No1"
-                    onclick="havechinesename()" required />
+                &nbsp;<input type="radio" name="TRGP[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
+                    required />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
+                <% if(data.havecname1) {%>
+                <% if(data.havecname1 == "否 No") {%>
+                <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
+                <%} else {%>
+                <input type="text" name="TRGP[Mate1ChiName]" value="<%=data.Mate1ChiName%>" id="Mate1ChiName"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}} else {%>
                 <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}%>
+
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -150,8 +153,17 @@
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
+                <% if(data.havecname2) {%>
+                <% if(data.havecname2 == "否 No") {%>
+                <input type="text" name="TRGP[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
+                <%} else {%>
+                <input type="text" name="TRGP[Mate2ChiName]" value="<%=data.Mate2ChiName%>" id="Mate2ChiName"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}} else {%>
                 <input type="text" name="TRGP[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}%>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -185,8 +197,17 @@
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
+                <% if(data.havecname3) {%>
+                <% if(data.havecname3 == "否 No") {%>
+                <input type="text" name="TRGP[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
+                <%} else {%>
+                <input type="text" name="TRGP[Mate3ChiName]" value="<%=data.Mate3ChiName%>" id="Mate3ChiName"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}} else {%>
                 <input type="text" name="TRGP[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}%>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -220,8 +241,17 @@
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
+                <% if(data.havecname4) {%>
+                <% if(data.havecname4 == "否 No") {%>
+                <input type="text" name="TRGP[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
+                <%} else {%>
+                <input type="text" name="TRGP[Mate4ChiName]" value="<%=data.Mate4ChiName%>" id="Mate4ChiName"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}} else {%>
                 <input type="text" name="TRGP[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                <%}%>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -255,12 +285,22 @@
                 <input id="teamNo" type="number" name="TRGP[TeamNumber]" min=1 style="width: 50pt;" onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
+                <% if (data.TeamPrice) {%>
+                <input id="teamPrice" type="number" name="TRGP[TeamPrice]" value="<%=data.TeamPrice%>" readonly
+                    required>
+                <%} else {%>
                 <input id="teamPrice" type="number" name="TRGP[TeamPrice]" readonly required>
+                <%}%>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
+                <% if (data.TeamTotalPrice) {%>
+                <input id="total" type="number" name="TRGP[TeamTotalPrice]" value="<%=data.TeamTotalPrice%>" readonly
+                    required>
+                <%} else {%>
                 <input id="total" type="number" name="TRGP[TeamTotalPrice]" readonly required>
+                <%}%>
             </div>
 
             <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by
@@ -347,7 +387,7 @@
                 input.type = 'hidden';
                 input.name = 'TRGP[VBRC]';
                 input.value = e.target.result;
-                img.style.width = "150px";
+                img.style.width = "auto";
                 img.style.height = "150px";
                 preview.appendChild(input);
             }
@@ -380,7 +420,7 @@
                 input.type = 'hidden';
                 input.name = 'TRGP[Declaration]';
                 input.value = e.target.result;
-                img.style.width = "150px";
+                img.style.width = "auto";
                 img.style.height = "150px";
                 preview.appendChild(input);
             }
