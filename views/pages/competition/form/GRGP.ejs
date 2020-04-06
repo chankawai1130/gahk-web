@@ -6,6 +6,7 @@
 
 <form action="/competition/form/GRGP" method="POST" id=GRGP_form>
     <div class="row mx-sm-2">
+        <!-- Title -->
         <div class="col-12" style="color: #888888; ">
             <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
@@ -15,8 +16,7 @@
             <br><br>
         </div>
 
-
-
+        <!-- Rules -->
         <div class="col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
                 Rules and Regulation</h5>
@@ -28,8 +28,7 @@
                 </u></a>
         </div>
 
-
-
+        <!-- Team details -->
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍資料 Group
@@ -74,6 +73,8 @@
             <br><br>
         </div>
 
+        <!-- Applicant details -->
+        <!-- 1 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
@@ -86,15 +87,15 @@
                 <input type="radio" name="GRGP[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName1]" id="chiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -119,7 +120,7 @@
             </div>
             <br>
         </div>
-
+        <!-- 2 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
@@ -132,15 +133,15 @@
                 <input type="radio" name="GRGP[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -165,7 +166,7 @@
             </div>
             <br>
         </div>
-
+        <!-- 3 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
@@ -178,15 +179,15 @@
                 <input type="radio" name="GRGP[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname3]" value="否 No" id="No3" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname3]" value="否 No" id="No3" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -211,7 +212,7 @@
             </div>
             <br>
         </div>
-
+        <!-- 4 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
@@ -224,15 +225,15 @@
                 <input type="radio" name="GRGP[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname4]" value="否 No" id="No4" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname4]" value="否 No" id="No4" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -257,7 +258,7 @@
             </div>
             <br>
         </div>
-
+        <!-- 5 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(5)個人資料
@@ -270,15 +271,15 @@
                 <input type="radio" name="GRGP[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname5">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname5]" value="否 No" id="No5" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname5]" value="否 No" id="No5" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname5">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -303,7 +304,7 @@
             </div>
             <br>
         </div>
-
+        <!-- 6 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(6)個人資料
@@ -316,15 +317,15 @@
                 <input type="radio" name="GRGP[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname6">是 Yes</label>
-
-                &nbsp;<input type="radio" name="GRGP[havecname6]" value="否 No" id="No6" onclick="havechinesename()"
+                <input type="radio" name="GRGP[havecname6]" value="否 No" id="No6" onclick="havechinesename()"
                     required />
                 <label class="form-check-label" for="havecname6">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGP[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -350,6 +351,7 @@
             <br>
         </div>
 
+        <!-- Remark -->
         <div class="form-group col-12">
             <span>備註 Remarks:</span>
             <ol>
@@ -359,8 +361,7 @@
             </ol>
         </div>
 
-
-
+        <!-- Leader details -->
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">隊伍負責人資料
@@ -378,8 +379,7 @@
             <input type="text" class="form-group" name="GRGP[leaderPosition]" required>
         </div>
 
-
-
+        <!-- Fee -->
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
@@ -390,7 +390,8 @@
             <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGP[NoOfTeam]" min=1 max=100
                 onblur="calculateFee()" required>
             <label>隊 team(s) = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="GRGP[teamFee]" readonly />
+            <input id="teamFee" type="number" class="mx-sm-2" name="GRGP[teamFee]" <% if(req.session.data !=null){ %>
+                value="<%=req.session.data.teamFee%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -398,13 +399,15 @@
             <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGP[NoOfPeople]" min=1 max=100
                 onblur="calculateInsurance()" required>
             <label>人 people = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="GRGP[insurance]" readonly />
+            <input id="insurance" type="number" class="mx-sm-2" name="GRGP[insurance]"
+                <% if(req.session.data !=null){ %> value="<%=req.session.data.insurance%>" <% } %> readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
             <label>總額 Total Price = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="GRGP[total]" readonly />
+            <input id="total" type="number" class="mx-sm-2" name="GRGP[total]" <% if(req.session.data !=null){ %>
+                value="<%=req.session.data.total%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -412,8 +415,7 @@
                 post or in person</span>
         </div>
 
-
-
+        <!-- Declaration -->
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
@@ -433,7 +435,6 @@
         </div>
 
 
-
         <div class="col-12">
             <br><br><br>
             <input type="checkbox" required>
@@ -443,7 +444,7 @@
                 participants</label>
         </div>
 
-
+        <!-- Sumbit -->
         <div class="col-12">
             <br><br>
             <button type="submit" class="btn btn-primary"
@@ -457,7 +458,6 @@
 
 
 <script>
-
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
         fee = document.getElementById('teamFee').value;
@@ -640,11 +640,11 @@
         var birth6 = document.getElementById("birth6");
 
         if (gpA.checked == true) { //2011-2013
-            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,7, 9); 
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear, 7, 9);
         } else if (gpB.checked == true) { //2008-2010
-            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,10, 12);
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear, 10, 12);
         } else if (gpC.checked == true) { //2002-2007
-            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear,13, 18);
+            birthYear(birth1, birth2, birth3, birth4, birth5, birth6, todayYear, 13, 18);
         }
 
     }
