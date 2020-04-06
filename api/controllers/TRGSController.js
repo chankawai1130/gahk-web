@@ -8,7 +8,7 @@
 module.exports = {
     TRGSForm: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/TRGSForm'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/TRGSForm', { 'data': req.session.data || {} }); }
 
         req.session.data = req.body.TRGS;
 

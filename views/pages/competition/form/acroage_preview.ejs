@@ -14,8 +14,8 @@
             <div class="row">
                 <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">組別資料 Category
                     Details</label>
-                <span class="col-sm-6">組別 Category: <b><%= req.session.data.category%></b></span>
-                <span class="col-sm-6">項目 Item: <b><%= req.session.data.item%></b></span>
+                <span class="col-sm-7">組別 Category: <b><%= req.session.data.category%></b></span>
+                <span class="col-sm-5">項目 Item: <b><%= req.session.data.item%></b></span>
             </div>
         </div>
 
@@ -100,12 +100,10 @@
                     <div class="row">
                         <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 14px;">參加者(3)
                             Applicant(3)</label>
-
                         <div class="col-3">
                             <span>運動員(3)相片<br>Athlete(3) photo: </span><br>
                             <img src="<%= req.session.data.photo2%>" style="max-width:20vw" height="150" width="150" />
                         </div>
-
                         <div class="form-group col-9">
                             <br>
                             <div class="row">
@@ -169,15 +167,29 @@
         </div>
         <br><br>
 
+        <% if(req.session.data.item != "女子三人 Women's trio") {
+            req.session.data.havecname3 = "";
+            req.session.data.cpChiName3 = "";
+            req.session.data.cpEngName3 = "";
+            req.session.data.gender3 = "";
+            req.session.data.birthday3 = "";
+            req.session.data.idNo3 = "";
+            req.session.data.contactNo3 = "";
+            req.session.data.email3 = "";
+            req.session.data.address3 = "";
+            req.session.data.parentName3 = "";
+            req.session.data.photo2 = "";
+            req.session.data.imgIDCard2 = "";
+            req.session.data.declaration = "";
+        }%>
+
         <div class="row">
             <div class="form-group col-sm-10">
                 <button type="submit" class="btn btn-info"
                     style="background-color: #83a70c; border-color: #83a70c;width: 150px; float:right"
                     onclick="message()">Submit
                     提交</button>
-
             </div>
-
             <div class="form-group col-sm-2">
                 <button type="button" class="btn btn-danger" style="width: 150px; float:right"
                     onclick="history.back()">Cancel
@@ -186,7 +198,6 @@
         </div>
     </div>
 </form>
-
 <script>
     function message() {
         alert("提交成功!! Successfully Submitted!");
