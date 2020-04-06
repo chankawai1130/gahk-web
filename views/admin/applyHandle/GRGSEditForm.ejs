@@ -1,11 +1,164 @@
-<style type="text/css">
+<style>
     .card {
         border-radius: 0;
+    }
+
+    #labelHead {
+        color: #83a70c;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+    }
+
+    /* checkbox css */
+    .inputGroup {
+        background-color: #fff;
+        width: 220pt;
+        display: block;
+        margin: 10px 0;
+        position: relative;
+    }
+
+    .statusLabel {
+        padding: 12px 30px;
+        width: 100%;
+        display: block;
+        text-align: left;
+        color: #3C454C;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        transition: color 200ms ease-in;
+        overflow: hidden;
+        font-weight: bold;
+    }
+
+    .statusLabel:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+    }
+
+    .statusLabel:before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: #83a70c;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .statusInput {
+        width: 32px;
+        height: 32px;
+        order: 1;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        visibility: hidden;
+    }
+
+    .statusInput:checked~label {
+        color: #fff;
+    }
+
+    .statusInput:checked~label:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+    }
+
+    .statusInput:checked~label:after {
+        background-color: darkgreen;
+        border-color: aquamarine;
+    }
+
+    .finishInput {
+        width: 32px;
+        height: 32px;
+        order: 1;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        visibility: hidden;
+    }
+
+    .finishLabel {
+        padding: 12px 30px;
+        width: 100%;
+        display: block;
+        text-align: left;
+        color: #fff;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        transition: color 200ms ease-in;
+        overflow: hidden;
+        font-weight: bold;
+    }
+
+    .finishLabel:before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: #83a70c;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 1;
+        z-index: -1;
+    }
+
+    .finishLabel:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid;
+        background-color: darkgreen;
+        border-color: aquamarine;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
     }
 </style>
 
 
-<form id=Admin_GRGS_form>
+
+<form action="/admin/applyHandle/GRGSEditForm/<%= grgs.id %>" method="POST" id=Admin_GRGS_form>
     <div class="row mx-sm-2">
 
         <!-- From detail -->
@@ -567,110 +720,76 @@
             <p style="font-size: smaller;">上次更新 Last upadated: <%= updateDate%></p>
         </div>
 
+        <!-- Payment/Confirm Status -->
+        <div class="form-group col-12">
+            <h5 id="labelHead">狀況 Status</h5>
+            <% if(grgs.payStatus == "unpaid") {%>
+            <div class="inputGroup">
+                <input class="statusInput" id="payStatus" name="GRGS[payStatus]" value="paid" type="checkbox"
+                    onclick="changeToPaid()" />
+                <label for="payStatus" class="statusLabel" id="payLabel">未付款 Unpaid</label>
+            </div>
+            <%} else {%>
+            <div class="inputGroup">
+                <input class="finishInput" id="payStatus" type="checkbox" disabled />
+                <label for="payStatus" class="finishLabel" id="payLabel">已付款 Paid</label>
+            </div>
+            <%}%>
+
+            <% if(grgs.formStatus == "ToBeCon") {%>
+            <div class="inputGroup">
+                <input class="statusInput" id="formStatus" name="GRGS[formStatus]" value="accepted" type="checkbox"
+                    onclick="changeToCon()" />
+                <label for="formStatus" class="statusLabel" id="confirmLabel">待確認 To be confirmed</label>
+            </div>
+            <% } else {%>
+            <div class="inputGroup">
+                <input class="finishInput" id="formStatus" type="checkbox" disabled />
+                <label for="formStatus" class="finishLabel" id="confirmLabel">已確認 Accepted</label>
+            </div>
+            <%}%>
+        </div>
+
         <!-- Button -->
         <div class="col-12">
             <!-- Sumbit -->
-            <button type="button" class="mx-sm-2 btn btn-primary" onclick="updateForm('<%= grgs.id%>')"
-                style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">儲存
-                Save</button>
+            <button type="sumbit" class="mx-sm-2 btn btn-primary" onclick="updateForm('<%= grgs.id%>')"
+            style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">儲存
+            Save</button>
             <!-- Delete -->
             <button type="button" class="mx-sm-2 btn btn-primary" onclick="deleteForm('<%= grgs.id%>')"
-                style="background: red repeat-x; border: none; float: right;">刪除
-                Delete</button>
-            <!-- Confirm paid -->
-
+            style="background: red repeat-x; border: none; float: right;">刪除
+            Delete</button>
         </div>
     </div>
     <br>
-
 </form>
 
 
 <script>
-    async function updateForm(id) {
-        var r = confirm("Confirm Update?");
+    function updateForm(id) {
+        alert("更新成功 Successfully Updated");
+    }
 
-        if (r) {
-            var response = await fetch("/admin/applyHandle/GRGSEditForm/" + id, {
-                method: "POST",
-                credentials: 'same-origin',
-                body: "teamName=" + this.teamName
-                // + "&phone=" + this.phone + "&email=" + this.email +
-                //     "&havecname1=" + this.havecname1 + "&chiName1=" + this.chiName1 + "&engName1=" + this.engName1 + "&ID1=" + this.ID1 + "&birth1=" + this.birth1 + "&imgIDCard0" + this.imgIDCard0 +
-                //     "&havecname2=" + this.havecname2 + "&chiName2=" + this.chiName2 + "&engName2=" + this.engName2 + "&ID2=" + this.ID2 + "&birth2=" + this.birth2 + "&imgIDCard1" + this.imgIDCard1 +
-                //     "&havecname3=" + this.havecname3 + "&chiName3=" + this.chiName3 + "&engName3=" + this.engName3 + "&ID3=" + this.ID3 + "&birth3=" + this.birth3 + "&imgIDCard2" + this.imgIDCard2 +
-                //     "&havecname4=" + this.havecname4 + "&chiName4=" + this.chiName4 + "&engName4=" + this.engName4 + "&ID4=" + this.ID4 + "&birth4=" + this.birth4 + "&imgIDCard3" + this.imgIDCard3 +
-                //     "&havecname5=" + this.havecname5 + "&chiName5=" + this.chiName5 + "&engName5=" + this.engName5 + "&ID5=" + this.ID5 + "&birth5=" + this.birth5 + "&imgIDCard4" + this.imgIDCard4 +
-                //     "&havecname6=" + this.havecname6 + "&chiName6=" + this.chiName6 + "&engName6=" + this.engName6 + "&ID6=" + this.ID6 + "&birth6=" + this.birth6 + "&imgIDCard5" + this.imgIDCard5 +
-                //     "&coachName=" + this.coachName + "&coachPhone=" + this.coachPhone + "&leaderName=" + this.leaderName + "&leaderPosition=" + this.leaderPosition +
-                //     "&NoOfTeam=" + this.NoOfTeam + "&teamFee=" + this.teamFee + "&NoOfPeople=" + this.NoOfPeople + "&insurance=" + this.insurance + "&total=" + this.total +
-                //     "&declaration0=" + this.declaration0 + "&declaration1=" + this.declaration1
-            });
+    function changeToPaid() {
+        var payLabel = document.getElementById("payLabel");
+        var payStatus = document.getElementById("payStatus");
 
-            // var response = await GRGS.update(id).set({
-            //     teamName: this.teamName,
-            //     phone: this.phone,
-            //     email: this.email,
-            //     havecname1: this.havecname1,
-            //     chiName1: this.chiName1,
-            //     engName1: this.engName1,
-            //     ID1: this.ID1,
-            //     birth1: this.birth1,
-            //     imgIDCard0: this.imgIDCard0,
-            //     havecname2: this.havecname2,
-            //     chiName2: this.chiName2,
-            //     engName2: this.engName2,
-            //     ID2: this.ID2,
-            //     birth2: this.birth2,
-            //     imgIDCard1: this.imgIDCard1,
-            //     havecname3: this.havecname3,
-            //     chiName3: this.chiName3,
-            //     engName3: this.engName3,
-            //     ID3: this.ID3,
-            //     birth3: this.birth3,
-            //     imgIDCard2: this.imgIDCard2,
-            //     havecname4: this.havecname4,
-            //     chiName4: this.chiName4,
-            //     engName4: this.engName4,
-            //     ID4: this.ID4,
-            //     birth4: this.birth4,
-            //     imgIDCard3: this.imgIDCard3,
-            //     havecname5: this.havecname5,
-            //     chiName5: this.chiName5,
-            //     engName5: this.engName5,
-            //     ID5: this.ID5,
-            //     birth5: this.birth5,
-            //     imgIDCard4: this.imgIDCard4,
-            //     havecname6: this.havecname6,
-            //     chiName6: this.chiName6,
-            //     engName6: this.engName6,
-            //     ID6: this.ID6,
-            //     birth6: this.birth6,
-            //     imgIDCard5: this.imgIDCard5,
-            //     coachName: this.coachName,
-            //     coachPhone: this.coachPhone,
-            //     leaderName: this.leaderName,
-            //     leaderPosition: this.leaderPosition,
-            //     NoOfTeam: this.NoOfTeam,
-            //     teamFee: this.teamFee,
-            //     NoOfPeople: this.NoOfPeople,
-            //     insurance: this.insurance,
-            //     total: this.total,
-            //     declaration0: this.declaration0,
-            //     declaration1: this.declaration1,
-            // }).fetch();
-
-            if (response.ok) {
-                alert("res ok");
-                var data = await response.json();
-                alert(data.message);
-                window.location = data.url;
-            } else {
-                alert(response.status + ": " + response.statusText);
-            }
-
+        if (payStatus.checked == true) {
+            payLabel.innerHTML = "已付款 Paid"
         } else {
-            alert("Cancelled");
+            payLabel.innerHTML = "未付款 Unpaid"
+        }
+    }
+
+    function changeToCon() {
+        var confirmLabel = document.getElementById("confirmLabel");
+        var formStatus = document.getElementById("formStatus");
+
+        if (formStatus.checked == true) {
+            confirmLabel.innerHTML = "已確認 Accepted"
+        } else {
+            confirmLabel.innerHTML = "待確認 To be confirmed"
         }
     }
 

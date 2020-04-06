@@ -448,12 +448,17 @@
                 participants</label>
         </div>
 
-        <!-- Sumbit -->
+        <!-- Button -->
         <div class="col-12">
             <br><br>
+            <!-- Sumbit -->
             <button type="submit" class="btn btn-primary"
                 style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
                 >></button>
+            <!-- Save -->
+            <button type="button" class="btn btn-primary" onclick="saveForm()"
+                style="background: red; border: none; float: left;">儲存
+                Save</button>
         </div>
     </div>
     <br>
@@ -462,6 +467,16 @@
 
 
 <script>
+    // async function saveForm() {
+    //     var user = await User.findOne(req.session.userId);
+
+    //     if (user.length == 0) return res.notFound();
+
+    //     req.session.GRGSdata = req.body.GRGS;
+
+    //     window.location.href = "pages/competition/2020/21";
+    // }
+
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
         fee = document.getElementById('teamFee').value;
