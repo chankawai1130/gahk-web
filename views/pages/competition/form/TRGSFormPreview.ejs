@@ -1,23 +1,21 @@
-<form action="/pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview" method="POST">
+<form action="/pages/competition/form/TRGSFormPreview" method="POST">
     <% req.session.data = req.session.data || {} %>
     <div class="card border-0 col-12" style="width: 740pt; background: transparent;">
-
         <div class="card-body col-12">
             <h1 style="font-size: 18pt; text-align: center;"><b>Preview 預覽</b></h1>
             <br>
             <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt; color: #888888;"><b>第63屆體育節 -
                     2020年全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt; color: #888888;">
-                <u>團體項目報名表(公開組:學校以外之團體)</u></h2>
+                <u>團體項目報名表(學校組)</u></h2>
         </div>
-
 
         <div class="card-body col-12">
             <div class="row">
                 <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">團體資料 Group
                     Details</label>
                 <br>
-                <span class="col-12">機構名稱(中文) Organization Name(Chinese): <b><%= req.session.data.teamName%></b></span>
+                <span class="col-12">學校名稱(中文) School Name(Chinese): <b><%= req.session.data.teamName%></b></span>
                 <span class="col-sm-6">聯絡電話 Contact Number: <b><%= req.session.data.Phone%></b></span>
                 <span class="col-sm-6">聯絡電郵 Email: <b><%= req.session.data.Email%></b></span>
                 <span class="col-sm-6">教練姓名 Coach Name: <b><%= req.session.data.CoachName%></b></span>
@@ -26,7 +24,7 @@
             </div>
         </div>
 
-        <div class="card-body col-12">
+        <div class="card-body">
             <div class="row">
                 <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">參加者個人資料 Applicants'
                     Personal
@@ -43,8 +41,8 @@
                             <%} else if(req.session.data.havecname1 == "否 No"){%>
                             <b>N/A</b>
                             <%}%>
-                        </span>
-                        <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate1EngName%></b></span>
+                    </span>
+                    <span class="col-sm-6">英文姓名 Name in English: <b><%= req.session.data.Mate1EngName%></b></span>
                         <span class="col-sm-6">身分證號碼 ID Card Number: <b><%= req.session.data.Mate1IDNo%></b></span>
                         <span class="col-sm-6">出生日期 Date of Birth (yyyy-mm-dd):
                             <b><%= req.session.data.Mate1Date%></b></span>
@@ -121,14 +119,13 @@
 
         <div class="card-body col-12">
             <div class="row">
-                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">機構負責人資料 Organization's
-                    Leader
-                    Details</label>
-                <span class="col-sm-6">機構負責人姓名 Leader's Name: <b><%= req.session.data.leaderName%></b></span>
-                <span class="col-sm-6">機構負責人職位 Leader's Position: <b><%= req.session.data.leaderPosition%></b></span>
+                <label class="col-12" style="color: #83a70c; font-weight: bold; font-size: 15px;">學校負責人資料 School's
+                    leader
+                    detail</label>
+                <span class="col-sm-6">學校負責人姓名 Leader's Name: <b><%= req.session.data.leaderName%></b></span>
+                <span class="col-sm-6">學校負責人職位 Leader's Position: <b><%= req.session.data.leaderPosition%></b></span>
             </div>
         </div>
-
         <br><br>
 
         <div class="row">
@@ -137,7 +134,6 @@
                     style="background-color: #83a70c; border-color: #83a70c;width: 150px; float:right"
                     onclick="message()">Submit
                     提交</button>
-
             </div>
 
             <div class="form-group col-sm-2">

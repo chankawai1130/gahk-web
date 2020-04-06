@@ -73,8 +73,8 @@ module.exports.routes = {
   '/competition/form/GFA': { view: 'pages/competition/form/GFA' },
 
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
-  '/competition/form/Team_School_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_School_HKRGAgeGroupCompetitionform' },
-  '/competition/form/Team_HKRGAgeGroupCompetitionform': { view: 'pages/competition/form/Team_HKRGAgeGroupCompetitionform' },
+  '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
+  '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
 
@@ -164,14 +164,14 @@ module.exports.routes = {
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
 
-  'POST /competition/form/Team_School_HKRGAgeGroupCompetitionform': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionform',
-  'GET /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
-  'POST /pages/competition/form/Team_School_HKRGAgeGroupCompetitionFormPreview': 'TSRGCompetitionController.Team_School_HKRGAgeGroupCompetitionFormPreview',
+  'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
+  'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
+  'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
 
-  //'GET /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'POST /competition/form/Team_HKRGAgeGroupCompetitionform': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionform',
-  'GET /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
-  'POST /pages/competition/form/Team_HKRGAgeGroupCompetitionFormPreview': 'TRGCompetitionController.Team_HKRGAgeGroupCompetitionFormPreview',
+  
+  'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
+  'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
 
   'GET /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
   'POST /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
@@ -192,10 +192,17 @@ module.exports.routes = {
   'DELETE /trampoline/:id': 'TrampolineController.delete',
   'POST /trampoline/update/:id': 'TrampolineController.update',
 
+  'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+  'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
+  'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
+
+ 
+  'GET /admin/applyHandle/TRGPEdit/:id': 'TRGP.TRGP_update',
+  'POST /admin/applyHandle/TRGPEdit/:id': 'TRGP.TRGP_update',
+  'DELETE /admin/applyHandle/TRGPEdit/:id': 'TRGP.delete',
 
 
-
-
+  
 
 
 };

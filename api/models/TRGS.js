@@ -1,5 +1,5 @@
 /**
- * TRGCompetition.js
+ * TRGS.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,8 +12,6 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-    //Team_HKRGAgeGroupCompetitionform attributes
     teamName: {
       type: 'string',
     },
@@ -139,11 +137,11 @@ module.exports = {
     },
 
     leaderName: {
-      type: "string",
+      type: "string"
     },
 
     leaderPosition: {
-      type: "string",
+      type: "string"
     },
 
     payStatus: {
@@ -157,6 +155,7 @@ module.exports = {
     idCode: {
       type: "string"
     },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

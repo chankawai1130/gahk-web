@@ -1,11 +1,17 @@
-<!-- Team_HKRGAgeGroupCompetitionform.ejs -->
+<!-- TRGPForm.ejs -->
 <style type="text/css">
     .card {
         border-radius: 0;
     }
+
+    #labelHead {
+        color: #83a70c;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+    }
 </style>
 
-<form action="/competition/form/Team_HKRGAgeGroupCompetitionform" method="POST">
+<form action="/competition/form/TRGPForm" method="POST">
 
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -18,8 +24,7 @@
         </div>
 
         <div class="col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
-                Rules and Regulation</h5>
+            <h5 id="labelHead">比賽規則及章程 Rules and Regulation</h5>
         </div>
 
         <div class="col-12">
@@ -30,204 +35,206 @@
 
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
-                Details</h5>
+            <h5 id="labelHead">團體資料 Group Details</h5>
         </div>
 
         <div class="form-group col-12">
             <label>機構名稱(中文) Organization Name(Chinese):</label>
-            <input type="text" name="TRGCompetition[teamName]" style="width:450pt"
+            <input type="text" name="TRGP[teamName]" style="width:450pt"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="text" name="TRGCompetition[Phone]" maxlength="8"
+            <input type="text" name="TRGP[Phone]" maxlength="8"
                 onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電郵 Email Address:</label>
-            <input type="email" name="TRGCompetition[Email]" style="width:195pt" required>
+            <input type="email" name="TRGP[Email]" style="width:195pt" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>教練姓名 Coach Name:</label>
-            <input input="text" name="TRGCompetition[CoachName]" required>
+            <input input="text" name="TRGP[CoachName]" required>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="text" name="TRGCompetition[CoachPhone]" maxlength="8"
+            <input type="text" name="TRGP[CoachPhone]" maxlength="8"
                 onkeyup="value=value.replace(/[^\d\0-\9]/g,'')" required>
         </div>
 
         <div class="form-group col-12">
             <label>參賽組別 Category:</label>
-            <input type="radio" name="TRGCompetition[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="預備A,B組" id="preAB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="預備C,D組" id="preCD" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="預備E組" id="preE" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="預備E組" id="preE" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級A組" id="junA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="初級A組" id="junA" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="初級B組" id="junB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="初級B組" id="junB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級A組" id="senA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="高級A組" id="senA" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TRGCompetition[category]" value="高級B組" id="senB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGP[category]" value="高級B組" id="senB" onclick="limitBirth()"
+                required />
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname1]" value="是 Yes" id="Yes1"
+                <input type="radio" name="TRGP[havecname1]" value="是 Yes" id="Yes1"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
 
-                &nbsp;<input type="radio" name="TRGCompetition[havecname1]" value="否 No" id="No1"
+                &nbsp;<input type="radio" name="TRGP[havecname1]" value="否 No" id="No1"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TRGCompetition[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
+                <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGCompetition[Mate1EngName]" placeholder=" e.g. Chan Tai Man"
+                <input type="text" name="TRGP[Mate1EngName]" placeholder=" e.g. Chan Tai Man"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGCompetition[Mate1IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGP[Mate1IDNo]" placeholder=" A123456(7)" required>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth1" name="TRGCompetition[Mate1Date]" required>
+                <input type="date" id="birth1" name="TRGP[Mate1Date]" required>
             </div>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname2]" value="是 Yes" id="Yes2"
+                <input type="radio" name="TRGP[havecname2]" value="是 Yes" id="Yes2"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
 
-                &nbsp;<input type="radio" name="TRGCompetition[havecname2]" value="否 No" id="No2"
+                &nbsp;<input type="radio" name="TRGP[havecname2]" value="否 No" id="No2"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TRGCompetition[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
+                <input type="text" name="TRGP[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGCompetition[Mate2EngName]" placeholder=" e.g. Chan Tai Man"
+                <input type="text" name="TRGP[Mate2EngName]" placeholder=" e.g. Chan Tai Man"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGCompetition[Mate2IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGP[Mate2IDNo]" placeholder=" A123456(7)" required>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth2" name="TRGCompetition[Mate2Date]" required>
+                <input type="date" id="birth2" name="TRGP[Mate2Date]" required>
             </div>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
-                Applicant(3)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname3]" value="是 Yes" id="Yes3"
+                <input type="radio" name="TRGP[havecname3]" value="是 Yes" id="Yes3"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
 
-                &nbsp;<input type="radio" name="TRGCompetition[havecname3]" value="否 No" id="No3"
+                &nbsp;<input type="radio" name="TRGP[havecname3]" value="否 No" id="No3"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TRGCompetition[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
+                <input type="text" name="TRGP[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGCompetition[Mate3EngName]" placeholder=" e.g. Chan Tai Man"
+                <input type="text" name="TRGP[Mate3EngName]" placeholder=" e.g. Chan Tai Man"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGCompetition[Mate3IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGP[Mate3IDNo]" placeholder=" A123456(7)" required>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth3" name="TRGCompetition[Mate3Date]" required>
+                <input type="date" id="birth3" name="TRGP[Mate3Date]" required>
             </div>
         </div>
 
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
-                Applicant(4)'s Personal Details</h6>
+            <h6 id="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="TRGCompetition[havecname4]" value="是 Yes" id="Yes4"
+                <input type="radio" name="TRGP[havecname4]" value="是 Yes" id="Yes4"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
 
-                &nbsp;<input type="radio" name="TRGCompetition[havecname4]" value="否 No" id="No4"
+                &nbsp;<input type="radio" name="TRGP[havecname4]" value="否 No" id="No4"
                     onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" name="TRGCompetition[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
+                <input type="text" name="TRGP[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGCompetition[Mate4EngName]" placeholder=" e.g. Chan Tai Man"
+                <input type="text" name="TRGP[Mate4EngName]" placeholder=" e.g. Chan Tai Man"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGCompetition[Mate4IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGP[Mate4IDNo]" placeholder=" A123456(7)" required>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth4" name="TRGCompetition[Mate4Date]" required>
+                <input type="date" id="birth4" name="TRGP[Mate4Date]" required>
             </div>
         </div>
 
@@ -237,24 +244,23 @@
                 <li>如有需要，可自行影印表格<br>Applicants can make copy of the form if needed.</li>
                 <li>每張報名表只可報<u>一個</u>組別<br>An application form can be applied for <u>one</u> category only.</li>
             </ol>
-
             <br>
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
+            <h5 id="labelHead">費用 Fee</h5>
 
             <div class="form-group">
                 <label>團體項目 Group Event: $250 X </label>
-                <input id="teamNo" type="number" name="TRGCompetition[TeamNumber]" min=1 max=100 onblur="calculate()"
+                <input id="teamNo" type="number" name="TRGP[TeamNumber]" min=1 style="width: 50pt;" onblur="calculate()"
                     required>
                 <span>隊 team(s) = $</span>
-                <input id="teamPrice" type="number" name="TRGCompetition[TeamPrice]" readonly required>
+                <input id="teamPrice" type="number" name="TRGP[TeamPrice]" readonly required>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
-                <input id="total" type="number" name="TRGCompetition[TeamTotalPrice]" readonly required>
+                <input id="total" type="number" name="TRGP[TeamTotalPrice]" readonly required>
             </div>
 
             <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by
@@ -263,8 +269,7 @@
         </div>
 
         <div class="form-group col-12">
-
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載
+            <h5 id="labelHead">文件上載
                 Document Upload</h5>
             <div class="form-group">
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
@@ -275,8 +280,7 @@
         </div>
 
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明
-                Declaration</h5>
+            <h5 id="labelHead">聲明 Declaration</h5>
 
             <div class="form-group">
                 <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
@@ -291,11 +295,11 @@
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <label>機構負責人姓名 Leader's Name:</label>
-                    <input type="text" class="form-group" name="TRGCompetition[leaderName]" required>
+                    <input type="text" class="form-group" name="TRGP[leaderName]" required>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label>機構負責人職位 Leader's Position:</label>
-                    <input type="text" class="form-group" name="TRGCompetition[leaderPosition]" required>
+                    <input type="text" class="form-group" name="TRGP[leaderPosition]" required>
                 </div>
             </div>
         </div>
@@ -304,9 +308,7 @@
             <br>
             <input type="checkbox" required>
             <label>我已仔細閱讀並清楚明白<a href="/competition/annex1" target="_blank"><u>參加者健康及體能須知</u></a><br> I have read
-                carefully and
-                understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for
-                participants</label>
+                carefully and understood the <a href="/competition/annex1" target="_blank"><u>Health and Fitness Guideline</u></a> for participants</label>
         </div>
 
         <div class="col-12">
@@ -343,7 +345,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'TRGP[VBRC]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -354,7 +356,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[VBRC]';
+                input.name = 'TRGP[VBRC]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
@@ -376,7 +378,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[Declaration]';
+                input.name = 'TRGP[Declaration]';
                 input.value = e.target.result;
                 img.style.width = "150px";
                 img.style.height = "150px";
@@ -387,7 +389,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'TRGCompetition[Declaration]';
+                input.name = 'TRGP[Declaration]';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
@@ -417,7 +419,6 @@
         } else if (no1_check.checked == true) {
             chineseNameDis1.checked = true; //disable chinese name
             chineseNameDis1.disabled = true;
-
         }
 
         if (yes2_check.checked == true) {
@@ -427,7 +428,6 @@
         } else if (no2_check.checked == true) {
             chineseNameDis2.checked = true; //disable chinese name
             chineseNameDis2.disabled = true;
-
         }
 
         if (yes3_check.checked == true) {
@@ -437,7 +437,6 @@
         } else if (no3_check.checked == true) {
             chineseNameDis3.checked = true; //disable chinese name
             chineseNameDis3.disabled = true;
-
         }
 
         if (yes4_check.checked == true) {
@@ -449,8 +448,7 @@
             chineseNameDis4.disabled = true;
 
         }
-
-    } 
+    }
 
     function limitBirth() {
         var todayYear = new Date().getFullYear();
@@ -465,7 +463,7 @@
         var birth2 = document.getElementById("birth2");
         var birth3 = document.getElementById("birth3");
         var birth4 = document.getElementById("birth4");
-        
+
         if (preAB.checked == true) {
             var minYear = todayYear - 9; //2011
             var minDate = minYear + "-01-01";
@@ -478,79 +476,79 @@
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;    
-        } else if(preCD.checked == true) {
+            birth4.max = maxDate;
+        } else if (preCD.checked == true) {
             var minYear = todayYear - 12; //2008
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 10; //2010
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;    
-        } else if(preE.checked == true) {
+            birth4.max = maxDate;
+        } else if (preE.checked == true) {
             var minYear = todayYear - 18; //2002
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 13; //2007
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (junA.checked == true) {
             var minYear = todayYear - 9; //2011
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 7; //2013
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate;  
+            birth4.max = maxDate;
         } else if (junB.checked == true) {
             var minYear = todayYear - 12; //2008
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 10; //2010
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (senA.checked == true) {
             var minYear = todayYear - 15; //2005
             var minDate = minYear + "-01-01";
             var maxYear = todayYear - 13; //2007
             var maxDate = maxYear + "-12-31";
             birth1.min = minDate;
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.min = minDate;
             birth2.max = maxDate;
             birth3.min = minDate;
             birth3.max = maxDate;
             birth4.min = minDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         } else if (senB.checked == true) {
             var maxYear = todayYear - 16; //2004 or before
             var maxDate = maxYear + "-12-31";
-            birth1.max = maxDate;  
+            birth1.max = maxDate;
             birth2.max = maxDate;
             birth3.max = maxDate;
-            birth4.max = maxDate; 
+            birth4.max = maxDate;
         }
     }
 </script>
