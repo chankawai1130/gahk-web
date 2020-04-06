@@ -74,7 +74,7 @@
             <div>
                 <label for="chiName1">中文姓名 Name in Chinese:</label>
                 <input id="chiName1" type="text" class="form-group" name="Trampoline[chiName1]" id="chiName1"
-                    placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %>disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -122,7 +122,7 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="Trampoline[chiName2]" id="chiName2" placeholder="e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %>disabled <% } %> required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
