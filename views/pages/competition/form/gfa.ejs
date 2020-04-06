@@ -73,7 +73,7 @@
         <div class="col-12 col-sm-6">
             <label>中文姓名 Name in Chinese:</label>
             <input type="text" class="form-group" name="GFA[cpChiName]" id="cpChiName"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.data != null && req.session.data.havecname == "否 No") { %>disabled <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">

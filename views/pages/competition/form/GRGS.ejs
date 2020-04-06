@@ -95,7 +95,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName1]" id="chiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -140,7 +142,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -185,7 +189,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -230,7 +236,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -275,7 +283,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -320,7 +330,9 @@
             <div>
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if (req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled <% } %>
+                    required>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -384,7 +396,8 @@
             <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" min=1 max=100
                 onblur="calculateFee()" required>
             <label>隊 team(s) = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" readonly />
+            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" <% if(req.session.data !=null){ %>
+                value="<%=req.session.data.teamFee%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -392,13 +405,15 @@
             <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" min=1 max=100
                 onblur="calculateInsurance()" required>
             <label>人 people = $</label>
-            <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]" readonly />
+            <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]"
+                <% if(req.session.data !=null){ %> value="<%=req.session.data.insurance%>" <% } %> readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
             <label>總額 Total Price = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" readonly />
+            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" <% if(req.session.data !=null){ %>
+                value="<%=req.session.data.total%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -433,12 +448,17 @@
                 participants</label>
         </div>
 
-        <!-- Sumbit -->
+        <!-- Button -->
         <div class="col-12">
             <br><br>
+            <!-- Sumbit -->
             <button type="submit" class="btn btn-primary"
                 style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">預覽 Preview
                 >></button>
+            <!-- Save -->
+            <button type="button" class="btn btn-primary" onclick="saveForm()"
+                style="background: red; border: none; float: left;">儲存
+                Save</button>
         </div>
     </div>
     <br>
@@ -447,6 +467,16 @@
 
 
 <script>
+    // async function saveForm() {
+    //     var user = await User.findOne(req.session.userId);
+
+    //     if (user.length == 0) return res.notFound();
+
+    //     req.session.GRGSdata = req.body.GRGS;
+
+    //     window.location.href = "pages/competition/2020/21";
+    // }
+
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
         fee = document.getElementById('teamFee').value;
