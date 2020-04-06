@@ -753,13 +753,11 @@
         <!-- Button -->
         <div class="col-12">
             <!-- Sumbit -->
-            <button type="sumbit" class="mx-sm-2 btn btn-primary" onclick="updateForm('<%= grgs.id%>')"
-            style="background: #83a70c url(../img/overlay.png) repeat-x; border: none; float: right;">儲存
-            Save</button>
+            <button type="sumbit" class="mx-sm-2 btn btn-success" onclick="updateForm('<%= grgs.idCode%>')" style="float:
+            right;">完成 Sumbit</button>
             <!-- Delete -->
-            <button type="button" class="mx-sm-2 btn btn-primary" onclick="deleteForm('<%= grgs.id%>')"
-            style="background: red repeat-x; border: none; float: right;">刪除
-            Delete</button>
+            <button type="button" class="mx-sm-2 btn btn btn-danger" onclick="deleteForm('<%= grgs.id%>')"
+                style="float: right;">刪除 Delete</button>
         </div>
     </div>
     <br>
@@ -768,7 +766,7 @@
 
 <script>
     function updateForm(id) {
-        alert("更新成功 Successfully Updated");
+        alert("更新成功 Successfully Updated"+ "\n" + id);
     }
 
     function changeToPaid() {
