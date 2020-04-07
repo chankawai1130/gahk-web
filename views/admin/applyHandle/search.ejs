@@ -175,12 +175,13 @@
         <!-- Search result -->
 
         <table>
+            <%if (applications){%>
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
-            &nbsp;<button type="button" class="btn btn-primary" style="font-size: small;">全部確認<br>Confirm All</button>
+            &nbsp;&nbsp;<button type="button" class="btn btn-primary" style="font-size: small;"
+                onclick="confirmAll('<%= form%>')">全部確認<br>Confirm
+                All</button>
             <br><br>
 
-
-            <%if (applications){%>
             <span>搜尋申請項目 Searching Application Project: </span><br>
 
             <% if (form == "TRGP"){%>
@@ -296,6 +297,7 @@
                     <%} else if (models.formStatus == "accepted"){%>
                     <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
                     <%}%>
+
            
                     <a type="button" class="btn btn-danger" id="statusBtn" onclick="document.getElementById('askModal').style.display='block'" style="color: white;">拒絕<br>Rejected</a>
                     <!-- reject box -->
@@ -455,6 +457,27 @@
 
     }
 
+    //Confirm all
+    async function confirmAll(form) {
+        var r = confirm("確認全部申請表? Are you sure to confirm all applications?");
+
+        if (r) {
+            var response = await fetch("/admin/applyHandle/"+ form +"/confirmAll/", {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.statusText);
+            }
+        } else {
+            alert("取消 Cancelled");
+        }
+    };
+
     // Delete form
    /* async function deleteGRGSForm(id) {
         var r = confirm("確定要刪除這份申請表? Are you sure to delete this application?");
@@ -482,6 +505,8 @@
             modal.style.display = "none";
         }
     }
+
+
 
     async function rejectForm(form, id) {
         var response = await fetch("/admin/applyHandle/reject/" + form + "/" + id, {

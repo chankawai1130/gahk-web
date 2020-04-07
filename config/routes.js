@@ -70,7 +70,7 @@ module.exports.routes = {
 
   //'/competition/form/acroage': { view: 'pages/competition/form/acroage' },
 
-  '/competition/form/GFA': { view: 'pages/competition/form/GFA' },
+  '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
 
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
   // '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
@@ -160,7 +160,7 @@ module.exports.routes = {
   'GET /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
   'POST /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
 
-  'POST /competition/form/GFA': 'GFAController.GFA_form',
+  'POST /competition/form/GFA_form': 'GFAController.GFA_form',
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
 
@@ -194,10 +194,12 @@ module.exports.routes = {
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
   'DELETE /trampoline/:id': 'TrampolineController.delete',
   'POST /trampoline/update/:id': 'TrampolineController.update',
+  'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
+  'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
 
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
@@ -209,7 +211,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
 
 
-
+  'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
+  'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   
 
 

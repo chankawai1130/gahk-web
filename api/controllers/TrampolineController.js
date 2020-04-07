@@ -102,5 +102,27 @@ module.exports = {
             return res.ok("Record updated");
         }
     },
+
+    // action - confirm all
+    confirmAll: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await Trampoline.find();
+
+        if (models.length == 0) return res.notFound();
+
+        models.forEach(async function (model) {
+            await Trampoline.update(model.id).set({
+                formStatus: "accepted"
+            })
+        });
+
+        if (req.wantsJSON) {
+            return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+    },
 };
 
