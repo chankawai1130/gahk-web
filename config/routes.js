@@ -193,17 +193,20 @@ module.exports.routes = {
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
   'DELETE /trampoline/:id': 'TrampolineController.delete',
   'POST /trampoline/update/:id': 'TrampolineController.update',
+  'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
+  'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
 
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGP.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGP.TRGP_update',
   'DELETE /admin/applyHandle/TRGPEdit/:id': 'TRGP.delete',
 
-
+  'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
+  'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   
 
 
