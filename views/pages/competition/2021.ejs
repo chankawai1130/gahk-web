@@ -161,10 +161,10 @@
                             <a <% if(req.session.role == null){ %>href="user/login"
                                 <% }else{ %>href="/competition/form/GRGP" <% } %>>集體報名(公開組)</a><br>
                             <a <% if(req.session.role == null){ %>href="user/login"
-                                <% }else{ %>href="/competition/form/Team_School_HKRGAgeGroupCompetitionform"
+                                <% }else{ %>href="/pages/competition/form/TRGSForm"
                                 <% } %>>團體報名(學校組)</a><br>
                             <a <% if(req.session.role == null){ %>href="user/login"
-                                <% }else{ %>href="/competition/form/Team_HKRGAgeGroupCompetitionform"
+                                <% }else{ %>href="/pages/competition/form/TRGPForm"
                                 <% } %>>團體報名(公開組)</a></p>
 
                     </td>
@@ -185,7 +185,7 @@
 
                         有關報名將會暫停，待延期的日子確定後，將重新開放報名。而已收之報名表將稍後退回，敬請留意。</td>
                     <td>
-                        <p><a href="/pages/competition/form/GFA">普及體操節報名</a></p>
+                        <p><a href="/competition/form/GFA">普及體操節報名</a></p>
                     </td>
                 </tr>
 
@@ -227,7 +227,7 @@
                     <td>
 
                         <p><a <% if(req.session.role == null){ %>href="user/login"
-                                <% }else{ %>href="/competition/form/acroage" <% } %>>技巧體操報名</a></p>
+                                <% }else{ %>href="/pages/competition/form/acroage" <% } %>>技巧體操報名</a></p>
 
                     </td>
                 </tr>

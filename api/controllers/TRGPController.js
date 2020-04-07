@@ -23,6 +23,7 @@ module.exports = {
         if (req.method == 'POST') {
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
+            req.session.data.teamStatus = "suTeam";
             await TRGP.create(req.session.data);
             var model = await TRGP.findOne(req.session.data);
             await TRGP.update(model.id).set({
@@ -34,6 +35,7 @@ module.exports = {
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
+
 
 
     // admin/HandleApply
@@ -86,6 +88,7 @@ module.exports = {
                 VBRC: req.body.TRGP.VBRC,
                 payStatus: req.body.TRGP.payStatus,
                 formStatus: req.body.TRGP.formStatus,
+                teamStatus: req.body.TRGP.teamStatus,
             }).fetch();
 
             if (models.length == 0) return res.notFound();
@@ -94,22 +97,44 @@ module.exports = {
         }
     },
 
-
-    delete: async function (req, res) {
-
+    reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 
-        var models = await TRGP.destroy(req.params.id).fetch();
+        var models = await TRGP.update(req.params.id).set({ formStatus: "rejected" }).fetch();
 
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請已被刪除 Application deleted.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請已被拒絕 Application rejected.", url: '/admin/applyHandle/search' });    // for ajax request
         } else {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
 
     },
+
+    confirmAll: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await TRGP.find();
+
+        if (models.length == 0) return res.notFound();
+
+        models.forEach(async function (model) {
+            await TRGP.update(model.id).set({
+                formStatus: "accepted"
+            })
+        });
+
+        if (req.wantsJSON) {
+            return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+    },
+
+
+    
 
 };
 
