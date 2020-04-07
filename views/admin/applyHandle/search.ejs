@@ -31,8 +31,9 @@
     }
 
     #statusBtn {
-        width: 60pt;
+        width: 65pt;
         font-size: small;
+        text-align: center;
     }
 
     /* delete button */
@@ -148,19 +149,20 @@
                     <option value="paid">已付款 Paid</option>
                     <option value="unpaid">未付款 Unpaid</option>
                 </select>
-                <br>
             </div>
 
             <div class="form-group col-12 col-sm-6">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請狀況 Apply Status</label>
                 <select class="form-control" id="formStatus" name="formStatus">
                     <option value="">請選擇申請狀況 Select Apply Status</option>
-                    <option value="accepted">已確認 Accepted</option>
                     <option value="ToBeCon">待確認 To be confirmed</option>
+                    <option value="accepted">已確認 Accepted</option>
+                    <option value="rejected">已拒絕 Rejected</option>
+                    <option value="dataDef">資料不全 Data Deficiency</option>
                 </select>
-                <br>
             </div>
 
+            <div class="form-group col-12" id="extraTSt"></div>
 
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; margin-left:auto; margin-right:auto;">搜尋
@@ -171,6 +173,7 @@
         <br><br>
 
         <!-- Search result -->
+
         <table>
             <%if (applications){%>
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
@@ -202,22 +205,22 @@
             <br><br>
 
             <tr id="subjects">
-            <th>申請編號<br>Application No.</th>
+            <th align="center">申請編號<br>Application No.</th>
             <% if (form != "acroage"){ %>
-            <th>隊伍/團體<br>Team/Organisation</th>
+            <th align="center">隊伍/團體<br>Team/Organisation</th>
 
             <% } if (form == "trampoline"){ %>
-            <th>性別<br>Gender</th>
+            <th align="center">性別<br>Gender</th>
 
             <% } if (form == "acroage"){ %>
-            <th>項目<br>Event</th>
+            <th align="center">項目<br>Event</th>
 
             <%} if (form != "clubMem") {%>
-            <th>組別<br>Category</th>
+            <th align="center">組別<br>Category</th>
             <% } %>
 
             <th>付款<br>Payment</th>
-            <th>提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
+            <th align="center">提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
             <th>狀態<br>Status</th>
             </tr>
 
@@ -248,7 +251,7 @@
 
                 <!-- Column:組別 Category -->
                 <%} if (form != "clubMem"){%>
-                <td width="25%"><%= models.category %></td>
+                <td width="20%"><%= models.category %></td>
 
                 <!-- Column:付款 Payment -->
                 <%} if(models.payStatus == "paid") {%>
@@ -261,140 +264,95 @@
                 <td width="15%"><%= applyDate %></td>
 
                 <!-- Column:狀態 Status  -->
-                <% if (form == "TRGP"){%>
-                <td width="10%" id="btns">
+                
+                <%if (models.formStatus == "rejected") {%>
+                <td width="15%" id="btns">
+                    <button type="button" class="btn btn-outline-danger" id="statusBtn" disabled>已拒絕<br>Rejected</button>
+
+                    <% if (form == "TRGP"){%>
+                    <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "TRGS"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "gfa"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "GRGP"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "GRGS"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "trampoline"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "acroage"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "clubMem") {%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%}%> 
+                </td>
+
+                <%} else {%>
+                <td width="20%" id="btns">
                     <%if (models.formStatus == "ToBeCon") {%>
                     <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
+                    <a type="button" class="btn btn-warning" style="color: white;" id="statusBtn" href="">資料不全<br>Data
+                        Deficiency</a>
                     <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
+                    <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
                     <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
-                    <a type="button" class="btn btn-danger" id="statusBtn"
-                        onclick="document.getElementById('askModal').style.display='block'"
-                        style="color: white;">刪除<br>Delete</a>
+
+           
+                    <a type="button" class="btn btn-danger" id="statusBtn" onclick="document.getElementById('askModal').style.display='block'" style="color: white;">拒絕<br>Rejected</a>
+                    <!-- reject box -->
                     <div id="askModal" class="modal">
                         <div class="modal-content">
                             <div class="container">
-                                <h1>刪除申請 Delete Application<br><%= models.idCode%></h1>
-                                <p>確定要刪除這份申請表?<br>Are you sure you want to delete this application?</p>
-
+                                <h1>拒絕申請 Reject Application<br><%= models.idCode%></h1>
+                                <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+        
                                 <div class="clearfix">
                                     <button type="button" class="cancelbtn modalBtn"
                                         onclick="document.getElementById('askModal').style.display='none'">取消
                                         Cancel</button>
                                     <button type="button" class="deletebtn modalBtn"
-                                        onclick="deleteTRGPForm('<%= models.id%>')">刪除 Delete</button>
+                                        onclick="rejectForm('<%= form%>','<%= models.id%>')">拒絕 Rejected</button>
+        
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <a type="button" class="btn btn-info" id="statusBtn" href="">後補<br>Waitiing</a>
+
+                    <% if (form == "TRGP"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "TRGS"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "gfa"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "GRGP"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "GRGS"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "trampoline"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
+                    <%} else if (form == "acroage"){%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%} else if (form == "clubMem") {%>
+                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                    <%}%> 
+
                 </td>
-
-                <%} else if (form == "TRGS"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                    </td>
-                    
-                <%} else if (form == "gfa"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                    </td>
-            
-                <%} else if (form == "GRGP"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                    </td>
-            
-                <%} else if (form == "GRGS"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
-                    <a type="button" class="btn btn-danger" id="statusBtn" onclick="deleteGRGSForm('<%= models.id%>')"
-                        style="color: white;">刪除<br>Delete</a>
-                </td>
-
-
-
-                <%} else if (form == "trampoline"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
-                    <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                </td>
-
-                <%} else if (form == "acroage"){%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                    </td>
-                    
-                <%} else if (form == "clubMem") {%>
-                <td width="10%" id="btns">
-                    <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%}%>
-                            
-                       <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                       <a type="button" class="btn btn-danger" id="statusBtn" href="">刪除<br>Delete</a>
-                    </td>
-                 <%}%>
+                <%}%>
 
             </tr>
+
             <%});%>
             <%} %>
         </table>
+
         <br>
     </form>
 </div>
+
+
 
 
 
@@ -483,6 +441,20 @@
                 });
             }
         }
+
+        //TeamStatus
+        var TStSelect = document.getElementById("extraTSt");
+        if (compValue != "clubMem") {
+            TStSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">隊伍/團體狀況 Team Status</label>"
+                + "<select class=\"form-control\" id=\"TSt\" name=\"TSt\">"
+                + "<option value=\"\">請選擇狀況 Select Event</option>"
+                + "<option value=\"suTeam\">正選Successful Team</option>"
+                + "<option value=\"waitTeam\">後補 Team on Waitiing List</option></select><br>";
+
+        } else {
+            TStSelect.innerHTML = "";
+        }
+
     }
 
     //Confirm all
@@ -507,7 +479,7 @@
     };
 
     // Delete form
-    async function deleteGRGSForm(id) {
+   /* async function deleteGRGSForm(id) {
         var r = confirm("確定要刪除這份申請表? Are you sure to delete this application?");
 
         if (r) {
@@ -525,7 +497,7 @@
         } else {
             alert("取消 Cancelled");
         }
-    };
+    };*/
 
     var modal = document.getElementById('askModal');
     window.onclick = function (event) {
@@ -534,9 +506,11 @@
         }
     }
 
-    async function deleteTRGPForm(id) {
-        var response = await fetch("/admin/applyHandle/TRGPEdit/" + id, {
-            method: "DELETE",
+
+
+    async function rejectForm(form, id) {
+        var response = await fetch("/admin/applyHandle/reject/" + form + "/" + id, {
+            method: "POST",
             credentials: 'same-origin',
         });
         if (response.ok) {
@@ -547,4 +521,6 @@
             alert(response.status + ": " + response.statusText);
         }
     };
+
+
 </script>

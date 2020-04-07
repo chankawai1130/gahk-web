@@ -159,7 +159,11 @@ module.exports = {
     },
 
     formStatus: {
-      type: "string", //ToBeCon; accepted(decided by admin)
+      type: "string", //ToBeCon; accepted; rejected; dataDef(decided by admin)
+    },
+
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
     },
 
     idCode: {
