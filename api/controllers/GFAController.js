@@ -8,7 +8,7 @@
 module.exports = {
     GFA_form: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/GFA'); }
+        if (req.method == 'GET') { return res.view('competition/form/GFA_form'); }
 
         req.session.data = req.body.GFA;
 

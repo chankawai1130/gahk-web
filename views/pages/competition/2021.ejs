@@ -185,7 +185,8 @@
 
                         有關報名將會暫停，待延期的日子確定後，將重新開放報名。而已收之報名表將稍後退回，敬請留意。</td>
                     <td>
-                        <p><a href="/pages/competition/form/GFA">普及體操節報名</a></p>
+                        <p><a <% if(req.session.role == null){ %>href="user/login"
+                            <% }else{ %>href="/competition/form/GFA_form"<% } %>>普及體操節報名</a></p>
                     </td>
                 </tr>
 
