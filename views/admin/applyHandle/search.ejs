@@ -296,7 +296,7 @@
                     <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
                     <%} else if(models.formStatus == "dataDef") {%>
                     <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disable>資料不全<br>Data Deficiency</button>
+                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data Deficiency</button>
                     <%}%>
 
            
@@ -451,9 +451,9 @@
         var TStSelect = document.getElementById("extraTSt");
         if (compValue != "clubMem") {
             TStSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">隊伍/團體狀況 Team Status</label>"
-                + "<select class=\"form-control\" id=\"TSt\" name=\"TSt\">"
-                + "<option value=\"\">請選擇狀況 Select Event</option>"
-                + "<option value=\"suTeam\">正選Successful Team</option>"
+                + "<select class=\"form-control\" id=\"teamStatus\" name=\"teamStatus\">"
+                + "<option value=\"\">請選擇隊伍/團體狀況 Select Team Status</option>"
+                + "<option value=\"suTeam\">正選 Successful Team</option>"
                 + "<option value=\"waitTeam\">後補 Team on Waitiing List</option></select><br>";
 
         } else {
