@@ -38,7 +38,7 @@
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
             <input type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.GRGSdata != null) { %> value= "<%=req.session.GRGSdata.teamName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -467,15 +467,30 @@
 
 
 <script>
-    // async function saveForm() {
-    //     var user = await User.findOne(req.session.userId);
+    async function saveForm() {
+        var form = document.getElementById("GRGS_form")
+        var response = await fetch("/competition/form/GRGS/save", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                // 'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
 
-    //     if (user.length == 0) return res.notFound();
-
-    //     req.session.GRGSdata = req.body.GRGS;
-
-    //     window.location.href = "pages/competition/2020/21";
-    // }
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                teamName: "form.teamName",
+                
+            })
+        });
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
 
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;

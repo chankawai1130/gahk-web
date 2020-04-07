@@ -128,19 +128,23 @@ module.exports = {
 
     },
 
-    // //action - save
-    // save: async function (req, res) {
+    //action - save
+    save: async function (req, res) {
 
-    //     if (req.method == "GET") return res.forbidden();
+        if (req.method == "GET") return res.forbidden();
 
-    //     var user = await User.findOne(req.session.userId);
+        var user = await User.findOne(req.session.userId);
 
-    //     if (user.length == 0) return res.notFound();
+        if (user.length == 0) return res.notFound();
 
-    //     req.session.GRGSdata = req.body.GRGS;
+        req.session.GRGSdata = req.body.GRGS;
 
-    //     return res.redirect('pages/competition/2020/21');
-    // },
+        if (req.wantsJSON) {
+            return res.json({ message: "OK", url: '/competition/form/GRGS' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/GRGS');           // for normal request
+        }
+    },
 
     // action - confirm all
     confirmAll: async function (req, res) {
