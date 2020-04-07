@@ -195,11 +195,15 @@ module.exports.routes = {
   'DELETE /trampoline/:id': 'TrampolineController.delete',
   'POST /trampoline/update/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
+  'POST /admin/applyHandle/reject/trampoline/:id': 'TrampolineController.reject', 
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
   'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
+  'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject', 
+
+  'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject', 
 
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
@@ -208,11 +212,17 @@ module.exports.routes = {
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
+  'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
+
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
+  'POST /admin/applyHandle/clubMem/trampoline/:id': 'ClubMemberController.reject', 
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
+  'POST /admin/applyHandle/gfa/trampoline/:id': 'GFAController.reject', 
+
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
+  'POST /admin/applyHandle/acroage/trampoline/:id': 'AcroageController.reject', 
   
 
 
