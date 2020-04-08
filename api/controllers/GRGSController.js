@@ -22,6 +22,7 @@ module.exports = {
 
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
+            req.session.data.teamStatus = "suTeam";
             await GRGS.create(req.session.data);
             var model = await GRGS.findOne(req.session.data);
             await GRGS.update(model.id).set({
@@ -166,6 +167,21 @@ module.exports = {
         } else {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
+    },
+
+    reject: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await GRGS.update(req.params.id).set({ formStatus: "rejected" }).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "申請已被拒絕 Application rejected.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+
     },
 
 };

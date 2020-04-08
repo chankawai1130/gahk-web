@@ -21,6 +21,7 @@ module.exports = {
     if (req.method == 'POST') {
       req.session.data.payStatus = "unpaid";
       req.session.data.formStatus = "ToBeCon";
+      req.session.data.teamStatus = "suTeam";
 
       await ClubMember.create(req.session.data);
       var model = await ClubMember.findOne(req.session.data);
@@ -36,6 +37,21 @@ module.exports = {
   },
 
   //admin
+  reject: async function (req, res) {
+    if (req.method == "GET") return res.forbidden();
+
+    var models = await ClubMember.update(req.params.id).set({ formStatus: "rejected" }).fetch();
+
+    if (models.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+        return res.json({ message: "申請已被拒絕 Application rejected.", url: '/admin/applyHandle/search' });    // for ajax request
+    } else {
+        return res.redirect('/admin/applyHandle/search');           // for normal request
+    }
+
+},
+
   confirmAll: async function (req, res) {
 
     if (req.method == "GET") return res.forbidden();
