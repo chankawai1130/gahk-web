@@ -153,6 +153,7 @@ module.exports.routes = {
   //********************Competition Application routes****************
   //'GET /competition/form/GRGS': 'GRGSController.GRGS_form',
   'POST /competition/form/GRGS': 'GRGSController.GRGS_form',
+  'POST /competition/form/GRGS/save': 'GRGSController.save',
   'GET /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
   'POST /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
 

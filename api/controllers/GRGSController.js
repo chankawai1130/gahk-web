@@ -129,30 +129,42 @@ module.exports = {
 
     },
 
-    // //action - save
-    // save: async function (req, res) {
+    //action - save
+    save: async function (req, res) {
 
-    //     if (req.method == "GET") return res.forbidden();
+        if (req.method == "GET") return res.forbidden();
 
-    //     var user = await User.findOne(req.session.userId);
+        var user = await User.findOne(req.session.userId);
 
-    //     if (user.length == 0) return res.notFound();
+        if (user.length == 0) return res.notFound();
 
-    //     req.session.GRGSdata = req.body.GRGS;
+        req.session.GRGSdata = req.body.GRGS;
 
-    //     return res.redirect('pages/competition/2020/21');
-    // },
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GRGS' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/GRGS');           // for normal request
+        }
+    },
 
     // action - confirm all
     confirmAll: async function (req, res) {
 
         if (req.method == "GET") return res.forbidden();
 
-        var models = await GRGS.find();
+        var condition = {};
+        condition.category = req.query.category;
+        // if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+        // if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+        // if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+
+        var models = await GRGS.find({
+            where: condition
+        });
 
         if (models.length == 0) return res.notFound();
 
-        models.forEach(async function(model) {
+        models.forEach(async function (model) {
             await GRGS.update(model.id).set({
                 formStatus: "accepted"
             })
@@ -165,6 +177,7 @@ module.exports = {
         }
     },
 
+    // action - reject form
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 

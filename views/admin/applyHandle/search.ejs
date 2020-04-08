@@ -178,7 +178,7 @@
             <%if (applications){%>
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
             &nbsp;&nbsp;<button type="button" class="btn btn-primary" style="font-size: small;"
-                onclick="confirmAll('<%= form%>', '<%= applications%>')">全部確認<br>Confirm
+                onclick="confirmAll('<%= form%>')">全部確認<br>Confirm
                 All</button>
             <br><br>
 
@@ -474,16 +474,22 @@
     }
 
     //Confirm all
-    async function confirmAll(form, models) {
+    async function confirmAll(form) {
+        //alert(w[1]);
         var r = confirm("確認全部申請表? Are you sure to confirm all applications?");
 
         if (r) {
-            //models.forEach(function (model) {
-                var response = await fetch("/admin/applyHandle/" + form + "/confirmAll/", {
-                    method: "POST",
-                    credentials: 'same-origin',
-                });
-            //});
+            var web = window.location.toString();
+            var q = web.split('&');
+            alert(q[1]);
+            var grgsCategory = q.split(' ');
+            alert(grgsCategory[0]);
+            var response = await fetch("/admin/applyHandle/" + form + "/confirmAll/", {
+                method: "POST",
+                credentials: 'same-origin',
+                //  qs: { category: "集體 A 組(五人圈操)" },
+
+            });
 
             if (response.ok) {
                 var data = await response.json();

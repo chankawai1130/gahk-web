@@ -37,8 +37,9 @@
 
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
-            <input type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            <input type="text" class="form-group" id="teamName" name="GRGS[teamName]" style="width:350pt;"
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.GRGSdata != null && req.session.GRGSdata.teamName != null) { %>
+                value="<%=req.session.GRGSdata.teamName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -467,15 +468,82 @@
 
 
 <script>
-    // async function saveForm() {
-    //     var user = await User.findOne(req.session.userId);
+    async function saveForm() {
+        var form = document.getElementById("GRGS_form");
+        alert(form.teamName.value);
+        var data = {
+            "GRGS[teamName]": form.teamName.value,
+            "GRGS[phone]": form.phone.value,
+            "GRGS[email]": form.email.value,
+            "GRGS[havecname1]": form.havecname1.value,
+            "GRGS[chiName1]": form.chiName1.value,
+            "GRGS[engName1]": form.engName1.value,
+            "GRGS[ID1]": form.ID1.value,
+            "GRGS[birth1]": form.birth1.value,
+            "GRGS[imgIDCard0]": form.imgIDCard0.value,
+            "GRGS[havecname2]": form.havecname2.value,
+            "GRGS[chiName2]": form.chiName2.value,
+            "GRGS[engName2]": form.engName2.value,
+            "GRGS[ID2]": form.ID2.value,
+            "GRGS[birth2]": form.birth2.value,
+            "GRGS[imgIDCard1]": form.imgIDCard1.value,
+            "GRGS[havecname3]": form.havecname3.value,
+            "GRGS[chiName3]": form.chiName3.value,
+            "GRGS[engName3]": form.engName3.value,
+            "GRGS[ID3]": form.ID3.value,
+            "GRGS[birth3]": form.birth3.value,
+            "GRGS[imgIDCard2]": form.imgIDCard2.value,
+            "GRGS[havecname4]": form.havecname4.value,
+            "GRGS[chiName4]": form.chiName4.value,
+            "GRGS[engName4]": form.engName4.value,
+            "GRGS[ID4]": form.ID4.value,
+            "GRGS[birth4]": form.birth4.value,
+            "GRGS[imgIDCard3]": form.imgIDCard3.value,
+            "GRGS[havecname5]": form.havecname5.value,
+            "GRGS[chiName5]": form.chiName5.value,
+            "GRGS[engName5]": form.engName5.value,
+            "GRGS[ID5]": form.ID5.value,
+            "GRGS[birth5]": form.birth5.value,
+            "GRGS[imgIDCard4]": form.imgIDCard4.value,
+            "GRGS[havecname6]": form.havecname6.value,
+            "GRGS[chiName6]": form.chiName6.value,
+            "GRGS[engName6]": form.engName6.value,
+            "GRGS[ID6]": form.ID6.value,
+            "GRGS[birth6]": form.birth6.value,
+            "GRGS[imgIDCard5]": form.imgIDCard5.value,
+            "GRGS[coachName]": form.coachName.value,
+            "GRGS[coachPhone]": form.coachPhone.value,
+            "GRGS[leaderName]": form.leaderName.value,
+            "GRGS[leaderPosition]": form.leaderPosition.value,
+            "GRGS[NoOfTeam]": form.NoOfTeam.value,
+            "GRGS[teamFee]": form.teamFee.value,
+            "GRGS[NoOfPeople]": form.NoOfPeople.value,
+            "GRGS[insurance]": form.insurance.value,
+            "GRGS[total]": form.total.value,
+            "GRGS[declaration0]": form.declaration0.value,
+            "GRGS[declaration1]": form.declaration1.value,
+        };
 
-    //     if (user.length == 0) return res.notFound();
+        var response = await fetch("/competition/form/GRGS/save", {
+            method: "POST",
+            credentials: 'same-origin',
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json'
+            // },
+            body: JSON.stringify({
+                data                
+            })
+        });
 
-    //     req.session.GRGSdata = req.body.GRGS;
-
-    //     window.location.href = "pages/competition/2020/21";
-    // }
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
 
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
