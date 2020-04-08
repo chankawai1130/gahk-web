@@ -225,7 +225,4 @@ module.exports.routes = {
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/acroage/trampoline/:id': 'AcroageController.reject', 
 
-  
-  'GET /pages/competition/form/test': "GRGSController.test",
-
 };

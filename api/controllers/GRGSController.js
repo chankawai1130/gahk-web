@@ -147,10 +147,6 @@ module.exports = {
         }
     },
 
-    test: async function (req, res) {
-        if (req.method == 'GET') { return res.view('pages/competition/form/test', { 'data': req.session.GRGSdata || {} }); }
-    },
-
     // action - confirm all
     confirmAll: async function (req, res) {
 
