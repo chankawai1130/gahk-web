@@ -160,7 +160,7 @@
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請狀況 Apply Status</label>
                 <select class="form-control" id="formStatus" name="formStatus">
                     <option value="">請選擇申請狀況 Select Apply Status</option>
-                    <option value="ToBeCon">待確認 To be confirmed</option>
+                    <option value="ToBeCon">待處理 To be handled</option>
                     <option value="accepted">已確認 Accepted</option>
                     <option value="rejected">已拒絕 Rejected</option>
                     <option value="dataDef">資料不全 Data Deficiency</option>
@@ -301,20 +301,57 @@
                 <td width="10%" id="btns">
                     <%if (models.formStatus == "ToBeCon") {%>
 
-                    <a type="button" class="btn btn-primary" id="statusBtn"
-                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認<br>Confirm</a>
 
-                    <a type="button" class="btn btn-warning" style="color: white;" id="statusBtn" href="">資料不全<br>Data
-                        Deficiency</a>
+                    <%var confirmID = "con"+ models.id %>
+                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                    style="color: white;">確認<br>Confirm</a>
+                    <!-- confirm box -->
+                    <div id="<%= confirmID%>" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
+                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn modalBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消 Cancel</button>
+                                    <button type="button" class="confirmbtn modalBtn"
+                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+    
+                    <a type="button" class="btn btn-warning" id="statusBtn" onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data Deficiency</a>
 
 
                     <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                        disabled>已確認<br>Accepted</button>
-                    <%} else if(models.formStatus == "dataDef") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
-                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                        Deficiency</button>
+                    <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
+
+                    <%} else if(models.formStatus == "dataDef") {
+                       var confirmID = "con"+ models.id %>
+    
+                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                    style="color: white;">確認<br>Confirm</a>
+                    <!-- confirm box -->
+                    <div id="<%= confirmID%>" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
+                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn modalBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消 Cancel</button>
+                                    <button type="button" class="confirmbtn modalBtn"
+                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data Deficiency</button>
                     <%}%>
            
                     <%var deleteID = "del"+ models.id %>
@@ -338,7 +375,7 @@
                         </div>
                     </div>
                     <%if (models.teamStatus == "suTeam") {%>
-                    <a type="button" class="btn btn-info" id="statusBtn" href="">後補<br>Waitiing</a>
+                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;" onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
                     <%} else {%>
                     <button type="button" class="btn btn-outline-info" id="statusBtn" disabled>後補<br>Waitiing</button>
                     <%}%>
@@ -471,7 +508,9 @@
         }
     };
 
-    //confirm button
+
+
+   //confirm button
     async function confirm(form, id) {
         var response = await fetch("/admin/applyHandle/confirm/" + form + "/" + id, {
             method: "POST",
@@ -500,5 +539,41 @@
             alert(response.status + ": " + response.statusText);
         }
     };
+
+
+    //dataDef
+    async function dataDef(form, id) {
+        var response = await fetch("/admin/applyHandle/dataDef/" + form + "/" + id, {
+            method: "POST",
+            credentials: 'same-origin',
+        });
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.status + ": " + response.statusText);
+        }
+    };
+
+    //waitingList
+    async function waitingList(form, id) {
+        var response = await fetch("/admin/applyHandle/waitingList/" + form + "/" + id, {
+            method: "POST",
+            credentials: 'same-origin',
+        });
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.status + ": " + response.statusText);
+        }
+    };
+
+
+
+
+    
 
 </script>
