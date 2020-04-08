@@ -35,6 +35,7 @@
                 Details</h5>
         </div>
 
+
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
             <input type="text" class="form-group" id="teamName" name="GRGS[teamName]" style="width:350pt;"
@@ -472,7 +473,9 @@
         var form = document.getElementById("GRGS_form");
         alert(form.teamName.value);
         var data = {
-            "GRGS[teamName]": form.teamName.value,
+            teamName: form.teamName.value,
+            //phone: form.phone.value,
+            /*"GRGS[teamName]": form.teamName.value,
             "GRGS[phone]": form.phone.value,
             "GRGS[email]": form.email.value,
             "GRGS[havecname1]": form.havecname1.value,
@@ -521,9 +524,10 @@
             "GRGS[insurance]": form.insurance.value,
             "GRGS[total]": form.total.value,
             "GRGS[declaration0]": form.declaration0.value,
-            "GRGS[declaration1]": form.declaration1.value,
+            "GRGS[declaration1]": form.declaration1.value,*/
         };
 
+        alert(data.phone);
         var response = await fetch("/competition/form/GRGS/save", {
             method: "POST",
             credentials: 'same-origin',
@@ -531,10 +535,10 @@
             //     'Accept': 'application/json',
             //     'Content-Type': 'application/json'
             // },
-            body: JSON.stringify({
-                data                
-            })
+            body: JSON.stringify({data})
         });
+
+        alert("hi2");
 
         if (response.ok) {
             var data = await response.json();

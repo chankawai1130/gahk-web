@@ -4,31 +4,38 @@
         border-collapse: collapse;
         width: 100%;
     }
+
     th,
     td {
         padding: 10px;
         text-align: center;
         border-bottom: 1px solid #ddd;
     }
+
     #subjects {
         background-color: #f5f5f5;
     }
+
     #btns {
         padding: 8px;
         text-align: right;
         border-bottom: 1px solid #ddd;
     }
+
     .fa-check {
         color: green;
     }
+
     .fa-remove {
         color: red;
     }
+
     #statusBtn {
         width: 65pt;
         font-size: small;
         text-align: center;
     }
+
     /* delete button */
     .modalBtn {
         background-color: #4CAF50;
@@ -40,25 +47,36 @@
         width: 100%;
         opacity: 0.9;
     }
+
     .modalBtn:hover {
         opacity: 1;
     }
+
     .cancelbtn,
-    .deletebtn {
+    .deletebtn,
+    .confirmbtn {
         float: left;
         width: 50%;
     }
+
     .cancelbtn {
         background-color: #ccc;
         color: black;
     }
+
     .deletebtn {
         background-color: #f44336;
     }
+
+    .confirmbtn {
+        background-color: rgb(63, 63, 236);
+    }
+
     .container {
         padding: 16px;
         text-align: center;
     }
+
     .modal {
         display: none;
         position: fixed;
@@ -71,22 +89,27 @@
         background-color: rgba(8, 8, 8, 0.5);
         padding-top: 50px;
     }
+
     .modal-content {
         background-color: #fefefe;
         margin: 5% auto 15% auto;
         border: 1px solid #888;
         width: 80%;
     }
+
     hr {
         border: 1px solid #f1f1f1;
         margin-bottom: 25px;
     }
+
     .clearfix::after {
         content: "";
         clear: both;
         display: table;
     }
+
     @media screen and (max-width: 300px) {
+
         .cancelbtn,
         .deletebtn {
             width: 100%;
@@ -155,13 +178,32 @@
         <br><br>
 
         <!-- Search result -->
-
         <table>
             <%if (applications){%>
             <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
-            &nbsp;&nbsp;<button type="button" class="btn btn-primary" style="font-size: small;"
-                onclick="confirmAll('<%= form%>')">全部確認<br>Confirm
-                All</button>
+            &nbsp;&nbsp;
+            <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
+                onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
+            <!-- confirmAll box -->
+            <div id="confirmAll" class="modal">
+                <div class="modal-content">
+                    <div class="container">
+                        <h1>全部確認 Confirm All</h1>
+                        <p>確定要確認全部已搜尋申請表?<br>Are you sure you want to confirm all searched applications?</p>
+
+                        <div class="clearfix">
+                            <button type="button" class="cancelbtn modalBtn"
+                                onclick="document.getElementById('confirmAll').style.display='none'">取消
+                                Cancel</button>
+                            <button type="button" class="confirmbtn modalBtn" onclick="confirmAll('<%= form%>')">全部確認
+                                Confirm All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <br><br>
             <span>搜尋申請項目 Searching Application Project: </span><br>
             <% if (form == "TRGP"){%>
@@ -255,11 +297,17 @@
                     <%}%> 
                 </td>
                 <%} else {%>
+
                 <td width="10%" id="btns">
                     <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="confirm('<%= form%>', '<%= models.id%>')">確認<br>Confirm</a>
+
+                    <a type="button" class="btn btn-primary" id="statusBtn"
+                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認<br>Confirm</a>
+
                     <a type="button" class="btn btn-warning" style="color: white;" id="statusBtn" href="">資料不全<br>Data
                         Deficiency</a>
+
+
                     <%} else if (models.formStatus == "accepted"){%>
                     <button type="button" class="btn btn-outline-primary" id="statusBtn"
                         disabled>已確認<br>Accepted</button>
@@ -269,17 +317,19 @@
                         Deficiency</button>
                     <%}%>
            
-                    <a type="button" class="btn btn-danger" id="statusBtn" onclick="document.getElementById('<%= models.idCode%>').style.display='block'"
-                    style="color: white;">拒絕<br>Rejected</a>
+                    <%var deleteID = "del"+ models.id %>
+                    <a type="button" class="btn btn-danger" id="statusBtn"
+                        onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                        style="color: white;">拒絕<br>Rejected</a>
                     <!-- reject box -->
-                    <div id="<%= models.idCode%>" class="modal">
+                    <div id="<%= deleteID%>" class="modal">
                         <div class="modal-content">
                             <div class="container">
                                 <h1>拒絕申請 Reject Application<br><%= models.idCode%></h1>
                                 <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
                                 <div class="clearfix">
                                     <button type="button" class="cancelbtn modalBtn"
-                                        onclick="document.getElementById('<%= models.idCode%>').style.display='none'">取消
+                                        onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
                                         Cancel</button>
                                     <button type="button" class="deletebtn modalBtn"
                                         onclick="rejectForm('<%= form%>','<%= models.id%>')">拒絕 Rejected</button>
@@ -405,32 +455,23 @@
             TStSelect.innerHTML = "";
         }
     }
+    
     //Confirm all
     async function confirmAll(form) {
-        var r = confirm("確認全部申請表? Are you sure to confirm all applications?");
-        if (r) {
-            var response = await fetch("/admin/applyHandle/" + form + "/confirmAll", {
-                method: "POST",
-                credentials: 'same-origin',
-            });
-            if (response.ok) {
-                var data = await response.json();
-                alert(data.message);
-                window.location = data.url;
-            } else {
-                alert(response.statusText);
-            }
+        var response = await fetch("/admin/applyHandle/" + form + "/confirmAll/", {
+            method: "POST",
+            credentials: 'same-origin',
+        });
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
         } else {
-            alert("取消 Cancelled");
+            alert(response.statusText);
         }
     };
-    //Confirm form
-    var modal = document.getElementById('askModal');
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+
+    //confirm button
     async function confirm(form, id) {
         var response = await fetch("/admin/applyHandle/confirm/" + form + "/" + id, {
             method: "POST",
@@ -444,13 +485,8 @@
             alert(response.status + ": " + response.statusText);
         }
     };
-    // Delete form
-    var modal = document.getElementById('askModal');
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+
+    //Reject form
     async function rejectForm(form, id) {
         var response = await fetch("/admin/applyHandle/reject/" + form + "/" + id, {
             method: "POST",
@@ -464,4 +500,5 @@
             alert(response.status + ": " + response.statusText);
         }
     };
+
 </script>
