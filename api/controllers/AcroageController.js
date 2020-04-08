@@ -66,7 +66,6 @@ module.exports = {
         if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
         if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
         if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
-        condition.formStatus = "ToBeCon";
 
         var models = await Acroage.find({
             where: condition
@@ -75,9 +74,7 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         models.forEach(async function (model) {
-            await Acroage.update(model.id).set({
-                formStatus: "accepted"
-            })
+            await Acroage.update(model.id).set({ formStatus: "accepted" })
         });
 
         if (req.wantsJSON) {

@@ -60,7 +60,6 @@ module.exports = {
 
     if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
     if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
-    condition.formStatus = "ToBeCon";
 
     var models = await ClubMember.find({
       where: condition
@@ -69,9 +68,7 @@ module.exports = {
     if (models.length == 0) return res.notFound();
 
     models.forEach(async function (model) {
-      await ClubMember.update(model.id).set({
-        formStatus: "accepted"
-      })
+      await ClubMember.update(model.id).set({ formStatus: "accepted" })
     });
 
     if (req.wantsJSON) {

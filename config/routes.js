@@ -236,7 +236,7 @@ module.exports.routes = {
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
-  'POST /admin/applyHandle/gfa/trampoline/:id': 'GFAController.reject', 
+  'POST /admin/applyHandle/reject/gfa/:id': 'GFAController.reject', 
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm', 
   'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
   'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',

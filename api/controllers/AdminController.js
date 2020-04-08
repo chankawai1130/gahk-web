@@ -68,9 +68,7 @@ module.exports = {
 
   //applyHandle
   apply_search: async function (req, res) {
-    if (req.session.searchResult != null) {
-      req.session.searchResult = {};
-    }
+    req.session.searchResult = {};
     var condition = {};
     var form = req.query.application;
 
