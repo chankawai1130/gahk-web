@@ -483,6 +483,7 @@
                 method: "POST",
                 credentials: 'same-origin',
             });
+
             if (response.ok) {
                 var data = await response.json();
                 alert(data.message);

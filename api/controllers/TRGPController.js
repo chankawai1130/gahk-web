@@ -115,7 +115,7 @@ module.exports = {
     confirmAll: async function (req, res) {
 
         if (req.method == "GET") return res.forbidden();
-
+        
         var condition = {};
         
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
@@ -128,12 +128,13 @@ module.exports = {
             where: condition
         });
 
+        //var models = await TRGP.findOne(req.params.id);
+
         if (models.length == 0) return res.notFound();
 
+        //var model = await TRGP.update(model.id).set({formStatus: "accepted"})
         models.forEach(async function (model) {
-            await TRGP.update(model.id).set({
-                formStatus: "accepted"
-            })
+            await TRGP.update(model.id).set({formStatus: "accepted"})
         });
 
         if (req.wantsJSON) {
