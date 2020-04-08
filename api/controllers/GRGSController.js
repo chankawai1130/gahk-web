@@ -15,6 +15,7 @@ module.exports = {
         return res.view('pages/competition/form/GRGS_Preview', { 'data': req.session.data || {} });
     },
 
+
     //action - create
     GRGS_form_preview: async function (req, res) {
 
@@ -137,7 +138,6 @@ module.exports = {
         var user = await User.findOne(req.session.userId);
 
         if (user.length == 0) return res.notFound();
-
         req.session.GRGSdata = req.body.GRGS;
 
         if (req.wantsJSON) {
@@ -145,6 +145,10 @@ module.exports = {
         } else {
             return res.redirect('/competition/form/GRGS');           // for normal request
         }
+    },
+
+    test: async function (req, res) {
+        if (req.method == 'GET') { return res.view('pages/competition/form/test', { 'data': req.session.GRGSdata || {} }); }
     },
 
     // action - confirm all

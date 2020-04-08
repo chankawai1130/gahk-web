@@ -71,7 +71,6 @@ module.exports.routes = {
   //'/competition/form/acroage': { view: 'pages/competition/form/acroage' },
 
   '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
-
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
   // '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
   // '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
@@ -224,7 +223,8 @@ module.exports.routes = {
 
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/acroage/trampoline/:id': 'AcroageController.reject', 
-  
 
+  
+  'GET /pages/competition/form/test': "GRGSController.test",
 
 };
