@@ -109,7 +109,18 @@ module.exports = {
 
         if (req.method == "GET") return res.forbidden();
 
-        var models = await Trampoline.find();
+        var condition = {};
+
+        if (req.session.searchResult.gender) condition.gender = req.session.searchResult.gender;
+        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+        condition.formStatus = "ToBeCon";
+
+        var models = await Trampoline.find({
+            where: condition
+        });
 
         if (models.length == 0) return res.notFound();
 

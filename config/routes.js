@@ -203,12 +203,13 @@ module.exports.routes = {
   'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
   'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject', 
 
+  'POST /admin/applyHandle/GRGP/confirmAll': 'GRGPController.confirmAll',
   'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject', 
 
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
-  'POST /admin/applyHandle/TRGP/confirmAll/:id': 'TRGPController.confirmAll',
+  'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',

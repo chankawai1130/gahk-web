@@ -451,6 +451,7 @@
             } else if (compValue == "GRGP" || compValue == "GRGS") {
                 grgCategory.forEach(function (item) {
                     var option = document.createElement("option");
+                    option.id = "GRGCategory";
                     option.text = item;
                     option.value = item;
                     gpSelect.add(option);
@@ -475,20 +476,12 @@
 
     //Confirm all
     async function confirmAll(form) {
-        //alert(w[1]);
         var r = confirm("確認全部申請表? Are you sure to confirm all applications?");
 
         if (r) {
-            var web = window.location.toString();
-            var q = web.split('&');
-            alert(q[1]);
-            var grgsCategory = q.split(' ');
-            alert(grgsCategory[0]);
             var response = await fetch("/admin/applyHandle/" + form + "/confirmAll/", {
                 method: "POST",
                 credentials: 'same-origin',
-                //  qs: { category: "集體 A 組(五人圈操)" },
-
             });
 
             if (response.ok) {
