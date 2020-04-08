@@ -208,7 +208,7 @@ module.exports.routes = {
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
-  'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
+  'POST /admin/applyHandle/TRGP/confirmAll/:id': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
