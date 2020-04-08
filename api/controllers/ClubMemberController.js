@@ -95,6 +95,22 @@ module.exports = {
     }
   },
 
+  dataDef: async function (req, res) {
+    if (req.method == "GET") return res.forbidden();
+
+    var models = await ClubMember.update(req.params.id).set({ formStatus: "dataDef" }).fetch();
+
+    if (models.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+        return res.json({ message: "申請資料不全 Data Deficiency.", url: '/admin/applyHandle/search' });    // for ajax request
+    } else {
+        return res.redirect('/admin/applyHandle/search');           // for normal request
+    }
+
+},
+
+
 
 };
 
