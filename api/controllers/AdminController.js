@@ -68,6 +68,9 @@ module.exports = {
 
   //applyHandle
   apply_search: async function (req, res) {
+    if (req.session.searchResult != null) {
+      req.session.searchResult = {};
+    }
     var condition = {};
     var form = req.query.application;
 
@@ -146,7 +149,7 @@ module.exports = {
       });
 
     }
-
+    req.session.searchResult = condition;
     return res.view('admin/applyHandle/search', { applications: models, form });
   },
 };

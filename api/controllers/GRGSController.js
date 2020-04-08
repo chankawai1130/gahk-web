@@ -153,10 +153,12 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-        condition.category = req.query.category;
-        // if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-        // if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-        // if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+
+        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+        condition.formStatus = "ToBeCon";
 
         var models = await GRGS.find({
             where: condition

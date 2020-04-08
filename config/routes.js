@@ -204,6 +204,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
   'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject', 
 
+  'POST /admin/applyHandle/GRGP/confirmAll': 'GRGPController.confirmAll',
   'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject', 
 
  

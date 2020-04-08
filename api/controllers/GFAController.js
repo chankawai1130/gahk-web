@@ -56,11 +56,21 @@ module.exports = {
 
         if (req.method == "GET") return res.forbidden();
 
-        var models = await GFA.find();
+        var condition = {};
+        
+        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+        conditon.formStatus = "ToBeCon";
+
+        var models = await GFA.find({
+            where: condition
+        });
 
         if (models.length == 0) return res.notFound();
 
-        models.forEach(async function(model) {
+        models.forEach(async function (model) {
             await GFA.update(model.id).set({
                 formStatus: "accepted"
             })
