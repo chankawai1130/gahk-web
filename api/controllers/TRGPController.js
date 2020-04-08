@@ -97,20 +97,7 @@ module.exports = {
         }
     },
 
-    reject: async function (req, res) {
-        if (req.method == "GET") return res.forbidden();
-
-        var models = await TRGP.update(req.params.id).set({ formStatus: "rejected" }).fetch();
-
-        if (models.length == 0) return res.notFound();
-
-        if (req.wantsJSON) {
-            return res.json({ message: "申請已被拒絕 Application hs been rejected.", url: '/admin/applyHandle/search' });    // for ajax request
-        } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
-        }
-
-    },
+    
 
     confirmAll: async function (req, res) {
 
@@ -157,6 +144,51 @@ module.exports = {
         } else {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
+    },
+
+    reject: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await TRGP.update(req.params.id).set({ formStatus: "rejected" }).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "申請已被拒絕 Application has been rejected.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+
+    },
+
+    dataDef: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await TRGP.update(req.params.id).set({ formStatus: "dataDef" }).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "申請資料不全 Data Deficiency.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+
+    },
+
+    waitingList: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await TRGP.update(req.params.id).set({ teamStatus: "waitTeam" }).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "申請隊伍/團體已設為後補 Applied Team/Group has been set on waiting list.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
+
     },
 
 

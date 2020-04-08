@@ -197,6 +197,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
   'POST /admin/applyHandle/reject/trampoline/:id': 'TrampolineController.reject',
   'POST /admin/applyHandle/confirm/trampoline/:id': 'TrampolineController.confirm', 
+  'POST /admin/applyHandle/dataDef/trampoline/:id': 'TrampolineController.dataDef',
+  'POST /admin/applyHandle/waitingList/trampoline/:id': 'TrampolineController.waitingList',
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
@@ -204,34 +206,46 @@ module.exports.routes = {
   'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
   'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject', 
   'POST /admin/applyHandle/confirm/GRGS/:id': 'GRGSController.confirm',
+  'POST /admin/applyHandle/dataDef/GRGS/:id': 'GRGSController.dataDef',
+  'POST /admin/applyHandle/waitingList/GRGS/:id': 'GRGSController.waitingList',
 
   'POST /admin/applyHandle/GRGP/confirmAll': 'GRGPController.confirmAll',
   'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject', 
   'POST /admin/applyHandle/confirm/GRGP/:id': 'GRGPController.confirm',
+  'POST /admin/applyHandle/dataDef/GRGP/:id': 'GRGPController.dataDef',
+  'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
  
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
+  'POST /admin/applyHandle/dataDef/TRGP/:id': 'TRGPController.dataDef',
+  'POST /admin/applyHandle/waitingList/TRGP/:id': 'TRGPController.waitingList',
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
+  'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',
+  'POST /admin/applyHandle/waitingList/TRGS/:id': 'TRGSController.waitingList',
 
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
   'POST /admin/applyHandle/reject/clubMem/:id': 'ClubMemberController.reject',
   'POST /admin/applyHandle/confirm/clubMem/:id': 'ClubMemberController.confirm', 
+  'POST /admin/applyHandle/dataDef/clubMen/:id': 'ClubMemberController.dataDef',
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
   'POST /admin/applyHandle/gfa/trampoline/:id': 'GFAController.reject', 
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm', 
+  'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
+  'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',
 
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
-
   'POST /admin/applyHandle/reject/acroage/:id': 'AcroageController.reject', 
   'POST /admin/applyHandle/confirm/acroage/:id': 'AcroageController.confirm', 
+  'POST /admin/applyHandle/dataDef/acroage/:id': 'AcroageController.dataDef',
+  'POST /admin/applyHandle/waitingList/acroage/:id': 'AcroageController.waitingList',
   
 
 
