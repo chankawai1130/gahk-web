@@ -145,11 +145,26 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請已被拒絕 Application rejected.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請已被拒絕 Application has been rejected.", url: '/admin/applyHandle/search' });    // for ajax request
         } else {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
 
+    },
+
+    // action - confirm form
+    confirm: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await Trampoline.update(req.params.id).set({ formStatus: "accepted" }).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "申請已被確認 Application has been accepted.", url: '/admin/applyHandle/search' });    // for ajax request
+        } else {
+            return res.redirect('/admin/applyHandle/search');           // for normal request
+        }
     },
 };
 

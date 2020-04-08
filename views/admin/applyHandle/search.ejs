@@ -294,7 +294,7 @@
                 <%} else {%>
                 <td width="10%" id="btns">
                     <%if (models.formStatus == "ToBeCon") {%>
-                    <a type="button" class="btn btn-primary" id="statusBtn" href="">確認<br>Confirm</a>
+                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="confirm('<%= form%>', '<%= models.id%>')">確認<br>Confirm</a>
                     <a type="button" class="btn btn-warning" style="color: white;" id="statusBtn" href="">資料不全<br>Data
                         Deficiency</a>
                     <%} else if (models.formStatus == "accepted"){%>
@@ -493,6 +493,28 @@
             }
         } else {
             alert("取消 Cancelled");
+        }
+    };
+
+    //Confirm form
+    var modal = document.getElementById('askModal');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    async function confirm(form, id) {
+        var response = await fetch("/admin/applyHandle/confirm/" + form + "/" + id, {
+            method: "POST",
+            credentials: 'same-origin',
+        });
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.status + ": " + response.statusText);
         }
     };
 
