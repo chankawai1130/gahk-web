@@ -74,7 +74,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         models.forEach(async function (model) {
-            await Acroage.update(model.id).set({ formStatus: "accepted" })
+            if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+                await Acroage.update(model.id).set({ formStatus: "accepted" })
+            }
         });
 
         if (req.wantsJSON) {
