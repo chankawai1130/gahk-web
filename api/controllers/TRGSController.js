@@ -55,12 +55,11 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-        
+
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
         if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
         if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
         if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
-        condition.formStatus = "ToBeCon";
 
         var models = await TRGS.find({
             where: condition
@@ -69,9 +68,7 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         models.forEach(async function (model) {
-            await TRGS.update(model.id).set({
-                formStatus: "accepted"
-            })
+            await TRGS.update(model.id).set({ formStatus: "accepted" })
         });
 
         if (req.wantsJSON) {
@@ -95,7 +92,7 @@ module.exports = {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
     },
-  
+
 
 };
 
