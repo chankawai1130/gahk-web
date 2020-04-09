@@ -222,17 +222,20 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
   'POST /admin/applyHandle/dataDef/TRGP/:id': 'TRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGP/:id': 'TRGPController.waitingList',
+  '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
   'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGS/:id': 'TRGSController.waitingList',
+  '/TRGS/export_xlsx': 'TRGSController.export_xlsx',
 
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
   'POST /admin/applyHandle/reject/clubMem/:id': 'ClubMemberController.reject',
   'POST /admin/applyHandle/confirm/clubMem/:id': 'ClubMemberController.confirm', 
-  'POST /admin/applyHandle/dataDef/clubMen/:id': 'ClubMemberController.dataDef',
+  'POST /admin/applyHandle/dataDef/clubMem/:id': 'ClubMemberController.dataDef',
+  '/clubMem/export_xlsx': 'ClubMemberController.export_xlsx',
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
