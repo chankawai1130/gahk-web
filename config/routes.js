@@ -202,7 +202,6 @@ module.exports.routes = {
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
-  'DELETE /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.delete',
   'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
   'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject', 
   'POST /admin/applyHandle/confirm/GRGS/:id': 'GRGSController.confirm',

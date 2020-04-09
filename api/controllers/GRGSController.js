@@ -113,23 +113,6 @@ module.exports = {
         }
     },
 
-    // action - delete 
-    delete: async function (req, res) {
-
-        if (req.method == "GET") return res.forbidden();
-
-        var models = await GRGS.destroy(req.params.id).fetch();
-
-        if (models.length == 0) return res.notFound();
-
-        if (req.wantsJSON) {
-            return res.json({ message: "刪除成功 Sucessfully delete.", url: '/admin/applyHandle/search' });    // for ajax request
-        } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
-        }
-
-    },
-
     //action - save
     save: async function (req, res) {
 

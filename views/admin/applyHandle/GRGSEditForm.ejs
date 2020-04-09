@@ -755,9 +755,6 @@
             <!-- Sumbit -->
             <button type="sumbit" class="mx-sm-2 btn btn-success" onclick="updateForm('<%= grgs.idCode%>')" style="float:
             right;">完成 Sumbit</button>
-            <!-- Delete -->
-            <button type="button" class="mx-sm-2 btn btn btn-danger" onclick="deleteForm('<%= grgs.id%>')"
-                style="float: right;">刪除 Delete</button>
         </div>
     </div>
     <br>
@@ -790,26 +787,6 @@
             confirmLabel.innerHTML = "待確認 To be confirmed"
         }
     }
-
-    async function deleteForm(id) {
-        var r = confirm("確定要刪除這份申請表? Are you sure to delete this application?");
-
-        if (r) {
-            var response = await fetch("/admin/applyHandle/GRGSEditForm/" + id, {
-                method: "DELETE",
-                credentials: 'same-origin',
-            });
-            if (response.ok) {
-                var data = await response.json();
-                alert(data.message);
-                window.location = data.url;
-            } else {
-                alert(response.statusText);
-            }
-        } else {
-            alert("取消 Cancelled");
-        }
-    };
 
     function calculateFee() {
         document.getElementById('teamFee').value = 150 * document.getElementById('NoOfTeam').value;
