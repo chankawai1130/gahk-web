@@ -124,7 +124,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         models.forEach(async function (model) {
-            await Trampoline.update(model.id).set({ formStatus: "accepted" })
+            if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+                await Trampoline.update(model.id).set({ formStatus: "accepted" })
+            }
         });
 
         if (req.wantsJSON) {
