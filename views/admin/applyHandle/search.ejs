@@ -180,7 +180,8 @@
         <!-- Search result -->
         <table>
             <%if (applications){%>
-            <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
+            <button type="button" class="btn btn-info" style="font-size: small;"
+                onclick="exportExcel('<%= form%>')">匯出Excel<br>Excel Export</button>
             &nbsp;&nbsp;
             <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
                 onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
@@ -303,8 +304,9 @@
 
 
                     <%var confirmID = "con"+ models.id %>
-                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                    style="color: white;">確認<br>Confirm</a>
+                    <a type="button" class="btn btn-primary" id="statusBtn"
+                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                        style="color: white;">確認<br>Confirm</a>
                     <!-- confirm box -->
                     <div id="<%= confirmID%>" class="modal">
                         <div class="modal-content">
@@ -313,27 +315,32 @@
                                 <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
                                 <div class="clearfix">
                                     <button type="button" class="cancelbtn modalBtn"
-                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消 Cancel</button>
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                        Cancel</button>
                                     <button type="button" class="confirmbtn modalBtn"
-                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
+                                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-    
-                    <a type="button" class="btn btn-warning" id="statusBtn" onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data Deficiency</a>
+
+                    <a type="button" class="btn btn-warning" id="statusBtn"
+                        onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
+                        Deficiency</a>
 
 
                     <%} else if (models.formStatus == "accepted"){%>
-                    <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
+                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
+                        disabled>已確認<br>Accepted</button>
 
                     <%} else if(models.formStatus == "dataDef") {
                        var confirmID = "con"+ models.id %>
-    
-                    <a type="button" class="btn btn-primary" id="statusBtn" onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                    style="color: white;">確認<br>Confirm</a>
+
+                    <a type="button" class="btn btn-primary" id="statusBtn"
+                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                        style="color: white;">確認<br>Confirm</a>
                     <!-- confirm box -->
                     <div id="<%= confirmID%>" class="modal">
                         <div class="modal-content">
@@ -342,16 +349,18 @@
                                 <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
                                 <div class="clearfix">
                                     <button type="button" class="cancelbtn modalBtn"
-                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消 Cancel</button>
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                        Cancel</button>
                                     <button type="button" class="confirmbtn modalBtn"
-                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
+                                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data Deficiency</button>
+                    <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
+                        Deficiency</button>
                     <%}%>
            
                     <%var deleteID = "del"+ models.id %>
@@ -375,7 +384,8 @@
                         </div>
                     </div>
                     <%if (models.teamStatus == "suTeam") {%>
-                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;" onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
+                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                        onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
                     <%} else {%>
                     <button type="button" class="btn btn-outline-info" id="statusBtn" disabled>後補<br>Waitiing</button>
                     <%}%>
@@ -492,7 +502,7 @@
             TStSelect.innerHTML = "";
         }
     }
-    
+
     //Confirm all
     async function confirmAll(form) {
         var response = await fetch("/admin/applyHandle/" + form + "/confirmAll/", {
@@ -510,7 +520,7 @@
 
 
 
-   //confirm button
+    //confirm button
     async function confirm(form, id) {
         var response = await fetch("/admin/applyHandle/confirm/" + form + "/" + id, {
             method: "POST",
@@ -571,9 +581,8 @@
         }
     };
 
-
-
-
-    
+    async function exportExcel(form) {
+        window.location.href = "/" + form + "/export_xlsx"
+    };
 
 </script>

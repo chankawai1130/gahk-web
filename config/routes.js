@@ -208,6 +208,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/GRGS/:id': 'GRGSController.confirm',
   'POST /admin/applyHandle/dataDef/GRGS/:id': 'GRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGS/:id': 'GRGSController.waitingList',
+  '/GRGS/export_xlsx': 'GRGSController.export_xlsx',
 
   'POST /admin/applyHandle/GRGP/confirmAll': 'GRGPController.confirmAll',
   'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject', 
