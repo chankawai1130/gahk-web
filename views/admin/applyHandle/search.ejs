@@ -111,7 +111,8 @@
     @media screen and (max-width: 300px) {
 
         .cancelbtn,
-        .deletebtn {
+        .deletebtn
+        .confirmbtn {
             width: 100%;
         }
     }
@@ -122,6 +123,9 @@
     <h5 class="main-heading1">
         申請處理管理<span class="highlight">系統</span>
     </h5>
+
+    <a type="button" class="btn btn-primary mx-sm-2" style="font-size: small; color: white; background-color:teal; border-color: teal;" href="">匯入Excel Import Excel </a>
+        <br><br>
 
     <form action="/admin/applyHandle/search" method="GET">
         <!-- Search bar -->
@@ -180,7 +184,7 @@
         <!-- Search result -->
         <table>
             <%if (applications){%>
-            <button type="button" class="btn btn-info" style="font-size: small;">匯出Excel<br>Excel Export</button>
+            <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white;" href="/<%=form%>/export_xlsx">匯出Excel<br>Excel Export</a>
             &nbsp;&nbsp;
             <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
                 onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
