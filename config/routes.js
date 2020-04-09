@@ -224,6 +224,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/dataDef/TRGP/:id': 'TRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGP/:id': 'TRGPController.waitingList',
   '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
+  '/TRGP/import_xlsx': 'TRGPController.import_xlsx',
 
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
