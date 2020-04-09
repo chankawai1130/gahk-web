@@ -591,7 +591,7 @@
 
         <% if(TRGP.formStatus == "ToBeCon" || TRGP.formStatus == "rejected") {%>
             <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" />
+                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" onclick="changeToCon()" checked/>
                 <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
             </div>
 
@@ -602,7 +602,7 @@
             </div>
 
             <div class="inputGroup">
-                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" type="radio" />
+                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" onclick="changeToCon()" type="radio" />
                 <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
             </div>
 
@@ -622,7 +622,7 @@
             </div>
             <% } else if(TRGP.formStatus == "dataDef"){%>
             <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" />
+                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" onclick="changeToCon()" />
                 <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
             </div>
 
