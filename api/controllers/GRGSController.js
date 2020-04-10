@@ -113,23 +113,6 @@ module.exports = {
         }
     },
 
-    // action - delete 
-    delete: async function (req, res) {
-
-        if (req.method == "GET") return res.forbidden();
-
-        var models = await GRGS.destroy(req.params.id).fetch();
-
-        if (models.length == 0) return res.notFound();
-
-        if (req.wantsJSON) {
-            return res.json({ message: "刪除成功 Sucessfully delete.", url: '/admin/applyHandle/search' });    // for ajax request
-        } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
-        }
-
-    },
-
     //action - save
     save: async function (req, res) {
 
@@ -244,7 +227,16 @@ module.exports = {
     // action - export excel
     export_xlsx: async function (req, res) {
 
-        var models = await GRGS.find();
+        var condition = {};
+
+        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+
+        var models = await GRGS.find({
+            where: condition
+        });
 
         var XLSX = require('xlsx');
         var wb = XLSX.utils.book_new();
@@ -278,13 +270,13 @@ module.exports = {
             } else if (model.formStatus == "dataDef") {
                 var formS = "資料不全 Data Deficiency";
             } else if (model.formStatus == "ToBeCon") {
-                var formS = "待確認 To be confirmed";
+                var formS = "待處理 To be handled";
             }
 
             if (model.teamStatus == "suTeam") {
-                var teamS = "正選 Current";
+                var teamS = "正選 Successful Team";
             } else if (model.teamName == "waitTeam") {
-                var teamS = "後備 Waiting";
+                var teamS = "後備 Team on Waitiing List";
             }
 
             if (model.payStatus == "unpaid") {
@@ -294,15 +286,16 @@ module.exports = {
             }
 
             return {
-                "申請編號 Application No.": model.idCode,
+                "申請表編號 Application Number": model.idCode,
                 "隊伍名稱(中文) Team Name(Chinese)": model.teamName,
                 "聯絡電話 Contact Number": model.phone,
                 "聯絡電郵 Email Address": model.email,
                 "教練姓名 Coach Name": model.coachName,
                 "教練聯絡電話 Coach Contact Number": model.coachPhone,
                 "組別及比賽項目 Category and Competition Item": model.category,
-                "參加者(1)中文姓名 Applicant(1) Chinese Name": model.chiName1,
-                "參加者(1)英文姓名 Applicant(1) English Name": model.engName1,
+                "參加者(1)是否有中文姓名 Applicant(1) Any Chinese name": model.havecname1,
+                "參加者(1)中文姓名 Applicant(1) Name in Chinese": model.chiName1,
+                "參加者(1)英文姓名 Applicant(1) Name in English": model.engName1,
                 "參加者(1)身份證號碼 Applicant(1) ID Card Number": model.ID1,
                 "參加者(1)出生日期 Applicant(1) Date of Birth": date1,
                 "參加者(2)中文姓名 Applicant(2) Chinese Name": model.chiName2,
@@ -329,12 +322,12 @@ module.exports = {
                 "隊伍負責人職位 Leader's Position": model.leaderPosition,
                 "隊伍數目 Number of Team(s)": model.NoOfTeam,
                 "人數 people": model.NoOfPeople,
-                "集體項目價錢 Cost of Collective Subject": model.teamFee,
-                "保險 Insurance": model.insurance,
-                "總額 Total Price": model.total,
-                "付款狀態 Payment Status": payS,
-                "申請表狀態 Form Status": formS,
-                "隊伍狀態 Team Status": teamS,
+                "集體項目價錢 Cost of Collective Subject ($)": model.teamFee,
+                "保險 Insurance ($)": model.insurance,
+                "總額 Total Price ($)": model.total,
+                "付款狀況 Payment Status": payS,
+                "申請狀況 Apply Status": formS,
+                "隊伍/團體狀況 Team Status": teamS,
                 "提交日期 Apply Date": applyDate,
                 "上次更新 Last upadated": updateDate
             }
