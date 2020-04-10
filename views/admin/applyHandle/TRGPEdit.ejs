@@ -325,13 +325,13 @@
 
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
-                <% if (TRGP.havecname1 == "是 Yes") {%>
-                <input type="text" name="TRGP[Mate1ChiName]" value="<%= TRGP.Mate1ChiName %>" id="Mate1ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%} else {%>
-                <input type="text" name="TRGP[Mate1ChiName]" value="<%= TRGP.Mate1ChiName %>" id="Mate1ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
-                <%}%>
+                <% if (TRGP.havecname1 == "否 No"){%>
+                    <input type="text" name="TRGP[Mate1ChiName]" value="<%= TRGP.Mate1ChiName %>" id="Mate1ChiName"
+                        placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
+                    <%} else {%>
+                        <input type="text" name="TRGP[Mate1ChiName]" value="<%= TRGP.Mate1ChiName %>" id="Mate1ChiName"
+                        placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    <%}%>
             </div>
 
             <div class="form-group">
@@ -378,13 +378,13 @@
     
                 <div class="form-group">
                     <label>中文姓名 Name in Chinese:</label>
-                    <% if (TRGP.havecname2 == "是 Yes") {%>
-                <input type="text" name="TRGP[Mate2ChiName]" value="<%= TRGP.Mate2ChiName %>" id="Mate2ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%} else {%>
-                <input type="text" name="TRGP[Mate2ChiName]" value="<%= TRGP.Mate2ChiName %>" id="Mate2ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
-                <%}%>
+                    <% if (TRGP.havecname2 == "否 No"){%>
+                        <input type="text" name="TRGP[Mate2ChiName]" value="<%= TRGP.Mate2ChiName %>" id="Mate2ChiName"
+                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
+                        <%} else {%>
+                            <input type="text" name="TRGP[Mate2ChiName]" value="<%= TRGP.Mate2ChiName %>" id="Mate2ChiName"
+                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                        <%}%>
             </div>
     
             <div class="form-group">
@@ -431,13 +431,13 @@
     
                 <div class="form-group">
                     <label>中文姓名 Name in Chinese:</label>
-                    <% if (TRGP.havecname3 == "是 Yes") {%>
-                <input type="text" name="TRGP[Mate3ChiName]" value="<%= TRGP.Mate3ChiName %>" id="Mate3ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%} else {%>
-                <input type="text" name="TRGP[Mate3ChiName]" value="<%= TRGP.Mate3ChiName %>" id="Mate3ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
-                <%}%>
+                    <% if (TRGP.havecname3 == "否 No"){%>
+                        <input type="text" name="TRGP[Mate3ChiName]" value="<%= TRGP.Mate3ChiName %>" id="Mate3ChiName"
+                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
+                        <%} else {%>
+                            <input type="text" name="TRGP[Mate3ChiName]" value="<%= TRGP.Mate3ChiName %>" id="Mate3ChiName"
+                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                        <%}%>
                 </div>
     
                 <div class="form-group">
@@ -474,7 +474,7 @@
                 <%}%>
                     <label class="form-check-label" for="havecname4">是 Yes</label>
                     &nbsp;
-                    <% if (TRGP.havecname4 == "否 No") {%>
+                <% if (TRGP.havecname4 == "否 No") {%>
                 <input type="radio" name="TRGP[havecname4]" value="否 No" id="No4" checked onclick="havechinesename()"
                     required />
                 <%} else {%>
@@ -486,12 +486,12 @@
     
                 <div class="form-group">
                     <label>中文姓名 Name in Chinese:</label>
-                        <% if (TRGP.havecname4 == "是 Yes") {%>
-                <input type="text" name="TRGP[Mate4ChiName]" value="<%= TRGP.Mate4ChiName %>" id="Mate4ChiName"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%} else {%>
+                <% if (TRGP.havecname4 == "否 No"){%>
                 <input type="text" name="TRGP[Mate4ChiName]" value="<%= TRGP.Mate4ChiName %>" id="Mate4ChiName"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled required>
+                <%} else {%>
+                    <input type="text" name="TRGP[Mate4ChiName]" value="<%= TRGP.Mate4ChiName %>" id="Mate4ChiName"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
                 <%}%>
                 </div>
     
@@ -572,16 +572,16 @@
 
         <div class="form-group col-12">
             <h5 id="labelHead">付款狀況 Payment Status</h5>
-            <% if(TRGP.payStatus == "unpaid") {%>
+            <% if(TRGP.payStatus == "paid") {%>
+            <div class="inputGroup">
+                <input class="statusInput" id="payStatus" type="checkbox" checked disabled />
+                <label for="payStatus" class="statusLabel" id="payLabel">已付款 Paid</label>
+            </div>
+            <%} else {%>
             <div class="inputGroup">
                 <input class="statusInput" id="payStatus" name="TRGP[payStatus]" value="paid" type="checkbox"
                     onclick="changeToPaid()" />
                 <label for="payStatus" class="statusLabel" id="payLabel">未付款 Unpaid</label>
-            </div>
-            <%} else {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="payStatus" type="checkbox" checked disabled />
-                <label for="payStatus" class="statusLabel" id="payLabel">已付款 Paid</label>
             </div>
             <%}%>
     </div>
@@ -589,24 +589,7 @@
     <div class="form-group col-12">
         <h5 id="labelHead">申請狀況 Apply Status</h5>
 
-        <% if(TRGP.formStatus == "ToBeCon" || TRGP.formStatus == "rejected") {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" onclick="changeToCon()" checked/>
-                <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
-            </div>
-
-            <div class="inputGroup">
-                <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
-                    onclick="changeToCon()" />
-                <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirm</label>
-            </div>
-
-            <div class="inputGroup">
-                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" onclick="changeToCon()" type="radio" />
-                <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
-            </div>
-
-            <% } else if(TRGP.formStatus == "accepted"){%>
+         <%if(TRGP.formStatus == "accepted"){%>
             <div class="inputGroup">
                 <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
                     disabled />
@@ -622,7 +605,8 @@
             </div>
             <% } else if(TRGP.formStatus == "dataDef"){%>
             <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio" onclick="changeToCon()" />
+                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
+                    onclick="changeToCon()" />
                 <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
             </div>
 
@@ -637,22 +621,41 @@
                     onclick="changeToCon()" />
                 <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
             </div>
+            <%} else {%>
+            <div class="inputGroup">
+                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
+                    onclick="changeToCon()" checked />
+                <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
+            </div>
+
+            <div class="inputGroup">
+                <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
+                    onclick="changeToCon()" />
+                <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirm</label>
+            </div>
+
+            <div class="inputGroup">
+                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" onclick="changeToCon()"
+                    type="radio" />
+                <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
+            </div>
+
             <%}%>
     </div>
 
     <div class="form-group col-12">
         <h5 id="labelHead">隊伍/團體狀況 Team Status</h5>
-        <% if(TRGP.teamStatus == "suTeam") {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="waitTeam" name="TRGP[teamStatus]" value="waitTeam" type="checkbox"
-                    onclick="changeToWait()" />
-                <label for="waitTeam" class="statusLabel" id="waitLabel">設為後補 Set as Waiting Team</label>
-            </div>
-            <%} else {%>
+        <% if(TRGP.teamStatus == "waitTeam") {%>
             <div class="inputGroup">
                 <input class="statusInput" id="suTeam" type="checkbox" name="TRGP[teamStatus]" value="suTeam"
                     onclick="changeToSu()" checked />
                 <label for="suTeam" class="statusLabel" id="suLabel">後補 Waiting Team</label>
+            </div>
+            <%} else {%>
+            <div class="inputGroup">
+                <input class="statusInput" id="waitTeam" name="TRGP[teamStatus]" value="waitTeam" type="checkbox"
+                    onclick="changeToWait()" />
+                <label for="waitTeam" class="statusLabel" id="waitLabel">設為後補 Set as Waiting Team</label>
             </div>
             <%}%>
     </div>
