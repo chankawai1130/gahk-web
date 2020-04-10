@@ -206,6 +206,15 @@ module.exports = {
         var payStatus, formStatus, teamStatus;
         var ws = XLSX.utils.json_to_sheet(models.map(model => {
 
+            var day1 = model.Mate1Date.split('-');
+            var date1 = day1[2] + "/" + day1[1] + "/" + day1[0];
+            var day2 = model.Mate2Date.split('-');
+            var date2 = day2[2] + "/" + day2[1] + "/" + day2[0];
+            var day3 = model.Mate3Date.split('-');
+            var date3 = day3[2] + "/" + day3[1] + "/" + day3[0];
+            var day4 = model.Mate4Date.split('-');
+            var date4 = day4[2] + "/" + day4[1] + "/" + day4[0];
+
             var n = new Date(model.createdAt);
             var cmonth = n.getMonth() + 1;
             var applyDate = n.getDate() + "/" + cmonth + "/" + n.getFullYear();
@@ -248,22 +257,22 @@ module.exports = {
                 "參加者(1)中文姓名 Applicant(1) Name in Chinese": model.Mate1ChiName,
                 "參加者(1)英文姓名 Applicant(1) Name in English": model.Mate1EngName,
                 "參加者(1)身分證號碼  Applicant(1) ID Card Number": model.Mate1IDNo,
-                "參加者(1)出生日期  Applicant(1) Date of Birth (yyyy-mm-dd)": model.Mate1Date,
+                "參加者(1)出生日期  Applicant(1) Date of Birth": date1,
                 "參加者(2)是否有中文姓名 Applicant(2) Any Chinese name": model.havecname2,
                 "參加者(2)中文姓名 Applicant(2) Name in Chinese": model.Mate2ChiName,
                 "參加者(2)英文姓名 Applicant(2) Name in English": model.Mate2EngName,
                 "參加者(2)身分證號碼  Applicant(2) ID Card Number": model.Mate2IDNo,
-                "參加者(2)出生日期  Applicant(2) Date of Birth (yyyy-mm-dd)": model.Mate2Date,
+                "參加者(2)出生日期  Applicant(2) Date of Birth": date2,
                 "參加者(3)是否有中文姓名 Applicant(3) Any Chinese name": model.havecname3,
                 "參加者(3)中文姓名 Applicant(3) Name in Chinese": model.Mate3ChiName,
                 "參加者(3)英文姓名 Applicant(3) Name in English": model.Mate3EngName,
                 "參加者(3)身分證號碼  Applicant(3) ID Card Number": model.Mate3IDNo,
-                "參加者(3)出生日期  Applicant(3) Date of Birth (yyyy-mm-dd)": model.Mate3Date,
+                "參加者(3)出生日期  Applicant(3) Date of Birth": date3,
                 "參加者(4)是否有中文姓名 Applicant(4) Any Chinese name": model.havecname4,
                 "參加者(4)中文姓名 Applicant(4) Name in Chinese": model.Mate4ChiName,
                 "參加者(4)英文姓名 Applicant(4) Name in English": model.Mate4EngName,
                 "參加者(4)身分證號碼  Applicant(4) ID Card Number": model.Mate4IDNo,
-                "參加者(4)出生日期  Applicant(4) Date of Birth (yyyy-mm-dd)": model.Mate4Date,
+                "參加者(4)出生日期  Applicant(4) Date of Birth": date4,
                 "團體項目(隊) Group Event(team(s)) ": model.TeamNumber,
                 "費用(hk$)": model.TeamPrice,
                 "總額 Total price($)": model.TeamTotalPrice,
@@ -272,7 +281,7 @@ module.exports = {
                 "付款狀況 Payment Status": payStatus,
                 "申請狀況 Apply Status": formStatus,
                 "隊伍/團體狀況 Team Status": teamStatus,
-                "提交日期 Apply Date (dd/mm/yyyy)": applyDate,
+                "提交日期 Apply Date": applyDate,
                 "上次更新 Last upadated": updateDate,
             }
         }));

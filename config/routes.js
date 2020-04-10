@@ -214,7 +214,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/GRGP/:id': 'GRGPController.confirm',
   'POST /admin/applyHandle/dataDef/GRGP/:id': 'GRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
- 
+  '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
+
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
   'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',

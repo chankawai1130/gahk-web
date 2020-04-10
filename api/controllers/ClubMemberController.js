@@ -173,7 +173,7 @@ module.exports = {
         "Membership Fee 會員費": model.clubFee,
         "付款狀況 Payment Status": payStatus,
         "申請狀況 Apply Status": formStatus,
-        "提交日期 Apply Date (dd/mm/yyyy)": applyDate,
+        "提交日期 Apply Date": applyDate,
         "上次更新 Last upadated": updateDate,
       }
     }));

@@ -187,7 +187,7 @@
 
             <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white;" href="/<%=form%>/export_xlsx">匯出Excel<br>Excel Export</a>
 
-            &nbsp;&nbsp;
+            &nbsp;
             <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
                 onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
             <!-- confirmAll box -->
@@ -584,10 +584,6 @@
         } else {
             alert(response.status + ": " + response.statusText);
         }
-    };
-
-    async function exportExcel(form) {
-        window.location.href = "/" + form + "/export_xlsx"
     };
 
 </script>
