@@ -183,29 +183,9 @@
     <table>
         <%if (applications){%>
         <form action="/<%=form%>/import_xlsx" method="post" enctype="multipart/form-data">
-            <span class="mx-sm-2">請在匯入檔案前下載
-                <% if (form == "TRGP") {%>
-                <a download="TRGP_範本.xlsx" href="/formDoc/TRGP_template.xlsx" target="_blank">範本.xlsx</a>
-                <%} else if (form == "TRGS") {%>
-                <%} else if (form == "gfa"){%>
-                <%} else if (form == "GRGP"){%>
-                <%} else if (form == "GRGS"){%>
-                <%} else if (form == "trampoline"){%>
-                <%} else if (form == "acroage"){%>
-                <%} else if (form == "clubMem") {%>
-                <%}%> 並輸入資料.</span>
-                <br>
-            <span class="mx-sm-2">Please download  
-                <% if (form == "TRGP") {%>
-                <a download="TRGP_template.xlsx" href="/formDoc/TRGP_template.xlsx" target="_blank">template.xlsx</a>
-                <%} else if (form == "TRGS") {%>
-                <%} else if (form == "gfa"){%>
-                <%} else if (form == "GRGP"){%>
-                <%} else if (form == "GRGS"){%>
-                <%} else if (form == "trampoline"){%>
-                <%} else if (form == "acroage"){%>
-                <%} else if (form == "clubMem") {%>
-                <%}%> and input the data before importing.</span>
+            <span class="mx-sm-2">請在匯入檔案前下載 <a download="<%=form%>_範本.xlsx" href="/formDoc/<%=form%>_template.xlsx" target="_blank">範本.xlsx</a> 並輸入資料.</span>
+            <br>
+            <span class="mx-sm-2">Please download <a download="<%=form%>_template.xlsx" href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before importing.</span>
             <br>
             <button type="submit"  class="btn btn-primary mx-sm-2" style="font-size: small; background-color:teal; border-color: teal;">匯入Excel<br>Excel Import</button>
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
