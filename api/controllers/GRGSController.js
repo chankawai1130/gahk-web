@@ -105,6 +105,7 @@ module.exports = {
                 declaration1: req.body.GRGS.declaration1,
                 payStatus: req.body.GRGS.payStatus,
                 formStatus: req.body.GRGS.formStatus,
+                teamStatus: req.body.GRGS.teamStatus,
             }).fetch();
 
             if (models.length == 0) return res.notFound();
