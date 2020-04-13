@@ -216,8 +216,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
   '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
 
-  'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
-  'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
+  'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
+  'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
   'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
@@ -226,18 +226,24 @@ module.exports.routes = {
   '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
   '/TRGP/import_xlsx': 'TRGPController.import_xlsx',
 
+  'GET /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
+  'POST /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
   'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGS/:id': 'TRGSController.waitingList',
   '/TRGS/export_xlsx': 'TRGSController.export_xlsx',
+  '/TRGS/import_xlsx': 'TRGSController.import_xlsx',
 
+  'GET /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
+  'POST /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
   'POST /admin/applyHandle/reject/clubMem/:id': 'ClubMemberController.reject',
   'POST /admin/applyHandle/confirm/clubMem/:id': 'ClubMemberController.confirm', 
   'POST /admin/applyHandle/dataDef/clubMem/:id': 'ClubMemberController.dataDef',
   '/clubMem/export_xlsx': 'ClubMemberController.export_xlsx',
+  '/clubMem/import_xlsx': 'ClubMemberController.import_xlsx',
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
