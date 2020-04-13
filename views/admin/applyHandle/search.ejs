@@ -341,8 +341,8 @@
             <%} else {%>
             <td>&nbsp;</td>
             <%}%>
-                <!-- Column:提交日期 Apply Date -->
-                <td width="15%"><%= applyDate %></td>
+            <!-- Column:提交日期 Apply Date -->
+            <td width="15%"><%= applyDate %></td>
             <!-- Column:狀態 Status  -->
             <%if (models.formStatus == "rejected") {%>
             <td width="10%" id="btns">
@@ -373,38 +373,7 @@
                 <%} else {%>
 
             <td width="10%" id="btns">
-                <%if (models.formStatus == "ToBeCon" || models.formStatus == "") {%>
-
-
-                <%var confirmID = "con"+ models.id %>
-                <a type="button" class="btn btn-primary" id="statusBtn"
-                    onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                    style="color: white;">確認<br>Confirm</a>
-                <!-- confirm box -->
-                <div id="<%= confirmID%>" class="modal">
-                    <div class="modal-content">
-                        <div class="container">
-                            <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
-                            <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                            <div class="clearfix">
-                                <button type="button" class="cancelbtn modalBtn"
-                                    onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                    Cancel</button>
-                                <button type="button" class="confirmbtn modalBtn"
-                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <a type="button" class="btn btn-warning" id="statusBtn"
-                    onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
-                    Deficiency</a>
-
-
-                <%} else if (models.formStatus == "accepted"){%>
+                <% if (models.formStatus == "accepted"){%>
                 <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
 
                 <%} else if(models.formStatus == "dataDef") {
@@ -433,7 +402,32 @@
 
                 <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
                     Deficiency</button>
-                <%}%>
+                <%} else {%>
+                    <%var confirmID = "con"+ models.id %>
+                    <a type="button" class="btn btn-primary" id="statusBtn"
+                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                        style="color: white;">確認<br>Confirm</a>
+                    <!-- confirm box -->
+                    <div id="<%= confirmID%>" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
+                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn modalBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                        Cancel</button>
+                                    <button type="button" class="confirmbtn modalBtn"
+                                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <a type="button" class="btn btn-warning" id="statusBtn"
+                        onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
+                        Deficiency</a>
+                    <%}%>
            
                     <%var deleteID = "del"+ models.id %>
                 <a type="button" class="btn btn-danger" id="statusBtn"
@@ -457,11 +451,11 @@
                 </div>
 
                 <% if (form != "clubMem"){%>
-                <%if (models.teamStatus == "suTeam" || models.teamStatus == "") {%>
-                <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                    onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
+                <%if (models.teamStatus == "waitTeam") {%>
+                    <button type="button" class="btn btn-outline-info" id="statusBtn" disabled>後補<br>Waitiing</button>
                 <%} else {%>
-                <button type="button" class="btn btn-outline-info" id="statusBtn" disabled>後補<br>Waitiing</button>
+                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                    onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
                 <%}}%>
 
                 <% if (form == "TRGP"){%>
