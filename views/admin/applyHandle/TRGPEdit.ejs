@@ -246,7 +246,7 @@
             </div>
 
             <div class="form-group col-12">
-                <label>參賽組別 Category:</label>
+                <label>組別 Category:</label>
                 <% if (TRGP.category == "預備A,B組") {%>
                 <input type="radio" name="TRGP[category]" value="預備A,B組" checked required />
                 <%} else {%>
@@ -536,8 +536,10 @@
                 Document Upload</h5>
             <div class="form-group">
                 <label>商業登記證明 Valid Bussiness Registration Certificate (img/pdf檔)</label>
+                <% if(TRGP.VBRC) {%>
                 <a download="<%= TRGP.idCode%>_VBRC_商業登記證明" href="<%=TRGP.VBRC%>" target="_blank">下載 Download</a>
                 <br>
+                <%}%>
                 <label>更新 Update:</label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)" />
                 <div id="preview1"></div>
@@ -549,9 +551,11 @@
             <h5 id="labelHead">聲明 Declaration</h5>
             <div class="form-group">
                 <label>聲明書 Declaration(img/pdf檔)</label>
+                <% if(TRGP.Declaration) {%>
                 <a download="<%= TRGP.idCode%>_Declaration_聲明書" href="<%=TRGP.Declaration%>" target="_blank">下載
                     Download</a>
                 <br>
+                <%}%>
                 <label>更新 Update:</label>
                 <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
                 <div id="preview2"></div>
@@ -584,7 +588,7 @@
                 <label for="payStatus" class="statusLabel" id="payLabel">未付款 Unpaid</label>
             </div>
             <%}%>
-    </div>
+        </div>
 
     <div class="form-group col-12">
         <h5 id="labelHead">申請狀況 Apply Status</h5>
@@ -713,7 +717,7 @@
 
 
     // Get the modal
-    var modal = document.getElementById('askModal');
+    var modal = document.getElementById('<%= TRGP.id%>');
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -811,7 +815,7 @@
                 input.type = 'hidden';
                 input.name = 'TRGP[VBRC]';
                 input.value = e.target.result;
-                img.style.width = "150px";
+                img.style.width = "auto";
                 img.style.height = "150px";
                 preview.appendChild(input);
             }
@@ -844,7 +848,7 @@
                 input.type = 'hidden';
                 input.name = 'TRGP[Declaration]';
                 input.value = e.target.result;
-                img.style.width = "150px";
+                img.style.width = "auto";
                 img.style.height = "150px";
                 preview.appendChild(input);
             }

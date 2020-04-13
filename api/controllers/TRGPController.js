@@ -40,7 +40,7 @@ module.exports = {
 
     // admin/HandleApply
     //update form
-    TRGP_update: async function (req, res) {
+    update: async function (req, res) {
         if (req.method == "GET") {
             var model = await TRGP.findOne(req.params.id);
 
