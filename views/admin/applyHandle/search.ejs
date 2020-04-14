@@ -207,6 +207,7 @@
                         <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>There are some inputing words. If the data is wrongly input, this
                             may lead to data deficiency.</li>
                         <ul>
+                            <% if (form != "clubMem"){%>
                             <li>標示<mark>"是否有中文姓名 Any Chinese name"</mark>，請輸入字眼"是 Yes" 或 "否 No"。<br>For the attribute
                                 <mark>"是否有中文姓名 Any Chinese name"</mark>, please input the data "是 Yes" or "否 No".</li>
                             <li>標示<mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>，請跟隨格式(yyyy-mm-dd)。<br>For the attribute
@@ -215,13 +216,16 @@
                             <li>標示<mark>"付款狀況 Payment Status"</mark>，請輸入字眼"未付款 Unpaid"或已付款 Paid"。<br>For the attribute
                                 <mark>"付款狀況 Payment Status"</mark>, please input the data "未付款 Unpaid" or "已付款 Paid".
                             </li>
+                            <%}%>
                             <li>標示<mark>"申請狀況 Apply Status"</mark>，請輸入字眼"待處理 To be handled"，"已確認 Accepted"，"已拒絕
                                 Rejected"或"資料不全 Data Deficiency"。<br>For the attribute <mark>"申請狀況 Apply Status"</mark>,
                                 please input the data "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
                                 Deficiency".</li>
+                                <% if (form != "clubMem"){%>
                             <li>標示<mark>"隊伍/團體狀況 Team Status"</mark>，請輸入字眼"正選 Successful Team"或"後補 Team on Waitiing
                                 List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input the data
                                 "正選 Successful Team" or "後補 Team on Waitiing List".</li>
+                                <%}%>
                         </ul>
                     </ol>
 

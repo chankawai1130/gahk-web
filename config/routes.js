@@ -68,12 +68,12 @@ module.exports.routes = {
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
   '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
 
-  //'/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+  '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
 
   '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
-  // '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
-  // '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
+  '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
+  '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
 
@@ -164,13 +164,11 @@ module.exports.routes = {
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
 
-  'GET /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
-  'POST /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
+  'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
   'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
 
-  'GET /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
-  'POST /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
 
@@ -184,8 +182,7 @@ module.exports.routes = {
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
 
   //'GET /competition/form/acroage': 'AcroageController.acroage',
-  'GET /pages/competition/form/acroage': 'AcroageController.acroage',
-  'POST /pages/competition/form/acroage': 'AcroageController.acroage',
+  'POST /competition/form/acroage': 'AcroageController.acroage',
   'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
 

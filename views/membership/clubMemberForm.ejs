@@ -26,13 +26,13 @@
                 <br>
                 <label>機構 Organization:</label>
                 <input type="text" name="ClubMember[OrgEngName]" style="width:450pt" placeholder="         (英文 English)"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ \(\)]/g,'')" required>
+                onkeyup="value=value.replace(/[^\a-\z\A-\Z\ \(\)\.\-\d\0-\9]/g,'')" required>
             </div>
 
             <div class="form-group col-12 partA">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="text" name="ClubMember[OrgChiName]" style="width:450pt" placeholder="         (中文 Chinese)"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\.\-\d\0-\9]/g,'')" required>
             </div>
 
             <div class="form-group col-12 col-sm-7 partA">
@@ -213,7 +213,7 @@
                 input.type = 'hidden';
                 input.name = 'ClubMember[partD]';
                 input.value = e.target.result;
-                img.style.width = "150px";
+                img.style.width = "auto";
                 img.style.height = "150px";
                 preview.appendChild(input);
             }

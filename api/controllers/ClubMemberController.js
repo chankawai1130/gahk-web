@@ -37,6 +37,48 @@ module.exports = {
   },
 
   //admin
+  update: async function (req, res) {
+    if (req.method == "GET") {
+      var model = await ClubMember.findOne(req.params.id);
+
+      if (!model) return res.notFound();
+
+      return res.view('admin/applyHandle/clubMemEdit', { clubMem: model });
+
+    } else {
+      if (!req.body.ClubMember)
+        return res.badRequest("Form-data not received.");
+
+      var models = await ClubMember.update(req.params.id).set({
+        OrgEngName: req.body.ClubMember.OrgEngName,
+        OrgChiName: req.body.ClubMember.OrgChiName,
+        AppEngName: req.body.ClubMember.AppEngName,
+        AppChiName: req.body.ClubMember.AppChiName,
+        clubAddr: req.body.ClubMember.clubAddr,
+        clubTel: req.body.ClubMember.clubTel,
+        clubEmail: req.body.ClubMember.clubEmail,
+        clubWeb: req.body.ClubMember.clubWeb,
+        MemberNo: req.body.ClubMember.MemberNo,
+        brefDes: req.body.ClubMember.brefDes,
+        resEngName: req.body.ClubMember.resEngName,
+        resChiName: req.body.ClubMember.resChiName,
+        position: req.body.ClubMember.position,
+        resAddr: req.body.ClubMember.resAddr,
+        resTel: req.body.ClubMember.resTel,
+        resFax: req.body.ClubMember.resFax,
+        resEmail: req.body.ClubMember.resEmail,
+        year: req.body.ClubMember.year,
+        clubFee: req.body.ClubMember.clubFee,
+        payStatus: req.body.ClubMember.payStatus,
+        formStatus: req.body.ClubMember.formStatus,
+      }).fetch();
+
+      if (models.length == 0) return res.notFound();
+
+      return res.redirect('/admin/applyHandle/search');
+    }
+  },
+
   reject: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
@@ -169,8 +211,8 @@ module.exports = {
         "機構代表/負責人申請者電話 Organization Representative / Person in charge Tel": model.resTel,
         "機構代表/負責人申請者傳真 Organization Representative / Person in charge Fax": model.resFax,
         "機構代表/負責人申請者電郵 Organization Representative / Person in charge E-mail": model.resEmail,
-        "Membership Year 會員年長": model.year,
-        "Membership Fee 會員費": model.clubFee,
+        "會員年長 Membership Year": model.year,
+        "會員費 Membership Fee": model.clubFee,
         "付款狀況 Payment Status": payStatus,
         "申請狀況 Apply Status": formStatus,
         "提交日期 Apply Date": applyDate,
@@ -180,6 +222,51 @@ module.exports = {
     XLSX.utils.book_append_sheet(wb, ws, "ClubMember");
     res.set("Content-disposition", "attachment; filename=ClubMember.xlsx");
     return res.end(XLSX.write(wb, { type: "buffer", bookType: "xlsx" }));
+  },
+
+  import_xlsx: async function (req, res) {
+
+    if (req.method == "GET") return res.forbidden();
+
+    req.file('file').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+      if (err) { return res.serverError(err); }
+      if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+      var XLSX = require('xlsx');
+      var workbook = XLSX.readFile(uploadedFiles[0].fd);
+      var ws = workbook.Sheets[workbook.SheetNames[0]];
+      var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "OrgEngName", "OrgChiName", "AppEngName", "AppChiName", "clubAddr", "clubTel", "clubFax", "clubEmail", "clubWeb", "MemberNo", "brefDes", "resEngName", "resChiName", "position", "resAddr", "resTel", "resFax", "resEmail", "year", "clubFee", "payStatus", "formStatus"] });
+
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].payStatus == "未付款 Unpaid") {
+          data[i].payStatus = "unpaid";
+        } else if (data[i].payStatus == "已付款 Paid") {
+          data[i].payStatus = "paid";
+        }
+
+        if (data[i].formStatus == "待處理 To be handled") {
+          data[i].formStatus = "ToBeCon";
+        } else if (data[i].formStatus == "已確認 Accepted") {
+          data[i].formStatus = "accepted";
+        } else if (data[i].formStatus == "已拒絕 Rejected") {
+          data[i].formStatus = "rejected";
+        } else if (data[i].formStatus == "資料不全 Data Deficiency") {
+          data[i].formStatus = "dataDef";
+        }
+
+      }
+
+
+      console.log(data);
+
+
+      var models = await ClubMember.createEach(data).fetch();
+      if (models.length == 0) {
+        return res.badRequest("No data imported.");
+      }
+      return res.redirect('/admin/applyHandle/search');
+    });
+
   },
 
 
