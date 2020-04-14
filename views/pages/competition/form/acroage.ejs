@@ -19,7 +19,7 @@
     }
 </style>
 
-<form action="/pages/competition/form/acroage" method="POST" id="acroage">
+<form action="/competition/form/acroage" method="POST" id="acroage">
     <br>
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888;">
@@ -104,18 +104,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <% if(data.havecname1) {%>
-                <% if(data.havecname1 == "否 No") {%>
                 <input type="text" class="form-group" name="Acroage[cpChiName1]" id="cpChiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
-                <%} else {%>
-                <input type="text" class="form-group" name="Acroage[cpChiName1]" value="<%= data.cpChiName1%>"
-                    id="cpChiName1" placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    required>
-                <%}} else {%>
-                <input type="text" class="form-group" name="Acroage[cpChiName1]" id="cpChiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%}%>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled <%}%>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -180,18 +170,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <% if(data.havecname2) {%>
-                <% if(data.havecname2 == "否 No") {%>
                 <input type="text" class="form-group" name="Acroage[cpChiName2]" id="cpChiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
-                <%} else {%>
-                <input type="text" class="form-group" name="Acroage[cpChiName2]" value="<%= data.cpChiName2%>"
-                    id="cpChiName2" placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    required>
-                <%}} else {%>
-                <input type="text" class="form-group" name="Acroage[cpChiName2]" id="cpChiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
-                <%}%>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled <% } %>>
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
@@ -242,11 +222,11 @@
         
 
         <!-- extraCard for womenTri -->
-                <% if(data.item && data.item == "女子三人 Women's trio") {%>
+                <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio") {%>
                 <div class="card col-12" style="background: transparent; display: inline;" id="extraForm">
-                    <%} else if (!data.item || data.item && data.item != "女子三人 Women's trio" ){%>
-                    <div class="card col-12" style="background: transparent;" id="extraForm">
-                        <%}%>
+                <%} else if (req.session.data == null || req.session.data != null && req.session.data.item != "女子三人 Women's trio"){%>
+                <div class="card col-12" style="background: transparent;" id="extraForm">
+                <%}%>
                     <br>
                     <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
                     <br>
@@ -266,18 +246,8 @@
 
                         <div class="form-group col-12 col-sm-6">
                             <label>中文姓名 Name in Chinese:</label>
-                            <% if(data.havecname3) {%>
-                        <% if(data.havecname3 == "否 No") {%>
                         <input type="text" class="form-group" name="Acroage[cpChiName3]" id="cpChiName3"
-                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" disabled>
-                        <%} else {%>
-                        <input type="text" class="form-group" name="Acroage[cpChiName3]" value="<%= data.cpChiName3%>"
-                            id="cpChiName3" placeholder=" e.g. 陳大文"
-                            onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')">
-                        <%}} else {%>
-                        <input type="text" class="form-group" name="Acroage[cpChiName3]" id="cpChiName3"
-                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')">
-                        <%}%>
+                            placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled <% } %>>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label>英文姓名 Name in English: </label>
@@ -455,11 +425,11 @@
                         </div>
 
 
-                        <% if(data.item && data.item == "女子三人 Women's trio") {%>
+                        <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio") {%>
                             <div class="col-12" style="display: inline;" id="extraParent">
-                                <%} else if (!data.item || data.item && data.item != "女子三人 Women's trio" ){%>
+                                <%} else if (req.session.data == null || req.session.data != null && req.session.data.item != "女子三人 Women's trio" ){%>
                                     <div class="col-12" id="extraParent">
-                                    <%}%>
+                                <%}%>
                            <br>
                            <label>參加者(3)家長姓名 Applicant(3)'s Parent Name: </label>
                            <input type="text" class="form-group" name="Acroage[parentName3]" id="parentName3">
@@ -508,7 +478,6 @@
 <script>
     function multiFunction() {
         genderSelect();
-        //extraCard();
         extraFrom();
     }
 
