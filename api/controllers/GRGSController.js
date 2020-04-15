@@ -9,10 +9,10 @@ module.exports = {
     GRGS_form: async function (req, res) {
 
         if (req.method == 'GET') { return res.view('competition/form/GRGS'); }
-
+        
         req.session.data = req.body.GRGS;
 
-        return res.view('pages/competition/form/GRGS_Preview', { 'data': req.session.data || {} });
+        return res.view('pages/competition/form/GRGS_Preview', { 'data': req.session.GRGSdata || {} });
     },
 
 
@@ -30,12 +30,41 @@ module.exports = {
                 idCode: "GRGS2020-" + model.id
             })
             model["idCode"] = "GRGS2020-" + model.id;
-            req.session.data = {};  //clear data of session
 
+            //clear formdata in session and user
+            req.session.data = {};  
+            req.session.GRGSdata = {};  
+            var user = await User.update(req.session.userId).set({
+                GRGSdata: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
+            //
+            
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 
+    //action - save
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.GRGSdata = req.body;
+        
+        var user = await User.update(req.session.userId).set({
+            GRGSdata: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GRGS' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/GRGS');           // for normal request
+        }
+    },
+
+    //-------------------------------------Admin----------------------------------------//
     // action - update
     update: async function (req, res) {
 
@@ -56,6 +85,7 @@ module.exports = {
                 teamName: req.body.GRGS.teamName,
                 phone: req.body.GRGS.phone,
                 email: req.body.GRGS.email,
+                category: req.body.GRGS.category,
                 havecname1: req.body.GRGS.havecname1,
                 chiName1: req.body.GRGS.chiName1,
                 engName1: req.body.GRGS.engName1,
@@ -101,8 +131,7 @@ module.exports = {
                 NoOfPeople: req.body.GRGS.NoOfPeople,
                 insurance: req.body.GRGS.insurance,
                 total: req.body.GRGS.total,
-                declaration0: req.body.GRGS.declaration0,
-                declaration1: req.body.GRGS.declaration1,
+                declaration: req.body.GRGS.declaration,
                 payStatus: req.body.GRGS.payStatus,
                 formStatus: req.body.GRGS.formStatus,
                 teamStatus: req.body.GRGS.teamStatus,
@@ -111,23 +140,6 @@ module.exports = {
             if (models.length == 0) return res.notFound();
 
             return res.redirect('/admin/applyHandle/search');
-        }
-    },
-
-    //action - save
-    save: async function (req, res) {
-
-        if (req.method == "GET") return res.forbidden();
-
-        var user = await User.findOne(req.session.userId);
-
-        if (user.length == 0) return res.notFound();
-        req.session.GRGSdata = req.body.GRGS;
-
-        if (req.wantsJSON) {
-            return res.json({ message: req.body.GRGS + "儲存成功 Sucessfully save.", url: '/competition/form/GRGS' });    // for ajax request
-        } else {
-            return res.redirect('/competition/form/GRGS');           // for normal request
         }
     },
 

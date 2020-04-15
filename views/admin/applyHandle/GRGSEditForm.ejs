@@ -325,7 +325,7 @@
                     Download ID copy of
                     the applicant</a>
                 <br>
-                <img src="<%=grgs.imgIDCard0%>" style="height:150px; width:150px" />
+                <img src="<%=grgs.imgIDCard0%>" style="height:150px; width:auto" />
             </div>
             <br>
             <% } %>
@@ -704,33 +704,18 @@
                 Declaration</h5>
         </div>
 
-        <% if(grgs.declaration0) { 
-            var type = grgs.declaration0.split(';');%>
+        <% if(grgs.declaration) { 
+            var type = grgs.declaration.split(';');%>
         <div class="col-12 col-sm-6">
             <% if(type[0] == 'data:application/pdf') { %>
-            <a download="<%= grgs.idCode %>_Declaration1_聲明1.pdf" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.pdf" href="<%= grgs.declaration%>" target="_blank">下載聲明書
                 Download declartion</a>
             <br>
             <% } else if(type[0] == 'data:image/jpeg') { %>
-            <a download="<%= grgs.idCode %>_Declaration1_聲明1.jpg" href="<%= grgs.declaration0%>" target="_blank">下載聲明書
+            <a download="<%= grgs.idCode %>_Declaration1_聲明1.jpg" href="<%= grgs.declaration%>" target="_blank">下載聲明書
                 Download declartion</a>
             <br>
-            <img src="<%=grgs.declaration0%>" style="height:150px; width:150px" />
-            <% } %>
-        </div>
-        <% } %>
-        <% if(grgs.declaration1) { 
-            var type = grgs.declaration1.split(';');%>
-        <div class="col-12 col-sm-6">
-            <% if(type[0] == 'data:application/pdf') { %>
-            <a download="<%= grgs.idCode %>_Declaration2_聲明2.pdf" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
-                Download declartion</a>
-            <br>
-            <% } else if(type[0] == 'data:image/jpeg') { %>
-            <a download="<%= grgs.idCode %>_Declaration2_聲明2.jpg" href="<%= grgs.declaration1%>" target="_blank">下載聲明書
-                Download declartion</a>
-            <br>
-            <img src="<%=grgs.declaration1%>" style="height:150px; width:150px" />
+            <img src="<%=grgs.declaration%>" style="height:150px; width:150px" />
             <% } %>
         </div>
         <% } %>
@@ -740,8 +725,7 @@
             <label>重新上載聲明書 Reupload the declaration</label>
             <br>
             <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
-            <div id="HF2preview0"></div>
-            <div id="HF2preview1"></div>
+            <div id="HF2preview"></div>
         </div>
         
 
@@ -1003,48 +987,36 @@
     }
 
     function handleFile2(files) {
-        if (files.length > 2) {
-            alert("上載檔案不可多於2個");
-            return;
-        }
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+        var preview = document.getElementById('HF2preview');
+        var reader = new FileReader();
 
-        var i = 0;
-        while (i < files.length) {
-            if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
-
-            var reader = new FileReader();
-            var p = 0;
-            if (files[i].type.startsWith('image/')) {
-                reader.onload = function (e) {
-                    var preview = document.getElementById('HF2preview' + p);
-                    preview.innerHTML = "";
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    preview.appendChild(img);
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'GRGS[declaration' + p + ']';
-                    input.value = e.target.result;
-                    img.style.width = "150px";
-                    img.style.height = "150px";
-                    preview.appendChild(input);
-                    p = p + 1;
-                }
-            } else if (files[i].type == 'application/pdf') {
-                reader.onload = function (e) {
-                    var preview = document.getElementById('HF2preview' + p);
-                    preview.innerHTML = "";
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'GRGS[declaration' + p + ']';
-                    input.value = e.target.result;
-                    preview.appendChild(input);
-                    p = p + 1;
-                }
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[declaration]';
+                input.value = e.target.result;
+                img.style.width = "auto";
+                img.style.height = "150px";
+                preview.appendChild(input);
             }
-            reader.readAsDataURL(files[i]);
-            i = i + 1;
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[declaration]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
         }
+        reader.readAsDataURL(file);
     }
 
     //handle have chinese name option
