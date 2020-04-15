@@ -8,7 +8,7 @@
 module.exports = {
     TRGSForm: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('pages/competition/form/TRGSForm', { 'data': req.session.data || {} }); }
+        if (req.method == 'GET') { return res.view('competition/form/TRGSForm'); }
 
         req.session.data = req.body.TRGS;
 
@@ -35,6 +35,62 @@ module.exports = {
     },
 
     //admin
+    update: async function (req, res) {
+        if (req.method == "GET") {
+            var model = await TRGS.findOne(req.params.id);
+
+            if (!model) return res.notFound();
+
+            return res.view('admin/applyHandle/TRGSEdit', { TRGS: model });
+
+        } else {
+            if (!req.body.TRGS)
+                return res.badRequest("Form-data not received.");
+
+            var models = await TRGS.update(req.params.id).set({
+                teamName: req.body.TRGS.teamName,
+                Phone: req.body.TRGS.Phone,
+                Email: req.body.TRGS.Email,
+                CoachName: req.body.TRGS.CoachName,
+                CoachPhone: req.body.TRGS.CoachPhone,
+                category: req.body.TRGS.category,
+                havecname1: req.body.TRGS.havecname1,
+                Mate1ChiName: req.body.TRGS.Mate1ChiName,
+                Mate1EngName: req.body.TRGS.Mate1EngName,
+                Mate1IDNo: req.body.TRGS.Mate1IDNo,
+                Mate1Date: req.body.TRGS.Mate1Date,
+                havecname2: req.body.TRGS.havecname2,
+                Mate2ChiName: req.body.TRGS.Mate2ChiName,
+                Mate2EngName: req.body.TRGS.Mate2EngName,
+                Mate2IDNo: req.body.TRGS.Mate2IDNo,
+                Mate2Date: req.body.TRGS.Mate2Date,
+                havecname3: req.body.TRGS.havecname3,
+                Mate3ChiName: req.body.TRGS.Mate3ChiName,
+                Mate3EngName: req.body.TRGS.Mate3EngName,
+                Mate3IDNo: req.body.TRGS.Mate3IDNo,
+                Mate3Date: req.body.TRGS.Mate3Date,
+                havecname4: req.body.TRGS.havecname4,
+                Mate4ChiName: req.body.TRGS.Mate4ChiName,
+                Mate4EngName: req.body.TRGS.Mate4EngName,
+                Mate4IDNo: req.body.TRGS.Mate4IDNo,
+                Mate4Date: req.body.TRGS.Mate4Date,
+                TeamNumber: req.body.TRGS.TeamNumber,
+                TeamPrice: req.body.TRGS.TeamPrice,
+                TeamTotalPrice: req.body.TRGS.TeamTotalPrice,
+                leaderName: req.body.TRGS.leaderName,
+                leaderPosition: req.body.TRGS.leaderPosition,
+                Declaration: req.body.TRGS.Declaration,
+                payStatus: req.body.TRGS.payStatus,
+                formStatus: req.body.TRGS.formStatus,
+                teamStatus: req.body.TRGS.teamStatus,
+            }).fetch();
+
+            if (models.length == 0) return res.notFound();
+
+            return res.redirect('/admin/applyHandle/search');
+        }
+    },
+
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 
@@ -225,6 +281,56 @@ module.exports = {
         XLSX.utils.book_append_sheet(wb, ws, "TRGS");
         res.set("Content-disposition", "attachment; filename=TRGS.xlsx");
         return res.end(XLSX.write(wb, { type: "buffer", bookType: "xlsx" }));
+    },
+
+    import_xlsx: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.file('file').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            var XLSX = require('xlsx');
+            var workbook = XLSX.readFile(uploadedFiles[0].fd);
+            var ws = workbook.Sheets[workbook.SheetNames[0]];
+            var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "teamName", "Phone", "Email", "CoachName", "CoachPhone", "category", "havecname1", "Mate1ChiName", "Mate1EngName", "Mate1IDNo", "Mate1Date", "havecname2", "Mate2ChiName", "Mate2EngName", "Mate2IDNo", "Mate2Date", "havecname3", "Mate3ChiName", "Mate3EngName", "Mate3IDNo", "Mate3Date", "havecname4", "Mate4ChiName", "Mate4EngName", "Mate4IDNo", "Mate4Date", "TeamNumber", "TeamPrice", "TeamTotalPrice", "leaderName", "leaderPosition", "payStatus", "formStatus", "teamStatus"] });
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].payStatus == "未付款 Unpaid") {
+                    data[i].payStatus = "unpaid";
+                } else if (data[i].payStatus == "已付款 Paid") {
+                    data[i].payStatus = "paid";
+                }
+
+                if (data[i].formStatus == "待處理 To be handled") {
+                    data[i].formStatus = "ToBeCon";
+                } else if (data[i].formStatus == "已確認 Accepted") {
+                    data[i].formStatus = "accepted";
+                } else if (data[i].formStatus == "已拒絕 Rejected") {
+                    data[i].formStatus = "rejected";
+                } else if (data[i].formStatus == "資料不全 Data Deficiency") {
+                    data[i].formStatus = "dataDef";
+                }
+
+                if (data[i].teamStatus == "正選 Successful Team") {
+                    data[i].teamStatus = "suTeam";
+                } else if (data[i].teamStatus == "後補 Team on Waitiing List") {
+                    data[i].teamStatus = "waitTeam";
+                }
+            }
+
+
+            console.log(data);
+
+
+            var models = await TRGS.createEach(data).fetch();
+            if (models.length == 0) {
+                return res.badRequest("No data imported.");
+            }
+            return res.redirect('/admin/applyHandle/search');
+        });
+
     },
   
 

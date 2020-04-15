@@ -10,7 +10,7 @@ module.exports = {
     //action - create
     acroage: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('pages/competition/form/acroage', { 'data': req.session.data || {} }); }
+        if (req.method == 'GET') { return res.view('competition/form/acroage'); }
 
         req.session.data = req.body.Acroage;
 

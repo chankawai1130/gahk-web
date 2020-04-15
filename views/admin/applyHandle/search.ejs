@@ -12,6 +12,10 @@
         border-bottom: 1px solid #ddd;
     }
 
+    mark {
+        background-color: yellow;
+    }
+
     #subjects {
         background-color: #f5f5f5;
     }
@@ -182,257 +186,309 @@
     <!-- Search result -->
     <table>
         <%if (applications){%>
+        <a type="button" class="mx-sm-2" onclick="document.getElementById('importBrief').style.display='block'"
+            style="color: teal;"><u>Excel匯入指引 Excel Import Guidelines</u></a>
+        <!-- importBrief box -->
+        <div id="importBrief" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <h1>Excel匯入指引<br>Excel Import Guidelines</h1><br>
+                    <ol style="text-align: left;">
+                        <li>請在匯入檔案前下載 <a download="<%=form%>_範本.xlsx" href="/formDoc/<%=form%>_template.xlsx"
+                                target="_blank">範本.xlsx</a> 並輸入資料。<br>
+                            Please download <a download="<%=form%>_template.xlsx"
+                                href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the
+                            data before importing.</li>
+                        <br>
+                        <li>請不要更改、刪除或新增第1行的標示,並從第二行開始輸入資料。<br>
+                            Please do not modify, delete or append any attributes in row one. Please start inputing the
+                            data from row two.</li>
+                        <br>
+                        <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>There are some inputing words. If the data is wrongly input, this
+                            may lead to data deficiency.</li>
+                        <ul>
+                            <% if (form != "clubMem"){%>
+                            <li>標示<mark>"是否有中文姓名 Any Chinese name"</mark>，請輸入字眼"是 Yes" 或 "否 No"。<br>For the attribute
+                                <mark>"是否有中文姓名 Any Chinese name"</mark>, please input the data "是 Yes" or "否 No".</li>
+                            <li>標示<mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>，請跟隨格式(yyyy-mm-dd)。<br>For the attribute
+                                <mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>, please follow the format of
+                                (yyyy-mm-dd).</li>
+                            <li>標示<mark>"付款狀況 Payment Status"</mark>，請輸入字眼"未付款 Unpaid"或已付款 Paid"。<br>For the attribute
+                                <mark>"付款狀況 Payment Status"</mark>, please input the data "未付款 Unpaid" or "已付款 Paid".
+                            </li>
+                            <%}%>
+                            <li>標示<mark>"申請狀況 Apply Status"</mark>，請輸入字眼"待處理 To be handled"，"已確認 Accepted"，"已拒絕
+                                Rejected"或"資料不全 Data Deficiency"。<br>For the attribute <mark>"申請狀況 Apply Status"</mark>,
+                                please input the data "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
+                                Deficiency".</li>
+                                <% if (form != "clubMem"){%>
+                            <li>標示<mark>"隊伍/團體狀況 Team Status"</mark>，請輸入字眼"正選 Successful Team"或"後補 Team on Waitiing
+                                List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input the data
+                                "正選 Successful Team" or "後補 Team on Waitiing List".</li>
+                                <%}%>
+                        </ul>
+                    </ol>
+
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn modalBtn" style="float: none; width: 30%;"
+                            onclick="document.getElementById('importBrief').style.display='none'">知道 Understand</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
         <form action="/<%=form%>/import_xlsx" method="post" enctype="multipart/form-data">
-            <span class="mx-sm-2">請在匯入檔案前下載 <a download="<%=form%>_範本.xlsx" href="/formDoc/<%=form%>_template.xlsx" target="_blank">範本.xlsx</a> 並輸入資料.</span>
+            <span class="mx-sm-2">請在匯入檔案前下載 <a download="<%=form%>_範本.xlsx" href="/formDoc/<%=form%>_template.xlsx"
+                    target="_blank">範本.xlsx</a> 並輸入資料。</span>
             <br>
-            <span class="mx-sm-2">Please download <a download="<%=form%>_template.xlsx" href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before importing.</span>
+            <span class="mx-sm-2">Please download <a download="<%=form%>_template.xlsx"
+                    href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before
+                importing.</span>
             <br>
-            <button type="submit"  class="btn btn-primary mx-sm-2" style="font-size: small; background-color:teal; border-color: teal;">匯入Excel<br>Excel Import</button>
+            <button type="submit" class="btn btn-primary mx-sm-2"
+                style="font-size: small; background-color:teal; border-color: teal;">匯入Excel<br>Excel Import</button>
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
             <br>
         </form>
+
 
         <br>
         <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white;"
             href="/<%=form%>/export_xlsx">匯出Excel<br>Excel Export</a>
 
-                &nbsp;
-                <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
-                    onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
-                <!-- confirmAll box -->
-                <div id="confirmAll" class="modal">
+        &nbsp;
+        <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
+            onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
+        <!-- confirmAll box -->
+        <div id="confirmAll" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <h1>全部確認 Confirm All</h1>
+                    <p>確定要確認全部已搜尋申請表?<br>Are you sure you want to confirm all searched applications?</p>
+
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn modalBtn"
+                            onclick="document.getElementById('confirmAll').style.display='none'">取消
+                            Cancel</button>
+                        <button type="button" class="confirmbtn modalBtn" onclick="confirmAll('<%= form%>')">全部確認
+                            Confirm All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <span>搜尋申請項目 Searching Application Project: </span><br>
+        <% if (form == "TRGP"){%>
+        <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
+        <%} else if (form == "TRGS"){%>
+        <b>2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</b>
+        <%} else if (form == "gfa"){%>
+        <b>2020年香港普及體操節 GFAFestival2020</b>
+        <%} else if (form == "GRGP"){%>
+        <b>2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</b>
+        <%} else if (form == "GRGS"){%>
+        <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
+        <%} else if (form == "trampoline"){%>
+        <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
+        <%} else if (form == "acroage"){%>
+        <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
+        <%} else if (form == "clubMem") {%>
+        <b>團體註冊申請 Application for Club Membership</b>
+        <%}%>
+            <br><br>
+            <tr id="subjects">
+            <th align="center">申請編號<br>Application No.</th>
+            <% if (form != "acroage"){ %>
+        <th align="center">隊伍/團體<br>Team/Organisation</th>
+        <% } if (form == "trampoline"){ %>
+        <th align="center">性別<br>Gender</th>
+        <% } if (form == "acroage"){ %>
+        <th align="center">項目<br>Event</th>
+        <%} if (form != "clubMem") {%>
+        <th align="center">組別<br>Category</th>
+        <% } %>
+        <th>付款<br>Payment</th>
+        <th align="center">提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
+        <th>狀態<br>Status</th>
+        </tr>
+        <% applications.forEach( function(models) { %>
+        <% var n = new Date(models.createdAt);
+                var month = n.getMonth() + 1;
+                var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
+        <tr>
+            <!-- 申請編號 Apply No. -->
+            <td width="10%"><%= models.idCode %></td>
+            <!--Column: 隊伍/團體 Team/Organisation -->
+            <% if (form != "acroage"){ %>
+            <%if(form == "clubMem") {%>
+            <td width="40%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
+            <% } else {%>
+            <td width="30%" height="100"><%= models.teamName %></td>
+            <%}%>
+                <!-- Column: 性別 Gender -->
+                <%} if (form == "trampoline"){ %>
+            <td width="25%"><%= models.gender %></td>
+            <!-- Column: 項目 Event -->
+            <%} if (form == "acroage"){ %>
+            <td width="25%"><%= models.item %></td>
+            <!-- Column:組別 Category -->
+            <%} if (form != "clubMem"){%>
+            <td width="25%"><%= models.category %></td>
+            <!-- Column:付款 Payment -->
+            <%} if(models.payStatus == "paid") {%>
+            <td width="10%"><i class="fa fa-check"></i></td>
+            <%} else if (models.payStatus == "unpaid"){%>
+            <td width="10%"><i class="fa fa-remove"></i></td>
+            <%} else {%>
+            <td>&nbsp;</td>
+            <%}%>
+            <!-- Column:提交日期 Apply Date -->
+            <td width="15%"><%= applyDate %></td>
+            <!-- Column:狀態 Status  -->
+            <%if (models.formStatus == "rejected") {%>
+            <td width="10%" id="btns">
+                <button type="button" class="btn btn-outline-danger" id="statusBtn" disabled>已拒絕<br>Rejected</button>
+                <% if (form == "TRGP"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "TRGS"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TRGSEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "gfa"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "GRGP"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "GRGS"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "trampoline"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "acroage"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "clubMem") {%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/clubMemEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%}%> 
+                </td>
+                <%} else {%>
+
+            <td width="10%" id="btns">
+                <% if (models.formStatus == "accepted"){%>
+                <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
+
+                <%} else if(models.formStatus == "dataDef") {
+                       var confirmID = "con"+ models.id %>
+
+                <a type="button" class="btn btn-primary" id="statusBtn"
+                    onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                    style="color: white;">確認<br>Confirm</a>
+                <!-- confirm box -->
+                <div id="<%= confirmID%>" class="modal">
                     <div class="modal-content">
                         <div class="container">
-                            <h1>全部確認 Confirm All</h1>
-                            <p>確定要確認全部已搜尋申請表?<br>Are you sure you want to confirm all searched applications?</p>
-
+                            <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
+                            <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
                             <div class="clearfix">
                                 <button type="button" class="cancelbtn modalBtn"
-                                    onclick="document.getElementById('confirmAll').style.display='none'">取消
+                                    onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
                                     Cancel</button>
                                 <button type="button" class="confirmbtn modalBtn"
-                                    onclick="confirmAll('<%= form%>')">全部確認
-                                    Confirm All</button>
+                                    onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <br><br>
-                <span>搜尋申請項目 Searching Application Project: </span><br>
-                <% if (form == "TRGP"){%>
-                <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
-                <%} else if (form == "TRGS"){%>
-                <b>2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</b>
-                <%} else if (form == "gfa"){%>
-                <b>2020年香港普及體操節 GFAFestival2020</b>
-                <%} else if (form == "GRGP"){%>
-                <b>2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</b>
-                <%} else if (form == "GRGS"){%>
-                <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
-                <%} else if (form == "trampoline"){%>
-                <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
-                <%} else if (form == "acroage"){%>
-                <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
-                <%} else if (form == "clubMem") {%>
-                <b>團體註冊申請 Application for Club Membership</b>
-                <%}%>
-            <br><br>
-            <tr id="subjects">
-            <th align="center">申請編號<br>Application No.</th>
-            <% if (form != "acroage"){ %>
-                <th align="center">隊伍/團體<br>Team/Organisation</th>
-                <% } if (form == "trampoline"){ %>
-                <th align="center">性別<br>Gender</th>
-                <% } if (form == "acroage"){ %>
-                <th align="center">項目<br>Event</th>
-                <%} if (form != "clubMem") {%>
-                <th align="center">組別<br>Category</th>
-                <% } %>
-                <th>付款<br>Payment</th>
-                <th align="center">提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
-                <th>狀態<br>Status</th>
-                </tr>
-                <% applications.forEach( function(models) { %>
-                <% var n = new Date(models.createdAt);
-                var month = n.getMonth() + 1;
-                var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-                <tr>
-                    <!-- 申請編號 Apply No. -->
-                    <td width="10%"><%= models.idCode %></td>
-                    <!--Column: 隊伍/團體 Team/Organisation -->
-                    <% if (form != "acroage"){ %>
-                    <%if(form == "clubMem") {%>
-                    <td width="40%" height="100"><%= models.OrgChiName%><br><%= models.OrgEngName%></td>
-                    <% } else {%>
-                    <td width="30%" height="100"><%= models.teamName %></td>
-                    <%}%>
-                <!-- Column: 性別 Gender -->
-                <%} if (form == "trampoline"){ %>
-                    <td width="25%"><%= models.gender %></td>
-                    <!-- Column: 項目 Event -->
-                    <%} if (form == "acroage"){ %>
-                    <td width="25%"><%= models.item %></td>
-                    <!-- Column:組別 Category -->
-                    <%} if (form != "clubMem"){%>
-                    <td width="25%"><%= models.category %></td>
-                    <!-- Column:付款 Payment -->
-                    <%} if(models.payStatus == "paid") {%>
-                    <td width="10%"><i class="fa fa-check"></i></td>
-                    <%} else if (models.payStatus == "unpaid"){%>
-                    <td width="10%"><i class="fa fa-remove"></i></td>
-                    <%} else {%>
-                    <td>&nbsp;</td>
-                    <%}%>
-                <!-- Column:提交日期 Apply Date -->
-                <td width="15%"><%= applyDate %></td>
-                    <!-- Column:狀態 Status  -->
-                    <%if (models.formStatus == "rejected") {%>
-                    <td width="10%" id="btns">
-                        <button type="button" class="btn btn-outline-danger" id="statusBtn"
-                            disabled>已拒絕<br>Rejected</button>
-                        <% if (form == "TRGP"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "TRGS"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "gfa"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "GRGP"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "GRGS"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "trampoline"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "acroage"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "clubMem") {%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%}%> 
-                </td>
+
+                <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
+                    Deficiency</button>
                 <%} else {%>
-
-                    <td width="10%" id="btns">
-                        <%if (models.formStatus == "ToBeCon" || models.formStatus == "") {%>
-
-
-                        <%var confirmID = "con"+ models.id %>
-                        <a type="button" class="btn btn-primary" id="statusBtn"
-                            onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                            style="color: white;">確認<br>Confirm</a>
-                        <!-- confirm box -->
-                        <div id="<%= confirmID%>" class="modal">
-                            <div class="modal-content">
-                                <div class="container">
-                                    <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
-                                    <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                    <div class="clearfix">
-                                        <button type="button" class="cancelbtn modalBtn"
-                                            onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                            Cancel</button>
-                                        <button type="button" class="confirmbtn modalBtn"
-                                            onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
-                                    </div>
+                    <%var confirmID = "con"+ models.id %>
+                    <a type="button" class="btn btn-primary" id="statusBtn"
+                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                        style="color: white;">確認<br>Confirm</a>
+                    <!-- confirm box -->
+                    <div id="<%= confirmID%>" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
+                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn modalBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                        Cancel</button>
+                                    <button type="button" class="confirmbtn modalBtn"
+                                        onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <a type="button" class="btn btn-warning" id="statusBtn"
-                            onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
-                            Deficiency</a>
-
-
-                        <%} else if (models.formStatus == "accepted"){%>
-                        <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                            disabled>已確認<br>Accepted</button>
-
-                        <%} else if(models.formStatus == "dataDef") {
-                       var confirmID = "con"+ models.id %>
-
-                        <a type="button" class="btn btn-primary" id="statusBtn"
-                            onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                            style="color: white;">確認<br>Confirm</a>
-                        <!-- confirm box -->
-                        <div id="<%= confirmID%>" class="modal">
-                            <div class="modal-content">
-                                <div class="container">
-                                    <h1>確認申請 Confirm Application<br><%= models.idCode%></h1>
-                                    <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                    <div class="clearfix">
-                                        <button type="button" class="cancelbtn modalBtn"
-                                            onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                            Cancel</button>
-                                        <button type="button" class="confirmbtn modalBtn"
-                                            onclick="confirm('<%= form%>', '<%= models.id%>')">確認 Confirm</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                            Deficiency</button>
-                        <%}%>
+                    </div>
+    
+                    <a type="button" class="btn btn-warning" id="statusBtn"
+                        onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
+                        Deficiency</a>
+                    <%}%>
            
                     <%var deleteID = "del"+ models.id %>
-                        <a type="button" class="btn btn-danger" id="statusBtn"
-                            onclick="document.getElementById('<%= deleteID%>').style.display='block'"
-                            style="color: white;">拒絕<br>Rejected</a>
-                        <!-- reject box -->
-                        <div id="<%= deleteID%>" class="modal">
-                            <div class="modal-content">
-                                <div class="container">
-                                    <h1>拒絕申請 Reject Application<br><%= models.idCode%></h1>
-                                    <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
-                                    <div class="clearfix">
-                                        <button type="button" class="cancelbtn modalBtn"
-                                            onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
-                                            Cancel</button>
-                                        <button type="button" class="deletebtn modalBtn"
-                                            onclick="rejectForm('<%= form%>','<%= models.id%>')">拒絕 Rejected</button>
-                                    </div>
-                                </div>
+                <a type="button" class="btn btn-danger" id="statusBtn"
+                    onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                    style="color: white;">拒絕<br>Rejected</a>
+                <!-- reject box -->
+                <div id="<%= deleteID%>" class="modal">
+                    <div class="modal-content">
+                        <div class="container">
+                            <h1>拒絕申請 Reject Application<br><%= models.idCode%></h1>
+                            <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+                            <div class="clearfix">
+                                <button type="button" class="cancelbtn modalBtn"
+                                    onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
+                                    Cancel</button>
+                                <button type="button" class="deletebtn modalBtn"
+                                    onclick="rejectForm('<%= form%>','<%= models.id%>')">拒絕 Rejected</button>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <% if (form != "clubMem"){%>
-                        <%if (models.teamStatus == "suTeam" || models.teamStatus == "") {%>
-                        <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                            onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
-                        <%} else {%>
-                        <button type="button" class="btn btn-outline-info" id="statusBtn"
-                            disabled>後補<br>Waitiing</button>
-                        <%}}%>
+                <% if (form != "clubMem"){%>
+                <%if (models.teamStatus == "waitTeam") {%>
+                    <button type="button" class="btn btn-outline-info" id="statusBtn" disabled>後補<br>Waitiing</button>
+                <%} else {%>
+                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                    onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
+                <%}}%>
 
-                        <% if (form == "TRGP"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "TRGS"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "gfa"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "GRGP"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "GRGS"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "trampoline"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn"
-                            href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
-                        <%} else if (form == "acroage"){%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%} else if (form == "clubMem") {%>
-                        <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                        <%}%> 
+                <% if (form == "TRGP"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "TRGS"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TRGSEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "gfa"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "GRGP"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "GRGS"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "trampoline"){%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
+                <%} else if (form == "acroage"){%>
+                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <%} else if (form == "clubMem") {%>
+                <a type="button" class="btn btn-success" id="statusBtn"
+                    href="/admin/applyHandle/clubMemEdit/<%= models.id %>">編輯<br>Edit</a>
+                <%}%> 
                 </td>
                 <%}%>
-                </tr>
-                <%});%>
-                <%} %>
+        </tr>
+        <%});%>
+        <%} %>
     </table>
     <br>
 

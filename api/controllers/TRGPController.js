@@ -9,7 +9,7 @@ module.exports = {
     //(preview)
     TRGPForm: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('pages/competition/form/TRGPForm', { 'data': req.session.data || {} }); }
+        if (req.method == 'GET') { return res.view('competition/form/TRGPForm'); }
 
         req.session.data = req.body.TRGP;
 
@@ -40,7 +40,7 @@ module.exports = {
 
     // admin/HandleApply
     //update form
-    TRGP_update: async function (req, res) {
+    update: async function (req, res) {
         if (req.method == "GET") {
             var model = await TRGP.findOne(req.params.id);
 

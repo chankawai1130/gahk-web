@@ -68,12 +68,12 @@ module.exports.routes = {
   '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
   '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
 
-  //'/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+  '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
 
   '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
-  // '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
-  // '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
+  '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
+  '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
   '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
 
@@ -164,13 +164,11 @@ module.exports.routes = {
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
 
-  'GET /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
-  'POST /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
+  'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
   'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
 
-  'GET /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
-  'POST /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
 
@@ -184,8 +182,7 @@ module.exports.routes = {
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
 
   //'GET /competition/form/acroage': 'AcroageController.acroage',
-  'GET /pages/competition/form/acroage': 'AcroageController.acroage',
-  'POST /pages/competition/form/acroage': 'AcroageController.acroage',
+  'POST /competition/form/acroage': 'AcroageController.acroage',
   'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
 
@@ -216,8 +213,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
   '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
 
-  'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
-  'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.TRGP_update',
+  'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
+  'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
   'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject', 
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
@@ -226,18 +223,24 @@ module.exports.routes = {
   '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
   '/TRGP/import_xlsx': 'TRGPController.import_xlsx',
 
+  'GET /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
+  'POST /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
   'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject', 
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
   'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGS/:id': 'TRGSController.waitingList',
   '/TRGS/export_xlsx': 'TRGSController.export_xlsx',
+  '/TRGS/import_xlsx': 'TRGSController.import_xlsx',
 
+  'GET /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
+  'POST /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
   'POST /admin/applyHandle/clubMem/confirmAll': 'ClubMemberController.confirmAll',
   'POST /admin/applyHandle/reject/clubMem/:id': 'ClubMemberController.reject',
   'POST /admin/applyHandle/confirm/clubMem/:id': 'ClubMemberController.confirm', 
   'POST /admin/applyHandle/dataDef/clubMem/:id': 'ClubMemberController.dataDef',
   '/clubMem/export_xlsx': 'ClubMemberController.export_xlsx',
+  '/clubMem/import_xlsx': 'ClubMemberController.import_xlsx',
 
 
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
