@@ -201,37 +201,37 @@
                             data before importing.</li>
                         <br>
                         <li>請不要更改、刪除或新增第1行的標示,並從第二行開始輸入資料。<br>
-                            Please do not modify, delete or append any attributes in row one. Please start inputing the
+                            Please do not modify, delete or append any attributes in row one. Please start inputting the
                             data from row two.</li>
                         <br>
-                        <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>There are some inputing words. If the data is wrongly input, this
-                            may lead to data deficiency.</li>
+                        <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>Here are some wordings for inputting. Please make sure the inputs follow the guildeline. Otherwise, a
+                            problem of data deficiency may happen.</li>
                         <ul>
                             <% if (form != "clubMem"){%>
                             <li>標示<mark>"是否有中文姓名 Any Chinese name"</mark>，請輸入字眼"是 Yes" 或 "否 No"。<br>For the attribute
-                                <mark>"是否有中文姓名 Any Chinese name"</mark>, please input the data "是 Yes" or "否 No".</li>
+                                <mark>"是否有中文姓名 Any Chinese name"</mark>, please input "是 Yes" or "否 No" only.</li>
                             <li>標示<mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>，請跟隨格式(yyyy-mm-dd)。<br>For the attribute
                                 <mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>, please follow the format of
                                 (yyyy-mm-dd).</li>
                             <li>標示<mark>"付款狀況 Payment Status"</mark>，請輸入字眼"未付款 Unpaid"或已付款 Paid"。<br>For the attribute
-                                <mark>"付款狀況 Payment Status"</mark>, please input the data "未付款 Unpaid" or "已付款 Paid".
+                                <mark>"付款狀況 Payment Status"</mark>, please input "未付款 Unpaid" or "已付款 Paid" only.
                             </li>
                             <%}%>
                             <li>標示<mark>"申請狀況 Apply Status"</mark>，請輸入字眼"待處理 To be handled"，"已確認 Accepted"，"已拒絕
                                 Rejected"或"資料不全 Data Deficiency"。<br>For the attribute <mark>"申請狀況 Apply Status"</mark>,
-                                please input the data "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
-                                Deficiency".</li>
+                                please input "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
+                                Deficiency" only.</li>
                                 <% if (form != "clubMem"){%>
                             <li>標示<mark>"隊伍/團體狀況 Team Status"</mark>，請輸入字眼"正選 Successful Team"或"後補 Team on Waitiing
-                                List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input the data
-                                "正選 Successful Team" or "後補 Team on Waitiing List".</li>
+                                List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input
+                                "正選 Successful Team" or "後補 Team on Waitiing List" only.</li>
                                 <%}%>
                         </ul>
                     </ol>
 
                     <div class="clearfix">
                         <button type="button" class="cancelbtn modalBtn" style="float: none; width: 30%;"
-                            onclick="document.getElementById('importBrief').style.display='none'">知道 Understand</button>
+                            onclick="document.getElementById('importBrief').style.display='none'">明白 Understand</button>
                     </div>
                 </div>
             </div>
@@ -247,19 +247,20 @@
                     href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before
                 importing.</span>
             <br>
+            <input class="mx-sm-2" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
+            <br>
             <button type="submit" class="btn btn-primary mx-sm-2"
                 style="font-size: small; background-color:teal; border-color: teal;">匯入Excel<br>Excel Import</button>
-            <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
-            <br>
+            <br><br>
         </form>
 
 
         <br>
-        <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white;"
+        <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white; float: right;"
             href="/<%=form%>/export_xlsx">匯出Excel<br>Excel Export</a>
 
         &nbsp;
-        <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
+        <a type="button" class="btn btn-primary" style="font-size: small; color: white; float: right;"
             onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
         <!-- confirmAll box -->
         <div id="confirmAll" class="modal">
@@ -471,7 +472,8 @@
                 <%} else if (form == "gfa"){%>
                 <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
                 <%} else if (form == "GRGP"){%>
-                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <a type="button" class="btn btn-success" id="statusBtn" 
+                    href="/admin/applyHandle/GRGPEditForm/<%= models.id %>">編輯<br>Edit</a>
                 <%} else if (form == "GRGS"){%>
                 <a type="button" class="btn btn-success" id="statusBtn"
                     href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>

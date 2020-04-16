@@ -25,11 +25,14 @@ module.exports = {
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
             await GRGS.create(req.session.data);
+
+            //update form idCode
             var model = await GRGS.findOne(req.session.data);
             await GRGS.update(model.id).set({
                 idCode: "GRGS2020-" + model.id
             })
             model["idCode"] = "GRGS2020-" + model.id;
+            //
 
             //clear formdata in session and user
             req.session.data = {};  
@@ -39,7 +42,7 @@ module.exports = {
             }).fetch();
             if (user.length == 0) return res.notFound();
             //
-            
+
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
