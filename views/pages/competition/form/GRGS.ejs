@@ -5,7 +5,7 @@
 </style>
 
 
-<form action="/competition/form/GRGS" method="POST" id=GRGS_form>
+<form action="/competition/form/GRGS" method="POST" id="GRGS_form">
     <div class="row mx-sm-2">
         <!-- Title -->
         <div class="col-12" style="color: #888888; ">
@@ -39,39 +39,51 @@
         <div class="col-12">
             <label>隊伍名稱(中文) Team Name(Chinese):</label>
             <input id="teamName" type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.GRGSdata != null) { %>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.teamName != null) { %>
                 value="<%=req.session.GRGSdata.teamName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input id="phone" style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]" required>
+            <input id="phone" style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[phone]"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.phone != null) { %>
+                value="<%=req.session.GRGSdata.phone%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>聯絡電郵 Email Address:</label>
-            <input type="email" class="form-group" name="GRGS[email]" style="width:195pt;" required>
+            <input id="email" type="email" class="form-group" name="GRGS[email]" style="width:195pt;"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.email != null) { %>
+                value="<%=req.session.GRGSdata.email%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>教練姓名 Coach Name:</label>
-            <input style="width: 172px;" type="text" class="form-group" name="GRGS[coachName]" required>
+            <input id="coachName" style="width: 172px;" type="text" class="form-group" name="GRGS[coachName]"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.coachName != null) { %>
+                value="<%=req.session.GRGSdata.coachName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group" name="GRGS[coachPhone]"
-                required>
+            <input id="coachPhone" style="width: 172px;" type="tel" pattern=[0-9]{8} class="form-group"
+                name="GRGS[coachPhone]"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.coachPhone != null) { %>
+                value="<%=req.session.GRGSdata.coachPhone%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <br>
             <p>組別及比賽項目 Category and Competition Item:</p>
-            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" id="gpA" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 A 組(五人圈操)" id="gpA" onclick="limitBirth()"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.gpA == true) { %> checked <% } %> required>
             <label class="form-check-label" for="category">集體 A 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" id="gpB" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 B 組(五人圈操)" id="gpB" onclick="limitBirth()"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.gpB == true) { %> checked <% } %> required>
             <label class="form-check-label" for="category">集體 B 組(五人圈操)</label>
-            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" id="gpC" onclick="limitBirth()" required>
+            <input type="radio" name="GRGS[category]" value="集體 C 組(三球兩帶)" id="gpC" onclick="limitBirth()"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.gpC == true) { %> checked <% } %> required>
             <label class="form-check-label" for="category">集體 C 組(三球兩帶)</label>
             <br><br>
         </div>
@@ -88,41 +100,58 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
-                    required />
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes1 == true) { %> checked <% } %>
+                    required>
                 <label class="form-check-label" for="havecname1">是 Yes</label>
                 <input type="radio" name="GRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
-                    required />
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No1 == true) { %> checked <% } %>
+                    required>
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName1]" id="chiName1" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName1" type="text" class="form-group" name="GRGS[chiName1]" id="chiName1"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No1 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName1%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName1]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName1" type="text" class="form-group" name="GRGS[engName1]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName1 != null) { %>
+                    value="<%=req.session.GRGSdata.engName1%>" <% } %> required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID1]" placeholder=" A123456(7)" required>
+                <input id="ID1" type="text" class="form-group" name="GRGS[ID1]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID1 != null) { %>
+                    value="<%=req.session.GRGSdata.ID1%>" <% } %> required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth1]" id="birth1" required>
+                <input id="birth1" type="date" class="form-group" name="GRGS[birth1]" id="birth1"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth1 != null) { %>
+                    value="<%=req.session.GRGSdata.birth1%>" <% } %> required>
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
+                    value="<%=req.session.GRGSdata.imgIDCard0%>" <% } %> required />
                 <br>
                 <div id="preview0"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard0%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
         <!-- 2 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -135,34 +164,43 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
-                    required />
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes2 == true) { %> checked <% } %>
+                    required>
                 <label class="form-check-label" for="havecname2">是 Yes</label>
                 <input type="radio" name="GRGS[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
-                    required />
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No2 == true) { %> checked <% } %>
+                    required>
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName2" type="text" class="form-group" name="GRGS[chiName2]" id="chiName2"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No2 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName2%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName2]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName2" type="text" class="form-group" name="GRGS[engName2]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName2 != null) { %>
+                    value="<%=req.session.GRGSdata.engName2%>" <% } %> required>
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID2]" placeholder=" A123456(7)" required>
+                <input id="ID2" type="text" class="form-group" name="GRGS[ID2]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID2 != null) { %>
+                    value="<%=req.session.GRGSdata.ID2%>" <% } %> required>
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth2]" id="birth2" required>
+                <input id="birth2" type="date" class="form-group" name="GRGS[birth2]" id="birth2"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth2 != null) { %>
+                    value="<%=req.session.GRGSdata.birth2%>" <% } %> required>
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
@@ -170,6 +208,12 @@
                 <div id="preview1"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard1%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
         <!-- 3 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -182,34 +226,43 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes3 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
                 <input type="radio" name="GRGS[havecname3]" value="否 No" id="No3" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No3 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName3" type="text" class="form-group" name="GRGS[chiName3]" id="chiName3"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No3 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName3%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName3]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName3" type="text" class="form-group" name="GRGS[engName3]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName3 != null) { %>
+                    value="<%=req.session.GRGSdata.engName3%>" <% } %> required />
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID3]" placeholder=" A123456(7)" required>
+                <input id="ID3" type="text" class="form-group" name="GRGS[ID3]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID3 != null) { %>
+                    value="<%=req.session.GRGSdata.ID3%>" <% } %> required />
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth3]" id="birth3" required>
+                <input id="birth3" type="date" class="form-group" name="GRGS[birth3]" id="birth3"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth3 != null) { %>
+                    value="<%=req.session.GRGSdata.birth3%>" <% } %> required />
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
@@ -217,6 +270,12 @@
                 <div id="preview2"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard2%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
         <!-- 4 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -229,34 +288,43 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes4 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
                 <input type="radio" name="GRGS[havecname4]" value="否 No" id="No4" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No4 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName4" type="text" class="form-group" name="GRGS[chiName4]" id="chiName4"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No4 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName4%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName4]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName4" type="text" class="form-group" name="GRGS[engName4]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName4 != null) { %>
+                    value="<%=req.session.GRGSdata.engName4%>" <% } %> required />
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID4]" placeholder=" A123456(7)" required>
+                <input id="ID4" type="text" class="form-group" name="GRGS[ID4]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID4 != null) { %>
+                    value="<%=req.session.GRGSdata.ID4%>" <% } %> required />
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth4]" id="birth4" required>
+                <input id="birth4" type="date" class="form-group" name="GRGS[birth4]" id="birth4"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth4 != null) { %>
+                    value="<%=req.session.GRGSdata.birth4%>" <% } %> required />
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,3)" required />
@@ -264,6 +332,12 @@
                 <div id="preview3"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard3%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
         <!-- 5 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -276,34 +350,43 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes5 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname5">是 Yes</label>
                 <input type="radio" name="GRGS[havecname5]" value="否 No" id="No5" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No5 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname5">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if(req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName5" type="text" class="form-group" name="GRGS[chiName5]" id="chiName5"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No5 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName5%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName5]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName5" type="text" class="form-group" name="GRGS[engName5]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName5 != null) { %>
+                    value="<%=req.session.GRGSdata.engName5%>" <% } %> required />
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID5]" placeholder=" A123456(7)" required>
+                <input id="ID5" type="text" class="form-group" name="GRGS[ID5]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID5 != null) { %>
+                    value="<%=req.session.GRGSdata.ID5%>" <% } %> required />
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth5]" id="birth5" required>
+                <input id="birth5" type="date" class="form-group" name="GRGS[birth5]" id="birth5"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth5 != null) { %>
+                    value="<%=req.session.GRGSdata.birth5%>" <% } %> required />
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,4)" required />
@@ -311,6 +394,12 @@
                 <div id="preview4"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard4%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
         <!-- 6 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -323,34 +412,43 @@
             <div>
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.Yes6 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname6">是 Yes</label>
                 <input type="radio" name="GRGS[havecname6]" value="否 No" id="No6" onclick="havechinesename()"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.No6 == true) { %> checked <% } %>
                     required />
                 <label class="form-check-label" for="havecname6">否 No</label>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                    <% if (req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled <% } %>
-                    required>
+                <input id="chiName6" type="text" class="form-group" name="GRGS[chiName6]" id="chiName6"
+                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                    <% if(req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled
+                    <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No6 == true) {%> disabled
+                    <% }else{ %> value="<%=req.session.GRGSdata.chiName6%>" <% }} %> required />
             </div>
             <div>
                 <label>英文姓名 Name in English: </label>
-                <input type="text" class="form-group" name="GRGS[engName6]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input id="engName6" type="text" class="form-group" name="GRGS[engName6]"
+                    placeholder=" e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.engName6 != null) { %>
+                    value="<%=req.session.GRGSdata.engName6%>" <% } %> required />
             </div>
             <div>
                 <label>身份證號碼 ID Card Number:</label>
-                <input type="text" class="form-group" name="GRGS[ID6]" placeholder=" A123456(7)" required>
+                <input id="ID6" type="text" class="form-group" name="GRGS[ID6]" placeholder=" A123456(7)"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.ID6 != null) { %>
+                    value="<%=req.session.GRGSdata.ID6%>" <% } %> required />
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" class="form-group" name="GRGS[birth6]" id="birth6" required>
+                <input id="birth6" type="date" class="form-group" name="GRGS[birth6]" id="birth6"
+                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth6 != null) { %>
+                    value="<%=req.session.GRGSdata.birth6%>" <% } %> required />
                 <br>
             </div>
-            <div>
+            <!-- <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,5)" required />
@@ -358,6 +456,12 @@
                 <div id="preview5"></div>
             </div>
             <br>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != null) { %>
+            <div>
+                <img src="<%=req.session.GRGSdata.imgIDCard5%>" style="height:150px; width:auto" />
+            </div>
+            <br>
+            <% } %> -->
         </div>
 
         <!-- Remark -->
@@ -379,12 +483,16 @@
 
         <div class="col-12 col-sm-6">
             <label>隊伍負責人姓名 Leader's Name:</label>
-            <input type="text" class="form-group" name="GRGS[leaderName]" required>
+            <input id="leaderName" type="text" class="form-group" name="GRGS[leaderName]"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.leaderName != null) { %>
+                value="<%=req.session.GRGSdata.leaderName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>隊伍負責人職位 Leader's Position:</label>
-            <input type="text" class="form-group" name="GRGS[leaderPosition]" required>
+            <input id="leaderPosition" type="text" class="form-group" name="GRGS[leaderPosition]"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.leaderPosition != null) { %>
+                value="<%=req.session.GRGSdata.leaderPosition%>" <% } %> required>
         </div>
 
         <!-- Fee -->
@@ -396,26 +504,35 @@
         <div class="col-12 form-group">
             <label>集體項目 Collective Subject: $150 X </label>
             <input id="NoOfTeam" type="number" class="mx-sm-2" name="GRGS[NoOfTeam]" min=1 max=100
-                onblur="calculateFee()" required>
+                onblur="calculateFee()"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.NoOfTeam != null) { %>
+                value="<%=req.session.GRGSdata.NoOfTeam%>" <% } %> required />
             <label>隊 team(s) = $</label>
-            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" <% if(req.session.data !=null){ %>
-                value="<%=req.session.data.teamFee%>" <% } %> readonly />
+            <input id="teamFee" type="number" class="mx-sm-2" name="GRGS[teamFee]" <% if(req.session.data != null){ %>
+                value="<%=req.session.data.teamFee%>"
+                <% }else if(req.session.GRGSdata != null && req.session.GRGSdata.teamFee != null) { %>
+                value="<%=req.session.GRGSdata.teamFee%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
             <label>保險 Insurance: $30 X </label>
             <input id="NoOfPeople" type="number" class="mx-sm-2" name="GRGS[NoOfPeople]" min=1 max=100
-                onblur="calculateInsurance()" required>
+                onblur="calculateInsurance()"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.NoOfPeople != null) { %>
+                value="<%=req.session.GRGSdata.NoOfPeople%>" <% } %> required />
             <label>人 people = $</label>
             <input id="insurance" type="number" class="mx-sm-2" name="GRGS[insurance]"
-                <% if(req.session.data !=null){ %> value="<%=req.session.data.insurance%>" <% } %> readonly />
+                <% if(req.session.data != null){ %> value="<%=req.session.data.insurance%>"
+                <% }else if(req.session.GRGSdata != null && req.session.GRGSdata.insurance != null) { %>
+                value="<%=req.session.GRGSdata.insurance%>" <% } %> readonly />
             <br><br>
         </div>
 
         <div class="col-12 form-group">
             <label>總額 Total Price = $</label>
-            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" <% if(req.session.data !=null){ %>
-                value="<%=req.session.data.total%>" <% } %> readonly />
+            <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" <% if(req.session.data != null){ %>
+                value="<%=req.session.data.total%>" <% }else if(req.session.GRGSdata != null && req.session.GRGSdata.total != null) { %>
+                value="<%=req.session.GRGSdata.total%>" <% } %> readonly />
         </div>
 
         <div class="col-12 form-group">
@@ -435,9 +552,19 @@
                     style="color:#83a70c"><u>聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
                     href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
                 sign and upload it</label>
-            <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
-            <div id="HF2preview0"></div>
-            <div id="HF2preview1"></div>
+            <input id="declaration" type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.declaration != null) { %>
+                value="<%=req.session.GRGSdata.declaration%>" <% } %> required />
+            <div id="HF2preview"></div>
+            <% if(req.session.GRGSdata != null && req.session.GRGSdata.declaration != null) { 
+                var type = req.session.GRGSdata.declaration.split(';');%>
+            <div>
+                <% if(type[0] == 'data:image/jpeg') { %>
+                <br>
+                <img id="oriDeclar" src="<%=req.session.GRGSdata.declaration%>" style="height:150px; width:auto" />
+                <% } %>
+            </div>
+            <% } %>
         </div>
 
 
@@ -471,59 +598,130 @@
 <script>
     async function saveForm() {
         var form = document.getElementById("GRGS_form");
-        alert(form.teamName.value);
-        var data = {
-            "GRGS[teamName]": form.teamName.value,
-            // "GRGS[phone]": form.phone.value,
-            // "GRGS[email]": form.email.value,
-            // "GRGS[havecname1]": form.havecname1.value,
-            // "GRGS[chiName1]": form.chiName1.value,
-            // "GRGS[engName1]": form.engName1.value,
-            // "GRGS[ID1]": form.ID1.value,
-            // "GRGS[birth1]": form.birth1.value,
-            // "GRGS[imgIDCard0]": form.imgIDCard0.value,
-            // "GRGS[havecname2]": form.havecname2.value,
-            // "GRGS[chiName2]": form.chiName2.value,
-            // "GRGS[engName2]": form.engName2.value,
-            // "GRGS[ID2]": form.ID2.value,
-            // "GRGS[birth2]": form.birth2.value,
-            // "GRGS[imgIDCard1]": form.imgIDCard1.value,
-            // "GRGS[havecname3]": form.havecname3.value,
-            // "GRGS[chiName3]": form.chiName3.value,
-            // "GRGS[engName3]": form.engName3.value,
-            // "GRGS[ID3]": form.ID3.value,
-            // "GRGS[birth3]": form.birth3.value,
-            // "GRGS[imgIDCard2]": form.imgIDCard2.value,
-            // "GRGS[havecname4]": form.havecname4.value,
-            // "GRGS[chiName4]": form.chiName4.value,
-            // "GRGS[engName4]": form.engName4.value,
-            // "GRGS[ID4]": form.ID4.value,
-            // "GRGS[birth4]": form.birth4.value,
-            // "GRGS[imgIDCard3]": form.imgIDCard3.value,
-            // "GRGS[havecname5]": form.havecname5.value,
-            // "GRGS[chiName5]": form.chiName5.value,
-            // "GRGS[engName5]": form.engName5.value,
-            // "GRGS[ID5]": form.ID5.value,
-            // "GRGS[birth5]": form.birth5.value,
-            // "GRGS[imgIDCard4]": form.imgIDCard4.value,
-            // "GRGS[havecname6]": form.havecname6.value,
-            // "GRGS[chiName6]": form.chiName6.value,
-            // "GRGS[engName6]": form.engName6.value,
-            // "GRGS[ID6]": form.ID6.value,
-            // "GRGS[birth6]": form.birth6.value,
-            // "GRGS[imgIDCard5]": form.imgIDCard5.value,
-            // "GRGS[coachName]": form.coachName.value,
-            // "GRGS[coachPhone]": form.coachPhone.value,
-            // "GRGS[leaderName]": form.leaderName.value,
-            // "GRGS[leaderPosition]": form.leaderPosition.value,
-            // "GRGS[NoOfTeam]": form.NoOfTeam.value,
-            // "GRGS[teamFee]": form.teamFee.value,
-            // "GRGS[NoOfPeople]": form.NoOfPeople.value,
-            // "GRGS[insurance]": form.insurance.value,
-            // "GRGS[total]": form.total.value,
-            // "GRGS[declaration0]": form.declaration0.value,
-            // "GRGS[declaration1]": form.declaration1.value,
-        };
+
+        //alert(form.imgIDCard0.value);
+        // if (form.imgIDCard0 == null) {
+        //     if (req.session.GRGSdata.imgIDCard0 == null) {
+        //         var img0 = null;
+        //     } else {
+        //         var img0 = req.session.GRGSdata.imgIDCard0;
+        //     }
+        // } else {
+        //     var img0 = form.imgIDCard0.value;
+        // }
+
+        // if (form.imgIDCard1 == null) {
+        //     if (req.session.GRGSdata.imgIDCard1 == null) {
+        //         var img1 = null;
+        //     } else {
+        //         var img1 = req.session.GRGSdata.imgIDCard1;
+        //     }
+        // } else {
+        //     var img1 = form.imgIDCard1.value;
+        // }
+
+        // if (form.imgIDCard2 == null) {
+        //     if (req.session.GRGSdata.imgIDCard2 == null) {
+        //         var img2 = null;
+        //     } else {
+        //         var img2 = req.session.GRGSdata.imgIDCard2;
+        //     }
+        // } else {
+        //     var img2 = form.imgIDCard2.value;
+        // }
+
+        // if (form.imgIDCard3 == null) {
+        //     if (req.session.GRGSdata.imgIDCard3 == null) {
+        //         var img3 = null;
+        //     } else {
+        //         var img3 = req.session.GRGSdata.imgIDCard3;
+        //     }
+        // } else {
+        //     var img3 = form.imgIDCard3.value;
+        // }
+
+        // if (form.imgIDCard4 == null) {
+        //     if (req.session.GRGSdata.imgIDCard4 == null) {
+        //         var img4 = null;
+        //     } else {
+        //         var img4 = req.session.GRGSdata.imgIDCard4;
+        //     }
+        // } else {
+        //     var img4 = form.imgIDCard4.value;
+        // }
+
+        // if (form.imgIDCard5 == null) {
+        //     if (req.session.GRGSdata.imgIDCard5 == null) {
+        //         var img5 = null;
+        //     } else {
+        //         var img5 = req.session.GRGSdata.imgIDCard5;
+        //     }
+        // } else {
+        //     var img5 = form.imgIDCard5.value;
+        // }
+
+        var data = JSON.stringify({
+            teamName: form.teamName.value,
+            phone: form.phone.value,
+            email: form.email.value,
+            gpA: form.gpA.checked,
+            gpB: form.gpB.checked,
+            gpC: form.gpC.checked,
+            Yes1: form.Yes1.checked,
+            No1: form.No1.checked,
+            chiName1: form.chiName1.value,
+            engName1: form.engName1.value,
+            ID1: form.ID1.value,
+            birth1: form.birth1.value,
+            //imgIDCard0: img0,
+            Yes2: form.Yes2.checked,
+            No2: form.No2.checked,
+            chiName2: form.chiName2.value,
+            engName2: form.engName2.value,
+            ID2: form.ID2.value,
+            birth2: form.birth2.value,
+            //imgIDCard1: img1,
+            Yes3: form.Yes3.checked,
+            No3: form.No3.checked,
+            chiName3: form.chiName3.value,
+            engName3: form.engName3.value,
+            ID3: form.ID3.value,
+            birth3: form.birth3.value,
+            //imgIDCard2: img2,
+            Yes4: form.Yes4.checked,
+            No4: form.No4.checked,
+            chiName4: form.chiName4.value,
+            engName4: form.engName4.value,
+            ID4: form.ID4.value,
+            birth4: form.birth4.value,
+            // imgIDCard3: img3,
+            Yes5: form.Yes5.checked,
+            No5: form.No5.checked,
+            chiName5: form.chiName5.value,
+            engName5: form.engName5.value,
+            ID5: form.ID5.value,
+            birth5: form.birth5.value,
+            //imgIDCard4: img4,
+            Yes6: form.Yes6.checked,
+            No6: form.No6.checked,
+            chiName6: form.chiName6.value,
+            engName6: form.engName6.value,
+            ID6: form.ID6.value,
+            birth6: form.birth6.value,
+            //imgIDCard5: img5,
+            coachName: form.coachName.value,
+            coachPhone: form.coachPhone.value,
+            leaderName: form.leaderName.value,
+            leaderPosition: form.leaderPosition.value,
+            NoOfTeam: form.NoOfTeam.value,
+            teamFee: form.teamFee.value,
+            NoOfPeople: form.NoOfPeople.value,
+            insurance: form.insurance.value,
+            total: form.total.value,
+            declaration: form.declaration.value
+        });
+        alert(data);
+
 
         var response = await fetch("/competition/form/GRGS/save", {
             method: "POST",
@@ -532,9 +730,7 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                data                
-            })
+            body: data
         });
 
         if (response.ok) {
@@ -581,58 +777,51 @@
             input.type = 'hidden';
             input.name = 'GRGS[imgIDCard' + p + ']';
             input.value = e.target.result;
-
+            input.id = 'imgIDCard' + p;
             img.style.width = "auto";
             img.style.height = "150px";
             document.getElementById('GRGS_form').appendChild(input);
+            // document.getElementById("imgIDCard"+p).value = input.value;
+            var g = document.getElementById("imgIDCard" + p).value;
+            alert(g)
         }
         reader.readAsDataURL(file);
     }
 
     function handleFile2(files) {
-        if (files.length > 2) {
-            alert("上載檔案不可多於2個");
-            return;
-        }
+        const file = files[0];
+        if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
+        var preview = document.getElementById('HF2preview');
+        var reader = new FileReader();
 
-        var i = 0;
-        while (i < files.length) {
-            if (!files[i].type.startsWith('image/') && !files[i].type == 'application/pdf') return;
-
-            var reader = new FileReader();
-            var p = 0;
-            if (files[i].type.startsWith('image/')) {
-                reader.onload = function (e) {
-                    var preview = document.getElementById('HF2preview' + p);
-                    preview.innerHTML = "";
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    preview.appendChild(img);
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'GRGS[declaration' + p + ']';
-                    input.value = e.target.result;
-                    img.style.width = "auto";
-                    img.style.height = "150px";
-                    preview.appendChild(input);
-                    p = p + 1;
-                }
-            } else if (files[i].type == 'application/pdf') {
-                reader.onload = function (e) {
-                    var preview = document.getElementById('HF2preview' + p);
-                    preview.innerHTML = "";
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'GRGS[declaration' + p + ']';
-                    input.value = e.target.result;
-                    preview.appendChild(input);
-                    p = p + 1;
-                }
+        if (file.type.startsWith('image/')) {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[declaration]';
+                input.value = e.target.result;
+                img.style.width = "auto";
+                img.style.height = "150px";
+                preview.appendChild(input);
             }
-            reader.readAsDataURL(files[i]);
-            i = i + 1;
+        } else if (file.type == 'application/pdf') {
+            reader.onload = function (e) {
+                preview.innerHTML = "";
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'GRGS[declaration]';
+                input.value = e.target.result;
+                preview.appendChild(input);
+            }
         }
+        // document.getElementById("oriDeclar").innerHTML="";
+        reader.readAsDataURL(file);
     }
+
 
     //handle have chinese name option
     function havechinesename() {
@@ -757,4 +946,5 @@
         birth6.min = minDate;
         birth6.max = maxDate;
     }
+
 </script>
