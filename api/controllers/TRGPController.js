@@ -19,20 +19,37 @@ module.exports = {
     //(create)
     //action - create 
     TRGPFormPreview: async function (req, res) {
+        if (req.method == "GET") return res.forbidden();
 
-        if (req.method == 'POST') {
-            req.session.data.payStatus = "unpaid";
-            req.session.data.formStatus = "ToBeCon";
-            req.session.data.teamStatus = "suTeam";
-            await TRGP.create(req.session.data);
-            var model = await TRGP.findOne(req.session.data);
-            await TRGP.update(model.id).set({
-                idCode: "TRGP2020-" + model.id
-            })
-            model["idCode"] = "TRGP2020-" + model.id;
-            req.session.data = {};  //clear data of session
+        req.session.data.payStatus = "unpaid";
+        req.session.data.formStatus = "ToBeCon";
+        req.session.data.teamStatus = "suTeam";
+        await TRGP.create(req.session.data);
+        var model = await TRGP.findOne(req.session.data);
+        await TRGP.update(model.id).set({
+            idCode: "TRGP2020-" + model.id
+        })
+        model["idCode"] = "TRGP2020-" + model.id;
+        req.session.data = {};  //clear data of session
+        req.session.TRGPdata = {};
 
-            return res.view('pages/competition/form/confirm_form', { 'form': model });
+        return res.view('pages/competition/form/confirm_form', { 'form': model });
+
+    },
+
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var user = await User.findOne(req.session.userId);
+
+        if (user.length == 0) return res.notFound();
+        req.session.TRGPdata = req.body;
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/TRGPForm' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/TRGPForm');           // for normal request
         }
     },
 
