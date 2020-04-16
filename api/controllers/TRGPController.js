@@ -30,8 +30,13 @@ module.exports = {
             idCode: "TRGP2020-" + model.id
         })
         model["idCode"] = "TRGP2020-" + model.id;
-        req.session.data = {};  //clear data of session
+
+        req.session.data = {};
         req.session.TRGPdata = {};
+        var user = await User.update(req.session.userId).set({
+            TRGPdata: {}
+        }).fetch();
+        if (user.length == 0) return res.notFound();
 
         return res.view('pages/competition/form/confirm_form', { 'form': model });
 
@@ -41,10 +46,13 @@ module.exports = {
 
         if (req.method == "GET") return res.forbidden();
 
-        var user = await User.findOne(req.session.userId);
+        req.session.TRGPdata = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            TRGPdata: req.body
+        }).fetch();
 
         if (user.length == 0) return res.notFound();
-        req.session.TRGPdata = req.body;
 
         if (req.wantsJSON) {
             return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/TRGPForm' });    // for ajax request
@@ -55,7 +63,7 @@ module.exports = {
 
 
 
-    // admin/HandleApply
+    //**************************admin/HandleApply*************************
     //update form
     update: async function (req, res) {
         if (req.method == "GET") {

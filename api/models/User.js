@@ -65,6 +65,10 @@ module.exports = {
       type: 'json',
     },
 
+    TRGPdata: {
+      type: 'json',
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
