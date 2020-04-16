@@ -116,6 +116,14 @@ module.exports = {
       type: "string", //ToBeCon; accepted(decided by admin)
     },
 
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
+    },
+
+    idCode: {
+      type: "string"
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

@@ -44,6 +44,10 @@ module.exports = {
       req.session.role = user.role;
       req.session.user = user;
 
+      req.session.GRGSdata = user.GRGSdata;
+
+      //sails.log("[Session] ", req.session);
+
       return res.redirect(req.query.r || '/user');
 
       //sails.log('Session: ' + JSON.stringify(user));

@@ -60,6 +60,18 @@ module.exports = {
       type: 'string',
     },
 
+    photo0: {
+      type: 'string',
+    },
+
+    imgIDCard0: {
+      type: 'string',
+    },
+
+    declaration0: {
+      type: 'string',
+    },
+
 
     //Applicant 2
     havecname2: {
@@ -100,6 +112,18 @@ module.exports = {
       type: 'string',
     },
 
+    photo1: {
+      type: 'string',
+    },
+
+    imgIDCard1: {
+      type: 'string',
+    },
+
+    declaration1: {
+      type: 'string',
+    },
+
     //Applicant 3
     havecname3: {
       type: 'string',
@@ -136,6 +160,18 @@ module.exports = {
     },
 
     address3: {
+      type: 'string',
+    },
+
+    photo2: {
+      type: 'string',
+    },
+
+    imgIDCard2: {
+      type: 'string',
+    },
+
+    declaration2: {
       type: 'string',
     },
 
@@ -179,6 +215,14 @@ module.exports = {
 
     formStatus: {
       type: "string", //ToBeCon; accepted(decided by admin)
+    },
+
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
+    },
+
+    idCode: {
+      type: "string"
     },
 
 
