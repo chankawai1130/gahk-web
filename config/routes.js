@@ -157,6 +157,7 @@ module.exports.routes = {
   'POST /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
 
   'POST /competition/form/GRGP': 'GRGPController.GRGP_form',
+  'POST /competition/form/GRGP/save': 'GRGPController.save',
   'GET /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
   'POST /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
 

@@ -24,14 +24,45 @@ module.exports = {
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
             await GRGP.create(req.session.data);
+
+            //update form idCode
             var model = await GRGP.findOne(req.session.data);
             await GRGP.update(model.id).set({
                 idCode: "GRGP2020-" + model.id
             })
             model["idCode"] = "GRGP2020-" + model.id;
-            req.session.data = {};  //clear data of session
+            //
+
+            //clear formdata in session and user
+            req.session.data = {};
+            req.session.GRGPdata = {};
+            var user = await User.update(req.session.userId).set({
+                GRGPdata: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
+            //
 
             return res.view('pages/competition/form/confirm_form', { 'form': model });
+        }
+    },
+
+    //action - save
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.GRGPdata = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            GRGPdata: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GRGP' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/GRGP');           // for normal request
         }
     },
 

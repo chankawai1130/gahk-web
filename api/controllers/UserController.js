@@ -45,6 +45,7 @@ module.exports = {
       req.session.user = user;
 
       req.session.GRGSdata = user.GRGSdata;
+      req.session.GRGPdata = user.GRGPdata;
 
       //sails.log("[Session] ", req.session);
 
