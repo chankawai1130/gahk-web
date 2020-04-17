@@ -6,7 +6,6 @@
 </style>
 
 <form action="/competition/form/TRGSForm" method="POST">
-
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
@@ -28,6 +27,7 @@
                 </u></a>
         </div>
 
+        <!-- 團體資料 Group Details -->
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
@@ -36,56 +36,60 @@
 
         <div class="form-group col-12">
             <label>學校名稱(中文) School Name(Chinese):</label>
-            <input type="text" name="TRGS[teamName]" style="width:450pt"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)]/g,'')" required>
+            <input type="text" name="TRGS[teamName]" id="teamName" style="width:450pt"
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\-]/g,'')" required 
+                <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.teamName%>"<%}%>>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電話 Contact Number:</label>
-            <input type="text" name="TRGS[Phone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
-                required>
+            <input type="text" name="TRGS[Phone]" id="Phone" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
+                required <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.Phone%>"<%}%>>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>聯絡電郵 Email Address:</label>
-            <input type="email" name="TRGS[Email]" style="width:195pt" required>
+            <input type="email" name="TRGS[Email]" id="Email" style="width:195pt" required 
+            <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.Email%>"<%}%>>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>教練姓名 Coach Name:</label>
-            <input input="text" name="TRGS[CoachName]" required>
+            <input input="text" name="TRGS[CoachName]" id="CoachName" required 
+            <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.CoachName%>"<%}%>>
         </div>
 
         <div class="form-group col-12 col-sm-6">
             <label>教練聯絡電話 Coach Contact Number:</label>
-            <input type="text" name="TRGS[CoachPhone]" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
-                required>
+            <input type="text" name="TRGS[CoachPhone]" id="CoachPhone" maxlength="8" onkeyup="value=value.replace(/[^\d\0-\9]/g,'')"
+                required <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.CoachPhone%>"<%}%>>
         </div>
 
         <div class="form-group col-12">
             <label>組別<br>Category:</label>
-            <input type="radio" name="TRGS[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="預備A,B組" id="preAB" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.preABChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">預備A,B組</label>
 
-            <input type="radio" name="TRGS[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="預備C,D組" id="preCD" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.preCDChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">預備C,D組</label>
 
-            <input type="radio" name="TRGS[category]" value="預備E組" id="preE" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="預備E組" id="preE" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.preEChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">預備E組</label>
 
-            <input type="radio" name="TRGS[category]" value="初級A組" id="junA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="初級A組" id="junA" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.junAChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">初級A組</label>
 
-            <input type="radio" name="TRGS[category]" value="初級B組" id="junB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="初級B組" id="junB" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.junBChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">初級B組</label>
 
-            <input type="radio" name="TRGS[category]" value="高級A組" id="senA" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="高級A組" id="senA" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.senAChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">高級A組</label>
 
-            <input type="radio" name="TRGS[category]" value="高級B組" id="senB" onclick="limitBirth()" required />
+            <input type="radio" name="TRGS[category]" value="高級B組" id="senB" onclick="limitBirth()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.senBChecked == true) {%>checked<%}%>/>
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
+        <!-- 參加者(1) Applicant(1) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
@@ -95,17 +99,19 @@
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="TRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
-                    required />
+                    required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes1Checked == true) {%>checked<%}%>/>
                 <label class="form-check-label" for="havecname1">是 Yes</label>
 
                 &nbsp;<input type="radio" name="TRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
-                    required />
+                    required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameNo1Checked == true){%>checked<%}%>/>
                 <label class="form-check-label" for="havecname1">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGS[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled <%}%>>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
+                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.TRGSdata != null && req.session.data == null && req.session.TRGSdata.cnameNo1Checked == true) { %>disabled<%} 
+                    else if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes1Checked == true){%>value="<%= req.session.TRGSdata.Mate1ChiName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -122,6 +128,7 @@
             </div>
         </div>
 
+        <!-- 參加者(2) Applicant(2) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
@@ -131,17 +138,19 @@
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="TRGS[havecname2]" value="是 Yes" id="Yes2"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes2Checked == true) {%>checked<%}%>/>
                 <label class="form-check-label" for="havecname2">是 Yes</label>
 
                 &nbsp;<input type="radio" name="TRGS[havecname2]" value="否 No" id="No2"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameNo2Checked == true){%>checked<%}%>/>
                 <label class="form-check-label" for="havecname2">否 No</label>
             </div>
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGS[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled <%}%>>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
+                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No" || req.session.TRGSdata != null && req.session.data == null && req.session.TRGSdata.cnameNo2Checked == true) { %>disabled<%} 
+                    else if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes2Checked == true){%>value="<%= req.session.TRGSdata.Mate2ChiName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -158,6 +167,7 @@
             </div>
         </div>
 
+        <!-- 參加者(3) Applicant(3) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
@@ -167,11 +177,11 @@
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="TRGS[havecname3]" value="是 Yes" id="Yes3"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes3Checked == true) {%>checked<%}%>/>
                 <label class="form-check-label" for="havecname3">是 Yes</label>
 
                 &nbsp;<input type="radio" name="TRGS[havecname3]" value="否 No" id="No3"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameNo3Checked == true){%>checked<%}%>/>
                 <label class="form-check-label" for="havecname3">否 No</label>
             </div>
             <div class="form-group">
@@ -194,6 +204,7 @@
             </div>
         </div>
 
+        <!-- 參加者(4) Applicant(4) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
@@ -203,11 +214,11 @@
             <div class="form-group">
                 <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="TRGS[havecname4]" value="是 Yes" id="Yes4"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes4Checked == true) {%>checked<%}%>/>
                 <label class="form-check-label" for="havecname4">是 Yes</label>
 
                 &nbsp;<input type="radio" name="TRGS[havecname4]" value="否 No" id="No4"
-                    onclick="havechinesename()" required />
+                    onclick="havechinesename()" required <% if(req.session.TRGSdata != null && req.session.TRGSdata.cnameNo4Checked == true){%>checked<%}%>/>
                 <label class="form-check-label" for="havecname4">否 No</label>
             </div>
             <div class="form-group">

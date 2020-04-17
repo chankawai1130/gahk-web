@@ -167,16 +167,18 @@ module.exports.routes = {
   'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
   'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
+  'POST /competition/form/TRGSForm/save': 'TRGSController.save',
 
   'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
-  'POST /competition/form/TRGPForm/save': 'TRGPController.save',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
+  'POST /competition/form/TRGPForm/save': 'TRGPController.save',
 
   'GET /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
   'POST /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
   'GET /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
   'POST /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
+  'POST /competition/form/clubMemberForm/save': 'ClubMemberController.save',
 
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',

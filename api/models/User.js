@@ -69,6 +69,14 @@ module.exports = {
       type: 'json',
     },
 
+    TRGSdata: {
+      type: 'json',
+    },
+
+    clubMemdata: {
+      type: 'json',
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

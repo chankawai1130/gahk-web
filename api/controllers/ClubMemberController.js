@@ -29,14 +29,39 @@ module.exports = {
         idCode: "CLUBMem2020-" + model.id
       })
       model["idCode"] = "CLUBMem2020-" + model.id;
-      req.session.data = {};  //clear data of session
+
+      req.session.data = {};
+      req.session.clubMemdata = {};
+      var user = await User.update(req.session.userId).set({
+        clubMemdata: {}
+      }).fetch();
+      if (user.length == 0) return res.notFound();
 
       return res.view('membership/clubMemberFormConfirm', { 'form': model });
     }
 
   },
 
-  //admin
+  save: async function (req, res) {
+
+    if (req.method == "GET") return res.forbidden();
+
+    req.session.clubMemdata = req.body;
+
+    var user = await User.update(req.session.userId).set({
+        clubMemdata: req.body
+    }).fetch();
+
+    if (user.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+        return res.json({ message: "儲存成功 Sucessfully save.", url: '/membership/clubMemberForm' });    // for ajax request
+    } else {
+        return res.redirect('/membership/clubMemberForm');           // for normal request
+    }
+},
+
+//**************************admin/HandleApply*************************
   update: async function (req, res) {
     if (req.method == "GET") {
       var model = await ClubMember.findOne(req.params.id);
