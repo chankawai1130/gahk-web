@@ -170,6 +170,7 @@ module.exports.routes = {
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
 
   'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'POST /competition/form/TRGPForm/save': 'TRGPController.save',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
 
