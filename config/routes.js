@@ -207,6 +207,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/dataDef/GRGS/:id': 'GRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGS/:id': 'GRGSController.waitingList',
   '/GRGS/export_xlsx': 'GRGSController.export_xlsx',
+  '/GRGS/import_xlsx': 'GRGSController.import_xlsx',
 
   'GET /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
   'POST /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
@@ -216,6 +217,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/dataDef/GRGP/:id': 'GRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
   '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
+  '/GRGP/import_xlsx': 'GRGPController.import_xlsx',
 
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
