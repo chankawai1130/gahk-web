@@ -179,7 +179,7 @@ module.exports.routes = {
   'POST /membership/clubMemberForm': 'ClubMemberController.clubMemberForm',
   'GET /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
   'POST /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
-  'POST /competition/form/clubMemberForm/save': 'ClubMemberController.save',
+  'POST /membership/clubMemberForm/save': 'ClubMemberController.save',
 
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',

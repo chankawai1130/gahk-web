@@ -42,7 +42,7 @@
         <div class="form-group col-12">
             <label>機構名稱(中文) Organization Name(Chinese):</label>
             <input type="text" name="TRGP[teamName]" id="teamName" style="width:450pt"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\-]/g,'')" required
+            onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\.\-\d\0-\9]/g,'')" required
                 <% if(req.session.TRGPdata != null) {%>value="<%=req.session.TRGPdata.teamName%>" <%}%>>
         </div>
 
@@ -122,14 +122,13 @@
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGP[Mate1EngName]" id="Mate1EngName" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required <% if (req.session.TRGPdata != null) {%>
-                value="<%= req.session.TRGPdata.Mate1EngName%>"
-                <%}%>>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required 
+                    <% if (req.session.TRGPdata != null) {%>value="<%= req.session.TRGPdata.Mate1EngName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGP[Mate1IDNo]" id="Mate1IDNo" placeholder=" A123456(7)" required <% if (req.session.TRGPdata != null) {%>
-                value="<%= req.session.TRGPdata.Mate1IDNo%>" <%}%>>
+                <input type="text" name="TRGP[Mate1IDNo]" id="Mate1IDNo" placeholder=" A123456(7)" required 
+                <% if (req.session.TRGPdata != null) {%>value="<%= req.session.TRGPdata.Mate1IDNo%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
@@ -307,10 +306,6 @@
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
                     (pdf檔)</label>
                 <input type="file" id="VBRC" accept="image/*,application/pdf" onchange="handleFile1(this.files)" required/>
-
-                   <!-- <% if(req.session.TRGPdata != null && req.session.TRGPdata.VBRC != null) { %> <div
-                id="preview1"><%=req.session.TRGPdata.VBRC.name%></div>
-        <%}%> -->
                 <div id="preview1"></div>
             </div>
         </div>
@@ -363,6 +358,7 @@
 </form>
 
 <script>
+    //save function
     async function saveForm() {
         var form = document.getElementById("TRGPForm");
 
@@ -409,8 +405,6 @@
             leaderName: form.leaderName.value,
             leaderPosition: form.leaderPosition.value,
         });
-        alert(data);
-
 
         var response = await fetch("/competition/form/TRGPForm/save", {
             method: "POST",
@@ -431,7 +425,7 @@
         }
     }
 
-
+    //handle calculation of fee
     function calculate() {
         document.getElementById('teamPrice').value = 250 * document.getElementById('teamNo').value;
 
@@ -441,7 +435,7 @@
 
     }
 
-
+    //handle declaration file
     function handleFile1(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
@@ -475,6 +469,7 @@
         reader.readAsDataURL(file);
     }
 
+    //handle VBRC file
     function handleFile2(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
@@ -561,6 +556,7 @@
         }
     }
 
+    //handle age limitation
     function limitBirth() {
         var todayYear = new Date().getFullYear();
         var preAB = document.getElementById("preAB");
