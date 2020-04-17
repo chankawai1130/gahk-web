@@ -213,6 +213,7 @@
             </div>
 
 
+            <!-- 團體資料 Group Details -->
             <div class="col-12">
                 <h5 id="labelHead">團體資料 Group Details</h5>
             </div>
@@ -297,6 +298,7 @@
             <label class="form-check-label" for="category">高級B組</label>
         </div>
 
+        <!-- 參加者(1) Applicant(1) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 id="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
@@ -349,6 +351,7 @@
             </div>
         </div>
 
+        <!-- 參加者(2) Applicant(2) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 id="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
@@ -402,6 +405,7 @@
             </div>
         </div>
 
+        <!-- 參加者(3) Applicant(3) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
@@ -457,6 +461,7 @@
             </div>
         </div>
 
+        <!-- 參加者(4) Applicant(4) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
             <h6 id="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
@@ -510,6 +515,7 @@
             </div>
         </div>
 
+        <!-- 費用 Fee -->
         <div class="form-group col-12">
             <br>
             <h5 id="labelHead">費用 Fee</h5>
@@ -530,9 +536,9 @@
             </div>
         </div>
 
+        <!-- 文件上載 Document Upload -->
         <div class="form-group col-12">
-            <h5 id="labelHead">文件上載
-                Document Upload</h5>
+            <h5 id="labelHead">文件上載 Document Upload</h5>
             <div class="form-group">
                 <label>商業登記證明 Valid Bussiness Registration Certificate (img/pdf檔)</label>
                 <% if(TRGP.VBRC) {%>
@@ -546,6 +552,7 @@
             </div>
         </div>
 
+        <!-- 聲明 Declaration -->
         <div class="form-group col-12">
             <h5 id="labelHead">聲明 Declaration</h5>
             <div class="form-group">
@@ -573,6 +580,7 @@
             </div>
         </div>
 
+        <!-- 付款狀況 Payment Status -->
         <div class="form-group col-12">
             <h5 id="labelHead">付款狀況 Payment Status</h5>
             <% if(TRGP.payStatus == "paid") {%>
@@ -589,99 +597,101 @@
             <%}%>
         </div>
 
-    <div class="form-group col-12">
-        <h5 id="labelHead">申請狀況 Apply Status</h5>
+        <!-- 申請狀況 Apply Status -->
+        <div class="form-group col-12">
+            <h5 id="labelHead">申請狀況 Apply Status</h5>
+    
+             <%if(TRGP.formStatus == "accepted"){%>
+                <div class="inputGroup">
+                    <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
+                        disabled />
+                    <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
+                </div>
+                <div class="inputGroup">
+                    <input class="statusInput" id="con" type="checkbox" checked disabled />
+                    <label for="con" class="statusLabel" id="dataDefLabel">已確認 Accepted</label>
+                </div>
+                <div class="inputGroup">
+                    <input class="statusInput" id="dataDef" type="checkbox" disabled />
+                    <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
+                </div>
+                <% } else if(TRGP.formStatus == "dataDef"){%>
+                <div class="inputGroup">
+                    <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
+                        onclick="changeToCon()" />
+                    <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
+                </div>
+    
+                <div class="inputGroup">
+                    <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
+                        onclick="changeToCon()" />
+                    <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirmed</label>
+                </div>
+    
+                <div class="inputGroup">
+                    <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" type="radio" checked
+                        onclick="changeToCon()" />
+                    <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
+                </div>
+                <%} else {%>
+                <div class="inputGroup">
+                    <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
+                        onclick="changeToCon()" checked />
+                    <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
+                </div>
+    
+                <div class="inputGroup">
+                    <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
+                        onclick="changeToCon()" />
+                    <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirm</label>
+                </div>
+    
+                <div class="inputGroup">
+                    <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" onclick="changeToCon()"
+                        type="radio" />
+                    <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
+                </div>
+    
+                <%}%>
+        </div>
 
-         <%if(TRGP.formStatus == "accepted"){%>
-            <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
-                    disabled />
-                <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
-            </div>
-            <div class="inputGroup">
-                <input class="statusInput" id="con" type="checkbox" checked disabled />
-                <label for="con" class="statusLabel" id="dataDefLabel">已確認 Accepted</label>
-            </div>
-            <div class="inputGroup">
-                <input class="statusInput" id="dataDef" type="checkbox" disabled />
-                <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
-            </div>
-            <% } else if(TRGP.formStatus == "dataDef"){%>
-            <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
-                    onclick="changeToCon()" />
-                <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
-            </div>
+        <!-- 隊伍/團體狀況 Team Status -->
+        <div class="form-group col-12">
+            <h5 id="labelHead">隊伍/團體狀況 Team Status</h5>
+            <% if(TRGP.teamStatus == "waitTeam") {%>
+                <div class="inputGroup">
+                    <input class="statusInput" id="suTeam" type="checkbox" name="TRGP[teamStatus]" value="suTeam"
+                        onclick="changeToSu()" checked />
+                    <label for="suTeam" class="statusLabel" id="suLabel">後補 Waiting Team</label>
+                </div>
+                <%} else {%>
+                <div class="inputGroup">
+                    <input class="statusInput" id="waitTeam" name="TRGP[teamStatus]" value="waitTeam" type="checkbox"
+                        onclick="changeToWait()" />
+                    <label for="waitTeam" class="statusLabel" id="waitLabel">設為後補 Set as Waiting Team</label>
+                </div>
+                <%}%>
+        </div>
 
-            <div class="inputGroup">
-                <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
-                    onclick="changeToCon()" />
-                <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirmed</label>
-            </div>
+        <!-- button -->
+        <div class="form-group col-12" style="text-align: right;">
+            <%if(TRGP.formStatus == "rejected"){%>
+                <a class="btn btn-success" style="color: white;" onclick="history.back()">完成 Submit</a>
+                <%} else {%>
+                <button class="btn btn-success" onclick="submitForm('<%= TRGP.idCode%>')">完成 Submit</button>
+                <%}%>
+        </div>
 
-            <div class="inputGroup">
-                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" type="radio" checked
-                    onclick="changeToCon()" />
-                <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
-            </div>
-            <%} else {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="TohandBtn" name="TRGP[formStatus]" value="ToBeCon" type="radio"
-                    onclick="changeToCon()" checked />
-                <label for="TohandBtn" class="statusLabel" id="handleLabel">待處理 To be handled</label>
-            </div>
-
-            <div class="inputGroup">
-                <input class="statusInput" id="ToConBtn" name="TRGP[formStatus]" value="accepted" type="radio"
-                    onclick="changeToCon()" />
-                <label for="ToConBtn" class="statusLabel" id="confirmLabel">確認 Confirm</label>
-            </div>
-
-            <div class="inputGroup">
-                <input class="statusInput" id="dataDef" name="TRGP[formStatus]" value="dataDef" onclick="changeToCon()"
-                    type="radio" />
-                <label for="dataDef" class="statusLabel" id="dataDefLabel">資料不全 Data Deficiency</label>
-            </div>
-
-            <%}%>
-    </div>
-
-    <div class="form-group col-12">
-        <h5 id="labelHead">隊伍/團體狀況 Team Status</h5>
-        <% if(TRGP.teamStatus == "waitTeam") {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="suTeam" type="checkbox" name="TRGP[teamStatus]" value="suTeam"
-                    onclick="changeToSu()" checked />
-                <label for="suTeam" class="statusLabel" id="suLabel">後補 Waiting Team</label>
-            </div>
-            <%} else {%>
-            <div class="inputGroup">
-                <input class="statusInput" id="waitTeam" name="TRGP[teamStatus]" value="waitTeam" type="checkbox"
-                    onclick="changeToWait()" />
-                <label for="waitTeam" class="statusLabel" id="waitLabel">設為後補 Set as Waiting Team</label>
-            </div>
-            <%}%>
-    </div>
-
-
-
-    <div class="form-group col-12" style="text-align: right;">
-        <%if(TRGP.formStatus == "rejected"){%>
-            <a class="btn btn-success" style="color: white;" onclick="history.back()">完成 Submit</a>
-            <%} else {%>
-            <button class="btn btn-success" onclick="submitForm('<%= TRGP.idCode%>')">完成 Submit</button>
-            <%}%>
-    </div>
-
-
-    <% var m = new Date(TRGP.updatedAt);
+        <!-- Update Date -->
+        <% var m = new Date(TRGP.updatedAt);
         var month = m.getMonth() + 1;
         var updateDate = m.getDate() + "/" + month + "/" + m.getFullYear() + " " + m.getHours() + ":" + m.getMinutes() + ":" + m.getSeconds(); %>
             <p class="col-12" style="font-size: smaller;">上次更新 Last upadated: <%= updateDate%></p>
 
-        </div>
+    </div>
 </form>
 
+<!-- reject box -->
 <div id="<%= TRGP.id%>" class="modal">
     <div class="modal-content">
         <div class="container">
@@ -699,9 +709,8 @@
 </div>
 
 
-
-
 <script>
+    //Disable form if rejected
     window.onload = function () { disableform('TRGP', '<%= TRGP.formStatus%>') };
     function disableform(formId, formStatus) {
         if (formStatus == "rejected") {
@@ -717,7 +726,6 @@
 
     // Get the modal
     var modal = document.getElementById('<%= TRGP.id%>');
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -775,6 +783,7 @@
         alert("更新成功 Successfully Updated" + "\n" + id);
     }
 
+    //handle reject function
     async function rejectForm(id) {
         var response = await fetch("/admin/applyHandle/reject/TRGP/" + id, {
             method: "POST",
@@ -788,7 +797,6 @@
             alert(response.status + ": " + response.statusText);
         }
     };
-
 
 
     //form function

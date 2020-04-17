@@ -5,7 +5,7 @@
     }
 </style>
 
-<form action="/competition/form/TRGSForm" method="POST">
+<form action="/competition/form/TRGSForm" method="POST" id="TRGSForm">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
@@ -37,7 +37,7 @@
         <div class="form-group col-12">
             <label>學校名稱(中文) School Name(Chinese):</label>
             <input type="text" name="TRGS[teamName]" id="teamName" style="width:450pt"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\-]/g,'')" required 
+            onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\.\-\d\0-\9]/g,'')" required 
                 <% if(req.session.TRGSdata != null) {%>value="<%=req.session.TRGSdata.teamName%>"<%}%>>
         </div>
 
@@ -115,16 +115,19 @@
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGS[Mate1EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" name="TRGS[Mate1EngName]" id="Mate1EngName" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate1EngName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGS[Mate1IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGS[Mate1IDNo]" id="Mate1IDNo" placeholder=" A123456(7)" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate1IDNo%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth1" name="TRGS[Mate1Date]" required>
+                <input type="date" id="birth1" name="TRGS[Mate1Date]" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.bitrh1%>" <%}%>>
             </div>
         </div>
 
@@ -154,16 +157,19 @@
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGS[Mate2EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" name="TRGS[Mate2EngName]" id="Mate2EngName" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate2EngName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGS[Mate2IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGS[Mate2IDNo]" id="Mate2IDNo" placeholder=" A123456(7)" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate2IDNo%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth2" name="TRGS[Mate2Date]" required>
+                <input type="date" id="birth2" name="TRGS[Mate2Date]" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.birth2%>" <%}%>>
             </div>
         </div>
 
@@ -187,20 +193,25 @@
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGS[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled <%}%>>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
+                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No" || req.session.TRGSdata != null && req.session.data == null && req.session.TRGSdata.cnameNo3Checked == true) { %>disabled<%} 
+                    else if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes3Checked == true){%>value="<%= req.session.TRGSdata.Mate3ChiName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGS[Mate3EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" name="TRGS[Mate3EngName]" id="Mate3EngName" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate3EngName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGS[Mate3IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGS[Mate3IDNo]" id="Mate3IDNo" placeholder=" A123456(7)" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate3IDNo%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth3" name="TRGS[Mate3Date]" required>
+                <input type="date" id="birth3" name="TRGS[Mate3Date]" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.birth3%>" <%}%>>
             </div>
         </div>
 
@@ -224,20 +235,25 @@
             <div class="form-group">
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGS[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
-                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled <% }%>>
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
+                    <% if(req.session.data != null && req.session.data.havecname4 == "否 No" || req.session.TRGSdata != null && req.session.data == null && req.session.TRGSdata.cnameNo4Checked == true) { %>disabled<%} 
+                    else if(req.session.TRGSdata != null && req.session.TRGSdata.cnameYes4Checked == true){%>value="<%= req.session.TRGSdata.Mate4ChiName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
-                <input type="text" name="TRGS[Mate4EngName]" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                <input type="text" name="TRGS[Mate4EngName]" id="Mate4EngName" placeholder=" e.g. Chan Tai Man"
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate4EngName%>"<%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
-                <input type="text" name="TRGS[Mate4IDNo]" placeholder=" A123456(7)" required>
+                <input type="text" name="TRGS[Mate4IDNo]" id="Mate4IDNo" placeholder=" A123456(7)" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.Mate4IDNo%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input type="date" id="birth4" name="TRGS[Mate4Date]" required>
+                <input type="date" id="birth4" name="TRGS[Mate4Date]" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.birth4%>" <%}%>>
             </div>
         </div>
 
@@ -251,19 +267,25 @@
             <br>
         </div>
 
+        <!-- 費用 Fee -->
         <div class="form-group col-12">
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
 
             <div class="form-group">
                 <label>團體項目 Group Event: $250 X </label>
-                <input id="teamNo" type="number" name="TRGS[TeamNumber]" min=1 max=100 onblur="calculate()" required>
+                <input id="teamNo" type="number" name="TRGS[TeamNumber]" min=1 max=100 onblur="calculate()" required
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.teamNo%>" <%}%>>
                 <span>隊 team(s) = $</span>
-                <input id="teamPrice" type="number" name="TRGS[TeamPrice]" readonly required <% if (req.session.data != null) {%>value="<%=req.session.data.TeamPrice%>"<%}%>>
+                <input id="teamPrice" type="number" name="TRGS[TeamPrice]" readonly required 
+                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamPrice%>"<%}%>
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.teamPrice%>" <%}%>>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label>
-                <input id="total" type="number" name="TRGS[TeamTotalPrice]" readonly required <% if (req.session.data != null) {%>value="<%=req.session.data.TeamTotalPrice%>"<%}%>>
+                <input id="total" type="number" name="TRGS[TeamTotalPrice]" readonly required 
+                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamTotalPrice%>"<%}%>
+                <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.total%>" <%}%>>
             </div>
 
             <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it
@@ -271,29 +293,29 @@
             <br><br><br>
         </div>
 
+        <!-- 聲明 Declaration -->
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">文件上載
-                Documents Upload</h5>
-
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明 Declaration</h5>
             <div class="form-group">
 
-                <label><b>1. 請下載及列印 <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
-                                style="color: #83a70c;">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                            href="/formDoc/Team_School_HKRG_declaration.pdf" download><u
-                                style="color: #83a70c;">declaration.pdf</u></a>,then sign and upload it</b></label>
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
-
+                <label>請下載及列印 <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u style="color: #83a70c;">聲明書.pdf</u></a>後簽署並上載文件
+                Please download and print the <a href="/formDoc/Team_School_HKRG_declaration.pdf" download>
+                        <u style="color: #83a70c;">declaration.pdf</u></a>,then sign and upload it</label>
+                <input type="file" id="Declaration" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
                 <div id="preview"></div>
             </div>
 
+            <!-- 學校負責人 -->
             <div class="row">
-                <div class="col-12 col-sm-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>學校負責人姓名 Leader's Name:</label>
-                    <input type="text" class="form-group" name="TRGS[leaderName]" required>
+                    <input type="text" name="TRGS[leaderName]" id="leaderName" required 
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.leaderName%>"<%}%>>
                 </div>
-                <div class="col-12 col-sm-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>學校負責人職位 Leader's Position:</label>
-                    <input type="text" class="form-group" name="TRGS[leaderPosition]" required>
+                    <input type="text" name="TRGS[leaderPosition]" id="leaderPosition" required
+                    <% if (req.session.TRGSdata != null) {%>value="<%= req.session.TRGSdata.leaderPosition%>"<%}%>>
                 </div>
             </div>
         </div>
@@ -307,16 +329,88 @@
                 participants</label>
         </div>
 
+        <!-- button -->
         <div class="col-12">
             <br>
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
+            <!-- Save -->
+            <button type="button" class="btn btn-primary" onclick="saveForm()"
+                style="background: red; border: none; float: left;">儲存 Save</button>
             <br><br>
         </div>
     </div>
 </form>
 
 <script>
+    //save function
+    async function saveForm() {
+        var form = document.getElementById("TRGSForm");
+
+        var data = JSON.stringify({
+            teamName: form.teamName.value,
+            Phone: form.Phone.value,
+            Email: form.Email.value,
+            CoachName: form.CoachName.value,
+            CoachPhone: form.CoachPhone.value,
+            preABChecked: form.preAB.checked,
+            preCDChecked: form.preCD.checked,
+            preEChecked: form.preE.checked,
+            junAChecked: form.junA.checked,
+            junBChecked: form.junB.checked,
+            senAChecked: form.senA.checked,
+            senBChecked: form.senB.checked,
+            cnameYes1Checked: form.Yes1.checked,
+            cnameNo1Checked: form.No1.checked,
+            Mate1ChiName: form.Mate1ChiName.value,
+            Mate1EngName: form.Mate1EngName.value,
+            Mate1IDNo: form.Mate1IDNo.value,
+            birth1: form.birth1.value,
+            cnameYes2Checked: form.Yes2.checked,
+            cnameNo2Checked: form.No2.checked,
+            Mate2ChiName: form.Mate2ChiName.value,
+            Mate2EngName: form.Mate2EngName.value,
+            Mate2IDNo: form.Mate2IDNo.value,
+            birth2: form.birth2.value,
+            cnameYes3Checked: form.Yes3.checked,
+            cnameNo3Checked: form.No3.checked,
+            Mate3ChiName: form.Mate3ChiName.value,
+            Mate3EngName: form.Mate3EngName.value,
+            Mate3IDNo: form.Mate3IDNo.value,
+            birth3: form.birth3.value,
+            cnameYes4Checked: form.Yes4.checked,
+            cnameNo4Checked: form.No4.checked,
+            Mate4ChiName: form.Mate4ChiName.value,
+            Mate4EngName: form.Mate4EngName.value,
+            Mate4IDNo: form.Mate4IDNo.value,
+            birth4: form.birth4.value,
+            teamNo: form.teamNo.value,
+            teamPrice: form.teamPrice.value,
+            total: form.total.value,
+            leaderName: form.leaderName.value,
+            leaderPosition: form.leaderPosition.value,
+        });
+
+        var response = await fetch("/competition/form/TRGSForm/save", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+
+    //handle calculation of fee
     function calculate() {
         document.getElementById('teamPrice').value = 250 * document.getElementById('teamNo').value;
 
@@ -324,6 +418,7 @@
         document.getElementById('total').value = price;
     }
 
+    //handle declaration file
     function handleFile(files) {
         const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
