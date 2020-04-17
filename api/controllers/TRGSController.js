@@ -28,13 +28,38 @@ module.exports = {
                 idCode: "TRGS2020-" + model.id
             })
             model["idCode"] = "TRGS2020-" + model.id;
-            req.session.data = {};  //clear data of session
+
+            req.session.data = {};
+            req.session.TRGSdata = {};
+            var user = await User.update(req.session.userId).set({
+                TRGSdata: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
 
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 
-    //admin
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.TRGSdata = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            TRGSdata: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/TRGSForm' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/TRGSForm');           // for normal request
+        }
+    },
+
+    //**************************admin/HandleApply*************************
     update: async function (req, res) {
         if (req.method == "GET") {
             var model = await TRGS.findOne(req.params.id);
@@ -318,6 +343,19 @@ module.exports = {
                 } else if (data[i].teamStatus == "後補 Team on Waitiing List") {
                     data[i].teamStatus = "waitTeam";
                 }
+
+                var day1 = data[i].Mate1Date.split('/');
+                var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
+                data[i].Mate1Date = date1;
+                var day2 = data[i].Mate2Date.split('/');
+                var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
+                data[i].Mate2Date = date2;
+                var day3 = data[i].Mate3Date.split('/');
+                var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
+                data[i].Mate3Date = date3;
+                var day4 = data[i].Mate4Date.split('/');
+                var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
+                data[i].Mate4Date = date4;
             }
 
 
@@ -332,7 +370,7 @@ module.exports = {
         });
 
     },
-  
+
 
 
 };
