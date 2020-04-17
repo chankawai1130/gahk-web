@@ -15,7 +15,6 @@
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表(學校組)</u></h2>
             <br><br>
         </div>
-        <% req.session.GRGSdata%>
 
         <!-- Rules -->
         <div class="col-12">
@@ -110,7 +109,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName1" type="text" class="form-group" name="GRGS[chiName1]" id="chiName1"
+                <input id="chiName1" type="text" class="form-group" name="GRGS[chiName1]"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No1 == true) {%> disabled
@@ -131,12 +130,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth1" type="date" class="form-group" name="GRGS[birth1]" id="birth1"
+                <input id="birth1" type="date" class="form-group" name="GRGS[birth1]"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth1 != null) { %>
                     value="<%=req.session.GRGSdata.birth1%>" <% } %> required>
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,0)"
@@ -146,7 +145,7 @@
                 <div id="preview0"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard0%>" style="height:150px; width:auto" />
             </div>
@@ -174,7 +173,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName2" type="text" class="form-group" name="GRGS[chiName2]" id="chiName2"
+                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No2 == true) {%> disabled
@@ -195,12 +194,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth2" type="date" class="form-group" name="GRGS[birth2]" id="birth2"
+                <input id="birth2" type="date" class="form-group" name="GRGS[birth2]"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth2 != null) { %>
                     value="<%=req.session.GRGSdata.birth2%>" <% } %> required>
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,1)" required />
@@ -208,7 +207,7 @@
                 <div id="preview1"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard1%>" style="height:150px; width:auto" />
             </div>
@@ -236,7 +235,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName3" type="text" class="form-group" name="GRGS[chiName3]" id="chiName3"
+                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No3 == true) {%> disabled
@@ -257,12 +256,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth3" type="date" class="form-group" name="GRGS[birth3]" id="birth3"
+                <input type="date" class="form-group" name="GRGS[birth3]" id="birth3"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth3 != null) { %>
                     value="<%=req.session.GRGSdata.birth3%>" <% } %> required />
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,2)" required />
@@ -270,7 +269,7 @@
                 <div id="preview2"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard2%>" style="height:150px; width:auto" />
             </div>
@@ -298,7 +297,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName4" type="text" class="form-group" name="GRGS[chiName4]" id="chiName4"
+                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No4 == true) {%> disabled
@@ -319,12 +318,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth4" type="date" class="form-group" name="GRGS[birth4]" id="birth4"
+                <input type="date" class="form-group" name="GRGS[birth4]" id="birth4"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth4 != null) { %>
                     value="<%=req.session.GRGSdata.birth4%>" <% } %> required />
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,3)" required />
@@ -332,7 +331,7 @@
                 <div id="preview3"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard3%>" style="height:150px; width:auto" />
             </div>
@@ -360,7 +359,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName5" type="text" class="form-group" name="GRGS[chiName5]" id="chiName5"
+                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No5 == true) {%> disabled
@@ -381,12 +380,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth5" type="date" class="form-group" name="GRGS[birth5]" id="birth5"
+                <input type="date" class="form-group" name="GRGS[birth5]" id="birth5"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth5 != null) { %>
                     value="<%=req.session.GRGSdata.birth5%>" <% } %> required />
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,4)" required />
@@ -394,7 +393,7 @@
                 <div id="preview4"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard4%>" style="height:150px; width:auto" />
             </div>
@@ -422,7 +421,7 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName6" type="text" class="form-group" name="GRGS[chiName6]" id="chiName6"
+                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6"
                     placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No6 == true) {%> disabled
@@ -443,12 +442,12 @@
             </div>
             <div>
                 <label>出生日期 Date of Birth (dd/mm/yyyy):</label>
-                <input id="birth6" type="date" class="form-group" name="GRGS[birth6]" id="birth6"
+                <input type="date" class="form-group" name="GRGS[birth6]" id="birth6"
                     <% if(req.session.GRGSdata != null && req.session.GRGSdata.birth6 != null) { %>
                     value="<%=req.session.GRGSdata.birth6%>" <% } %> required />
                 <br>
             </div>
-            <!-- <div>
+            <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,5)" required />
@@ -456,7 +455,7 @@
                 <div id="preview5"></div>
             </div>
             <br>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != null) { %>
+            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != null) { %>
             <div>
                 <img src="<%=req.session.GRGSdata.imgIDCard5%>" style="height:150px; width:auto" />
             </div>
@@ -531,7 +530,8 @@
         <div class="col-12 form-group">
             <label>總額 Total Price = $</label>
             <input id="total" type="number" class="mx-sm-2" name="GRGS[total]" <% if(req.session.data != null){ %>
-                value="<%=req.session.data.total%>" <% }else if(req.session.GRGSdata != null && req.session.GRGSdata.total != null) { %>
+                value="<%=req.session.data.total%>"
+                <% }else if(req.session.GRGSdata != null && req.session.GRGSdata.total != null) { %>
                 value="<%=req.session.GRGSdata.total%>" <% } %> readonly />
         </div>
 
