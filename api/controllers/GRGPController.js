@@ -373,6 +373,30 @@ module.exports = {
             var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "teamName", "phone", "email", "coachName", "coachPhone", "category", "havecname1", "chiName1", "engName1", "ID1", "birth1", "havecname2", "chiName2", "engName2", "ID2", "birth2", "havecname3", "chiName3", "engName3", "ID3", "birth3", "havecname4", "chiName4", "engName4", "ID4", "birth4", "havecname5", "chiName5", "engName5", "ID5", "birth5", "havecname6", "chiName6", "engName6", "ID6", "birth6", "leaderName", "leaderPosition", "NoOfTeam", "NoOfPeople", "teamFee", "insurance", "total", "payStatus", "formStatus", "teamStatus"] });
 
             for (var i = 0; i < data.length; i++) {
+                var date1 = data[i].birth1.split('/');
+                day1 = date1[2] + "-" + date1[1] + "-" + date1[0];
+                data[i].birth1 = day1;
+
+                var date2 = data[i].birth2.split('/');
+                day2 = date2[2] + "-" + date2[1] + "-" + date2[0];
+                data[i].birth2 = day2;
+
+                var date3 = data[i].birth3.split('/');
+                day3 = date3[2] + "-" + date3[1] + "-" + date3[0];
+                data[i].birth3 = day3;
+
+                var date4 = data[i].birth4.split('/');
+                day4 = date4[2] + "-" + date4[1] + "-" + date4[0];
+                data[i].birth4 = day4;
+
+                var date5 = data[i].birth5.split('/');
+                day5 = date5[2] + "-" + date5[1] + "-" + date5[0];
+                data[i].birth5 = day5;
+
+                var date6 = data[i].birth6.split('/');
+                day6 = date6[2] + "-" + date6[1] + "-" + date6[0];
+                data[i].birth6 = day6;
+
                 if (data[i].payStatus == "未付款 Unpaid") {
                     data[i].payStatus = "unpaid";
                 } else if (data[i].payStatus == "已付款 Paid") {
