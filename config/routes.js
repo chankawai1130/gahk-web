@@ -164,6 +164,7 @@ module.exports.routes = {
   'POST /competition/form/GFA_form': 'GFAController.GFA_form',
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
+  'POST /competition/form/GFA/save': 'GFAController.save',
 
   'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
   'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
@@ -184,6 +185,7 @@ module.exports.routes = {
   'POST /competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
+  'POST /competition/form/trampoline/save': 'TrampolineController.save',
 
   //'GET /competition/form/acroage': 'AcroageController.acroage',
   'POST /competition/form/acroage': 'AcroageController.acroage',
