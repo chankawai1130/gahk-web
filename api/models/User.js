@@ -81,6 +81,7 @@ module.exports = {
       type: 'json',
     },
 
+
     tramData: {
       type: 'json',
     },
@@ -88,6 +89,12 @@ module.exports = {
     gfaData: {
       type: 'json',
     },
+
+    Acrodata: {
+      type: 'json',
+    },
+
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

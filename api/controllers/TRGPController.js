@@ -20,17 +20,20 @@ module.exports = {
     //action - create 
     TRGPFormPreview: async function (req, res) {
         if (req.method == "POST") {
-
+            //create TRGP
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
             await TRGP.create(req.session.data);
+
+            //Set idCode to TRGP
             var model = await TRGP.findOne(req.session.data);
             await TRGP.update(model.id).set({
                 idCode: "TRGP2020-" + model.id
             })
             model["idCode"] = "TRGP2020-" + model.id;
 
+            //clear all session data
             req.session.data = {};
             req.session.TRGPdata = {};
             var user = await User.update(req.session.userId).set({
@@ -61,8 +64,6 @@ module.exports = {
             return res.redirect('/competition/form/TRGPForm');           // for normal request
         }
     },
-
-
 
     //**************************admin/HandleApply*************************
     //update form
