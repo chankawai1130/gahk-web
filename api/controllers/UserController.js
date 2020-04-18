@@ -49,6 +49,7 @@ module.exports = {
       req.session.TRGPdata = user.TRGPdata;
       req.session.TRGSdata = user.TRGSdata;
       req.session.clubMemdata = user.clubMemdata;
+      req.session.Acrodata = user.Acrodata;
 
       //sails.log("[Session] ", req.session);
 

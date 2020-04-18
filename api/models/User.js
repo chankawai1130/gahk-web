@@ -81,6 +81,10 @@ module.exports = {
       type: 'json',
     },
 
+    Acrodata: {
+      type: 'json',
+    },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

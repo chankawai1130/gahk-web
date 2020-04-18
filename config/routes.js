@@ -189,6 +189,7 @@ module.exports.routes = {
   'POST /competition/form/acroage': 'AcroageController.acroage',
   'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
+  'POST /competition/form/acroage/save': 'AcroageController.save',
 
   //*********Admin********
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
