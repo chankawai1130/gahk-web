@@ -104,9 +104,43 @@
             </div>
             <div>
                 <label>出生年份 Year of Birth:</label>
-                <select id="year1" class="form-group" name="Trampoline[birth1]" required></select>
-                <option id="optYear1" <% if(req.session.tramData != null && req.session.tramData.year1 != null) { %>
-                    value="<%=req.session.tramData.year1%>"<% } %>><% limitBirth() %></option>
+                <% if(req.session.tramData != null && req.session.tramData.youngest == true) { 
+                    var todayYear = new Date().getFullYear();
+                    var start = todayYear - 14;%>
+                    <select id="year1" class="form-group" name="Trampoline[birth1]" required>
+                    <% for (var year = start; year <= todayYear; year++){%>
+                        <option value="<%=year%>" <% if(req.session.tramData.year1 == year){%>selected<%}%> ><%=year%></option>
+                    <%}%>
+                    </select>
+                <%} else if(req.session.tramData != null && req.session.tramData.median == true){
+                    var todayYear = new Date().getFullYear();
+                    var start = todayYear - 16;
+                    var end = todayYear - 15;%>
+                    <select id="year1" class="form-group" name="Trampoline[birth1]" required>
+                        <% for (var year = start; year <= end; year++){%>
+                            <option value="<%=year%>" <% if(req.session.tramData.year1 == year){%>selected<%}%> ><%=year%></option>
+                        <%}%>
+                    </select>
+                <%} else if(req.session.tramData != null && req.session.tramData.eldest == true){
+                    var todayYear = new Date().getFullYear();
+                    var start = 1990;
+                    var end = todayYear - 17;%>
+                    <select id="year1" class="form-group" name="Trampoline[birth1]" required>
+                        <% for (var year = start; year <= end; year++){%>
+                            <option value="<%=year%>" <% if(req.session.tramData.year1 == year){%>selected<%}%> ><%=year%></option>
+                        <%}%>
+                    </select>
+                
+                <%} else{%>
+                    <select id="year1" class="form-group" name="Trampoline[birth1]" required>
+                        <option disabled selected></option>
+                        <% var todayYear = new Date().getFullYear();
+                        for (var year = 1990; year <= todayYear; year++){%>
+                            <option value="<%=year%>"><%=year%></option>
+                        <%}%>
+                    </select>
+                <%}%>
+                
                 <br>
             </div>
             <div>
@@ -168,9 +202,43 @@
             </div>
             <div>
                 <label>出生年份 Year of Birth:</label>
-                <select id="year2" class="form-group" name="Trampoline[birth2]" required></select>
-                <option id="optYear2" <% if(req.session.tramData != null && req.session.tramData.year2 != null) { %>
-                    value="<%=req.session.tramData.year2%>"<% } %>><% limitBirth() %></option>
+                <% if(req.session.tramData != null && req.session.tramData.youngest == true) { 
+                    var todayYear = new Date().getFullYear();
+                    var start = todayYear - 14;%>
+                    <select id="year2" class="form-group" name="Trampoline[birth2]" required>
+                    <% for (var year = start; year <= todayYear; year++){%>
+                        <option value="<%=year%>" <% if(req.session.tramData.year2 == year){%>selected<%}%> ><%=year%></option>
+                    <%}%>
+                    </select>
+                <%} else if(req.session.tramData != null && req.session.tramData.median == true){
+                    var todayYear = new Date().getFullYear();
+                    var start = todayYear - 16;
+                    var end = todayYear - 15;%>
+                    <select id="year2" class="form-group" name="Trampoline[birth2]" required>
+                        <% for (var year = start; year <= end; year++){%>
+                            <option value="<%=year%>" <% if(req.session.tramData.year2 == year){%>selected<%}%> ><%=year%></option>
+                        <%}%>
+                    </select>
+                <%} else if(req.session.tramData != null && req.session.tramData.eldest == true){
+                    var todayYear = new Date().getFullYear();
+                    var start = 1990;
+                    var end = todayYear - 17;%>
+                    <select id="year2" class="form-group" name="Trampoline[birth2]" required>
+                        <% for (var year = start; year <= end; year++){%>
+                            <option value="<%=year%>" <% if(req.session.tramData.year2 == year){%>selected<%}%> ><%=year%></option>
+                        <%}%>
+                    </select>
+                
+                <%} else{%>
+                    <select id="year2" class="form-group" name="Trampoline[birth2]" required>
+                        <option disabled selected></option>
+                        <% var todayYear = new Date().getFullYear();
+                        for (var year = 1990; year <= todayYear; year++){%>
+                            <option value="<%=year%>"><%=year%></option>
+                        <%}%>
+                    </select>
+                <%}%>
+                
                 <br>
             </div>
             <div>
@@ -266,9 +334,6 @@
                 print
                 the <a href="/formDoc/trampoline_declaration.pdf" download
                     style="color: #83a70c;"><u>declaration.pdf</u></a>,then sign and upload it</label>
-
-            <!-- <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files)" required />
-            <div id="preview"></div> -->
         </div>
 
         <div class="col-12">
@@ -327,14 +392,12 @@
 </script>
 
 <script>
-    birthYearOption(1950, new Date().getFullYear());
-
+    //birthYearOption(1990, new Date().getFullYear());
     function limitBirth() {
         var todayYear = new Date().getFullYear();
         var youngest = document.getElementById("youngest");
         var median = document.getElementById("median");
         var eldest = document.getElementById("eldest");
-
         if (youngest.checked == true) { //14 years old or below
             var minYear = todayYear - 14;
             birthYearOption(minYear, todayYear);
@@ -344,10 +407,9 @@
             birthYearOption(minYear, maxYear);
         } else if (eldest.checked == true) { //17 years old or above
             var maxYear = todayYear - 17;
-            birthYearOption(1950, maxYear);
+            birthYearOption(1990, maxYear);
         }
     }
-
     function birthYearOption(start, end) {
         var options = "<option disabled selected>" + " " + "</option>";
         for (var year = start; year <= end; year++) {
@@ -355,25 +417,12 @@
         }
         document.getElementById("year1").innerHTML = options;
         document.getElementById("year2").innerHTML = options;
-
     }
-
-
-    // var start = 1990;
-    // var end = new Date().getFullYear();
-    // var options = "<option disabled selected>" + " " + "</option>";
-    // for (var year = start; year <= end; year++) {
-    //     options += "<option>" + year + "</option>";
-    // }
-    // document.getElementById("year1").innerHTML = options;
-    // document.getElementById("year2").innerHTML = options;
-
 </script>
 
 <script>
     async function saveForm() {
         var form = document.getElementById("trampoline");
-
         var data = JSON.stringify({
             male: form.male.checked,
             female: form.female.checked,
@@ -404,7 +453,7 @@
             parentName1: form.parentName1.value,
             parentName2: form.parentName2.value
         });
-
+        alert(data)
         var response = await fetch("/competition/form/trampoline/save", {
             method: "POST",
             credentials: 'same-origin',
@@ -414,7 +463,6 @@
             },
             body: data
         });
-
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
@@ -429,7 +477,6 @@
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
         var preview = document.getElementById('preview' + p);
         var reader = new FileReader();
-
         if (file.type.startsWith('image/')) {
             reader.onload = function (e) {
                 preview.innerHTML = "";
@@ -456,7 +503,6 @@
         }
         reader.readAsDataURL(file);
     }
-
     //handle have chinese name option
     function havechinesename() {
         var yes1_check = document.getElementById("Yes1");
@@ -465,25 +511,19 @@
         var no2_check = document.getElementById("No2");
         var chineseNameDis1 = document.getElementById("chiName1")
         var chineseNameDis2 = document.getElementById("chiName2")
-
         if (yes1_check.checked == true) {
             chineseNameDis1.checked = false;
             chineseNameDis1.disabled = false;
-
         } else if (no1_check.checked == true) {
             chineseNameDis1.checked = true; //disable chinese name
             chineseNameDis1.disabled = true;
-
         }
-
         if (yes2_check.checked == true) {
             chineseNameDis2.checked = false;
             chineseNameDis2.disabled = false;
-
         } else if (no2_check.checked == true) {
             chineseNameDis2.checked = true; //disable chinese name
             chineseNameDis2.disabled = true;
-
         }
     } 
 </script>
