@@ -167,7 +167,7 @@
                 <p>The prescribed membership fee for the year of <input type="number" name="ClubMember[year]" id="year"
                             style="width: 30pt;" min="1" required <% if(req.session.clubMemdata != null) {%>value="<%=req.session.clubMemdata.year%>"<%}%>> at
                         <select name="ClubMember[clubFee]" id="clubFee" required>
-                            <option value="">Choose Amount</option>
+                            <option disabled selected>Choose Amount</option>
                             <option value="1000" <% if(req.session.clubMemdata != null && req.session.clubMemdata.clubFee == "1000") {%>selected<%}%>>HK$1,000</option>
                             <option value="150"  <% if(req.session.clubMemdata != null && req.session.clubMemdata.clubFee == "150") {%>selected<%}%>>HK$150</option>
                         </select> and details of the Organization is attached.</p>
