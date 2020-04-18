@@ -32,9 +32,37 @@ module.exports = {
                 idCode: "TRA2020-" + model.id
             })
             model["idCode"] = "TRA2020-" + model.id;
-            req.session.data = {};  //clear data of session
+
+            //clear formdata in session and user
+            req.session.data = {};
+            req.session.tramData = {};
+            var user = await User.update(req.session.userId).set({
+                tramData: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
+            //
 
             return res.view('pages/competition/form/confirm_form', { 'form': model });
+        }
+    },
+
+    //action - save
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.tramData = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            tramData: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/trampoline' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/trampoline');           // for normal request
         }
     },
 
