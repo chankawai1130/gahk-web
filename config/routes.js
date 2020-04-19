@@ -191,17 +191,20 @@ module.exports.routes = {
   'POST /competition/form/acroage': 'AcroageController.acroage',
   'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
+  'POST /competition/form/acroage/save': 'AcroageController.save',
 
   //*********Admin********
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
+
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
-  'DELETE /trampoline/:id': 'TrampolineController.delete',
-  'POST /trampoline/update/:id': 'TrampolineController.update',
+  'POST /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
   'POST /admin/applyHandle/reject/trampoline/:id': 'TrampolineController.reject',
   'POST /admin/applyHandle/confirm/trampoline/:id': 'TrampolineController.confirm',
   'POST /admin/applyHandle/dataDef/trampoline/:id': 'TrampolineController.dataDef',
   'POST /admin/applyHandle/waitingList/trampoline/:id': 'TrampolineController.waitingList',
+  '/trampoline/export_xlsx': 'TrampolineController.export_xlsx',
+  '/trampoline/import_xlsx': 'TrampolineController.import_xlsx',
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',

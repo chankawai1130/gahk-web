@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-
-    //action - create
+    //(preview)
     acroage: async function (req, res) {
 
         if (req.method == 'GET') { return res.view('competition/form/acroage'); }
@@ -17,28 +16,57 @@ module.exports = {
         return res.view('pages/competition/form/acroage_preview', { 'data': req.session.data || {} });
     },
 
-    //(preview)
+    
+    //action - create
     acroage_preview: async function (req, res) {
 
         if (req.method == 'POST') {
-
+            //create Acroage
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
             await Acroage.create(req.session.data);
+
+            //Set idCode to Acroage
             var model = await Acroage.findOne(req.session.data);
             await Acroage.update(model.id).set({
                 idCode: "AGO2020-" + model.id
             })
             model["idCode"] = "AGO2020-" + model.id;
-            req.session.data = {};  //clear data of session
+            
+            //clear all session data
+            req.session.data = {};
+            req.session.Acrodata = {};
+            var user = await User.update(req.session.userId).set({
+                TRGPdata: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
 
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
 
 
-    //admin
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.Acrodata = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            Acrodata: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/acroage' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/acroage');           // for normal request
+        }
+    },
+
+    //**************************admin/HandleApply*************************
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 

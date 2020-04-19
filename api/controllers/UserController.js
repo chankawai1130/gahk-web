@@ -51,6 +51,7 @@ module.exports = {
       req.session.clubMemdata = user.clubMemdata;
       req.session.tramData = user.tramData;
       req.session.gfaData = user.gfaData;
+      req.session.Acrodata = user.Acrodata;
 
       //sails.log("[Session] ", req.session);
 
