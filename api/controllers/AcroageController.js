@@ -74,7 +74,7 @@ module.exports = {
 
             if (!model) return res.notFound();
 
-            return res.view('admin/applyHandle/AcroageEdit', { TRGP: model });
+            return res.view('admin/applyHandle/AcroageEdit', { acroage: model });
 
         } else {
             if (!req.body.Acroage)
