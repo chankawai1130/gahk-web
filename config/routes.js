@@ -267,6 +267,7 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/acroage/:id': 'AcroageController.confirm',
   'POST /admin/applyHandle/dataDef/acroage/:id': 'AcroageController.dataDef',
   'POST /admin/applyHandle/waitingList/acroage/:id': 'AcroageController.waitingList',
+  '/acroage/export_xlsx': 'AcroageController.export_xlsx',
 
 
 
