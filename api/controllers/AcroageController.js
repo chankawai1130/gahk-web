@@ -182,9 +182,11 @@ module.exports = {
                 day2 = date2[2] + "-" + date2[1] + "-" + date2[0];
                 data[i].birthday2 = day2;
 
-                var date3 = data[i].birthday3.split('/');
-                day3 = date3[2] + "-" + date3[1] + "-" + date3[0];
-                data[i].birthday3 = day3;
+                if (data[i].birthday3 != null) {
+                    var date3 = data[i].birthday3.split('/');
+                    day3 = date3[2] + "-" + date3[1] + "-" + date3[0];
+                    data[i].birthday3 = day3;
+                }
 
                 if (data[i].payStatus == "未付款 Unpaid") {
                     data[i].payStatus = "unpaid";

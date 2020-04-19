@@ -261,6 +261,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm',
   'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
   'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',
+  '/gfa/import_xlsx': 'GFAController.import_xlsx',
+  '/gfa/export_xlsx': 'GFAController.export_xlsx',
 
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/reject/acroage/:id': 'AcroageController.reject',
