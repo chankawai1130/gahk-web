@@ -67,6 +67,83 @@ module.exports = {
     },
 
     //**************************admin/HandleApply*************************
+    //update form
+    update: async function (req, res) {
+        if (req.method == "GET") {
+            var model = await Acroage.findOne(req.params.id);
+
+            if (!model) return res.notFound();
+
+            return res.view('admin/applyHandle/AcroageEdit', { TRGP: model });
+
+        } else {
+            if (!req.body.Acroage)
+                return res.badRequest("Form-data not received.");
+
+            var models = await Acroage.update(req.params.id).set({
+                category: req.body.Acroage.category,
+                item: req.body.Acroage.item,
+                //Applicant 1
+                havecname1: req.body.Acroage.havecname1,
+                cpChiName1: req.body.Acroage.cpChiName1,
+                cpEngName1: req.body.Acroage.cpEngName1,
+                gender1: req.body.Acroage.gender1,
+                birthday1: req.body.Acroage.birthday1,
+                idNo1: req.body.Acroage.idNo1,
+                contactNo1: req.body.Acroage.contactNo1,
+                email1: req.body.Acroage.email1,
+                address1: req.body.Acroage.address1,
+                photo0: req.body.Acroage.photo0,
+                imgIDCard0: req.body.Acroage.imgIDCard0,
+                declaration0: req.body.Acroage.declaration0,
+                //Applicant 2
+                havecname2: req.body.Acroage.havecname2,
+                cpChiName2: req.body.Acroage.cpChiName2,
+                cpEngName2: req.body.Acroage.cpEngName2,
+                gender2: req.body.Acroage.gender2,
+                birthday2: req.body.Acroage.birthday2,
+                idNo2: req.body.Acroage.idNo2,
+                contactNo2: req.body.Acroage.contactNo2,
+                email2: req.body.Acroage.email2,
+                address2: req.body.Acroage.address2,
+                photo1: req.body.Acroage.photo1,
+                imgIDCard1: req.body.Acroage.imgIDCard1,
+                declaration1: req.body.Acroage.declaration1,
+                //Applicant 3
+                havecname3: req.body.Acroage.havecname3,
+                cpChiName3: req.body.Acroage.cpChiName3,
+                cpEngName3: req.body.Acroage.cpEngName3,
+                gender3: req.body.Acroage.gender3,
+                birthday3: req.body.Acroage.birthday3,
+                idNo3: req.body.Acroage.idNo3,
+                contactNo3: req.body.Acroage.contactNo3,
+                email3: req.body.Acroage.email3,
+                address3: req.body.Acroage.address3,
+                photo2: req.body.Acroage.photo2,
+                imgIDCard2: req.body.Acroage.imgIDCard2,
+                declaration2: req.body.Acroage.declaration2,
+                //coach
+                coachName: req.body.Acroage.coachName,
+                cContactNo: req.body.Acroage.cContactNo,
+                organName: req.body.Acroage.organName,
+                receiptHeader: req.body.Acroage.receiptHeader,
+                receiptName: req.body.Acroage.receiptName,
+                //declaration
+                parentName1: req.body.Acroage.parentName1,
+                parentName2: req.body.Acroage.parentName2,
+                parentName3: req.body.Acroage.parentName3,
+
+                payStatus: req.body.Acroage.payStatus,
+                formStatus: req.body.Acroage.formStatus,
+                teamStatus: req.body.Acroage.teamStatus,
+            }).fetch();
+
+            if (models.length == 0) return res.notFound();
+
+            return res.redirect('/admin/applyHandle/search');
+        }
+    },
+    
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 

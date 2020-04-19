@@ -264,6 +264,8 @@ module.exports.routes = {
   '/gfa/import_xlsx': 'GFAController.import_xlsx',
   '/gfa/export_xlsx': 'GFAController.export_xlsx',
 
+  'GET /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
+  'POST /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/reject/acroage/:id': 'AcroageController.reject',
   'POST /admin/applyHandle/confirm/acroage/:id': 'AcroageController.confirm',
