@@ -2,6 +2,16 @@
     .card {
         border-radius: 0;
     }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        background-color:#bbb;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        font-size: smaller;
+    }
 </style>
 
 <form action="/competition/form/trampoline" method="POST" id="trampoline">
@@ -371,9 +381,9 @@
             <button type="submit" class="btn btn-primary" style="background: #83a70c; border: none; float: right;">預覽
                 Preview
                 >></button>
-            <button type="button" class="btn btn-primary" onclick="saveForm()"
-                style="background: red; border: none; float: left;">儲存
-                Save</button>
+            <button type="button" class="btn btn-primary" onclick="saveForm()" onmouseover="showRemind()" onmouseout="hideRemind()"
+                style="background: red; border: none; float: left;">儲存 Save</button>
+                &nbsp;<p id="remind" style="display:none; font-size:smaller;"><span class="dot">!</span>已上載檔案將不會被儲存 The uploaded files will not be saved</p>
         </div>
     </div>
     <br>
@@ -392,6 +402,17 @@
 </script>
 
 <script>
+    function showRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "inline";
+    }
+
+    function hideRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "none";
+
+    }
+
     //birthYearOption(1990, new Date().getFullYear());
     function limitBirth() {
         var todayYear = new Date().getFullYear();
@@ -418,9 +439,7 @@
         document.getElementById("year1").innerHTML = options;
         document.getElementById("year2").innerHTML = options;
     }
-</script>
 
-<script>
     async function saveForm() {
         var form = document.getElementById("trampoline");
         var data = JSON.stringify({
