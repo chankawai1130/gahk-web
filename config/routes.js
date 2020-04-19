@@ -264,6 +264,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
   'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',
 
+  'GET /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
+  'POST /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/reject/acroage/:id': 'AcroageController.reject',
   'POST /admin/applyHandle/confirm/acroage/:id': 'AcroageController.confirm',
