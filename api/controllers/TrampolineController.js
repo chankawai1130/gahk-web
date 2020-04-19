@@ -107,7 +107,7 @@ module.exports = {
             if (!req.body.Trampoline)
                 return res.badRequest("Form-data not received.");
 
-            var model = await Estate.update(req.params.id).set({
+            var model = await Trampoline.update(req.params.id).set({
                 gender: req.body.Trampoline.gender,
                 category: req.body.Trampoline.category,
                 havecname1: req.body.Trampoline.havecname1,
@@ -124,11 +124,23 @@ module.exports = {
                 phone2: req.body.Trampoline.phone2,
                 email2: req.body.Trampoline.email2,
                 address2: req.body.Trampoline.address2,
+                teamName: req.body.Trampoline.teamName,
+                coachName: req.body.Trampoline.coachName,
+                coachPhone: req.body.Trampoline.coachPhone,
+                coachNum: req.body.Trampoline.coachNum,
+                coachAddress: req.body.Trampoline.coachAddress,
+                parentName1: req.body.Trampoline.parentName1,
+                parentName2: req.body.Trampoline.parentName2,
+                declaration0: req.body.Trampoline.declaration0,
+                declaration1: req.body.Trampoline.declaration1,
+                payStatus: req.body.Trampoline.payStatus,
+                formStatus: req.body.Trampoline.formStatus,
+                teamStatus: req.body.Trampoline.teamStatus,
             }).fetch();
 
             if (model.length == 0) return res.notFound();
 
-            return res.ok("Record updated");
+            return res.redirect('/admin/applyHandle/search');
         }
     },
 
@@ -222,6 +234,138 @@ module.exports = {
             return res.redirect('/admin/applyHandle/search');           // for normal request
         }
 
+    },
+
+    //action - import excel
+    import_xlsx: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.file('file').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            var XLSX = require('xlsx');
+            var workbook = XLSX.readFile(uploadedFiles[0].fd);
+            var ws = workbook.Sheets[workbook.SheetNames[0]];
+            var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "gender", "category", "havecname1", "chiName1", "engName1", "birth1", "phone1", "email1", "address1", "havecname2", "chiName2", "engName2", "birth2", "phone2", "email2", "address2", "teamName", "coachName", "coachPhone", "coachNum", "coachAddress", "parentName1", "parentName2", "payStatus", "formStatus", "teamStatus"] });
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].payStatus == "未付款 Unpaid") {
+                    data[i].payStatus = "unpaid";
+                } else if (data[i].payStatus == "已付款 Paid") {
+                    data[i].payStatus = "paid";
+                }
+
+                if (data[i].formStatus == "待處理 To be handled") {
+                    data[i].formStatus = "ToBeCon";
+                } else if (data[i].formStatus == "已確認 Accepted") {
+                    data[i].formStatus = "accepted";
+                } else if (data[i].formStatus == "已拒絕 Rejected") {
+                    data[i].formStatus = "rejected";
+                } else if (data[i].formStatus == "資料不全 Data Deficiency") {
+                    data[i].formStatus = "dataDef";
+                }
+
+                if (data[i].teamStatus == "正選 Successful Team") {
+                    data[i].teamStatus = "suTeam";
+                } else if (data[i].teamStatus == "後補 Team on Waitiing List") {
+                    data[i].teamStatus = "waitTeam";
+                }
+
+            } console.log(data);
+
+            var models = await Trampoline.createEach(data).fetch();
+            if (models.length == 0) {
+                return res.badRequest("No data imported.");
+            }
+            return res.redirect('/admin/applyHandle/search');
+        });
+    },
+    // action - export excel
+    export_xlsx: async function (req, res) {
+
+        var condition = {};
+
+        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+
+        var models = await Trampoline.find({
+            where: condition
+        });
+
+        var XLSX = require('xlsx');
+        var wb = XLSX.utils.book_new();
+
+        var ws = XLSX.utils.json_to_sheet(models.map(model => {
+            var createTime = new Date(model.createdAt);
+            var month = createTime.getMonth() + 1;
+            var applyDate = createTime.getDate() + "/" + month + "/" + createTime.getFullYear();
+
+            var updateTime = new Date(model.updatedAt);
+            var month = updateTime.getMonth() + 1;
+            var updateDate = updateTime.getDate() + "/" + month + "/" + updateTime.getFullYear() + " " + updateTime.getHours() + ":" + updateTime.getMinutes() + ":" + updateTime.getSeconds();
+
+            if (model.formStatus == "accepted") {
+                var formS = "已確認 Accepted";
+            } else if (model.formStatus == "rejected") {
+                var formS = "已拒絕 Rejected";
+            } else if (model.formStatus == "dataDef") {
+                var formS = "資料不全 Data Deficiency";
+            } else if (model.formStatus == "ToBeCon") {
+                var formS = "待處理 To be handled";
+            }
+
+            if (model.teamStatus == "suTeam") {
+                var teamS = "正選 Successful Team";
+            } else if (model.teamName == "waitTeam") {
+                var teamS = "後備 Team on Waitiing List";
+            }
+
+            if (model.payStatus == "unpaid") {
+                var payS = "未付款 Unpaid";
+            } else if (model.payStatus == "paid") {
+                var payS = "已付款 Paid";
+            }
+
+            return {
+                "申請表編號 Application Number": model.idCode,
+                "性別 Gender": model.gender,
+                "參賽組別 Category": model.category,
+                "參加者(1)是否有中文姓名 Applicant(1) Any Chinese name": model.havecname1,
+                "參加者(1)中文姓名 Applicant(1) Name in Chinese": model.chiName1,
+                "參加者(1)英文姓名 Applicant(1) Name in English": model.engName1,
+                "參加者(1)出生年份 Applicant(1) Date of Birth": model.birth1,
+                "參加者(1)聯絡電話 Applicant(1) Contact Number": model.phone1,
+                "參加者(1)電郵 Applicant(1) Email Address": model.email1,
+                "參加者(1)通訊地址 Applicant(1) Postal Address": model.address1,
+                "參加者(2)是否有中文姓名 Applicant(2) Any Chinese name": model.havecname2,
+                "參加者(2)中文姓名 Applicant(2) Chinese Name": model.chiName2,
+                "參加者(2)英文姓名 Applicant(2) English Name": model.engName2,
+                "參加者(2)出生年份 Applicant(2) Date of Birth": model.birth2,
+                "參加者(2)聯絡電話 Applicant(2) Contact Number": model.phone2,
+                "參加者(2)電郵 Applicant(2) Email Address": model.email2,
+                "參加者(2)通訊地址 Applicant(2) Postal Address": model.address2,
+                "團體名稱 Organization Name": model.teamName,
+                "教練姓名 Coach Name": model.coachName,
+                "聯絡電話 Contact Number": model.coachPhone,
+                "註冊教練編號 Registered Coach No.": model.coachNum,
+                "通訊地址 Postal Address": model.coachAddress,
+                "參加者(1)家長姓名 Applicant(1)'s Parent Name": model.parentName1,
+                "參加者(2)家長姓名 Applicant(2)'s Parent Name": model.parentName2,
+                "付款狀況 Payment Status": payS,
+                "申請狀況 Apply Status": formS,
+                "隊伍/團體狀況 Team Status": teamS,
+                "提交日期 Apply Date": applyDate,
+                "上次更新 Last upadated": updateDate
+            }
+        }));
+        XLSX.utils.book_append_sheet(wb, ws, "Trampoline");
+
+        res.set("Content-disposition", "attachment; filename=Trampoline.xlsx");
+        return res.end(XLSX.write(wb, { type: "buffer", bookType: "xlsx" }));
     },
 };
 
