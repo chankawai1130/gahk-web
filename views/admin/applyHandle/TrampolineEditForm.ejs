@@ -481,46 +481,59 @@
             Declaration</h5>
     </div>
 
-    <% if(trampoline.declaration) { 
-            var type = trampoline.declaration.split(';');%>
+    <% if(trampoline.declaration0) { 
+            var type = trampoline.declaration0.split(';');%>
     <div class="col-12 col-sm-6">
         <% if(type[0] == 'data:application/pdf') { %>
-        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.pdf" href="<%= trampoline.declaration%>"
-            target="_blank">下載聲明書
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明1" href="<%= trampoline.declaration0%>"
+            target="_blank">下載聲明書1
             Download declartion</a>
         <br>
-        <% } else if(type[0] == 'data:image/jpeg') { %>
-        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.jpg" href="<%= trampoline.declaration%>"
-            target="_blank">下載聲明書
+        <% } else if(type[0] == 'data:image/jpeg' || type[0] == 'data:image/png') { %>
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明1" href="<%= trampoline.declaration0%>"
+            target="_blank">下載聲明書1
             Download declartion</a>
         <br>
-        <img src="<%=trampoline.declaration%>" style="height:150px; width:auto" />
+        <img src="<%=trampoline.declaration0%>" style="height:150px; width:auto" />
         <% } %>
     </div>
     <% } %>
 
     <div class="col-12">
         <br>
-        <label>重新上載聲明書 Reupload the declaration</label>
-        <br>
-        <input type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)" />
-        <div id="HF2preview"></div>
-        <br>
-    </div>
-
-    <div class="col-12">
         <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
-        <input type="text" class="form-group" value=<%= trampoline.parentName1 %> name="Trampoline[parentName1]"
-            required>
+        <input id="parentName1" type="text" class="form-group" name="Trampoline[parentName1]" value=<%= trampoline.parentName1%> required />
+        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,0)"/>
+        <div id="preview0"></div>
+        <br>
     </div>
 
+    <% if(trampoline.declaration1) { 
+        var type = trampoline.declaration1.split(';');%>
+    <div class="col-12 col-sm-6">
+        <% if(type[0] == 'data:application/pdf') { %>
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.pdf" href="<%= trampoline.declaration1%>"
+            target="_blank">下載聲明書2
+            Download declartion</a>
+        <br>
+        <% } else if(type[0] == 'data:image/jpeg' || type[0] == 'data:image/png') { %>
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.jpg" href="<%= trampoline.declaration1%>"
+            target="_blank">下載聲明書2
+            Download declartion</a>
+        <br>
+        <img src="<%=trampoline.declaration1%>" style="height:150px; width:auto" />
+        <% } %>
+    </div>
+    <% } %>
 
     <div class="col-12">
         <br>
         <label>參加者(2)家長姓名 Applicant(2)'s Parent Name: </label>
-        <input type="text" class="form-group" value=<%= trampoline.parentName2 %> name="Trampoline[parentName2]"
-            required>
+        <input id="parentName2" type="text" class="form-group" name="Trampoline[parentName2]" value=<%= trampoline.parentName1%> required />
+        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)"/>
+        <div id="preview1"></div>
     </div>
+
     <br>
 
     <!-- Status -->
@@ -793,41 +806,12 @@
 
 <script>
     //handle multi declaration upload (img/pdf) (id="preview+p") 
+    //handle multi declaration upload (img/pdf) (id="preview+p") 
     function handleFile(files, p) {
         const file = files[0];
-        if (!file.type.startsWith('image/')) return;
-
-        if (file.size > 4194304) {
-            alert("請重新上載4MB相片");
-            return;
-        }
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var preview = document.getElementById('preview' + p);
-            preview.innerHTML = "";
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
-
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'GRGS[imgIDCard' + p + ']';
-            input.value = e.target.result;
-
-            img.style.width = "auto";
-            img.style.height = "150px";
-            document.getElementById('Admin_GRGS_form').appendChild(input);
-        }
-        reader.readAsDataURL(file);
-    }
-
-    function handleFile2(files) {
-        const file = files[0];
         if (!file.type.startsWith('image/') && !file.type == 'application/pdf') return;
-        var preview = document.getElementById('HF2preview');
+        var preview = document.getElementById('preview' + p);
         var reader = new FileReader();
-
         if (file.type.startsWith('image/')) {
             reader.onload = function (e) {
                 preview.innerHTML = "";
@@ -836,7 +820,7 @@
                 preview.appendChild(img);
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'GRGS[declaration]';
+                input.name = 'Trampoline[declaration' + p + ']';
                 input.value = e.target.result;
                 img.style.width = "auto";
                 img.style.height = "150px";
@@ -847,7 +831,7 @@
                 preview.innerHTML = "";
                 var input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'GRGS[declaration]';
+                input.name = 'Trampoline[declaration' + p + ']';
                 input.value = e.target.result;
                 preview.appendChild(input);
             }
