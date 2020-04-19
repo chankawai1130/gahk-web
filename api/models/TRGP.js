@@ -137,14 +137,6 @@ module.exports = {
       type: 'number',
     },
 
-    leaderName: {
-      type: "string",
-    },
-
-    leaderPosition: {
-      type: "string",
-    },
-
     Declaration: {
       type: "string"
     },
@@ -153,18 +145,31 @@ module.exports = {
       type: "string"
     },
 
+    leaderName: {
+      type: "string",
+    },
+
+    leaderPosition: {
+      type: "string",
+    },
 
     payStatus: {
       type: "string", //unpaid; paid (decided by admin)
     },
 
     formStatus: {
-      type: "string", //ToBeCon; accepted(decided by admin)
+      type: "string", //ToBeCon; accepted; rejected; dataDef(decided by admin)
+    },
+
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
     },
 
     idCode: {
       type: "string"
     },
+
+    
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

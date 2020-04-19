@@ -68,6 +68,7 @@ module.exports = {
 
   //applyHandle
   apply_search: async function (req, res) {
+    req.session.searchResult = {};
     var condition = {};
     var form = req.query.application;
 
@@ -75,6 +76,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await TRGP.find({
         where: condition
@@ -83,6 +85,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await TRGS.find({
         where: condition
@@ -92,6 +95,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await GRGS.find({
         where: condition
@@ -100,6 +104,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await GRGP.find({
         where: condition
@@ -109,6 +114,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await Trampoline.find({
         where: condition
@@ -117,6 +123,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await GFA.find({
         where: condition
@@ -126,6 +133,7 @@ module.exports = {
       if (req.query.category) condition.category = req.query.category;
       if (req.query.payStatus) condition.payStatus = req.query.payStatus;
       if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
 
       var models = await Acroage.find({
         where: condition
@@ -139,7 +147,7 @@ module.exports = {
       });
 
     }
-
+    req.session.searchResult = condition;
     return res.view('admin/applyHandle/search', { applications: models, form });
   },
 };
