@@ -3,6 +3,22 @@
     .card {
         border-radius: 0;
     }
+
+    .labelHead {
+        color: #83a70c;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        background-color:#bbb;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        font-size: smaller;
+    }
 </style>
 
 <form action="/competition/form/TRGSForm" method="POST" id="TRGSForm">
@@ -17,7 +33,7 @@
         </div>
 
         <div class="col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽規則及章程
+            <h5 class="labelHead">比賽規則及章程
                 Rules and Regulation</h5>
         </div>
 
@@ -30,7 +46,7 @@
         <!-- 團體資料 Group Details -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">團體資料 Group
+            <h5 class="labelHead">團體資料 Group
                 Details</h5>
         </div>
 
@@ -92,8 +108,7 @@
         <!-- 參加者(1) Applicant(1) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(1)個人資料
-                Applicant(1)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -134,8 +149,7 @@
         <!-- 參加者(2) Applicant(2) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(2)個人資料
-                Applicant(2)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -176,8 +190,7 @@
         <!-- 參加者(3) Applicant(3) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(3)個人資料
-                Applicant(3)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -218,8 +231,7 @@
         <!-- 參加者(4) Applicant(4) -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">參加者(4)個人資料
-                Applicant(4)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -269,7 +281,7 @@
 
         <!-- 費用 Fee -->
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">費用 Fee</h5>
+            <h5 class="labelHead">費用 Fee</h5>
 
             <div class="form-group">
                 <label>團體項目 Group Event: $250 X </label>
@@ -295,7 +307,7 @@
 
         <!-- 聲明 Declaration -->
         <div class="form-group col-12">
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">聲明 Declaration</h5>
+            <h5 class="labelHead">聲明 Declaration</h5>
             <div class="form-group">
 
                 <label>請下載及列印 <a href="/formDoc/Team_School_HKRG_declaration.pdf" download><u style="color: #83a70c;">聲明書.pdf</u></a>後簽署並上載文件
@@ -335,14 +347,26 @@
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
             <!-- Save -->
-            <button type="button" class="btn btn-primary" onclick="saveForm()"
+            <button type="button" class="btn btn-primary" onclick="saveForm()" onmouseover="showRemind()" onmouseout="hideRemind()"
                 style="background: red; border: none; float: left;">儲存 Save</button>
+                &nbsp;<p id="remind" style="display:none; font-size:smaller;"><span class="dot">!</span>已上載檔案將不會被儲存 The uploaded files will not be saved</p>
             <br><br>
         </div>
     </div>
 </form>
 
 <script>
+    function showRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "inline";
+    }
+
+    function hideRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "none";
+
+    }
+    
     //save function
     async function saveForm() {
         var form = document.getElementById("TRGSForm");

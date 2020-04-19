@@ -4,10 +4,20 @@
         border-radius: 0;
     }
 
-    #labelHead {
+    .labelHead {
         color: #83a70c;
         font-family: Verdana, Arial, Helvetica, sans-serif;
         font-size: 12pt;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        background-color:#bbb;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        font-size: smaller;
     }
 </style>
 
@@ -24,7 +34,7 @@
         </div>
 
         <div class="col-12">
-            <h5 id="labelHead">比賽規則及章程 Rules and Regulation</h5>
+            <h5 class="labelHead">比賽規則及章程 Rules and Regulation</h5>
         </div>
 
         <div class="col-12">
@@ -36,13 +46,13 @@
         <!-- 團體資料 Group Details -->
         <div class="col-12">
             <br><br>
-            <h5 id="labelHead">團體資料 Group Details</h5>
+            <h5 class="labelHead">團體資料 Group Details</h5>
         </div>
 
         <div class="form-group col-12">
             <label>機構名稱(中文) Organization Name(Chinese):</label>
             <input type="text" name="TRGP[teamName]" id="teamName" style="width:450pt"
-            onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\.\-\d\0-\9]/g,'')" required
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5\ \(\)\.\-\d\0-\9]/g,'')" required
                 <% if(req.session.TRGPdata != null) {%>value="<%=req.session.TRGPdata.teamName%>" <%}%>>
         </div>
 
@@ -99,7 +109,7 @@
         <!-- 參加者(1)個人資料 Applicant(1)'s Personal Details -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 id="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -117,13 +127,13 @@
                 <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
                     <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo1Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes1Checked == true){%>value="<%= req.session.TRGPdata.Mate1ChiName%>"<%}%>>
+                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes1Checked == true){%>value="<%= req.session.TRGPdata.Mate1ChiName%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
                 <input type="text" name="TRGP[Mate1EngName]" id="Mate1EngName" placeholder=" e.g. Chan Tai Man"
                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required 
-                    <% if (req.session.TRGPdata != null) {%>value="<%= req.session.TRGPdata.Mate1EngName%>"<%}%>>
+                    <% if (req.session.TRGPdata != null) {%>value="<%= req.session.TRGPdata.Mate1EngName%>" <%}%>>
             </div>
             <div class="form-group">
                 <label>身分證號碼 ID Card Number:</label>
@@ -141,7 +151,7 @@
         <!-- 參加者(2)個人資料 Applicant(2)'s Personal Details -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 id="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -159,7 +169,8 @@
                 <input type="text" name="TRGP[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
                     <% if(req.session.data != null && req.session.data.havecname2 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo2Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes2Checked == true){%>value="<%= req.session.TRGPdata.Mate2ChiName%>"<%}%>>
+                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes2Checked == true){%>value="<%= req.session.TRGPdata.Mate2ChiName%>"
+                <%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -183,7 +194,7 @@
         <!-- 參加者(3)個人資料 Applicant(3)'s Personal Details -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -201,7 +212,8 @@
                 <input type="text" name="TRGP[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
                     <% if(req.session.data != null && req.session.data.havecname3 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo3Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes3Checked == true){%>value="<%= req.session.TRGPdata.Mate3ChiName%>"<%}%>>
+                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes3Checked == true){%>value="<%= req.session.TRGPdata.Mate3ChiName%>"
+                <%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -225,7 +237,7 @@
         <!-- 參加者(4)個人資料 Applicant(4)'s Personal Details -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
             <br>
-            <h6 id="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
+            <h6 class="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
             <br>
 
             <div class="form-group">
@@ -243,7 +255,8 @@
                 <input type="text" name="TRGP[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
                     <% if(req.session.data != null && req.session.data.havecname4 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo4Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes4Checked == true){%>value="<%= req.session.TRGPdata.Mate4ChiName%>"<%}%>>
+                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes4Checked == true){%>value="<%= req.session.TRGPdata.Mate4ChiName%>"
+                <%}%>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -274,7 +287,7 @@
 
         <!-- 費用 Fee -->
         <div class="form-group col-12">
-            <h5 id="labelHead">費用 Fee</h5>
+            <h5 class="labelHead">費用 Fee</h5>
 
             <div class="form-group">
                 <label>團體項目 Group Event: $250 X </label>
@@ -290,7 +303,8 @@
                 <label>總額 Total price = $</label> 
                 <input id="total" type="number" name="TRGP[TeamTotalPrice]" readonly required 
                 <% if (req.session.data != null) {%>value="<%=req.session.data.TeamTotalPrice%>" <%}%>
-                <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.total%>" <%}%>>
+                <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.total%>"
+                <%}%>>
             </div>
 
             <span style="font-style: italic;">*請以支票付款，並以郵寄方式或親臨辦公室遞交支票<br>Please make payment by cheque and submit it by
@@ -300,8 +314,7 @@
 
         <!-- 文件上載 -->
         <div class="form-group col-12">
-            <h5 id="labelHead">文件上載
-                Document Upload</h5>
+            <h5 class="labelHead">文件上載 Document Upload</h5>
             <div class="form-group">
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
                     (pdf檔)</label>
@@ -312,7 +325,7 @@
 
         <!-- 聲明 Declaration -->
         <div class="form-group col-12">
-            <h5 id="labelHead">聲明 Declaration</h5>
+            <h5 class="labelHead">聲明 Declaration</h5>
 
             <div class="form-group">
                 <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
@@ -327,12 +340,12 @@
             <div class="row">
                 <div class="form-group col-12 col-sm-6">
                     <label>機構負責人姓名 Leader's Name:</label>
-                    <input type="text" name="TRGP[leaderName]" id="leaderName" required <% if (req.session.TRGPdata != null) {%>
-        value="<%= req.session.TRGPdata.leaderName%>"<%}%>>
+                    <input type="text" name="TRGP[leaderName]" id="leaderName" required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.leaderName%>"
+                <%}%>>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label>機構負責人職位 Leader's Position:</label>
-                    <input type="text" name="TRGP[leaderPosition]" id="leaderPosition" required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.leaderPosition%>"<%}%>>
+                    <input type="text" name="TRGP[leaderPosition]" id="leaderPosition" required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.leaderPosition%>" <%}%>>
                 </div>
             </div>
         </div>
@@ -346,18 +359,29 @@
 
         <!-- button -->
         <div class="col-12">
-            <br>
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
             <!-- Save -->
-            <button type="button" class="btn btn-primary" onclick="saveForm()"
+            <button type="button" class="btn btn-primary" onclick="saveForm()" onmouseover="showRemind()" onmouseout="hideRemind()"
                 style="background: red; border: none; float: left;">儲存 Save</button>
+                &nbsp;<p id="remind" style="display:none; font-size:smaller;"><span class="dot">!</span>已上載檔案將不會被儲存 The uploaded files will not be saved</p>
             <br><br>
         </div>
     </div>
 </form>
 
 <script>
+    function showRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "inline";
+    }
+
+    function hideRemind() {
+        var remind = document.getElementById("remind");
+        remind.style.display = "none";
+
+    }
+
     //save function
     async function saveForm() {
         var form = document.getElementById("TRGPForm");
