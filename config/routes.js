@@ -263,6 +263,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm',
   'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
   'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',
+  '/gfa/import_xlsx': 'GFAController.import_xlsx',
+  '/gfa/export_xlsx': 'GFAController.export_xlsx',
 
   'GET /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
   'POST /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
