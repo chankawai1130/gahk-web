@@ -64,6 +64,49 @@ module.exports = {
     },
 
     //admin
+    // action - update
+    update: async function (req, res) {
+
+        if (req.method == "GET") {
+            var model = await GFA.findOne(req.params.id);
+
+            if (!model) return res.notFound();
+
+            return res.view('admin/applyHandle/GFAEditForm', { gfa: model });
+
+        }
+        else {
+
+            if (!req.body.GFA)
+                return res.badRequest("Form-data not received.");
+
+            var models = await GFA.update(req.params.id).set({
+                teamName: req.body.GFA.teamName,
+                receiptHeader: req.body.GFA.receiptHeader,
+                address: req.body.GFA.address,
+                category: req.body.GFA.category,
+                havecname: req.body.GFA.havecname,
+                cpChiName1: req.body.GFA.cpChiName1,
+                cpEngName1: req.body.GFA.cpEngName1,
+                cpDayPhone: req.body.GFA.cpDayPhone,
+                cpMobilePhone: req.body.GFA.cpMobilePhone,
+                email: req.body.GFA.email,
+                applicantNum: req.body.GFA.applicantNum,
+                crewNum: req.body.GFA.crewNum,
+                checkNum: req.body.GFA.checkNum,
+                bankName: req.body.GFA.bankName,
+                document: req.body.GFA.document,
+                payStatus: req.body.GFA.payStatus,
+                formStatus: req.body.GFA.formStatus,
+                teamStatus: req.body.GFA.teamStatus,
+            }).fetch();
+
+            if (models.length == 0) return res.notFound();
+
+            return res.redirect('/admin/applyHandle/search');
+        }
+    },
+
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 

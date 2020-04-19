@@ -256,6 +256,8 @@ module.exports.routes = {
   '/clubMem/import_xlsx': 'ClubMemberController.import_xlsx',
 
 
+  'GET /admin/applyHandle/gfaEditForm/:id': 'GFAController.update',
+  'POST /admin/applyHandle/gfaEditForm/:id': 'GFAController.update',
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
   'POST /admin/applyHandle/reject/gfa/:id': 'GFAController.reject',
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm',
