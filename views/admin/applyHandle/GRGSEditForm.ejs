@@ -711,7 +711,7 @@
             <a download="<%= grgs.idCode %>_Declaration1_聲明1.pdf" href="<%= grgs.declaration%>" target="_blank">下載聲明書
                 Download declartion</a>
             <br>
-            <% } else if(type[0] == 'data:image/jpeg') { %>
+            <% } else if(type[0] == 'data:image/jpeg'|| type[0] == 'data:image/png') { %>
             <a download="<%= grgs.idCode %>_Declaration1_聲明1.jpg" href="<%= grgs.declaration%>" target="_blank">下載聲明書
                 Download declartion</a>
             <br>

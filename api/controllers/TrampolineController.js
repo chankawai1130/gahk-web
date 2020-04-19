@@ -287,6 +287,7 @@ module.exports = {
 
         var condition = {};
 
+        if (req.session.searchResult.gender) condition.gender = req.session.searchResult.gender;
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
         if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
         if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
