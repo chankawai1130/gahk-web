@@ -119,8 +119,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input id="chiName1" type="text" class="form-group" name="GRGS[chiName1]"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input id="chiName1" type="text" class="form-group" name="GRGS[chiName1]" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No1 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName1%>" <% }} %> required />
@@ -148,19 +148,11 @@
             <div>
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
-                <input type="file" accept="image/*" onchange="handleFile(this.files,0)"
-                    <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
-                    value="<%=req.session.GRGSdata.imgIDCard0%>" <% } %> required />
+                <input type="file" accept="image/*" onchange="handleFile(this.files,0)" required />
                 <br>
                 <div id="preview0"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard0%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
         <!-- 2 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -183,8 +175,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input type="text" class="form-group" name="GRGS[chiName2]" id="chiName2" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No2 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName2%>" <% }} %> required />
@@ -217,12 +209,6 @@
                 <div id="preview1"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard1%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
         <!-- 3 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -245,8 +231,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input type="text" class="form-group" name="GRGS[chiName3]" id="chiName3" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No3 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName3%>" <% }} %> required />
@@ -279,12 +265,6 @@
                 <div id="preview2"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard2%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
         <!-- 4 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -307,8 +287,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input type="text" class="form-group" name="GRGS[chiName4]" id="chiName4" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No4 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName4%>" <% }} %> required />
@@ -341,12 +321,6 @@
                 <div id="preview3"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard3%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
         <!-- 5 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -369,8 +343,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input type="text" class="form-group" name="GRGS[chiName5]" id="chiName5" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname5 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No5 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName5%>" <% }} %> required />
@@ -403,12 +377,6 @@
                 <div id="preview4"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard4%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
         <!-- 6 -->
         <div class="card col-12 col-sm-6" style="background: transparent;">
@@ -431,8 +399,8 @@
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
-                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6"
-                    placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <input type="text" class="form-group" name="GRGS[chiName6]" id="chiName6" placeholder=" e.g. 陳大文"
+                    onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                     <% if(req.session.data != null && req.session.data.havecname6 == "否 No") { %> disabled
                     <%} else if(req.session.GRGSdata != null) { if(req.session.GRGSdata.No6 == true) {%> disabled
                     <% }else{ %> value="<%=req.session.GRGSdata.chiName6%>" <% }} %> required />
@@ -465,12 +433,6 @@
                 <div id="preview5"></div>
             </div>
             <br>
-            <!-- <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != null) { %>
-            <div>
-                <img src="<%=req.session.GRGSdata.imgIDCard5%>" style="height:150px; width:auto" />
-            </div>
-            <br>
-            <% } %> -->
         </div>
 
         <!-- Remark -->
@@ -563,20 +525,9 @@
                     href="/formDoc/GRGS_declaration.pdf" download style="color:#83a70c"><u>declaration.pdf</u></a>,then
                 sign and upload it</label>
             <input id="declaration" type="file" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.declaration != null) { %>
-                value="<%=req.session.GRGSdata.declaration%>" <% } %> required />
+                required />
             <div id="HF2preview"></div>
-            <% if(req.session.GRGSdata != null && req.session.GRGSdata.declaration != null) { 
-                var type = req.session.GRGSdata.declaration.split(';');%>
-            <div>
-                <% if(type[0] == 'data:image/jpeg') { %>
-                <br>
-                <img id="oriDeclar" src="<%=req.session.GRGSdata.declaration%>" style="height:150px; width:auto" />
-                <% } %>
-            </div>
-            <% } %>
         </div>
-
 
         <div class="col-12">
             <br><br>
@@ -619,67 +570,6 @@
 
     async function saveForm() {
         var form = document.getElementById("GRGS_form");
-
-        //alert(form.imgIDCard0.value);
-        // if (form.imgIDCard0 == null) {
-        //     if (req.session.GRGSdata.imgIDCard0 == null) {
-        //         var img0 = null;
-        //     } else {
-        //         var img0 = req.session.GRGSdata.imgIDCard0;
-        //     }
-        // } else {
-        //     var img0 = form.imgIDCard0.value;
-        // }
-
-        // if (form.imgIDCard1 == null) {
-        //     if (req.session.GRGSdata.imgIDCard1 == null) {
-        //         var img1 = null;
-        //     } else {
-        //         var img1 = req.session.GRGSdata.imgIDCard1;
-        //     }
-        // } else {
-        //     var img1 = form.imgIDCard1.value;
-        // }
-
-        // if (form.imgIDCard2 == null) {
-        //     if (req.session.GRGSdata.imgIDCard2 == null) {
-        //         var img2 = null;
-        //     } else {
-        //         var img2 = req.session.GRGSdata.imgIDCard2;
-        //     }
-        // } else {
-        //     var img2 = form.imgIDCard2.value;
-        // }
-
-        // if (form.imgIDCard3 == null) {
-        //     if (req.session.GRGSdata.imgIDCard3 == null) {
-        //         var img3 = null;
-        //     } else {
-        //         var img3 = req.session.GRGSdata.imgIDCard3;
-        //     }
-        // } else {
-        //     var img3 = form.imgIDCard3.value;
-        // }
-
-        // if (form.imgIDCard4 == null) {
-        //     if (req.session.GRGSdata.imgIDCard4 == null) {
-        //         var img4 = null;
-        //     } else {
-        //         var img4 = req.session.GRGSdata.imgIDCard4;
-        //     }
-        // } else {
-        //     var img4 = form.imgIDCard4.value;
-        // }
-
-        // if (form.imgIDCard5 == null) {
-        //     if (req.session.GRGSdata.imgIDCard5 == null) {
-        //         var img5 = null;
-        //     } else {
-        //         var img5 = req.session.GRGSdata.imgIDCard5;
-        //     }
-        // } else {
-        //     var img5 = form.imgIDCard5.value;
-        // }
 
         var data = JSON.stringify({
             teamName: form.teamName.value,
@@ -741,8 +631,6 @@
             total: form.total.value,
             declaration: form.declaration.value
         });
-        alert(data);
-
 
         var response = await fetch("/competition/form/GRGS/save", {
             method: "POST",
@@ -802,9 +690,6 @@
             img.style.width = "auto";
             img.style.height = "150px";
             document.getElementById('GRGS_form').appendChild(input);
-            // document.getElementById("imgIDCard"+p).value = input.value;
-            var g = document.getElementById("imgIDCard" + p).value;
-            alert(g)
         }
         reader.readAsDataURL(file);
     }
