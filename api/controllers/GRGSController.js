@@ -9,7 +9,7 @@ module.exports = {
     GRGS_form: async function (req, res) {
 
         if (req.method == 'GET') { return res.view('competition/form/GRGS'); }
-        
+
         req.session.data = req.body.GRGS;
 
         return res.view('pages/competition/form/GRGS_Preview', { 'data': req.session.GRGSdata || {} });
@@ -25,21 +25,24 @@ module.exports = {
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
             await GRGS.create(req.session.data);
+
+            //update form idCode
             var model = await GRGS.findOne(req.session.data);
             await GRGS.update(model.id).set({
                 idCode: "GRGS2020-" + model.id
             })
             model["idCode"] = "GRGS2020-" + model.id;
+            //
 
             //clear formdata in session and user
-            req.session.data = {};  
-            req.session.GRGSdata = {};  
+            req.session.data = {};
+            req.session.GRGSdata = {};
             var user = await User.update(req.session.userId).set({
                 GRGSdata: {}
             }).fetch();
             if (user.length == 0) return res.notFound();
             //
-            
+
             return res.view('pages/competition/form/confirm_form', { 'form': model });
         }
     },
@@ -50,7 +53,7 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         req.session.GRGSdata = req.body;
-        
+
         var user = await User.update(req.session.userId).set({
             GRGSdata: req.body
         }).fetch();
@@ -311,22 +314,27 @@ module.exports = {
                 "參加者(1)英文姓名 Applicant(1) Name in English": model.engName1,
                 "參加者(1)身份證號碼 Applicant(1) ID Card Number": model.ID1,
                 "參加者(1)出生日期 Applicant(1) Date of Birth": date1,
+                "參加者(2)是否有中文姓名 Applicant(2) Any Chinese name": model.havecname2,
                 "參加者(2)中文姓名 Applicant(2) Chinese Name": model.chiName2,
                 "參加者(2)英文姓名 Applicant(2) English Name": model.engName2,
                 "參加者(2)身份證號碼 Applicant(2) ID Card Number": model.ID2,
                 "參加者(2)出生日期 Applicant(2) Date of Birth": date2,
+                "參加者(3)是否有中文姓名 Applicant(3) Any Chinese name": model.havecname3,
                 "參加者(3)中文姓名 Applicant(3) Chinese Name": model.chiName3,
                 "參加者(3)英文姓名 Applicant(3) English Name": model.engName3,
                 "參加者(3)身份證號碼 Applicant(3) ID Card Number": model.ID3,
                 "參加者(3)出生日期 Applicant(3) Date of Birth": date3,
+                "參加者(4)是否有中文姓名 Applicant(4) Any Chinese name": model.havecname4,
                 "參加者(4)中文姓名 Applicant(4) Chinese Name": model.chiName4,
                 "參加者(4)英文姓名 Applicant(4) English Name": model.engName4,
                 "參加者(4)身份證號碼 Applicant(4) ID Card Number": model.ID4,
                 "參加者(4)出生日期 Applicant(4) Date of Birth": date4,
+                "參加者(5)是否有中文姓名 Applicant(5) Any Chinese name": model.havecname5,
                 "參加者(5)中文姓名 Applicant(5) Chinese Name": model.chiName5,
                 "參加者(5)英文姓名 Applicant(5) English Name": model.engName5,
                 "參加者(5)身份證號碼 Applicant(5) ID Card Number": model.ID5,
                 "參加者(5)出生日期 Applicant(5) Date of Birth": date5,
+                "參加者(6)是否有中文姓名 Applicant(6) Any Chinese name": model.havecname6,
                 "參加者(6)中文姓名 Applicant(6) Chinese Name": model.chiName6,
                 "參加者(6)英文姓名 Applicant(6) English Name": model.engName6,
                 "參加者(6)身份證號碼 Applicant(6) ID Card Number": model.ID6,
@@ -350,5 +358,78 @@ module.exports = {
         res.set("Content-disposition", "attachment; filename=GRGS.xlsx");
         return res.end(XLSX.write(wb, { type: "buffer", bookType: "xlsx" }));
     },
+
+    //action - import excel
+    import_xlsx: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.file('file').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            var XLSX = require('xlsx');
+            var workbook = XLSX.readFile(uploadedFiles[0].fd);
+            var ws = workbook.Sheets[workbook.SheetNames[0]];
+            var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "teamName", "phone", "email", "coachName", "coachPhone", "category", "havecname1", "chiName1", "engName1", "ID1", "birth1", "havecname2", "chiName2", "engName2", "ID2", "birth2", "havecname3", "chiName3", "engName3", "ID3", "birth3", "havecname4", "chiName4", "engName4", "ID4", "birth4", "havecname5", "chiName5", "engName5", "ID5", "birth5", "havecname6", "chiName6", "engName6", "ID6", "birth6", "leaderName", "leaderPosition", "NoOfTeam", "NoOfPeople", "teamFee", "insurance", "total", "payStatus", "formStatus", "teamStatus"] });
+
+            for (var i = 0; i < data.length; i++) {
+                var date1 = data[i].birth1.split('/');
+                day1 = date1[2] + "-" + date1[1] + "-" + date1[0];
+                data[i].birth1 = day1;
+
+                var date2 = data[i].birth2.split('/');
+                day2 = date2[2] + "-" + date2[1] + "-" + date2[0];
+                data[i].birth2 = day2;
+
+                var date3 = data[i].birth3.split('/');
+                day3 = date3[2] + "-" + date3[1] + "-" + date3[0];
+                data[i].birth3 = day3;
+
+                var date4 = data[i].birth4.split('/');
+                day4 = date4[2] + "-" + date4[1] + "-" + date4[0];
+                data[i].birth4 = day4;
+
+                var date5 = data[i].birth5.split('/');
+                day5 = date5[2] + "-" + date5[1] + "-" + date5[0];
+                data[i].birth5 = day5;
+
+                var date6 = data[i].birth6.split('/');
+                day6 = date6[2] + "-" + date6[1] + "-" + date6[0];
+                data[i].birth6 = day6;
+
+                if (data[i].payStatus == "未付款 Unpaid") {
+                    data[i].payStatus = "unpaid";
+                } else if (data[i].payStatus == "已付款 Paid") {
+                    data[i].payStatus = "paid";
+                }
+
+                if (data[i].formStatus == "待處理 To be handled") {
+                    data[i].formStatus = "ToBeCon";
+                } else if (data[i].formStatus == "已確認 Accepted") {
+                    data[i].formStatus = "accepted";
+                } else if (data[i].formStatus == "已拒絕 Rejected") {
+                    data[i].formStatus = "rejected";
+                } else if (data[i].formStatus == "資料不全 Data Deficiency") {
+                    data[i].formStatus = "dataDef";
+                }
+
+                if (data[i].teamStatus == "正選 Successful Team") {
+                    data[i].teamStatus = "suTeam";
+                } else if (data[i].teamStatus == "後補 Team on Waitiing List") {
+                    data[i].teamStatus = "waitTeam";
+                }
+            }
+
+            console.log(data);
+
+            var models = await GRGS.createEach(data).fetch();
+            if (models.length == 0) {
+                return res.badRequest("No data imported.");
+            }
+            return res.redirect('/admin/applyHandle/search');
+        });
+    }
+
 };
 

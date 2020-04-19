@@ -65,6 +65,36 @@ module.exports = {
       type: 'json',
     },
 
+    GRGPdata: {
+      type: 'json',
+    },
+    
+    TRGPdata: {
+      type: 'json',
+    },
+
+    TRGSdata: {
+      type: 'json',
+    },
+
+    clubMemdata: {
+      type: 'json',
+    },
+
+
+    tramData: {
+      type: 'json',
+    },
+
+    gfaData: {
+      type: 'json',
+    },
+
+    Acrodata: {
+      type: 'json',
+    },
+
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

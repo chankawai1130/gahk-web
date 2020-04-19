@@ -19,21 +19,30 @@ module.exports = {
     //(create)
     //action - create 
     TRGPFormPreview: async function (req, res) {
-        if (req.method == "GET") return res.forbidden();
+        if (req.method == "POST") {
+            //create TRGP
+            req.session.data.payStatus = "unpaid";
+            req.session.data.formStatus = "ToBeCon";
+            req.session.data.teamStatus = "suTeam";
+            await TRGP.create(req.session.data);
 
-        req.session.data.payStatus = "unpaid";
-        req.session.data.formStatus = "ToBeCon";
-        req.session.data.teamStatus = "suTeam";
-        await TRGP.create(req.session.data);
-        var model = await TRGP.findOne(req.session.data);
-        await TRGP.update(model.id).set({
-            idCode: "TRGP2020-" + model.id
-        })
-        model["idCode"] = "TRGP2020-" + model.id;
-        req.session.data = {};  //clear data of session
-        req.session.TRGPdata = {};
+            //Set idCode to TRGP
+            var model = await TRGP.findOne(req.session.data);
+            await TRGP.update(model.id).set({
+                idCode: "TRGP2020-" + model.id
+            })
+            model["idCode"] = "TRGP2020-" + model.id;
 
-        return res.view('pages/competition/form/confirm_form', { 'form': model });
+            //clear all session data
+            req.session.data = {};
+            req.session.TRGPdata = {};
+            var user = await User.update(req.session.userId).set({
+                TRGPdata: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
+
+            return res.view('pages/competition/form/confirm_form', { 'form': model });
+        }
 
     },
 
@@ -41,10 +50,13 @@ module.exports = {
 
         if (req.method == "GET") return res.forbidden();
 
-        var user = await User.findOne(req.session.userId);
+        req.session.TRGPdata = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            TRGPdata: req.body
+        }).fetch();
 
         if (user.length == 0) return res.notFound();
-        req.session.TRGPdata = req.body;
 
         if (req.wantsJSON) {
             return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/TRGPForm' });    // for ajax request
@@ -53,9 +65,7 @@ module.exports = {
         }
     },
 
-
-
-    // admin/HandleApply
+    //**************************admin/HandleApply*************************
     //update form
     update: async function (req, res) {
         if (req.method == "GET") {
@@ -342,8 +352,20 @@ module.exports = {
                 } else if (data[i].teamStatus == "後補 Team on Waitiing List") {
                     data[i].teamStatus = "waitTeam";
                 }
-            }
 
+                var day1 = data[i].Mate1Date.split('/');
+                var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
+                data[i].Mate1Date = date1;
+                var day2 = data[i].Mate2Date.split('/');
+                var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
+                data[i].Mate2Date = date2;
+                var day3 = data[i].Mate3Date.split('/');
+                var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
+                data[i].Mate3Date = date3;
+                var day4 = data[i].Mate4Date.split('/');
+                var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
+                data[i].Mate4Date = date4;
+            }
 
             console.log(data);
 

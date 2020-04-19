@@ -221,8 +221,6 @@
         </table>
 
         <form action="/admin/applyHandle/clubMemEdit/<%= clubMem.id %>" method="POST" id="clubMem">
-
-
             <ol class="row mx-sm-2" type="A">
                 <li class="col-12 partA"
                     style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
@@ -363,13 +361,13 @@
 
 
                     <br><br>
-                    <p>The prescribed membership fee for the year of <span><input type="number" name="ClubMember[year]"
-                                value="<%= clubMem.year%>" style="width: 30pt;" min="1" required></span> at
-                        <span><select name="ClubMember[clubFee]" required>
-                                <option value="">Choose Amount</option>
+                    <p>The prescribed membership fee for the year of <input type="number" name="ClubMember[year]"
+                                value="<%= clubMem.year%>" style="width: 30pt;" min="1" required> at
+                            <select name="ClubMember[clubFee]" required>
+                                <option disabled>Choose Amount</option>
                                 <option value="1000" <% if(clubMem.clubFee == "1000"){%>selected<%}%> >HK$1,000</option>
                                 <option value="150" <% if(clubMem.clubFee == "150"){%>selected<%}%>>HK$150</option>
-                            </select></span> and details of the Organization is attached.</p>
+                            </select> and details of the Organization is attached.</p>
                 </div>
     
                 <div class="form-group col-12 partD">

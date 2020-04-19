@@ -211,6 +211,7 @@
                 <br><br>
             </div>
 
+            <!-- 團體資料 Group Details -->
             <div class="col-12">
                 <h5 id="labelHead">團體資料 Group Details</h5>
             </div>
@@ -295,6 +296,7 @@
             <label class="form-check-label" for="category">高級B組</label>
             </div>
 
+            <!-- 參加者(1) Applicant(1) -->
             <div class="card col-12 col-sm-6" style="background: transparent;">
                 <br>
                 <h6 id="labelHead">參加者(1)個人資料 Applicant(1)'s Personal Details</h6>
@@ -348,6 +350,7 @@
                 </div>
             </div>
 
+            <!-- 參加者(2) Applicant(2) -->
             <div class="card col-12 col-sm-6" style="background: transparent;">
                 <br>
                 <h6 id="labelHead">參加者(2)個人資料 Applicant(2)'s Personal Details</h6>
@@ -401,6 +404,7 @@
                 </div>
             </div>
 
+            <!-- 參加者(3) Applicant(3) -->
             <div class="card col-12 col-sm-6" style="background: transparent;">
                 <br>
                 <h6 id="labelHead">參加者(3)個人資料 Applicant(3)'s Personal Details</h6>
@@ -456,6 +460,7 @@
                 </div>
             </div>
 
+            <!-- 參加者(4) Applicant(4) -->
             <div class="card col-12 col-sm-6" style="background: transparent;">
                 <br>
                 <h6 id="labelHead">參加者(4)個人資料 Applicant(4)'s Personal Details</h6>
@@ -509,6 +514,7 @@
                 </div>
             </div>
 
+            <!-- 費用 Fee -->
             <div class="form-group col-12">
                 <br>
                 <h5 id="labelHead">費用 Fee</h5>
@@ -529,6 +535,7 @@
                 </div>
             </div>
 
+            <!-- 聲明 Declaration -->
             <div class="form-group col-12">
                 <h5 id="labelHead">聲明 Declaration</h5>
                 <div class="form-group">
@@ -556,6 +563,7 @@
                 </div>
             </div>
 
+            <!-- 付款狀況 Payment Status -->
             <div class="form-group col-12">
                 <h5 id="labelHead">付款狀況 Payment Status</h5>
                 <% if(TRGS.payStatus == "paid") {%>
@@ -572,6 +580,7 @@
                 <%}%>
             </div>
 
+            <!-- 申請狀況 Apply Status -->
             <div class="form-group col-12">
                 <h5 id="labelHead">申請狀況 Apply Status</h5>
         
@@ -629,6 +638,7 @@
                     <%}%>
             </div>
 
+            <!-- 隊伍/團體狀況 Team Status -->
             <div class="form-group col-12">
                 <h5 id="labelHead">隊伍/團體狀況 Team Status</h5>
                 <% if(TRGS.teamStatus == "waitTeam") {%>
@@ -646,6 +656,7 @@
                     <%}%>
             </div>
 
+            <!-- button -->
             <div class="form-group col-12" style="text-align: right;">
                 <%if(TRGS.formStatus == "rejected"){%>
                     <a class="btn btn-success" style="color: white;" onclick="history.back()">完成 Submit</a>
@@ -654,6 +665,7 @@
                     <%}%>
             </div>
 
+            <!-- Update Date -->
             <% var m = new Date(TRGS.updatedAt);
             var month = m.getMonth() + 1;
             var updateDate = m.getDate() + "/" + month + "/" + m.getFullYear() + " " + m.getHours() + ":" + m.getMinutes() + ":" + m.getSeconds(); %>
@@ -662,6 +674,7 @@
     </div>
 </form>
 
+<!-- reject box -->
 <div id="<%= TRGS.id%>" class="modal">
     <div class="modal-content">
         <div class="container">
@@ -679,6 +692,7 @@
 </div>
 
 <script>
+    //Disable form if rejected
     window.onload = function () { disableform('TRGS', '<%= TRGS.formStatus%>') };
     function disableform(formId, formStatus) {
         if (formStatus == "rejected") {
@@ -743,12 +757,6 @@
         }
     }
 
-
-    //button function
-    function submitForm(id) {
-        alert("更新成功 Successfully Updated" + "\n" + id);
-    }
-
     async function rejectForm(id) {
         var response = await fetch("/admin/applyHandle/reject/TRGS/" + id, {
             method: "POST",
@@ -762,6 +770,11 @@
             alert(response.status + ": " + response.statusText);
         }
     };
+
+    //button function
+    function submitForm(id) {
+        alert("更新成功 Successfully Updated" + "\n" + id);
+    }
 
 
 

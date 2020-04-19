@@ -29,9 +29,37 @@ module.exports = {
                 idCode: "GFA2020-" + model.id
             })
             model["idCode"] = "GFA2020-" + model.id;
-            req.session.data = {};  //clear data of session
+
+            //clear formdata in session and user
+            req.session.data = {};
+            req.session.gfaData = {};
+            var user = await User.update(req.session.userId).set({
+                gfaData: {}
+            }).fetch();
+            if (user.length == 0) return res.notFound();
+            //
 
             return res.view('pages/competition/form/confirm_form', { 'form': model });
+        }
+    },
+
+    //action - save
+    save: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        req.session.gfaData = req.body;
+
+        var user = await User.update(req.session.userId).set({
+            gfaData: req.body
+        }).fetch();
+
+        if (user.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GFA_form' });    // for ajax request
+        } else {
+            return res.redirect('/competition/form/GFA_form');           // for normal request
         }
     },
 

@@ -127,8 +127,8 @@
         申請處理管理<span class="highlight">系統</span>
     </h5>
 
+    <!-- Search bar -->
     <form action="/admin/applyHandle/search" method="GET">
-        <!-- Search bar -->
         <div class="row mx-sm-2">
             <div class="form-group col-12">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
@@ -148,7 +148,9 @@
                 </select>
             </div>
 
+            <!-- 項目 Event/性別 Gender -->
             <div class="form-group col-12" id="extraEvent"></div>
+            <!-- Category 組別 -->
             <div class="form-group col-12" id="extraCat"></div>
 
             <div class="form-group col-12 col-sm-6">
@@ -171,14 +173,13 @@
                 </select>
             </div>
 
+            <!-- 隊伍/團體狀況 Team Status -->
             <div class="form-group col-12" id="extraTSt"></div>
 
             <button type="submit" class="btn btn-primary"
-                style="background-color: #83a70c; border-color: #83a70c; margin-left:auto; margin-right:auto;">搜尋
-                Search</button>
+                style="background-color: #83a70c; border-color: #83a70c; margin-left:auto; margin-right:auto;">搜尋 Search</button>
 
         </div>
-
         <br><br>
     </form>
 
@@ -186,6 +187,8 @@
     <!-- Search result -->
     <table>
         <%if (applications){%>
+
+        <!-- Excel Import Guidelines-->
         <a type="button" class="mx-sm-2" onclick="document.getElementById('importBrief').style.display='block'"
             style="color: teal;"><u>Excel匯入指引 Excel Import Guidelines</u></a>
         <!-- importBrief box -->
@@ -201,65 +204,66 @@
                             data before importing.</li>
                         <br>
                         <li>請不要更改、刪除或新增第1行的標示,並從第二行開始輸入資料。<br>
-                            Please do not modify, delete or append any attributes in row one. Please start inputing the
+                            Please do not modify, delete or append any attributes in row one. Please start inputting the
                             data from row two.</li>
                         <br>
-                        <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>There are some inputing words. If the data is wrongly input, this
-                            may lead to data deficiency.</li>
+                        <li>以下為輸入字眼，如輸入錯誤，或會造成資料缺失。<br>Here are some wordings for inputting. Please make sure the inputs follow the guildeline. Otherwise, a
+                            problem of data deficiency may happen.</li>
                         <ul>
                             <% if (form != "clubMem"){%>
                             <li>標示<mark>"是否有中文姓名 Any Chinese name"</mark>，請輸入字眼"是 Yes" 或 "否 No"。<br>For the attribute
+
                                 <mark>"是否有中文姓名 Any Chinese name"</mark>, please input the data "是 Yes" or "否 No".</li>
-                            <li>標示<mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>，請跟隨格式(yyyy-mm-dd)。<br>For the attribute
-                                <mark>"出生日期 Date of Birth (yyyy-mm-dd)"</mark>, please follow the format of
-                                (yyyy-mm-dd).</li>
+                            <li>標示<mark>"出生日期 Date of Birth (dd/mm/yyyy)"</mark>，請跟隨格式(dd/mm/yyyy)。<br>For the attribute
+                                <mark>"出生日期 Date of Birth (dd/mm/yyyy)"</mark>, please follow the format of
+                                (dd/mm/yyyy).</li>
+                             <%}%>   
+
                             <li>標示<mark>"付款狀況 Payment Status"</mark>，請輸入字眼"未付款 Unpaid"或已付款 Paid"。<br>For the attribute
-                                <mark>"付款狀況 Payment Status"</mark>, please input the data "未付款 Unpaid" or "已付款 Paid".
+                                <mark>"付款狀況 Payment Status"</mark>, please input "未付款 Unpaid" or "已付款 Paid" only.
                             </li>
-                            <%}%>
                             <li>標示<mark>"申請狀況 Apply Status"</mark>，請輸入字眼"待處理 To be handled"，"已確認 Accepted"，"已拒絕
                                 Rejected"或"資料不全 Data Deficiency"。<br>For the attribute <mark>"申請狀況 Apply Status"</mark>,
-                                please input the data "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
-                                Deficiency".</li>
+                                please input "待處理 To be handled","已確認 Accepted","已拒絕 Rejected" or "資料不全 Data
+                                Deficiency" only.</li>
                                 <% if (form != "clubMem"){%>
                             <li>標示<mark>"隊伍/團體狀況 Team Status"</mark>，請輸入字眼"正選 Successful Team"或"後補 Team on Waitiing
-                                List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input the data
-                                "正選 Successful Team" or "後補 Team on Waitiing List".</li>
+                                List"。<br>For the attribute <mark>"隊伍/團體狀況 Team Status"</mark>, please input
+                                "正選 Successful Team" or "後補 Team on Waitiing List" only.</li>
                                 <%}%>
                         </ul>
                     </ol>
 
                     <div class="clearfix">
                         <button type="button" class="cancelbtn modalBtn" style="float: none; width: 30%;"
-                            onclick="document.getElementById('importBrief').style.display='none'">知道 Understand</button>
+                            onclick="document.getElementById('importBrief').style.display='none'">明白 Understand</button>
                     </div>
                 </div>
             </div>
         </div>
         <br>
-
-
+        <!-- Excel Import-->
         <form action="/<%=form%>/import_xlsx" method="post" enctype="multipart/form-data">
             <span class="mx-sm-2">請在匯入檔案前下載 <a download="<%=form%>_範本.xlsx" href="/formDoc/<%=form%>_template.xlsx"
                     target="_blank">範本.xlsx</a> 並輸入資料。</span>
             <br>
             <span class="mx-sm-2">Please download <a download="<%=form%>_template.xlsx"
-                    href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before
-                importing.</span>
+                    href="/formDoc/<%=form%>_template.xlsx" target="_blank">template.xlsx</a> and input the data before importing.</span>
+            <br>
+            <input class="mx-sm-2" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
             <br>
             <button type="submit" class="btn btn-primary mx-sm-2"
                 style="font-size: small; background-color:teal; border-color: teal;">匯入Excel<br>Excel Import</button>
-            <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
-            <br>
         </form>
 
-
-        <br>
-        <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white;"
+        <!-- Excel Export-->
+        <a type="button" class="btn btn-info mx-sm-2" style="font-size: small; color: white; float: right;"
             href="/<%=form%>/export_xlsx">匯出Excel<br>Excel Export</a>
-
         &nbsp;
-        <a type="button" class="btn btn-primary" style="font-size: small; color: white;"
+
+
+        <!-- 全部確認 Confirm All -->
+        <a type="button" class="btn btn-primary" style="font-size: small; color: white; float: right;"
             onclick="document.getElementById('confirmAll').style.display='block'">全部確認<br>Confirm All</a>
         <!-- confirmAll box -->
         <div id="confirmAll" class="modal">
@@ -298,22 +302,26 @@
         <%} else if (form == "clubMem") {%>
         <b>團體註冊申請 Application for Club Membership</b>
         <%}%>
-            <br><br>
-            <tr id="subjects">
+        <br><br>
+
+        <!-- Attributes -->
+        <tr id="subjects">
             <th align="center">申請編號<br>Application No.</th>
             <% if (form != "acroage"){ %>
-        <th align="center">隊伍/團體<br>Team/Organisation</th>
-        <% } if (form == "trampoline"){ %>
-        <th align="center">性別<br>Gender</th>
-        <% } if (form == "acroage"){ %>
-        <th align="center">項目<br>Event</th>
-        <%} if (form != "clubMem") {%>
-        <th align="center">組別<br>Category</th>
-        <% } %>
-        <th>付款<br>Payment</th>
-        <th align="center">提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
-        <th>狀態<br>Status</th>
+            <th align="center">隊伍/團體<br>Team/Organisation</th>
+            <% } if (form == "trampoline"){ %>
+            <th align="center">性別<br>Gender</th>
+            <% } if (form == "acroage"){ %>
+            <th align="center">項目<br>Event</th>
+            <%} if (form != "clubMem") {%>
+            <th align="center">組別<br>Category</th>
+            <% } %>
+            <th>付款<br>Payment</th>
+            <th align="center">提交日期<br>Apply Date<br>(DD/MM/YYYY)</th>
+            <th>狀態<br>Status</th>
         </tr>
+
+        <!-- Result List -->
         <% applications.forEach( function(models) { %>
         <% var n = new Date(models.createdAt);
                 var month = n.getMonth() + 1;
@@ -328,8 +336,8 @@
             <% } else {%>
             <td width="30%" height="100"><%= models.teamName %></td>
             <%}%>
-                <!-- Column: 性別 Gender -->
-                <%} if (form == "trampoline"){ %>
+            <!-- Column: 性別 Gender -->
+            <%} if (form == "trampoline"){ %>
             <td width="25%"><%= models.gender %></td>
             <!-- Column: 項目 Event -->
             <%} if (form == "acroage"){ %>
@@ -342,47 +350,22 @@
             <td width="10%"><i class="fa fa-check"></i></td>
             <%} else if (models.payStatus == "unpaid"){%>
             <td width="10%"><i class="fa fa-remove"></i></td>
-            <%} else {%>
+            <%} else {%> 
+                <!-- if input wrong data when import excel -->
             <td>&nbsp;</td>
             <%}%>
             <!-- Column:提交日期 Apply Date -->
             <td width="15%"><%= applyDate %></td>
             <!-- Column:狀態 Status  -->
+            <td width="10%" id="btns">
             <%if (models.formStatus == "rejected") {%>
-            <td width="10%" id="btns">
                 <button type="button" class="btn btn-outline-danger" id="statusBtn" disabled>已拒絕<br>Rejected</button>
-                <% if (form == "TRGP"){%>
-                <a type="button" class="btn btn-success" id="statusBtn"
-                    href="/admin/applyHandle/TRGPEdit/<%= models.id %>">編輯<br>Edit</a>
-                <%} else if (form == "TRGS"){%>
-                <a type="button" class="btn btn-success" id="statusBtn"
-                    href="/admin/applyHandle/TRGSEdit/<%= models.id %>">編輯<br>Edit</a>
-                <%} else if (form == "gfa"){%>
-                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                <%} else if (form == "GRGP"){%>
-                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                <%} else if (form == "GRGS"){%>
-                <a type="button" class="btn btn-success" id="statusBtn"
-                    href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
-                <%} else if (form == "trampoline"){%>
-                <a type="button" class="btn btn-success" id="statusBtn"
-                    href="/admin/applyHandle/TrampolineEditForm/<%= models.id %>">編輯<br>Edit</a>
-                <%} else if (form == "acroage"){%>
-                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
-                <%} else if (form == "clubMem") {%>
-                <a type="button" class="btn btn-success" id="statusBtn"
-                    href="/admin/applyHandle/clubMemEdit/<%= models.id %>">編輯<br>Edit</a>
-                <%}%> 
-                </td>
-                <%} else {%>
-
-            <td width="10%" id="btns">
+            <%} else {%>
                 <% if (models.formStatus == "accepted"){%>
                 <button type="button" class="btn btn-outline-primary" id="statusBtn" disabled>已確認<br>Accepted</button>
 
                 <%} else if(models.formStatus == "dataDef") {
                        var confirmID = "con"+ models.id %>
-
                 <a type="button" class="btn btn-primary" id="statusBtn"
                     onclick="document.getElementById('<%= confirmID%>').style.display='block'"
                     style="color: white;">確認<br>Confirm</a>
@@ -403,9 +386,9 @@
                     </div>
                 </div>
 
-
                 <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
                     Deficiency</button>
+
                 <%} else {%>
                     <%var confirmID = "con"+ models.id %>
                     <a type="button" class="btn btn-primary" id="statusBtn"
@@ -431,9 +414,9 @@
                     <a type="button" class="btn btn-warning" id="statusBtn"
                         onclick="dataDef('<%= form%>', '<%= models.id%>')" style="color: white;">資料不全<br>Data
                         Deficiency</a>
-                    <%}%>
+                <%}%>
            
-                    <%var deleteID = "del"+ models.id %>
+                <%var deleteID = "del"+ models.id %>
                 <a type="button" class="btn btn-danger" id="statusBtn"
                     onclick="document.getElementById('<%= deleteID%>').style.display='block'"
                     style="color: white;">拒絕<br>Rejected</a>
@@ -461,6 +444,7 @@
                     <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
                     onclick="waitingList('<%= form%>','<%= models.id%>')">後補<br>Waitiing</a>
                 <%}}%>
+            <%}%>
 
                 <% if (form == "TRGP"){%>
                 <a type="button" class="btn btn-success" id="statusBtn"
@@ -471,7 +455,8 @@
                 <%} else if (form == "gfa"){%>
                 <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
                 <%} else if (form == "GRGP"){%>
-                <a type="button" class="btn btn-success" id="statusBtn" href="">編輯<br>Edit</a>
+                <a type="button" class="btn btn-success" id="statusBtn" 
+                    href="/admin/applyHandle/GRGPEditForm/<%= models.id %>">編輯<br>Edit</a>
                 <%} else if (form == "GRGS"){%>
                 <a type="button" class="btn btn-success" id="statusBtn"
                     href="/admin/applyHandle/GRGSEditForm/<%= models.id %>">編輯<br>Edit</a>
@@ -484,15 +469,15 @@
                 <a type="button" class="btn btn-success" id="statusBtn"
                     href="/admin/applyHandle/clubMemEdit/<%= models.id %>">編輯<br>Edit</a>
                 <%}%> 
-                </td>
-                <%}%>
+            </td>
+
         </tr>
         <%});%>
         <%} %>
     </table>
     <br>
-
 </div>
+
 <script>
     var acrCategory = ["1級(6至14歲) Level 1(6-14 years old)", "2級(6至14歲) Level 2(6-14 years old)", "3級(8歲或以上) Level 3(8 years old or above)", "4級(9歲或以上) Level 4(9 years old or above)", "5級(10歲或以上) Level 5(10 years old or above)"];
     var gfaCategory = ["幼稚園 Kindergarten", "小學組 Primary School", "公開組 Open Group"];
@@ -518,6 +503,7 @@
         } else {
             event.innerHTML = "";
         }
+
         //Category
         var appSelect = document.getElementById("extraCat");
         if (compValue == "clubMem" || compValue == "") {
@@ -526,7 +512,6 @@
             appSelect.innerHTML = "<label style=\"color: #888888; font-size: 16pt;\" class=\"col-form-label\">Category 組別</label>"
                 + "<select class=\"form-control\" id=\"category\" name=\"category\"><option value=\"\">請選擇組別 Select Category</option></select>";
             var gpSelect = document.getElementById("category");
-            //gpSelect.options.length = 0;
             if (compValue == "acroage") {
                 acrCategory.forEach(function (item) {
                     var option = document.createElement("option");
@@ -565,6 +550,7 @@
                 });
             }
         }
+
         //TeamStatus
         var TStSelect = document.getElementById("extraTSt");
         if (compValue != "clubMem") {

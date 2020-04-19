@@ -1,4 +1,4 @@
-<form action="/competition/form/GFA_form" method="POST">
+<form action="/competition/form/GFA_form" method="POST" id="gfa">
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
@@ -15,7 +15,8 @@
 
 
         <div class="col-12">
-            <a href="/formDoc/Prospectus_GFAFestival2020.pdf" target="_blank" style="text-align: center;"><u>2020年香港普及體操節章程
+            <a href="/formDoc/Prospectus_GFAFestival2020.pdf" target="_blank"
+                style="text-align: center;"><u>2020年香港普及體操節章程
                     Prospectus of GFAFestival2020</u></a>
         </div>
 
@@ -29,26 +30,35 @@
 
         <div class="col-12">
             <label>團體名稱 Group Name:</label>
-            <input type="text" class="form-group" name="GFA[teamName]" style="width:350pt;" required>
+            <input id="teamName" type="text" class="form-group" name="GFA[teamName]" style="width:350pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.teamName != null){ %>
+                value="<%=req.session.gfaData.teamName%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <label>收據抬頭 Receipt Header:</label>
-            <input type="text" class="form-group" name="GFA[receiptHeader]" style="width: 350pt;" required>
+            <input id="receiptHeader" type="text" class="form-group" name="GFA[receiptHeader]" style="width: 350pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.receiptHeader != null){ %>
+                value="<%=req.session.gfaData.receiptHeader%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <label>聯絡地址 Address:</label>
-            <input type="text" class="form-group" name="GFA[address]" style="width:450pt;" required>
+            <input id="address" type="text" class="form-group" name="GFA[address]" style="width:450pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.address != null){ %>
+                value="<%=req.session.gfaData.address%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <span>參賽組別 Category:</span>
-            <input type="radio" name="GFA[category]" value="幼稚園 Kindergarten" required>
+            <input type="radio" name="GFA[category]" value="幼稚園 Kindergarten" id="kinder"
+                <% if(req.session.gfaData != null && req.session.gfaData.kinder == true){ %> checked <% } %> required>
             <label class="form-check-label" for="category">幼稚園 Kindergarten</label>
-            <input type="radio" name="GFA[category]" value="小學組 Primary School" required>
+            <input type="radio" name="GFA[category]" value="小學組 Primary School" id="primary"
+                <% if(req.session.gfaData != null && req.session.gfaData.primary == true){ %> checked <% } %> required>
             <label class="form-check-label" for="category">小學組 Primary School</label>
-            <input type="radio" name="GFA[category]" value="公開組 Open Group" required>
+            <input type="radio" name="GFA[category]" value="公開組 Open Group" id="open"
+                <% if(req.session.gfaData != null && req.session.gfaData.open == true){ %> checked <% } %> required>
             <label class="form-check-label" for="category">公開組 Open Group</label>
         </div>
 
@@ -63,23 +73,30 @@
 
         <div class="col-12">
             <label>是否有中文姓名 Any Chinese name: </label>
-            <input type="radio" name="GFA[havecname]" value="是 Yes" id="Yes" onclick="havechinesename()" required />
+            <input type="radio" name="GFA[havecname]" value="是 Yes" id="Yes" onclick="havechinesename()"
+                <% if(req.session.gfaData != null && req.session.gfaData.Yes == true){ %> checked <% } %> required>
             <label class="form-check-label" for="havecname">是 Yes</label>
 
-            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No" onclick="havechinesename()" required />
+            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No" onclick="havechinesename()"
+                <% if(req.session.gfaData != null && req.session.gfaData.No == true){ %> checked <% } %> required>
             <label class="form-check-label" for="havecname">否 No</label>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>中文姓名 Name in Chinese:</label>
             <input type="text" class="form-group" name="GFA[cpChiName]" id="cpChiName"
-                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" <% if(req.session.data != null && req.session.data.havecname == "否 No") { %>disabled <% } %> required>
+                onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                <% if(req.session.data != null && req.session.data.havecname == "否 No") { %>disabled
+                <%} else if(req.session.gfaData != null) { if(req.session.gfaData.No == true) {%> disabled <% }else{ %>
+                value="<%=req.session.gfaData.cpChiName%>" <% }} %> required />
         </div>
 
         <div class="col-12 col-sm-6">
             <label>英文姓名 Name in English:</label>
-            <input type="text" class="form-group" name="GFA[cpEngName]"
-                onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+            <input id="cpEngName" type="text" class="form-group" name="GFA[cpEngName]"
+                onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')"
+                <% if(req.session.gfaData != null && req.session.gfaData.cpEngName != null){ %>
+                value="<%=req.session.gfaData.cpEngName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -88,18 +105,24 @@
 
             <div class="col-12">
                 <label>日間 Office Hour:</label>
-                <input type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpDayPhone]" required>
+                <input id="cpDayPhone" type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpDayPhone]"
+                    <% if(req.session.gfaData != null && req.session.gfaData.cpDayPhone != null){ %>
+                    value="<%=req.session.gfaData.cpDayPhone%>" <% } %> required>
             </div>
 
             <div class="col-12">
                 <label>手提 Mobile:</label>
-                <input type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpMobilePhone]" required>
+                <input id="cpMobilePhone" type="tel" pattern=[0-9]{8} class="form-group" name="GFA[cpMobilePhone]"
+                    <% if(req.session.gfaData != null && req.session.gfaData.cpMobilePhone != null){ %>
+                    value="<%=req.session.gfaData.cpMobilePhone%>" <% } %> required>
             </div>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>電郵地址 Email Address:</label>
-            <input type="email" class="form-group" name="GFA[email]" style="width:250pt;" required>
+            <input id="email" type="email" class="form-group" name="GFA[email]" style="width:250pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.email != null){ %>
+                value="<%=req.session.gfaData.email%>" <% } %> required>
         </div>
 
 
@@ -114,22 +137,30 @@
 
         <div class="col-12 col-sm-6">
             <label>參加人數 Number of Applicants:</label>
-            <input type="number" class="form-group" name="GFA[applicantNum]" min="1" max="100" required>
+            <input id="applicantNum" type="number" class="form-group" name="GFA[applicantNum]" min="1" max="100"
+                <% if(req.session.gfaData != null && req.session.gfaData.applicantNum != null){ %>
+                value="<%=req.session.gfaData.applicantNum%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
             <label>工作人員人數 Number of Crews:</label>
-            <input type="number" class="form-group" name="GFA[crewNum]" min="0" max="100" required>
+            <input id="crewNum" type="number" class="form-group" name="GFA[crewNum]" min="0" max="100"
+                <% if(req.session.gfaData != null && req.session.gfaData.crewNum != null){ %>
+                value="<%=req.session.gfaData.crewNum%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <label>支票編號 Check Number:</label>
-            <input type="text" class="form-group" name="GFA[checkNum]" style="width:350pt;" required>
+            <input id="checkNum" type="text" class="form-group" name="GFA[checkNum]" style="width:350pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.checkNum != null){ %>
+                value="<%=req.session.gfaData.checkNum%>" <% } %> required>
         </div>
 
         <div class="col-12">
             <label>銀行名稱 Name of Bank:</label>
-            <input type="text" class="form-group" name="GFA[bankName]" style="width:350pt;" required>
+            <input id="bankName" type="text" class="form-group" name="GFA[bankName]" style="width:350pt;"
+                <% if(req.session.gfaData != null && req.session.gfaData.bankName != null){ %>
+                value="<%=req.session.gfaData.bankName%>" <% } %> required>
         </div>
 
 
@@ -175,6 +206,9 @@
             <br>
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
+            <button type="button" class="btn btn-primary" onclick="saveForm()"
+                style="background: red; border: none; float: left;">儲存
+                Save</button>
             <br><br>
         </div>
     </div>
@@ -182,6 +216,47 @@
 </form>
 
 <script>
+    async function saveForm() {
+        var form = document.getElementById("gfa");
+
+        var data = JSON.stringify({
+            teamName: form.teamName.value,
+            receiptHeader: form.receiptHeader.value,
+            address: form.address.value,
+            kinder: form.kinder.checked,
+            primary: form.primary.checked,
+            open: form.open.checked,
+            Yes: form.Yes.checked,
+            No: form.No.checked,
+            cpChiName: form.cpChiName.value,
+            cpEngName: form.cpEngName.value,
+            cpDayPhone: form.cpDayPhone.value,
+            cpMobilePhone: form.cpMobilePhone.value,
+            email: form.email.value,
+            applicantNum: form.applicantNum.value,
+            crewNum: form.crewNum.value,
+            checkNum: form.checkNum.value,
+            bankName: form.bankName.value
+        });
+
+        var response = await fetch("/competition/form/GFA/save", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
 
     function handleFile(files) {
         const file = files[0];
