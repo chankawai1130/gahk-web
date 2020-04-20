@@ -274,13 +274,33 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
+                <!-- <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required
                     <% if ( grgs.havecname1== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname1">是 Yes</label>
                 <input type="radio" name="GRGS[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required
                     <% if ( grgs.havecname1== "否 No" ) { %> checked <% } %> />
+                <label class="form-check-label" for="havecname1">否 No</label> -->
+
+
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname1 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    checked required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname1]" value="否 No" id="No1"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname1">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname1">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname1]" value="否 No" id="No1"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname1">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -333,13 +353,33 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
+                <!-- <label>是否有中文姓名 Any Chinese name: </label>
                 <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" required
                     <% if ( grgs.havecname2== "是 Yes" ) { %> checked <% } %> />
                 <label class="form-check-label" for="havecname2">是 Yes</label>
                 <input type="radio" name="GRGS[havecname2]" value="否 No" id="No2" onclick="havechinesename()" required
                     <% if ( grgs.havecname2== "否 No" ) { %> checked <% } %> />
+                <label class="form-check-label" for="havecname2">否 No</label> -->
+
+
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname2 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+                    checked required />
+                <label class="form-check-label" for="havecname2">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname2]" value="否 No" id="No2"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname2">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname2">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname2]" value="否 No" id="No2"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname2">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -392,13 +432,24 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()" required
-                    <% if ( grgs.havecname3== "是 Yes" ) { %> checked <% } %> />
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname3 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()"
+                    checked required />
                 <label class="form-check-label" for="havecname3">是 Yes</label>
-                <input type="radio" name="GRGS[havecname3]" value="否 No" id="No3" onclick="havechinesename()" required
-                    <% if ( grgs.havecname3== "否 No" ) { %> checked <% } %> />
+
+                &nbsp;<input type="radio" name="GRGS[havecname3]" value="否 No" id="No3"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname3">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname3]" value="是 Yes" id="Yes3" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname3">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname3]" value="否 No" id="No3"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname3">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -451,13 +502,24 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()" required
-                    <% if ( grgs.havecname4== "是 Yes" ) { %> checked <% } %> />
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname4 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()"
+                    checked required />
                 <label class="form-check-label" for="havecname4">是 Yes</label>
-                <input type="radio" name="GRGS[havecname4]" value="否 No" id="No4" onclick="havechinesename()" required
-                    <% if ( grgs.havecname4== "否 No" ) { %> checked <% } %> />
+
+                &nbsp;<input type="radio" name="GRGS[havecname4]" value="否 No" id="No4"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname4">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname4]" value="是 Yes" id="Yes4" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname4">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname4]" value="否 No" id="No4"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname4">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -510,13 +572,24 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()" required
-                    <% if ( grgs.havecname5== "是 Yes" ) { %> checked <% } %> />
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname5 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()"
+                    checked required />
                 <label class="form-check-label" for="havecname5">是 Yes</label>
-                <input type="radio" name="GRGS[havecname5]" value="否 No" id="No5" onclick="havechinesename()" required
-                    <% if ( grgs.havecname5== "否 No" ) { %> checked <% } %> />
+
+                &nbsp;<input type="radio" name="GRGS[havecname5]" value="否 No" id="No5"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname5">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname5]" value="是 Yes" id="Yes5" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname5">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname5]" value="否 No" id="No5"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname5">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>
@@ -569,13 +642,24 @@
             <br>
 
             <div>
-                <label>是否有中文姓名 Any Chinese name: </label>
-                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()" required
-                    <% if ( grgs.havecname6== "是 Yes" ) { %> checked <% } %> />
+                <label>是否有中文姓名 Any Chinese name? </label>
+                <% if (grgs.havecname6 == "是 Yes") { %>
+                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()"
+                    checked required />
                 <label class="form-check-label" for="havecname6">是 Yes</label>
-                <input type="radio" name="GRGS[havecname6]" value="否 No" id="No6" onclick="havechinesename()" required
-                    <% if ( grgs.havecname6== "否 No" ) { %> checked <% } %> />
+
+                &nbsp;<input type="radio" name="GRGS[havecname6]" value="否 No" id="No6"
+                    onclick="havechinesename()" required />
                 <label class="form-check-label" for="havecname6">否 No</label>
+                <% }else {%>
+                <input type="radio" name="GRGS[havecname6]" value="是 Yes" id="Yes6" onclick="havechinesename()"
+                    required />
+                <label class="form-check-label" for="havecname6">是 Yes</label>
+
+                &nbsp;<input type="radio" name="GRGS[havecname6]" value="否 No" id="No6"
+                    onclick="havechinesename()" checked required />
+                <label class="form-check-label" for="havecname6">否 No</label>
+                <% } %>
             </div>
             <div>
                 <label>中文姓名 Name in Chinese:</label>

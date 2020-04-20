@@ -274,20 +274,23 @@
 
             <div>
             <label>是否有中文姓名 Any Chinese name? </label>
-            <% if (acroage.havecname1 == "是 Yes") { %> 
-            <input type="radio" name="Acroage[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" checked required />
-            <% }else {%>
-            <input type="radio" name="Acroage[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()" required />
-            <% } %>
+            <% if (acroage.havecname1 == "是 Yes") { %> <input type="radio" name="Acroage[havecname1]" value="是 Yes"
+                id="Yes1" onclick="havechinesename()" checked required />
             <label class="form-check-label" for="havecname1">是 Yes</label>
 
-            <% if (acroage.havecname1 == "否 No") {%>
-            &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()" checked required />
-            <% }else {%>
-            &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()" required />
-            <% } %>
+            &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
+                required />
             <label class="form-check-label" for="havecname1">否 No</label>
-            </div>
+            <% }else {%>
+            <input type="radio" name="Acroage[havecname1]" value="是 Yes" id="Yes1" onclick="havechinesename()"
+                required />
+            <label class="form-check-label" for="havecname1">是 Yes</label>
+
+            &nbsp;<input type="radio" name="Acroage[havecname1]" value="否 No" id="No1" onclick="havechinesename()"
+                checked required />
+            <label class="form-check-label" for="havecname1">否 No</label>
+            <% } %>
+        </div>
 
         <div>
             <label for="cpChiName1">中文姓名 Name in Chinese:</label>
@@ -295,14 +298,16 @@
             <input class="form-group" id="cpChiName1" type="text" name="Acroage[cpChiName1]" placeholder="e.g. 陳大文"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
             <%} else {%>
-            <input class="form-group" id="cpChiName1" type="text" value="<%= acroage.cpChiName1%>" name="Acroage[cpChiName1]"
-                placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            <input class="form-group" id="cpChiName1" type="text" value="<%= acroage.cpChiName1%>"
+                name="Acroage[cpChiName1]" placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                required>
             <%}%>
         </div>
 
         <div>
             <label>英文姓名 Name in English: </label>
-            <input class="form-group" id="cpEngName1" type="text"  value="<%= acroage.cpEngName1%>" name="Acroage[cpEngName1]"
+            <input class="form-group" id="cpEngName1" type="text"  value="<%= acroage.cpEngName1%>"
+            name="Acroage[cpEngName1]"
             placeholder="e.g. Chan Tai Man" onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
         </div>
 
@@ -317,17 +322,18 @@
 
         <div>
             <label>出生日期 Date of Birth (dd/mm/yyyy): </label>
-            <input class="form-group" type="date" id="birth1" name="Acroage[birthday1]" value="<%= acroage.birthday1%>" required>
+            <input class="form-group" type="date" id="birth1" name="Acroage[birthday1]" value="<%= acroage.birthday1%>"
+                required>
         </div>
 
         <div>
             <label>身份證號碼 ID Card Number: </label>
-            <input class="form-group" type="text" name="Acroage[idNo1]" id="id1" value="<%= acroage.idNo1 %>" placeholder=" A123456(7)"
-                required>
+            <input class="form-group" type="text" name="Acroage[idNo1]" id="id1" value="<%= acroage.idNo1 %>"
+                placeholder=" A123456(7)" required>
         </div>
         <div>
             <label>聯絡電話 Contact No.:</label>
-            <input class="form-group" type="tel" pattern=[0-9]{8}  value="<%= acroage.contactNo1%>"
+            <input class="form-group" type="tel" pattern=[0-9]{8} value="<%= acroage.contactNo1%>"
                 name="Acroage[contactNo1]" placeholder="12345678" required>
         </div>
         <div>
@@ -389,23 +395,23 @@
 
         <div>
             <label>是否有中文姓名 Any Chinese name? </label>
-            <% if (acroage.havecname2 == "是 Yes") { %>
+            <% if (acroage.havecname1 == "是 Yes") { %>
             <input type="radio" name="Acroage[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()" checked
                 required />
+            <label class="form-check-label" for="havecname2">是 Yes</label>
+
+            &nbsp;<input type="radio" name="Acroage[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
+                required />
+            <label class="form-check-label" for="havecname2">否 No</label>
             <% }else {%>
             <input type="radio" name="Acroage[havecname2]" value="是 Yes" id="Yes2" onclick="havechinesename()"
                 required />
-            <% } %>
             <label class="form-check-label" for="havecname2">是 Yes</label>
 
-            <% if (acroage.havecname2 == "否 No") {%>
             &nbsp;<input type="radio" name="Acroage[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
                 checked required />
-            <% }else {%>
-            &nbsp;<input type="radio" name="Acroage[havecname2]" value="否 No" id="No2" onclick="havechinesename()"
-                required />
-            <% } %>
             <label class="form-check-label" for="havecname2">否 No</label>
+            <% } %>
         </div>
 
         <div>
@@ -414,8 +420,9 @@
             <input class="form-group" id="cpChiName2" type="text" name="Acroage[cpChiName2]" placeholder="e.g. 陳大文"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required disabled>
             <%} else {%>
-            <input class="form-group" id="cpChiName2" type="text" value="<%= acroage.cpChiName2%>" name="Acroage[cpChiName2]"
-                placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+            <input class="form-group" id="cpChiName2" type="text" value="<%= acroage.cpChiName2%>"
+                name="Acroage[cpChiName2]" placeholder="e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                required>
             <%}%>
         </div>
 
@@ -437,28 +444,30 @@
 
         <div>
         <label>出生日期 Date of Birth (dd/mm/yyyy): </label>
-        <input class="form-group" type="date" id="birth2" name="Acroage[birthday2]" value="<%= acroage.birthday2%>" required>
+        <input class="form-group" type="date" id="birth2" name="Acroage[birthday2]" value="<%= acroage.birthday2%>"
+                required>
         </div>
 
         <div>
             <label>身份證號碼 ID Card Number: </label>
-            <input  class="form-group" type="text" name="Acroage[idNo2]" id="id2" value="<%= acroage.idNo2 %>" placeholder=" A123456(7)"
-                required>
+            <input class="form-group" type="text" name="Acroage[idNo2]" id="id2" value="<%= acroage.idNo2 %>"
+                placeholder=" A123456(7)" required>
         </div>
         <div>
             <label>聯絡電話 Contact No.:</label>
-            <input class="form-group" type="tel" pattern=[0-9]{8} value="<%= acroage.contactNo2%>" name="Acroage[contactNo2]"
-                placeholder="12345678" required>
+            <input class="form-group" type="tel" pattern=[0-9]{8} value="<%= acroage.contactNo2%>"
+                name="Acroage[contactNo2]" placeholder="12345678" required>
         </div>
         <div>
             <label>電郵 Email Address: </label>
-            <input class="form-group" type="email" value="<%= acroage.email2%>" name="Acroage[email2]" placeholder="example@gmail.com"
-                style="width: 220pt;" required>
+            <input class="form-group" type="email" value="<%= acroage.email2%>" name="Acroage[email2]"
+                placeholder="example@gmail.com" style="width: 220pt;" required>
 
         </div>
         <div>
             <label>聯絡地址 Contact Address: </label>
-            <input  class="form-group" type="text" value="<%= acroage.address2%>" name="Acroage[address2]" style="width:350pt" required>
+            <input class="form-group" type="text" value="<%= acroage.address2%>" name="Acroage[address2]"
+                style="width:350pt" required>
             <br>
         </div>
 
@@ -737,7 +746,8 @@
             <%}%>
             <br>
             <label>參加者(3)家長姓名 Applicant(3)'s Parent Name: </label>
-            <input type="text" id="parentName3" class="form-group" value="<%= acroage.parentName3 %>" name="Acroage[parentName3]">
+            <input type="text" id="parentName3" class="form-group" value="<%= acroage.parentName3 %>"
+            name="Acroage[parentName3]">
             <br>
             <% if(acroage.declaration2) { 
                 var type = acroage.declaration2.split(';');%>

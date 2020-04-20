@@ -258,14 +258,24 @@
         </div>
 
         <div class="col-12">
-            <label>是否有中文姓名 Any Chinese name: </label>
+            <label>是否有中文姓名 Any Chinese name? </label>
+            <% if (gfa.havecname == "是 Yes") { %>
             <input type="radio" name="GFA[havecname]" value="是 Yes" id="Yes" onclick="havechinesename()"
-                <% if(gfa.havecname == "是 Yes"){ %> checked <% } %> required>
+                checked required />
             <label class="form-check-label" for="havecname">是 Yes</label>
 
-            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No" onclick="havechinesename()"
-                <% if(gfa.havecname == "否 No"){ %> checked <% } %> required>
+            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No"
+                onclick="havechinesename()" required />
             <label class="form-check-label" for="havecname">否 No</label>
+            <% }else {%>
+            <input type="radio" name="GFA[havecname]" value="是 Yes" id="Yes" onclick="havechinesename()"
+                required />
+            <label class="form-check-label" for="havecname">是 Yes</label>
+
+            &nbsp;<input type="radio" name="GFA[havecname]" value="否 No" id="No"
+                onclick="havechinesename()" checked required />
+            <label class="form-check-label" for="havecname">否 No</label>
+            <% } %>
         </div>
 
         <div class="col-12 col-sm-6">
