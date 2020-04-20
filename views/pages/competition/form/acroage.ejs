@@ -33,7 +33,7 @@
     <br>
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888;">
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港技巧體操公開賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>香港技巧體操公開賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
         </div>
 
@@ -44,7 +44,20 @@
 
         <div class="col-12">
             <a href="/formDoc/AcroOpen2020_Prospectus.pdf" target="_blank"
-                style="text-align: center;"><u>2020年香港技巧體操公開賽章程 Prospectus of AcrobaticOpenCompetition</u></a>
+                style="text-align: center;"><u>香港技巧體操公開賽章程 Prospectus of AcrobaticOpenCompetition</u></a>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
+             <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+            <select id="compYear" name="Acroage[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(req.session.data == null && req.session.Acrodata == null && year == todayYear || req.session.Acrodata != null && year == req.session.Acrodata.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
+                <%}%>
+            </select>
         </div>
 
         <!-- 組別資料 Category Details -->
@@ -575,6 +588,7 @@
     async function saveForm() {
         var form = document.getElementById("acroage");
         var data = JSON.stringify({
+            compYear: form.compYear.value,
             level1Checked: form.level1.checked,
             level2Checked: form.level2.checked,
             level3Checked: form.level3.checked,

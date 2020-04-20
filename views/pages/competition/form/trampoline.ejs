@@ -19,7 +19,7 @@
 
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港彈網分齡賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>香港彈網分齡賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>雙人同步 報名表格</u></h2>
             <br><br>
         </div>
@@ -30,9 +30,22 @@
         </div>
 
         <div class="col-12">
-            <a href="/formDoc/TRAagegroup2020.pdf" target="_blank" style="text-align: center;"><u>2020年香港彈網分齡賽章程
+            <a href="/formDoc/TRAagegroup2020.pdf" target="_blank" style="text-align: center;"><u>香港彈網分齡賽章程
                     Prospectus of
                     TrampolineAgeGroupCompetition</u></a>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
+             <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+            <select id="compYear" name="Trampoline[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(req.session.data == null && req.session.tramData == null && year == todayYear || req.session.tramData != null && year == req.session.tramData.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
+                <%}%>
+            </select>
         </div>
 
 
@@ -443,6 +456,7 @@
     async function saveForm() {
         var form = document.getElementById("trampoline");
         var data = JSON.stringify({
+            compYear: form.compYear.value,
             male: form.male.checked,
             female: form.female.checked,
             youngest: form.youngest.checked,

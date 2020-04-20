@@ -26,8 +26,7 @@
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
-                    2020年全港藝術體操分齡比賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>團體項目報名表(公開組:學校以外之團體)</u>
             </h2>
             <br><br>
@@ -39,8 +38,21 @@
 
         <div class="col-12">
             <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf" target="_blank"
-                style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
+                style="text-align: center;"><u>全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
                 </u></a>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 class="labelHead">比賽年份 Year of Competition</h5>
+             <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+            <select id="compYear" name="TRGP[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(req.session.data == null && req.session.TRGPdata == null && year == todayYear ||  req.session.TRGPdata != null && year == req.session.TRGPdata.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
+                <%}%>
+            </select>
         </div>
 
         <!-- 團體資料 Group Details -->
@@ -126,7 +138,7 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo1Checked == true) { %>disabled<%} 
+                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.TRGPdata != null  && req.session.data == null && req.session.TRGPdata.cnameNo1Checked == true) { %>disabled<%} 
                     else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes1Checked == true){%>value="<%= req.session.TRGPdata.Mate1ChiName%>" <%}%>>
             </div>
             <div class="form-group">
@@ -387,6 +399,7 @@
         var form = document.getElementById("TRGPForm");
 
         var data = JSON.stringify({
+            compYear: form.compYear.value,
             teamName: form.teamName.value,
             Phone: form.Phone.value,
             Email: form.Email.value,
@@ -429,6 +442,7 @@
             leaderName: form.leaderName.value,
             leaderPosition: form.leaderPosition.value,
         });
+        alert(data);
 
         var response = await fetch("/competition/form/TRGPForm/save", {
             method: "POST",
