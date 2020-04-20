@@ -39,10 +39,10 @@ module.exports = {
             await GRGS.create(req.session.data);
 
             //clear formdata in session and user
-            req.session.data = {};
-            req.session.GRGSdata = {};
+            req.session.data = null;
+            req.session.GRGSdata = null;
             var user = await User.update(req.session.userId).set({
-                GRGSdata: {}
+                GRGSdata: null
             }).fetch();
             if (user.length == 0) return res.notFound();
             //

@@ -41,10 +41,10 @@ module.exports = {
             await Trampoline.create(req.session.data);
 
             //clear formdata in session and user
-            req.session.data = {};
-            req.session.tramData = {};
+            req.session.data = null;
+            req.session.tramData = null;
             var user = await User.update(req.session.userId).set({
-                tramData: {}
+                tramData: null
             }).fetch();
             if (user.length == 0) return res.notFound();
             //

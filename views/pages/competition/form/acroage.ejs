@@ -121,8 +121,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="Acroage[cpChiName1]" id="cpChiName1" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.Acrodata != null && req.session.data == null && req.session.Acrodata.cnameNo1Checked == true) { %>disabled<%} 
-                    else if(req.session.Acrodata != null && req.session.Acrodata.cnameYes1Checked == true){%>value="<%= req.session.Acrodata.cpChiName1%>" <%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled
+                        <%} else if(req.session.Acrodata != null) { if(req.session.data == null &&req.session.Acrodata.cnameNo1Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.Acrodata.cpChiName1%>" <% }} %>>
             </div>
 
             <div>
@@ -244,8 +245,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" class="form-group" name="Acroage[cpChiName2]" id="cpChiName2" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No" || req.session.Acrodata != null && req.session.data == null && req.session.Acrodata.cnameNo2Checked == true) { %>disabled<%} 
-                    else if(req.session.Acrodata != null && req.session.Acrodata.cnameYes2Checked == true){%>value="<%= req.session.Acrodata.cpChiName2%>"<%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled
+                        <%} else if(req.session.Acrodata != null) { if(req.session.data == null &&req.session.Acrodata.cnameNo2Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.Acrodata.cpChiName2%>" <% }} %>>
             </div>
 
             <div>
@@ -369,8 +371,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <label>中文姓名 Name in Chinese:</label>
                     <input type="text" class="form-group" name="Acroage[cpChiName3]" id="cpChiName3" placeholder=" e.g. 陳大文" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" 
-                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No" || req.session.Acrodata != null && req.session.data == null && req.session.Acrodata.cnameNo3Checked == true) { %>disabled<%} 
-                    else if(req.session.Acrodata != null && req.session.Acrodata.cnameYes3Checked == true){%>value="<%= req.session.Acrodata.cpChiName3%>"<%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled
+                        <%} else if(req.session.Acrodata != null) { if(req.session.data == null &&req.session.Acrodata.cnameNo3Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.Acrodata.cpChiName3%>" <% }} %>>
                 </div>
 
                 <div class="form-group col-12 col-sm-6">

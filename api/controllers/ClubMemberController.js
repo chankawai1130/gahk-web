@@ -37,10 +37,10 @@ module.exports = {
       //create ClubMember
       await ClubMember.create(req.session.data);
 
-      req.session.data = {};
-      req.session.clubMemdata = {};
+      req.session.data = null;
+      req.session.clubMemdata = null;
       var user = await User.update(req.session.userId).set({
-        clubMemdata: {}
+        clubMemdata: null
       }).fetch();
       if (user.length == 0) return res.notFound();
 

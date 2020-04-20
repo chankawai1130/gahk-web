@@ -38,10 +38,10 @@ module.exports = {
             await GFA.create(req.session.data);
 
             //clear formdata in session and user
-            req.session.data = {};
-            req.session.gfaData = {};
+            req.session.data = null;
+            req.session.gfaData = null;
             var user = await User.update(req.session.userId).set({
-                gfaData: {}
+                gfaData: null
             }).fetch();
             if (user.length == 0) return res.notFound();
             //

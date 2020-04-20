@@ -40,10 +40,10 @@ module.exports = {
             await Acroage.create(req.session.data);
 
             //clear all session data
-            req.session.data = {};
-            req.session.Acrodata = {};
+            req.session.data = null;
+            req.session.Acrodata = null;
             var user = await User.update(req.session.userId).set({
-                Acrodata: {}
+                Acrodata: null
             }).fetch();
             if (user.length == 0) return res.notFound();
 

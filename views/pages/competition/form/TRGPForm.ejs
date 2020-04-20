@@ -12,6 +12,10 @@
 </style>
 
 <form action="/competition/form/TRGPForm" method="POST" id="TRGPForm">
+    <%if(req.session.data) {%>
+        hi
+    
+    <%}%>
 
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
@@ -130,8 +134,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGP[Mate1ChiName]" id="Mate1ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname1 == "否 No" || req.session.TRGPdata != null  && req.session.data == null && req.session.TRGPdata.cnameNo1Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes1Checked == true){%>value="<%= req.session.TRGPdata.Mate1ChiName%>" <%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname1 == "否 No") { %> disabled
+                        <%} else if(req.session.data == null && req.session.TRGPdata != null) { if(req.session.TRGPdata.cnameNo1Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.TRGPdata.Mate1ChiName%>" <% }} %>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -172,9 +177,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGP[Mate2ChiName]" id="Mate2ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname2 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo2Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes2Checked == true){%>value="<%= req.session.TRGPdata.Mate2ChiName%>"
-                    <%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname2 == "否 No") { %> disabled
+                        <%} else if(req.session.TRGPdata != null) { if(req.session.data == null && req.session.TRGPdata.cnameNo2Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.TRGPdata.Mate2ChiName%>" <% }} %>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -216,9 +221,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGP[Mate3ChiName]" id="Mate3ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname3 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo3Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes3Checked == true){%>value="<%= req.session.TRGPdata.Mate3ChiName%>"
-                    <%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname3 == "否 No") { %> disabled
+                        <%} else if(req.session.TRGPdata != null) { if(req.session.data == null && req.session.TRGPdata.cnameNo3Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.TRGPdata.Mate3ChiName%>" <% }} %>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -260,9 +265,9 @@
                 <label>中文姓名 Name in Chinese:</label>
                 <input type="text" name="TRGP[Mate4ChiName]" id="Mate4ChiName" placeholder=" e.g. 陳大文"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required 
-                    <% if(req.session.data != null && req.session.data.havecname4 == "否 No" || req.session.TRGPdata != null && req.session.data == null && req.session.TRGPdata.cnameNo4Checked == true) { %>disabled<%} 
-                    else if(req.session.TRGPdata != null && req.session.TRGPdata.cnameYes4Checked == true){%>value="<%= req.session.TRGPdata.Mate4ChiName%>"
-                    <%}%>>
+                    <% if (req.session.data != null && req.session.data.havecname4 == "否 No") { %> disabled
+                        <%} else if(req.session.TRGPdata != null) { if(req.session.data == null && req.session.TRGPdata.cnameNo4Checked == true) {%> disabled
+                        <% }else{ %> value="<%=req.session.TRGPdata.Mate4ChiName%>" <% }} %>>
             </div>
             <div class="form-group">
                 <label>英文姓名 Name in English:</label>
@@ -302,7 +307,7 @@
                     required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.teamNo%>" <%}%>>
                 <span>隊 team(s) = $</span>
                 <input id="teamPrice" type="number" name="TRGP[TeamPrice]" readonly required 
-                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamPrice%>" <%}
+                <% if (req.session.data != null && req.session.data.TeamPrice != null) {%> value="<%=req.session.data.TeamPrice%>"<%}
                 else if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.teamPrice%>" <%}%>>
                 <br>
             </div>
