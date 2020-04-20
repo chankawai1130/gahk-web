@@ -40,13 +40,16 @@
         <!-- 比賽年份 Year of Competition -->
         <div class="col-12">
             <br><br>
-            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
-             <%var todayYear = new Date().getFullYear();
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of
+                Competition</h5>
+            <%var todayYear = new Date().getFullYear();
                 var end = todayYear + 2;%>
             <select id="compYear" name="GRGS[compYear]" required>
                 <% for (var year = todayYear; year <= end; year++){%>
-                <option value="<%=year%>" <%if(req.session.data == null && req.session.GRGSdata == null && year == todayYear || req.session.GRGSdata != null && year == req.session.GRGSdata.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
-                <%}%>
+                <option value="<%=year%>"
+                    <%if(req.session.data == null && req.session.GRGSdata == null && year == todayYear || req.session.GRGSdata != null && year == req.session.GRGSdata.compYear || req.session.data != null && year == req.session.data.compYear) {%>
+                    selected<%}%> ><%=year%></option>
+                    <%}%>
             </select>
         </div>
 
@@ -62,7 +65,7 @@
             <input id="teamName" type="text" class="form-group" name="GRGS[teamName]" style="width:350pt;"
                 onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                 <% if(req.session.GRGSdata != null && req.session.GRGSdata.teamName != null) { %>
-                value="<%=req.session.GRGSdata.teamName%>" <% } %> required>
+                    value="<%=req.session.GRGSdata.teamName%>" <% } %> required>
         </div>
 
         <div class="col-12 col-sm-6">
@@ -164,7 +167,7 @@
                     <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard0 == "") { %>required <% } %> />
                 <br>
                 <div id="preview0"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard0 != "" && req.session.GRGSdata.imgIDCard0 != null) { %>
                 <input id="imgIDCard0" type="hidden" name="GRGS[imgIDCard0]"
                     value="<%=req.session.GRGSdata.imgIDCard0%>" />
                 <br>
@@ -231,9 +234,9 @@
                     <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard1 == "") { %>required <% } %> />
                 <br>
                 <div id="preview1"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard1 != "" && req.session.GRGSdata.imgIDCard1 != null) { %>
                 <input id="imgIDCard1" type="hidden" name="GRGS[imgIDCard1]"
-                    value="<%=req.session.GRGPdata.imgIDCard1%>" />
+                    value="<%=req.session.GRGSdata.imgIDCard1%>" />
                 <br>
                 <label>原本文件 Original File</label>
                 <br>
@@ -298,7 +301,7 @@
                     <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard2 == "") { %>required <% } %> />
                 <br>
                 <div id="preview2"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard2 != "" && req.session.GRGSdata.imgIDCard2 != null) { %>
                 <input id="imgIDCard2" type="hidden" name="GRGS[imgIDCard2]"
                     value="<%=req.session.GRGSdata.imgIDCard2%>" />
                 <br>
@@ -365,7 +368,7 @@
                     <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard3 == "") { %>required <% } %> />
                 <br>
                 <div id="preview3"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard3 != "" && req.session.GRGSdata.imgIDCard3 != null) { %>
                 <input id="imgIDCard3" type="hidden" name="GRGS[imgIDCard3]"
                     value="<%=req.session.GRGSdata.imgIDCard3%>" />
                 <br>
@@ -432,7 +435,7 @@
                     <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard4 == "") { %>required <% } %> />
                 <br>
                 <div id="preview4"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard4 != "" && req.session.GRGSdata.imgIDCard4 != null) { %>
                 <input id="imgIDCard4" type="hidden" name="GRGS[imgIDCard4]"
                     value="<%=req.session.GRGSdata.imgIDCard4%>" />
                 <br>
@@ -496,10 +499,10 @@
                 <label>請附上參加者的身份證副本 <br> Please upload ID copy of the applicant</label>
                 <br>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,5)"
-                    <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard5 == "") { %>required <% } %> />
+                    <% if(req.session.GRGSdata == null || req.session.GRGSdata.imgIDCard5 == "" ) { %>required <% } %> />
                 <br>
                 <div id="preview5"></div>
-                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != "") { %>
+                <% if(req.session.GRGSdata != null && req.session.GRGSdata.imgIDCard5 != "" && req.session.GRGSdata.imgIDCard5 != null) { %>
                 <input id="imgIDCard5" type="hidden" name="GRGS[imgIDCard5]"
                     value="<%=req.session.GRGSdata.imgIDCard5%>" />
                 <br>
