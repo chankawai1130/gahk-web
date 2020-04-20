@@ -200,7 +200,7 @@
                 <label>運動員(1)相片 Athlete(1) photo: </label>
                 <input type="file" accept="image/*" onchange="handleFile(this.files,0)"  <% if(req.session.Acrodata == null || req.session.Acrodata.photo0 == "") { %>required <% } %> />
             <div id="ph_preview0"></div>
-            <% if(req.session.Acrodata != null && req.session.Acrodata.photo0 != "") { %> <input id="photo0"
+            <% if(req.session.Acrodata != null && req.session.Acrodata.photo0 != "" && req.session.Acrodata.photo0 != null) { %> <input id="photo0"
                 type="hidden" name="Acroage[photo0]" value="<%=req.session.Acrodata.photo0%>" />
             <br>
             <label>原本文件 Original File</label>
@@ -219,7 +219,7 @@
             <% } %> />
             <br>
             <div id="ID_preview0"></div>
-            <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard0 != "") { %>
+            <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard0 != "" && req.session.Acrodata.imgIDCard0 != null) { %>
             <input id="imgIDCard0" type="hidden" name="Acroage[imgIDCard0]"
                 value="<%=req.session.Acrodata.imgIDCard0%>" />
             <br>
@@ -320,7 +320,7 @@
                 <input type="file" accept="image/*" onchange="handleFile(this.files,1)"  <% if(req.session.Acrodata == null || req.session.Acrodata.photo1 == "") { %>required
             <% } %> />
             <div id="ph_preview1"></div>
-            <% if(req.session.Acrodata != null && req.session.Acrodata.photo1 != "") { %>
+            <% if(req.session.Acrodata != null && req.session.Acrodata.photo1 != "" && req.session.Acrodata.photo1 != null) { %>
             <input id="photo1" type="hidden" name="Acroage[photo1]" value="<%=req.session.Acrodata.photo1%>" />
             <br>
             <label>原本文件 Original File</label>
@@ -338,7 +338,7 @@
             <% } %> />
             <br>
             <div id="ID_preview1"></div>
-            <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard1 != "") { %>
+            <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard1 != "" && req.session.Acrodata.imgIDCard1 != null) { %>
             <input id="imgIDCard1" type="hidden" name="Acroage[imgIDCard1]"
                 value="<%=req.session.Acrodata.imgIDCard1%>" />
             <br>
@@ -434,7 +434,7 @@
                     <input type="file" accept="image/*" onchange="handleFile(this.files,2)" id="photo3" />
                     <br>
                     <div id="ph_preview2"></div>
-                    <% if(req.session.Acrodata != null && req.session.Acrodata.photo2 != "") { %>
+                    <% if(req.session.Acrodata != null && req.session.Acrodata.photo2 != "" && req.session.Acrodata.photo2 != null) { %>
                     <input id="photo2" type="hidden" name="Acroage[photo2]" value="<%=req.session.Acrodata.photo2%>" />
                     <br>
                     <label>原本文件 Original File</label>
@@ -449,7 +449,7 @@
                     <input type="file" accept="image/*" onchange="handleFile2(this.files,2)" id="IDimg3" />
                     <br>
                     <div id="ID_preview2"></div>
-                    <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard2 != "") { %>
+                    <% if(req.session.Acrodata != null && req.session.Acrodata.imgIDCard2 != "" && req.session.Acrodata.imgIDCard2 != null) { %>
                     <input id="imgIDCard2" type="hidden" name="Acroage[imgIDCard2]"
                         value="<%=req.session.Acrodata.imgIDCard2%>" />
                     <br>
