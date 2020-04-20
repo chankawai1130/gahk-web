@@ -80,6 +80,22 @@ module.exports = {
             if (!req.body.Acroage)
                 return res.badRequest("Form-data not received.");
 
+            if (req.body.Acroage.item != "女子三人 Women's trio") {
+                req.body.Acroage.havecname3 = "";
+                req.body.Acroage.cpChiName3 = "";
+                req.body.Acroage.cpEngName3 = "";
+                req.body.Acroage.gender3 = "";
+                req.body.Acroage.birthday3 = "";
+                req.body.Acroage.idNo3 = "";
+                req.body.Acroage.contactNo3 = "";
+                req.body.Acroage.email3 = "";
+                req.body.Acroage.address3 = "";
+                req.body.Acroage.photo2 = "";
+                req.body.Acroage.imgIDCard2 = "";
+                req.body.Acroage.declaration2 = "";
+                req.body.Acroage.parentName3 = "";
+            }
+
             var models = await Acroage.update(req.params.id).set({
                 category: req.body.Acroage.category,
                 item: req.body.Acroage.item,
@@ -143,7 +159,7 @@ module.exports = {
             return res.redirect('/admin/applyHandle/search');
         }
     },
-    
+
     reject: async function (req, res) {
         if (req.method == "GET") return res.forbidden();
 
