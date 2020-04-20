@@ -21,6 +21,11 @@ module.exports = {
       type:'string', 
     },
 
+    //Applicant(1)
+    havecname1: {
+      type: "string"
+    },
+
     chiName1: {
       type: "string"
     },
@@ -42,6 +47,11 @@ module.exports = {
     },
 
     address1: {
+      type: "string"
+    },
+
+    //Applicant(2)
+    havecname2: {
       type: "string"
     },
 
@@ -104,6 +114,14 @@ module.exports = {
 
     formStatus: {
       type: "string", //ToBeCon; accepted(decided by admin)
+    },
+
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
+    },
+
+    idCode: {
+      type: "string"
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
