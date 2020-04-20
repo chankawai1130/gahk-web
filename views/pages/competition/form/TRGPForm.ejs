@@ -307,15 +307,15 @@
                     required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.teamNo%>" <%}%>>
                 <span>隊 team(s) = $</span>
                 <input id="teamPrice" type="number" name="TRGP[TeamPrice]" readonly required 
-                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamPrice%>" <%}%>
-                <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.teamPrice%>" <%}%>>
+                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamPrice%>" <%}
+                else if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.teamPrice%>" <%}%>>
                 <br>
             </div>
             <div class="form-group">
                 <label>總額 Total price = $</label> 
                 <input id="total" type="number" name="TRGP[TeamTotalPrice]" readonly required 
-                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamTotalPrice%>" <%}%>
-                <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.total%>"
+                <% if (req.session.data != null) {%>value="<%=req.session.data.TeamTotalPrice%>" <%}
+                else if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.total%>"
                 <%}%>>
             </div>
 
@@ -330,8 +330,8 @@
             <div class="form-group">
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
                     (pdf檔)</label>
-                <input type="file" id="VBRC" accept="image/*,application/pdf" onchange="handleFile1(this.files)"  <% if(req.session.TRGPdata == null || req.session.TRGPdata.VBRC == "") { %>
-                required <% } %> />
+                <input type="file" id="vbrc" accept="image/*,application/pdf" onchange="handleFile1(this.files)"  
+                <% if(req.session.TRGPdata == null || req.session.TRGPdata.VBRC == "") { %>required <% } %> />
             <div id="preview1"></div>
             <% if(req.session.TRGPdata != null && req.session.TRGPdata.VBRC != null && req.session.TRGPdata.VBRC != "") { %>
             <input id="VBRC" type="hidden" name="TRGP[VBRC]" value="<%=req.session.TRGPdata.VBRC%>" />
@@ -472,8 +472,8 @@
             total: form.total.value,
             leaderName: form.leaderName.value,
             leaderPosition: form.leaderPosition.value,
-            declaration: form.declaration.value,
             VBRC: form.VBRC.value,
+            declaration: form.declaration.value,
         });
         alert(data);
 
