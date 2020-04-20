@@ -1,5 +1,5 @@
 /**
- * TRGCompetition.js
+ * TRGP.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,7 +12,6 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
     //Team_HKRGAgeGroupCompetitionform attributes
     teamName: {
       type: 'string',
@@ -38,6 +37,11 @@ module.exports = {
       type:'string', 
     },
 
+    //Applicant(1)
+    havecname1: {
+      type: "string"
+    },
+
     Mate1ChiName: {
       type: 'string',
     },
@@ -53,6 +57,11 @@ module.exports = {
     Mate1Date: {
       type: 'ref',
       columnType: 'date'
+    },
+
+    //Applicant(2)
+    havecname2: {
+      type: "string"
     },
 
     Mate2ChiName: {
@@ -72,6 +81,11 @@ module.exports = {
       columnType: 'date'
     },
 
+    //Applicant(3)
+    havecname3: {
+      type: "string"
+    },
+
     Mate3ChiName: {
       type: 'string',
     },
@@ -87,6 +101,11 @@ module.exports = {
     Mate3Date: {
       type: 'ref',
       columnType: 'date'
+    },
+
+    //Applicant(4)
+    havecname4: {
+      type: "string"
     },
 
     Mate4ChiName: {
@@ -118,6 +137,14 @@ module.exports = {
       type: 'number',
     },
 
+    Declaration: {
+      type: "string"
+    },
+
+    VBRC: {
+      type: "string"
+    },
+
     leaderName: {
       type: "string",
     },
@@ -131,8 +158,19 @@ module.exports = {
     },
 
     formStatus: {
-      type: "string", //ToBeCon; accepted(decided by admin)
+      type: "string", //ToBeCon; accepted; rejected; dataDef(decided by admin)
     },
+
+    teamStatus: { 
+      type: "string" //suTeam; waitTeam(decided by admin)
+    },
+
+    idCode: {
+      type: "string"
+    },
+
+    
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
