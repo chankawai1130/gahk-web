@@ -14,7 +14,7 @@
     <div class="row mx-sm-2">
         <div class="col-12" style="color: #888888; ">
             <br>
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>2020年香港普及體操節</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>香港普及體操節</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>報名表格</u></h2>
             <br><br>
         </div>
@@ -28,8 +28,21 @@
 
         <div class="col-12">
             <a href="/formDoc/Prospectus_GFAFestival2020.pdf" target="_blank"
-                style="text-align: center;"><u>2020年香港普及體操節章程
+                style="text-align: center;"><u>香港普及體操節章程
                     Prospectus of GFAFestival2020</u></a>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
+             <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+            <select id="compYear" name="GFA[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(req.session.data == null && req.session.gfaData == null && year == todayYear || req.session.gfaData != null && year == req.session.gfaData.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
+                <%}%>
+            </select>
         </div>
 
         <!-- Group Details -->
@@ -259,6 +272,7 @@
         var form = document.getElementById("gfa");
 
         var data = JSON.stringify({
+            compYear: form.compYear.value,
             teamName: form.teamName.value,
             receiptHeader: form.receiptHeader.value,
             address: form.address.value,
@@ -278,6 +292,8 @@
             bankName: form.bankName.value,
             document: form.document.value
         });
+
+        alert(data)
 
         var response = await fetch("/competition/form/GFA/save", {
             method: "POST",

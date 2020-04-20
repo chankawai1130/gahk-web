@@ -206,9 +206,20 @@
 
         <!-- Title -->
         <div class="col-12" style="color: #888888; ">
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
-                    2020年全港藝術體操分齡比賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表(公開組︰學校以外之團體)</u></h2>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
+            <%var todayYear = new Date().getFullYear();
+            var end = todayYear + 2;%>
+            <select name="GRGP[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(year == grgp.compYear) {%> selected<%}%> ><%=year%></option>
+                    <%}%>
+            </select>
         </div>
 
         <!-- Team details -->
@@ -856,7 +867,7 @@
     }
 
     // Get the modal
-    var modal = document.getElementById('askModal');
+    var modal = document.getElementById('<%= grgp.id%>');
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {

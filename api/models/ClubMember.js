@@ -14,6 +14,10 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
     //clubMemberForm attribute
+    clubYear: {
+      type: 'string'
+    },
+
     OrgEngName: {
       type: 'string',
     },

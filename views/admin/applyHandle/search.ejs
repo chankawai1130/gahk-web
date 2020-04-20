@@ -130,21 +130,33 @@
     <!-- Search bar -->
     <form action="/admin/applyHandle/search" method="GET">
         <div class="row mx-sm-2">
-            <div class="form-group col-12">
+            <div class="form-group col-12 col-sm-8">
                 <label style="color: #888888; font-size: 16pt;" class="col-form-label">申請項目 Application Project</label>
                 <select class="form-control" id="application" name="application" onchange="appSelected(this.value);"
                     required>
                     <option value="">請選擇申請項目 Select Application Project</option>
                     <option value="competition" disabled>---Activity/Competition 活動/比賽---</option>
-                    <option value="acroage">2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</option>
-                    <option value="gfa">2020年香港普及體操節 GFAFestival2020</option>
-                    <option value="trampoline">2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</option>
-                    <option value="TRGP">2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</option>
-                    <option value="TRGS">2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</option>
-                    <option value="GRGP">2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</option>
-                    <option value="GRGS">2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</option>
+                    <option value="acroage">香港技巧體操公開賽 AcrobaticOpenCompetition</option>
+                    <option value="gfa">香港普及體操節 GFAFestival</option>
+                    <option value="trampoline">香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition-Synchronized</option>
+                    <option value="TRGP">全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition-Team(Public)</option>
+                    <option value="TRGS">全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition-Team(School)</option>
+                    <option value="GRGP">全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition-Group(Public)</option>
+                    <option value="GRGS">全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition-Group(School)</option>
                     <option value="other" disabled>---Membership 會員---</option>
                     <option value="clubMem">團體註冊申請 Application for Club Membership</option>
+                </select>
+            </div>
+
+            <div class="form-group col-12 col-sm-4">
+                <label style="color: #888888; font-size: 16pt;" class="col-form-label">年份 Year</label>
+                <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+                <select class="form-control" id="year" name="year">
+                    <option value="">請選擇年份 Select Year</option>
+                    <% for (var year = 2020; year <= end; year++){%>
+                        <option value="<%=year%>"><%=year%></option>
+                    <%}%>
                 </select>
             </div>
 
@@ -294,22 +306,27 @@
                                 </div>
                             </div>
 
+                            
+
                             <br><br>
                             <span>搜尋申請項目 Searching Application Project: </span><br>
+                            <% if (projectYear != null){%>
+                                <b><%=projectYear%></b>
+                            <%}%>
                             <% if (form == "TRGP"){%>
-                            <b>2020年全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition2020-Team(Public)</b>
+                            <b>全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition-Team(Public)</b>
                             <%} else if (form == "TRGS"){%>
-                            <b>2020年全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition2020-Team(School)</b>
+                            <b>全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition-Team(School)</b>
                             <%} else if (form == "gfa"){%>
-                            <b>2020年香港普及體操節 GFAFestival2020</b>
+                            <b>香港普及體操節 GFAFestival</b>
                             <%} else if (form == "GRGP"){%>
-                            <b>2020年全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition2020-Group(Public)</b>
+                            <b>全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition-Group(Public)</b>
                             <%} else if (form == "GRGS"){%>
-                            <b>2020年全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition2020-Group(School)</b>
+                            <b>全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition-Group(School)</b>
                             <%} else if (form == "trampoline"){%>
-                            <b>2020年香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition2020-Synchronized</b>
+                            <b>香港彈網分齡賽-雙人同步 TrampolineAgeGroupCompetition-Synchronized</b>
                             <%} else if (form == "acroage"){%>
-                            <b>2020年香港技巧體操公開賽 AcrobaticOpenCompetition2020</b>
+                            <b>香港技巧體操公開賽 AcrobaticOpenCompetition</b>
                             <%} else if (form == "clubMem") {%>
                             <b>團體註冊申請 Application for Club Membership</b>
                             <%}%>

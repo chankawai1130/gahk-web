@@ -18,6 +18,16 @@
 
     <form action="/membership/clubMemberForm" method="POST" id="clubMem">
         <ol class="row mx-sm-2" type="A">
+            <!-- 申請年份 Year of Application -->
+            <div class="col-12">
+                <br><br>
+                <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">申請年份 Year of Application</h5>
+                <%var todayYear = new Date().getFullYear();%>
+                <select id="clubYear" name="ClubMember[clubYear]" required>
+                    <option value="<%=todayYear%>" selected><%=todayYear%></option>
+                </select>
+            </div>
+
             <!-- Part A.申請者資料 Particulars of Applicant -->
             <li class="col-12 partA"
                 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">
@@ -149,7 +159,7 @@
                 <label>電郵 E-mail:</label>
                 <input type="email" name="ClubMember[resEmail]" id="resEmail" style="width:500pt" required
                 <% if(req.session.clubMemdata != null) {%>value="<%=req.session.clubMemdata.resEmail%>"
-                    <%}%>>
+                        <%}%>>
             </div>
 
             <!-- Part D. 致中國香港體操總會主席 To the Chairperson of GAHK -->
@@ -236,6 +246,7 @@
     async function saveForm() {
         var form = document.getElementById("clubMem");
         var data = JSON.stringify({
+            clubYear: form.clubYear.value,
             OrgEngName: form.OrgEngName.value,
             OrgChiName: form.OrgChiName.value,
             AppEngName: form.AppEngName.value,

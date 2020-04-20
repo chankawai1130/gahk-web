@@ -20,8 +20,7 @@
         <!-- Title -->
         <div class="col-12" style="color: #888888; ">
             <br>
-            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>第63屆體育節 -
-                    2020年全港藝術體操分齡比賽</b></h1>
+            <h1 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:16pt;"><b>全港藝術體操分齡比賽</b></h1>
             <h2 style="font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:14pt;"><u>集體項目報名表(學校組)</u></h2>
             <br><br>
         </div>
@@ -34,8 +33,21 @@
 
         <div class="col-12">
             <a href="http://www.gahk.org.hk/doc/Rules_HKRGAgeGroupCompetition.pdf" target="_blank"
-                style="text-align: center;"><u>第63屆體育節2020年全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
+                style="text-align: center;"><u>全港藝術體操分齡賽競賽要求 Rules of HKRGAgeGroupCompetition
                 </u></a>
+        </div>
+
+        <!-- 比賽年份 Year of Competition -->
+        <div class="col-12">
+            <br><br>
+            <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
+             <%var todayYear = new Date().getFullYear();
+                var end = todayYear + 2;%>
+            <select id="compYear" name="GRGS[compYear]" required>
+                <% for (var year = todayYear; year <= end; year++){%>
+                <option value="<%=year%>" <%if(req.session.data == null && req.session.GRGSdata == null && year == todayYear || req.session.GRGSdata != null && year == req.session.GRGSdata.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
+                <%}%>
+            </select>
         </div>
 
         <!-- Team details -->
@@ -659,6 +671,7 @@
         var form = document.getElementById("GRGS_form");
 
         var data = JSON.stringify({
+            compYear: form.compYear.value,
             teamName: form.teamName.value,
             phone: form.phone.value,
             email: form.email.value,
