@@ -98,6 +98,10 @@ module.exports = {
       type: 'string',
     },
 
+    partD: {
+      type: 'string',
+    },
+
     payStatus: {
       type: "string", //unpaid; paid (decided by admin)
     },

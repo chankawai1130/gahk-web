@@ -17,16 +17,6 @@
         font-family: Verdana, Arial, Helvetica, sans-serif;
         font-size: 12pt;
     }
-
-    .dot {
-        height: 15px;
-        width: 15px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        text-align: center;
-        font-size: smaller;
-    }
 </style>
 
 <form action="/competition/form/acroage" method="POST" id="acroage">
@@ -680,27 +670,13 @@
                 <button type="submit" class="btn btn-primary"
                     style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
                 <!-- Save -->
-                <button type="button" class="btn btn-primary" onclick="saveForm()" onmouseover="showRemind()"
-                    onmouseout="hideRemind()" style="background: red; border: none; float: left;">儲存 Save</button>
-                &nbsp;<p id="remind" style="display:none; font-size:smaller;"><span class="dot">!</span>已上載檔案將不會被儲存 The
-                    uploaded files will not be saved</p>
+                <button type="button" class="btn btn-primary" onclick="saveForm()" style="background: red; border: none; float: left;">儲存 Save</button>
                 <br><br>
             </div>
         </div>
 </form>
 
 <script>
-    function showRemind() {
-        var remind = document.getElementById("remind");
-        remind.style.display = "inline";
-    }
-
-    function hideRemind() {
-        var remind = document.getElementById("remind");
-        remind.style.display = "none";
-
-    }
-
     //save function
     async function saveForm() {
         var form = document.getElementById("acroage");

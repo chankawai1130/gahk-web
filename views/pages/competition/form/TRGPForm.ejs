@@ -9,16 +9,6 @@
         font-family: Verdana, Arial, Helvetica, sans-serif;
         font-size: 12pt;
     }
-
-    .dot {
-        height: 15px;
-        width: 15px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        text-align: center;
-        font-size: smaller;
-    }
 </style>
 
 <form action="/competition/form/TRGPForm" method="POST" id="TRGPForm">
@@ -337,16 +327,16 @@
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
                     (pdf檔)</label>
 
-                <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)"  <% if(req.session.TRGPdata == null || req.session.TRGPdata.VBRC == "") { %>
-                    required <% } %> />
-                    <div id="preview1"></div>
-                    <% if(req.session.TRGPdata != null && req.session.TRGPdata.VBRC != "" && req.session.TRGPdata.VBRC != null) { %>
+                <input type="file" accept="image/*,application/pdf" onchange="handleFile1(this.files)" 
+                <% if(req.session.TRGPdata == null || req.session.TRGPdata.VBRC == "") { %>required <% } %> />
+                <div id="preview1"></div>
+
+                <% if(req.session.TRGPdata != null && req.session.TRGPdata.VBRC != "" && req.session.TRGPdata.VBRC != null) { %>
                     <input id="VBRC" type="hidden" name="TRGP[VBRC]" value="<%=req.session.TRGPdata.VBRC%>" />
                     <br>
                     <label>原本文件 Original File</label>
                     <br>
                     <% var type = req.session.TRGPdata.VBRC.split(';');
-
                         if(type[0] == 'data:application/pdf'){ %>
                     <a download="VBRC" href="<%= req.session.TRGPdata.VBRC%>" target="_blank">VBRC</a>
                     <% } else { %>
@@ -354,8 +344,8 @@
                     <% }}else{ %>
                     <input id="VBRC" type="hidden" name="TRGP[VBRC]" />
                     <% } %>
+            </div>
         </div>
-    </div>
 
     <!-- 聲明 Declaration -->
     <div class="form-group col-12">
@@ -413,26 +403,14 @@
             <button type="submit" class="btn btn-primary"
                 style="background-color: #83a70c; border-color: #83a70c; float:right">預覽 Preview >></button>
             <!-- Save -->
-            <button type="button" class="btn btn-primary" onclick="saveForm()" onmouseover="showRemind()" onmouseout="hideRemind()"
+            <button type="button" class="btn btn-primary" onclick="saveForm()"
                 style="background: red; border: none; float: left;">儲存 Save</button>
-                &nbsp;<p id="remind" style="display:none; font-size:smaller;"><span class="dot">!</span>已上載檔案將不會被儲存 The uploaded files will not be saved</p>
             <br><br>
         </div>
     </div>
 </form>
 
 <script>
-    function showRemind() {
-        var remind = document.getElementById("remind");
-        remind.style.display = "inline";
-    }
-
-    function hideRemind() {
-        var remind = document.getElementById("remind");
-        remind.style.display = "none";
-
-    }
-
     //save function
     async function saveForm() {
         var form = document.getElementById("TRGPForm");
