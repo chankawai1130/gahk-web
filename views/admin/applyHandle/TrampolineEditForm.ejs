@@ -501,8 +501,9 @@
     <div class="col-12">
         <br>
         <label>參加者(1)家長姓名 Applicant(1)'s Parent Name: </label>
-        <input id="parentName1" type="text" class="form-group" name="Trampoline[parentName1]" value=<%= trampoline.parentName1%> required />
-        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,0)"/>
+        <input id="parentName1" type="text" class="form-group" name="Trampoline[parentName1]"
+            value=<%= trampoline.parentName1%> required />
+        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,0)" />
         <div id="preview0"></div>
         <br>
     </div>
@@ -511,12 +512,12 @@
         var type = trampoline.declaration1.split(';');%>
     <div class="col-12 col-sm-6">
         <% if(type[0] == 'data:application/pdf') { %>
-        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.pdf" href="<%= trampoline.declaration1%>"
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明2" href="<%= trampoline.declaration1%>"
             target="_blank">下載聲明書2
             Download declartion</a>
         <br>
         <% } else if(type[0] == 'data:image/jpeg' || type[0] == 'data:image/png') { %>
-        <a download="<%= trampoline.idCode %>_Declaration1_聲明1.jpg" href="<%= trampoline.declaration1%>"
+        <a download="<%= trampoline.idCode %>_Declaration1_聲明2" href="<%= trampoline.declaration1%>"
             target="_blank">下載聲明書2
             Download declartion</a>
         <br>
@@ -528,8 +529,9 @@
     <div class="col-12">
         <br>
         <label>參加者(2)家長姓名 Applicant(2)'s Parent Name: </label>
-        <input id="parentName2" type="text" class="form-group" name="Trampoline[parentName2]" value=<%= trampoline.parentName1%> required />
-        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)"/>
+        <input id="parentName2" type="text" class="form-group" name="Trampoline[parentName2]"
+            value=<%= trampoline.parentName1%> required />
+        <input type="file" accept="image/*,application/pdf" onchange="handleFile(this.files,1)" />
         <div id="preview1"></div>
     </div>
 

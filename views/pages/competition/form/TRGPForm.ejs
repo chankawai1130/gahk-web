@@ -13,7 +13,7 @@
     .dot {
         height: 15px;
         width: 15px;
-        background-color:#bbb;
+        background-color: #bbb;
         border-radius: 50%;
         display: inline-block;
         text-align: center;
@@ -330,30 +330,61 @@
             <div class="form-group">
                 <label>請提交商業登記證明 Please upload the Valid Bussiness Registration Certificate
                     (pdf檔)</label>
-                <input type="file" id="VBRC" accept="image/*,application/pdf" onchange="handleFile1(this.files)" required/>
-                <div id="preview1"></div>
-            </div>
+                <input type="file" id="VBRC" accept="image/*,application/pdf" onchange="handleFile1(this.files)"  <% if(req.session.TRGPdata == null || req.session.TRGPdata.VBRC == "") { %>
+                required <% } %> />
+            <div id="preview1"></div>
+            <% if(req.session.TRGPdata != null && req.session.TRGPdata.VBRC != null && req.session.TRGPdata.VBRC != "") { %>
+            <input id="VBRC" type="hidden" name="TRGP[VBRC]" value="<%=req.session.TRGPdata.VBRC%>" />
+            <br>
+            <label>原本文件 Original File</label>
+            <br>
+            <% var type = req.session.TRGPdata.VBRC.split(';');
+                        if(type[0] == 'data:application/pdf'){ %>
+            <a download="VBRC" href="<%= req.session.TRGPdata.VBRC%>" target="_blank">VBRC</a>
+            <% } else { %>
+            <img src="<%=req.session.TRGPdata.VBRC%>" style="height:150px; width:auto" />
+            <% }}else{ %>
+            <input id="VBRC" type="hidden" name="TRGP[VBRC]" />
+            <% } %>
+        </div>
+    </div>
+
+    <!-- 聲明 Declaration -->
+    <div class="form-group col-12">
+        <h5 class="labelHead">聲明 Declaration</h5>
+
+        <div class="form-group">
+            <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
+                    href="/formDoc/Team_HKRG_declaration.pdf" download><u
+                        style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
+            <input type="file" id="Declaration" accept="image/*,application/pdf" onchange="handleFile2(this.files)"
+                required />
+            <div id="preview2"></div>
+            <% if(req.session.TRGPdata != null && req.session.TRGPdata.declaration != null && req.session.TRGPdata.declaration != "") { %>
+            <input id="declaration" type="hidden" name="TRGP[Declaration]"
+                value="<%=req.session.TRGPdata.declaration%>" />
+            <br>
+            <label>原本文件 Original File</label>
+            <br>
+            <% var type = req.session.TRGPdata.declaration.split(';');
+                            if(type[0] == 'data:application/pdf'){ %>
+            <a download="Declaration聲明" href="<%= req.session.TRGPdata.declaration%>" target="_blank">聲明書
+                declartion</a>
+            <% } else { %>
+            <img src="<%=req.session.TRGPdata.declaration%>" style="height:150px; width:auto" />
+            <% }}else{ %>
+            <input id="declaration" type="hidden" name="TRGP[Declaration]" />
+            <% } %>
         </div>
 
-        <!-- 聲明 Declaration -->
-        <div class="form-group col-12">
-            <h5 class="labelHead">聲明 Declaration</h5>
-
-            <div class="form-group">
-                <label>請下載及列印<a href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                            style="color:rgb(159, 209, 60);">聲明書.pdf</u></a>後簽署並上載文件 Please download and print the <a
-                        href="/formDoc/Team_HKRG_declaration.pdf" download><u
-                            style="color:rgb(159, 209, 60);">declaration.pdf</u></a>, then sign and upload it</label>
-                <input type="file" id="Declaration" accept="image/*,application/pdf" onchange="handleFile2(this.files)" required />
-                <div id="preview2"></div>
-            </div>
-
-            <!-- 機構負責人 -->
-            <div class="row">
-                <div class="form-group col-12 col-sm-6">
-                    <label>機構負責人姓名 Leader's Name:</label>
-                    <input type="text" name="TRGP[leaderName]" id="leaderName" required <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.leaderName%>"
-                <%}%>>
+        <!-- 機構負責人 -->
+        <div class="row">
+            <div class="form-group col-12 col-sm-6">
+                <label>機構負責人姓名 Leader's Name:</label>
+                <input type="text" name="TRGP[leaderName]" id="leaderName" required
+                    <% if (req.session.TRGPdata != null) {%> value="<%= req.session.TRGPdata.leaderName%>"
+                    <%}%>>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label>機構負責人職位 Leader's Position:</label>
@@ -441,6 +472,8 @@
             total: form.total.value,
             leaderName: form.leaderName.value,
             leaderPosition: form.leaderPosition.value,
+            declaration: form.declaration.value,
+            VBRC: form.VBRC.value,
         });
         alert(data);
 
@@ -486,22 +519,15 @@
                 var img = document.createElement('img');
                 img.src = e.target.result;
                 preview.appendChild(img);
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'TRGP[VBRC]';
-                input.value = e.target.result;
+                document.getElementById("VBRC").value = e.target.result;
                 img.style.width = "auto";
                 img.style.height = "150px";
-                preview.appendChild(input);
+
             }
         } else if (file.type == 'application/pdf') {
             reader.onload = function (e) {
                 preview.innerHTML = "";
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'TRGP[VBRC]';
-                input.value = e.target.result;
-                preview.appendChild(input);
+                document.getElementById("VBRC").value = e.target.result;
             }
         }
         reader.readAsDataURL(file);
@@ -520,22 +546,14 @@
                 var img = document.createElement('img');
                 img.src = e.target.result;
                 preview.appendChild(img);
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'TRGP[Declaration]';
-                input.value = e.target.result;
+                document.getElementById("declaration").value = e.target.result;
                 img.style.width = "auto";
                 img.style.height = "150px";
-                preview.appendChild(input);
             }
         } else if (file.type == 'application/pdf') {
             reader.onload = function (e) {
                 preview.innerHTML = "";
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'TRGP[Declaration]';
-                input.value = e.target.result;
-                preview.appendChild(input);
+                document.getElementById("declaration").value = e.target.result;
             }
         }
         reader.readAsDataURL(file);
