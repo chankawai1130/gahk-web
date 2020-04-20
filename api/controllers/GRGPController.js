@@ -38,10 +38,10 @@ module.exports = {
             await GRGP.create(req.session.data);
 
             //clear formdata in session and user
-            req.session.data = {};
-            req.session.GRGPdata = {};
+            req.session.data = null;
+            req.session.GRGPdata = null;
             var user = await User.update(req.session.userId).set({
-                GRGPdata: {}
+                GRGPdata: null
             }).fetch();
             if (user.length == 0) return res.notFound();
             //

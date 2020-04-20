@@ -38,10 +38,10 @@ module.exports = {
             await TRGP.create(req.session.data);
 
             //clear all session data
-            req.session.data = {};
-            req.session.TRGPdata = {};
+            req.session.data = null;
+            req.session.TRGPdata = null;
             var user = await User.update(req.session.userId).set({
-                TRGPdata: {}
+                TRGPdata: null
             }).fetch();
             if (user.length == 0) return res.notFound();
 
