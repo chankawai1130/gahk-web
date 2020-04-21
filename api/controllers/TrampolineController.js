@@ -34,7 +34,7 @@ module.exports = {
                 where: condition
             })
             var newID = modelNum + 1;
-            var newIDCode = "TRGP" + req.session.data.compYear + "-" + newID;
+            var newIDCode = "TRA" + req.session.data.compYear + "-" + newID;
             req.session.data.idCode = newIDCode;
 
             //create Trampoline
@@ -73,31 +73,6 @@ module.exports = {
         }
     },
 
-    // view: async function (req, res) {
-
-    //     var model = await Trampoline.findOne(req.params.id);
-
-    //     if (!model) return res.notFound();
-
-    //     return res.view('admin/applyHandle/TrampolineEditForm', { trampoline: model });
-    // },
-
-    // delete: async function (req, res) {
-
-    //     if (req.method == "GET") return res.forbidden();
-
-    //     var models = await Trampoline.destroy(req.params.id).fetch();
-
-    //     if (models.length == 0) return res.notFound();
-
-    //     // return res.ok("Application Deleted.");
-
-    //     if (req.wantsJSON) {
-    //         return res.json({ message: "Application deleted.", url: '/' });    // for ajax request
-    //     } else {
-    //         return res.redirect('/');           // for normal request
-    //     }
-    // },
 
     update: async function (req, res) {
 

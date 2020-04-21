@@ -253,8 +253,7 @@
             <div>
                 <label>英文姓名 Name in English: </label>
                 <input type="text" class="form-group" name="Acroage[cpEngName2]" id="cpEngName2" placeholder=" e.g. Chan Tai Man"
-                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required
-                    <% if (req.session.Acrodata != null) {%>value="<%= req.session.Acrodata.cpEngName2%>"<%}%>>
+                    onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required <% if (req.session.Acrodata != null) {%>value="<%= req.session.Acrodata.cpEngName2%>"<%}%>>
             </div>
 
             <div class="form-group">
@@ -346,7 +345,7 @@
 
         
         <!-- extraCard for womenTri: 參加者(3)個人資料 Applicant(3)'s Personal Details -->
-        <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio" || req.session.Acrodata != null && req.session.data == null && req.session.Acrodata.womenTriChecked == true) {%>
+        <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio" || req.session.Acrodata != null && req.session.Acrodata.womenTriChecked == true) {%>
             <div class="card col-12" style="background: transparent; display: inline;" id="extraForm">
                 <%} else {%>
                 <div class="card col-12" style="background: transparent;" id="extraForm">
@@ -614,7 +613,7 @@
                 </div>
 
 
-                <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio" || req.session.Acrodata != null && req.session.data == null && req.session.Acrodata.womenTriChecked == true) {%>
+                <% if(req.session.data != null && req.session.data.item == "女子三人 Women's trio" || req.session.Acrodata != null && req.session.Acrodata.womenTriChecked == true) {%>
                 <div class="col-12" style="display: inline;" id="extraParent">
                     <%} else {%>
                     <div class="col-12" id="extraParent">
