@@ -46,7 +46,7 @@ module.exports = {
             if (user.length == 0) return res.notFound();
             //
 
-            return res.view('pages/competition/form/confirm_form', { 'formIDCode': newIDCode });
+            return res.view('pages/competition/form/confirm_form', { 'formIDCode': newIDCode, 'form': "gfa" });
         }
     },
 
