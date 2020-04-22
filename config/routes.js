@@ -196,7 +196,7 @@ module.exports.routes = {
   //*********Admin********
   'GET /admin/applyHandle/search': 'AdminController.apply_search',
 
-  'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.view',
+  'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/trampoline/confirmAll': 'TrampolineController.confirmAll',
   'POST /admin/applyHandle/reject/trampoline/:id': 'TrampolineController.reject',
@@ -256,17 +256,25 @@ module.exports.routes = {
   '/clubMem/import_xlsx': 'ClubMemberController.import_xlsx',
 
 
+  'GET /admin/applyHandle/gfaEditForm/:id': 'GFAController.update',
+  'POST /admin/applyHandle/gfaEditForm/:id': 'GFAController.update',
   'POST /admin/applyHandle/gfa/confirmAll': 'GFAController.confirmAll',
   'POST /admin/applyHandle/reject/gfa/:id': 'GFAController.reject',
   'POST /admin/applyHandle/confirm/gfa/:id': 'GFAController.confirm',
   'POST /admin/applyHandle/dataDef/gfa/:id': 'GFAController.dataDef',
   'POST /admin/applyHandle/waitingList/gfa/:id': 'GFAController.waitingList',
+  '/gfa/import_xlsx': 'GFAController.import_xlsx',
+  '/gfa/export_xlsx': 'GFAController.export_xlsx',
 
+  'GET /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
+  'POST /admin/applyHandle/AcroageEdit/:id': 'AcroageController.update',
   'POST /admin/applyHandle/acroage/confirmAll': 'AcroageController.confirmAll',
   'POST /admin/applyHandle/reject/acroage/:id': 'AcroageController.reject',
   'POST /admin/applyHandle/confirm/acroage/:id': 'AcroageController.confirm',
   'POST /admin/applyHandle/dataDef/acroage/:id': 'AcroageController.dataDef',
   'POST /admin/applyHandle/waitingList/acroage/:id': 'AcroageController.waitingList',
+  '/acroage/import_xlsx': 'AcroageController.import_xlsx',
+  '/acroage/export_xlsx': 'AcroageController.export_xlsx',
 
 
 

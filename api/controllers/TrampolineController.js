@@ -26,23 +26,30 @@ module.exports = {
             req.session.data.payStatus = "unpaid";
             req.session.data.formStatus = "ToBeCon";
             req.session.data.teamStatus = "suTeam";
-            await Trampoline.create(req.session.data);
-            var model = await Trampoline.findOne(req.session.data);
-            await Trampoline.update(model.id).set({
-                idCode: "TRA2020-" + model.id
+            var condition = {};
+            condition.compYear = req.session.data.compYear;
+
+            //Set idCode to Trampoline
+            var modelNum = await Trampoline.count({
+                where: condition
             })
-            model["idCode"] = "TRA2020-" + model.id;
+            var newID = modelNum + 1;
+            var newIDCode = "TRA" + req.session.data.compYear + "-" + newID;
+            req.session.data.idCode = newIDCode;
+
+            //create Trampoline
+            await Trampoline.create(req.session.data);
 
             //clear formdata in session and user
-            req.session.data = {};
-            req.session.tramData = {};
+            req.session.data = null;
+            req.session.tramData = null;
             var user = await User.update(req.session.userId).set({
-                tramData: {}
+                tramData: null
             }).fetch();
             if (user.length == 0) return res.notFound();
             //
 
-            return res.view('pages/competition/form/confirm_form', { 'form': model });
+            return res.view('pages/competition/form/confirm_form', { 'formIDCode': newIDCode });
         }
     },
 
@@ -66,31 +73,6 @@ module.exports = {
         }
     },
 
-    view: async function (req, res) {
-
-        var model = await Trampoline.findOne(req.params.id);
-
-        if (!model) return res.notFound();
-
-        return res.view('admin/applyHandle/TrampolineEditForm', { trampoline: model });
-    },
-
-    delete: async function (req, res) {
-
-        if (req.method == "GET") return res.forbidden();
-
-        var models = await Trampoline.destroy(req.params.id).fetch();
-
-        if (models.length == 0) return res.notFound();
-
-        // return res.ok("Application Deleted.");
-
-        if (req.wantsJSON) {
-            return res.json({ message: "Application deleted.", url: '/' });    // for ajax request
-        } else {
-            return res.redirect('/');           // for normal request
-        }
-    },
 
     update: async function (req, res) {
 
@@ -108,6 +90,7 @@ module.exports = {
                 return res.badRequest("Form-data not received.");
 
             var model = await Trampoline.update(req.params.id).set({
+                compYear: req.body.Trampoline.compYear,
                 gender: req.body.Trampoline.gender,
                 category: req.body.Trampoline.category,
                 havecname1: req.body.Trampoline.havecname1,
@@ -124,6 +107,18 @@ module.exports = {
                 phone2: req.body.Trampoline.phone2,
                 email2: req.body.Trampoline.email2,
                 address2: req.body.Trampoline.address2,
+                teamName: req.body.Trampoline.teamName,
+                coachName: req.body.Trampoline.coachName,
+                coachPhone: req.body.Trampoline.coachPhone,
+                coachNum: req.body.Trampoline.coachNum,
+                coachAddress: req.body.Trampoline.coachAddress,
+                parentName1: req.body.Trampoline.parentName1,
+                parentName2: req.body.Trampoline.parentName2,
+                declaration0: req.body.Trampoline.declaration0,
+                declaration1: req.body.Trampoline.declaration1,
+                payStatus: req.body.Trampoline.payStatus,
+                formStatus: req.body.Trampoline.formStatus,
+                teamStatus: req.body.Trampoline.teamStatus,
             }).fetch();
 
             if (model.length == 0) return res.notFound();
@@ -138,7 +133,7 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-
+        if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
         if (req.session.searchResult.gender) condition.gender = req.session.searchResult.gender;
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
         if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
@@ -236,7 +231,7 @@ module.exports = {
             var XLSX = require('xlsx');
             var workbook = XLSX.readFile(uploadedFiles[0].fd);
             var ws = workbook.Sheets[workbook.SheetNames[0]];
-            var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "gender", "category", "havecname1", "chiName1", "engName1", "birth1", "phone1", "email1", "address1", "havecname2", "chiName2", "engName2", "birth2", "phone2", "email2", "address2", "teamName", "coachName", "coachPhone", "coachNum", "coachAddress", "payStatus", "formStatus", "teamStatus"] });
+            var data = XLSX.utils.sheet_to_json(ws, { range: 1, header: ["idCode", "compYear", "gender", "category", "havecname1", "chiName1", "engName1", "birth1", "phone1", "email1", "address1", "havecname2", "chiName2", "engName2", "birth2", "phone2", "email2", "address2", "teamName", "coachName", "coachPhone", "coachNum", "coachAddress", "parentName1", "parentName2", "payStatus", "formStatus", "teamStatus"] });
 
             for (var i = 0; i < data.length; i++) {
                 if (data[i].payStatus == "未付款 Unpaid") {
@@ -274,7 +269,8 @@ module.exports = {
     export_xlsx: async function (req, res) {
 
         var condition = {};
-
+        if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
+        if (req.session.searchResult.gender) condition.gender = req.session.searchResult.gender;
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
         if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
         if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
@@ -320,27 +316,30 @@ module.exports = {
 
             return {
                 "申請表編號 Application Number": model.idCode,
+                "比賽年份 Year of Competition": model.compYear,
                 "性別 Gender": model.gender,
                 "參賽組別 Category": model.category,
                 "參加者(1)是否有中文姓名 Applicant(1) Any Chinese name": model.havecname1,
                 "參加者(1)中文姓名 Applicant(1) Name in Chinese": model.chiName1,
                 "參加者(1)英文姓名 Applicant(1) Name in English": model.engName1,
-                "參加者(1)出生年份 Applicant(1) Date of Birth": birth1,
-                "參加者(1)聯絡電話 Applicant(1) Contact Number": phone1,
-                "參加者(1)電郵 Applicant(1) Email Address": email1,
-                "參加者(1)通訊地址 Applicant(1) Postal Address": address1,
+                "參加者(1)出生年份 Applicant(1) Date of Birth": model.birth1,
+                "參加者(1)聯絡電話 Applicant(1) Contact Number": model.phone1,
+                "參加者(1)電郵 Applicant(1) Email Address": model.email1,
+                "參加者(1)通訊地址 Applicant(1) Postal Address": model.address1,
                 "參加者(2)是否有中文姓名 Applicant(2) Any Chinese name": model.havecname2,
                 "參加者(2)中文姓名 Applicant(2) Chinese Name": model.chiName2,
                 "參加者(2)英文姓名 Applicant(2) English Name": model.engName2,
-                "參加者(2)出生年份 Applicant(2) Date of Birth": birth2,
-                "參加者(2)聯絡電話 Applicant(2) Contact Number": phone2,
-                "參加者(2)電郵 Applicant(2) Email Address": email2,
-                "參加者(2)通訊地址 Applicant(2) Postal Address": address2,
+                "參加者(2)出生年份 Applicant(2) Date of Birth": model.birth2,
+                "參加者(2)聯絡電話 Applicant(2) Contact Number": model.phone2,
+                "參加者(2)電郵 Applicant(2) Email Address": model.email2,
+                "參加者(2)通訊地址 Applicant(2) Postal Address": model.address2,
                 "團體名稱 Organization Name": model.teamName,
                 "教練姓名 Coach Name": model.coachName,
                 "聯絡電話 Contact Number": model.coachPhone,
                 "註冊教練編號 Registered Coach No.": model.coachNum,
                 "通訊地址 Postal Address": model.coachAddress,
+                "參加者(1)家長姓名 Applicant(1)'s Parent Name": model.parentName1,
+                "參加者(2)家長姓名 Applicant(2)'s Parent Name": model.parentName2,
                 "付款狀況 Payment Status": payS,
                 "申請狀況 Apply Status": formS,
                 "隊伍/團體狀況 Team Status": teamS,
