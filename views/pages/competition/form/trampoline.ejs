@@ -29,12 +29,9 @@
         <div class="col-12">
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of Competition</h5>
-             <%var todayYear = new Date().getFullYear();
-                var end = todayYear + 2;%>
+             <%var todayYear = new Date().getFullYear();%>
             <select id="compYear" name="Trampoline[compYear]" required>
-                <% for (var year = todayYear; year <= end; year++){%>
-                <option value="<%=year%>" <%if(req.session.data == null && req.session.tramData == null && year == todayYear || req.session.tramData != null && year == req.session.tramData.compYear || req.session.data != null && year == req.session.data.compYear) {%> selected<%}%> ><%=year%></option>
-                <%}%>
+                <option value="<%=todayYear%>" selected><%=todayYear%></option>
             </select>
         </div>
 

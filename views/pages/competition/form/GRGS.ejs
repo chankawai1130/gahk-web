@@ -32,14 +32,9 @@
             <br><br>
             <h5 style="color: #83a70c; font-family: Verdana,Arial, Helvetica, sans-serif;  font-size:12pt;">比賽年份 Year of
                 Competition</h5>
-            <%var todayYear = new Date().getFullYear();
-                var end = todayYear + 2;%>
+            <%var todayYear = new Date().getFullYear();%>
             <select id="compYear" name="GRGS[compYear]" required>
-                <% for (var year = todayYear; year <= end; year++){%>
-                <option value="<%=year%>"
-                    <%if(req.session.data == null && req.session.GRGSdata == null && year == todayYear || req.session.GRGSdata != null && year == req.session.GRGSdata.compYear || req.session.data != null && year == req.session.data.compYear) {%>
-                    selected<%}%> ><%=year%></option>
-                    <%}%>
+                <option value="<%=todayYear%>" selected><%=todayYear%></option>
             </select>
         </div>
 
