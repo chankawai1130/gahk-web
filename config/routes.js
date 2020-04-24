@@ -128,8 +128,11 @@ module.exports.routes = {
   '/coach/confirm_coach/:id': 'CoachController.confirm_coach',
   '/coach/canel_coach/:id': 'CoachController.canel_coach',
 
-  'GET /user': 'UserController.index',
-  '/user/login': 'UserController.login',
+
+  'GET /user':'UserController.index',
+  '/user/login':'UserController.login',
+  '/user/logout':'UserController.logout',
+
   '/user/update_user/:id': 'UserController.Update_User',
   'GET /user/detail/:id': 'UserController.detail',
   '/user/register': 'UserController.register',
