@@ -458,8 +458,7 @@
             VBRC: form.VBRC.value,
             declaration: form.declaration.value,
         });
-        alert(data);
-
+        
         var response = await fetch("/competition/form/TRGPForm/save", {
             method: "POST",
             credentials: 'same-origin',

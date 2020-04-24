@@ -55,6 +55,7 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         req.session.TRGPdata = req.body;
+        req.session.data = null;
 
         var user = await User.update(req.session.userId).set({
             TRGPdata: req.body
@@ -125,7 +126,7 @@ module.exports = {
 
             if (models.length == 0) return res.notFound();
 
-            return res.redirect('/admin/applyHandle/search');
+            return res.redirect('/admin/applyHandle/HKRGASearch');
         }
     },
 
@@ -155,9 +156,9 @@ module.exports = {
         });
 
         if (req.wantsJSON) {
-            return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
         } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
+            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
         }
     },
 
@@ -170,9 +171,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請已被確認 Application has been accepted.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請已被確認 Application has been accepted.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
         } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
+            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
         }
     },
 
@@ -184,9 +185,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請已被拒絕 Application has been rejected.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請已被拒絕 Application has been rejected.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
         } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
+            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
         }
 
     },
@@ -199,9 +200,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請資料不全 Data Deficiency.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請資料不全 Data Deficiency.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
         } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
+            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
         }
 
     },
@@ -214,9 +215,9 @@ module.exports = {
         if (models.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "申請隊伍/團體已設為後補 Applied Team/Group has been set on waiting list.", url: '/admin/applyHandle/search' });    // for ajax request
+            return res.json({ message: "申請隊伍/團體已設為後補 Applied Team/Group has been set on waiting list.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
         } else {
-            return res.redirect('/admin/applyHandle/search');           // for normal request
+            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
         }
 
     },
@@ -380,7 +381,7 @@ module.exports = {
             if (models.length == 0) {
                 return res.badRequest("No data imported.");
             }
-            return res.redirect('/admin/applyHandle/search');
+            return res.redirect('/admin/applyHandle/HKRGASearch');
         });
 
     },
