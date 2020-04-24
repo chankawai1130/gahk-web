@@ -36,5 +36,17 @@ module.exports.policies = {
   CoachController: {
     '*': 'isUser',
   },
+  ClubMemberController: {
+    clubMemberForm: 'isUser',
+    clubMemberFormPreview: 'isUser',
+    save: 'isUser',
+    update: 'isAdmin',
+    reject: 'isAdmin',
+    confirmAll: 'isAdmin',
+    confirm: 'isAdmin',
+    dataDef: 'isAdmin',
+    export_xlsx: 'isAdmin',
+    import_xlsx: 'isAdmin',
+  },
 
 };

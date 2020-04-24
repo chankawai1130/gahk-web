@@ -67,7 +67,7 @@ module.exports = {
   },
 
   //applyHandle
-  apply_search: async function (req, res) {
+  /*apply_search: async function (req, res) {
     req.session.searchResult = {};
     var condition = {};
     var form = req.query.application;
@@ -158,6 +158,162 @@ module.exports = {
     }
     req.session.searchResult = condition;
     return res.view('admin/applyHandle/search', { applications: models, form, projectYear });
+  },*/
+
+  acroSearch: async function (req, res) {
+    req.session.acroSearchResult = {};
+    var condition = {};
+    var projectYear = req.query.year;
+
+    if (!req.query.year && !req.query.item && !req.query.category && !req.query.payStatus && !req.query.formStatus && !req.query.teamStatus) {
+      var models = await Acroage.find();
+
+    } else {
+      if (req.query.year) condition.compYear = req.query.year;
+      if (req.query.item) condition.item = req.query.item;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+      var models = await Acroage.find({
+        where: condition
+      });
+      req.session.acroSearchResult = condition;
+    }
+
+    return res.view('admin/applyHandle/acroSearch', { applications: models, projectYear });
   },
+
+  gfaSearch: async function (req, res) {
+    req.session.gfaSearchResult = {};
+    var condition = {};
+    var projectYear = req.query.year;
+
+    if (!req.query.year && !req.query.category && !req.query.payStatus && !req.query.formStatus && !req.query.teamStatus) {
+      var models = await GFA.find();
+
+    } else {
+      if (req.query.year) condition.compYear = req.query.year;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+      var models = await GFA.find({
+        where: condition
+      });
+      req.session.gfaSearchResult = condition;
+    }
+
+    return res.view('admin/applyHandle/gfaSearch', { applications: models, projectYear });
+  },
+
+  trampolineSearch: async function (req, res) {
+    req.session.tramSearchResult = {};
+    var condition = {};
+    var projectYear = req.query.year;
+
+    if (!req.query.year && !req.query.gender && !req.query.category && !req.query.payStatus && !req.query.formStatus && !req.query.teamStatus) {
+      var models = await Trampoline.find();
+
+    } else {
+      if (req.query.year) condition.compYear = req.query.year;
+      if (req.query.gender) condition.gender = req.query.gender;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+      var models = await Trampoline.find({
+        where: condition
+      });
+      req.session.tramSearchResult = condition;
+    }
+
+    return res.view('admin/applyHandle/trampolineSearch', { applications: models, projectYear });
+  },
+
+  clubMemberSearch: async function (req, res) {
+    req.session.clubMemSearchResult = {};
+    var condition = {};
+    var projectYear = req.query.year;
+
+    if (!req.query.year && !req.query.payStatus && !req.query.formStatus) {
+      var models = await ClubMember.find();
+
+    } else {
+      if (req.query.year) condition.clubYear = req.query.year;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      var models = await ClubMember.find({
+        where: condition
+      });
+      req.session.clubMemSearchResult = condition;
+    }
+
+    return res.view('admin/applyHandle/clubMemberSearch', { applications: models, projectYear });
+  },
+
+  HKRGASearch: async function (req, res) {
+    req.session.hkrgaSearchResult = {};
+    var condition = {};
+    var form = req.query.application;
+    var projectYear = req.query.year;
+
+    if (!req.query.application && !req.query.year && !req.query.category && !req.query.payStatus && !req.query.formStatus && !req.query.teamStatus) {
+      var trgpModels = await TRGP.find();
+      var trgsModels = await TRGS.find();
+      var grgpModels = await GRGP.find();
+      var grgsModels = await GRGS.find();
+
+    } else {
+      if (req.query.year) condition.compYear = req.query.year;
+      if (req.query.category) condition.category = req.query.category;
+      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
+      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
+      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
+
+      if (req.query.application) {
+        if (req.query.application == "TRGP") {
+          var trgpModels = await TRGP.find({
+            where: condition
+          });
+
+        } else if (req.query.application == "TRGS") {
+          var trgsModels = await TRGS.find({
+            where: condition
+          });
+        } else if (req.query.application == "GRGP") {
+          var grgpModels = await GRGP.find({
+            where: condition
+          });
+        } else if (req.query.application == "GRGS") {
+          var grgsModels = await GRGS.find({
+            where: condition
+          });
+        }
+
+      } else {
+        var trgpModels = await TRGP.find({
+          where: condition
+        });
+        var trgsModels = await TRGS.find({
+          where: condition
+        });
+        var grgpModels = await GRGP.find({
+          where: condition
+        });
+        var grgsModels = await GRGS.find({
+          where: condition
+        });
+      }
+
+      req.session.hkrgaSearchResult.form = req.query.application;
+      req.session.hkrgaSearchResult = condition;
+    }
+
+    return res.view('admin/applyHandle/HKRGASearch', { trgpApp: trgpModels, trgsApp: trgsModels, grgpApp: grgpModels, grgsApp: grgsModels, form, projectYear });
+  },
+
+
+
 };
 

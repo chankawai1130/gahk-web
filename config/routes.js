@@ -171,6 +171,7 @@ module.exports.routes = {
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /competition/form/TRGSForm/save': 'TRGSController.save',
 
+  
   'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
@@ -193,8 +194,13 @@ module.exports.routes = {
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /competition/form/acroage/save': 'AcroageController.save',
 
-  //*********Admin********
-  'GET /admin/applyHandle/search': 'AdminController.apply_search',
+  //*****************************Admin*****************************
+  // 'GET /admin/applyHandle/search': 'AdminController.apply_search',
+  'GET /admin/applyHandle/acroSearch': 'AdminController.acroSearch',
+  'GET /admin/applyHandle/gfaSearch': 'AdminController.gfaSearch',
+  'GET /admin/applyHandle/trampolineSearch': 'AdminController.trampolineSearch',
+  'GET /admin/applyHandle/HKRGASearch': 'AdminController.HKRGASearch',
+  'GET /admin/applyHandle/clubMemberSearch': 'AdminController.clubMemberSearch',
 
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
