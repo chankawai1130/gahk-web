@@ -134,12 +134,13 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-        if (req.session.tramSearchResult == "") {
+        if (!req.session.tramSearchResult.compYear && !req.session.tramSearchResult.gender && !req.session.tramSearchResult.category
+            && !req.session.tramSearchResult.payStatus && !req.session.tramSearchResult.formStatus && !req.session.tramSearchResult.teamStatus) {
             var models = await Trampoline.find();
 
         } else {
             if (req.session.tramSearchResult.compYear) condition.compYear = req.session.tramSearchResult.compYear;
-            if (req.session.tramSearchResult.item) condition.item = req.session.tramSearchResult.item;
+            if (req.session.tramSearchResult.gender) condition.gender = req.session.tramSearchResult.gender;
             if (req.session.tramSearchResult.category) condition.category = req.session.tramSearchResult.category;
             if (req.session.tramSearchResult.payStatus) condition.payStatus = req.session.tramSearchResult.payStatus;
             if (req.session.tramSearchResult.formStatus) condition.formStatus = req.session.tramSearchResult.formStatus;
@@ -276,12 +277,13 @@ module.exports = {
     export_xlsx: async function (req, res) {
 
         var condition = {};
-        if (req.session.tramSearchResult == "") {
+        if (!req.session.tramSearchResult.compYear && !req.session.tramSearchResult.gender && !req.session.tramSearchResult.category
+            && !req.session.tramSearchResult.payStatus && !req.session.tramSearchResult.formStatus && !req.session.tramSearchResult.teamStatus) {
             var models = await Trampoline.find();
 
         } else {
             if (req.session.tramSearchResult.compYear) condition.compYear = req.session.tramSearchResult.compYear;
-            if (req.session.tramSearchResult.item) condition.item = req.session.tramSearchResult.item;
+            if (req.session.tramSearchResult.gender) condition.gender = req.session.tramSearchResult.gender;
             if (req.session.tramSearchResult.category) condition.category = req.session.tramSearchResult.category;
             if (req.session.tramSearchResult.payStatus) condition.payStatus = req.session.tramSearchResult.payStatus;
             if (req.session.tramSearchResult.formStatus) condition.formStatus = req.session.tramSearchResult.formStatus;

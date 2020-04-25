@@ -134,7 +134,7 @@ module.exports = {
 
     var condition = {};
 
-    if(req.session.clubMemSearchResult == "") {
+    if(!req.session.clubMemSearchResult.clubYear && !req.session.clubMemSearchResult.payStatus && !req.session.clubMemSearchResult.formStatus) {
       var models = await ClubMember.find();
 
     } else {
@@ -194,7 +194,7 @@ module.exports = {
 
   export_xlsx: async function (req, res) {
     var condition = {};
-    if(req.session.clubMemSearchResult == "") {
+    if(!req.session.clubMemSearchResult.clubYear && !req.session.clubMemSearchResult.payStatus && !req.session.clubMemSearchResult.formStatus) {
       var models = await ClubMember.find();
 
     } else {

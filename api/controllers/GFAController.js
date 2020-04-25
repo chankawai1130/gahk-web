@@ -136,7 +136,7 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-        if (req.session.gfaSearchResult == "") {
+        if (!req.session.gfaSearchResult.compYear && !req.session.gfaSearchResult.category && !req.session.gfaSearchResult.payStatus && !req.session.gfaSearchResult.formStatus && !req.session.gfaSearchResult.teamStatus) {
             var models = await GFA.find();
 
         } else {
@@ -213,7 +213,7 @@ module.exports = {
 
     export_xlsx: async function (req, res) {
         var condition = {};
-        if (req.session.gfaSearchResult == "") {
+        if (!req.session.gfaSearchResult.compYear && !req.session.gfaSearchResult.category && !req.session.gfaSearchResult.payStatus && !req.session.gfaSearchResult.formStatus && !req.session.gfaSearchResult.teamStatus) {
             var models = await GFA.find();
 
         } else {
