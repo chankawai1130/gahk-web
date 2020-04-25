@@ -187,7 +187,8 @@ module.exports = {
         if (req.method == "GET") return res.forbidden();
 
         var condition = {};
-        if (req.session.acroSearchResult == "") {
+        if (!req.session.acroSearchResult.compYear && !req.session.acroSearchResult.item && !req.session.acroSearchResult.category
+            && !req.session.acroSearchResult.payStatus && !req.session.acroSearchResult.formStatus && !req.session.acroSearchResult.teamStatus) {
             var models = await Acroage.find();
 
         } else {
@@ -327,7 +328,8 @@ module.exports = {
 
     export_xlsx: async function (req, res) {
         var condition = {};
-        if (req.session.acroSearchResult == "") {
+        if (!req.session.acroSearchResult.compYear && !req.session.acroSearchResult.item && !req.session.acroSearchResult.category
+            && !req.session.acroSearchResult.payStatus && !req.session.acroSearchResult.formStatus && !req.session.acroSearchResult.teamStatus) {
             var models = await Acroage.find();
 
         } else {

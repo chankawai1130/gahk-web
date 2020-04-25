@@ -204,6 +204,8 @@ module.exports.routes = {
   'GET /admin/applyHandle/trampolineSearch': 'AdminController.trampolineSearch',
   'GET /admin/applyHandle/HKRGASearch': 'AdminController.HKRGASearch',
   'GET /admin/applyHandle/clubMemberSearch': 'AdminController.clubMemberSearch',
+  '/HKRGA/export_xlsx': 'AdminController.HKRGA_export_xlsx',
+  '/HKRGA/import_xlsx': 'AdminController.HKRGA_import_xlsx',
 
   'GET /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
   'POST /admin/applyHandle/TrampolineEditForm/:id': 'TrampolineController.update',
@@ -222,8 +224,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/GRGS/:id': 'GRGSController.confirm',
   'POST /admin/applyHandle/dataDef/GRGS/:id': 'GRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGS/:id': 'GRGSController.waitingList',
-  '/GRGS/export_xlsx': 'GRGSController.export_xlsx',
-  '/GRGS/import_xlsx': 'GRGSController.import_xlsx',
+  // '/GRGS/export_xlsx': 'GRGSController.export_xlsx',
+  // '/GRGS/import_xlsx': 'GRGSController.import_xlsx',
 
   'GET /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
   'POST /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
@@ -232,8 +234,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/GRGP/:id': 'GRGPController.confirm',
   'POST /admin/applyHandle/dataDef/GRGP/:id': 'GRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
-  '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
-  '/GRGP/import_xlsx': 'GRGPController.import_xlsx',
+  // '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
+  // '/GRGP/import_xlsx': 'GRGPController.import_xlsx',
 
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
@@ -242,8 +244,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
   'POST /admin/applyHandle/dataDef/TRGP/:id': 'TRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGP/:id': 'TRGPController.waitingList',
-  '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
-  '/TRGP/import_xlsx': 'TRGPController.import_xlsx',
+  // '/TRGP/export_xlsx': 'TRGPController.export_xlsx',
+  // '/TRGP/import_xlsx': 'TRGPController.import_xlsx',
 
   'GET /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
   'POST /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
@@ -252,8 +254,8 @@ module.exports.routes = {
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
   'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/TRGS/:id': 'TRGSController.waitingList',
-  '/TRGS/export_xlsx': 'TRGSController.export_xlsx',
-  '/TRGS/import_xlsx': 'TRGSController.import_xlsx',
+  // '/TRGS/export_xlsx': 'TRGSController.export_xlsx',
+  // '/TRGS/import_xlsx': 'TRGSController.import_xlsx',
 
   'GET /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
   'POST /admin/applyHandle/clubMemEdit/:id': 'ClubMemberController.update',
@@ -285,6 +287,7 @@ module.exports.routes = {
   '/acroage/import_xlsx': 'AcroageController.import_xlsx',
   '/acroage/export_xlsx': 'AcroageController.export_xlsx',
 
+  
 
 
 

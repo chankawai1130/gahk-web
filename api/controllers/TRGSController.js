@@ -217,7 +217,7 @@ module.exports = {
 
     },
 
-    export_xlsx: async function (req, res) {
+    /*export_xlsx: async function (req, res) {
         var condition = {};
         if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
         if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
@@ -231,9 +231,9 @@ module.exports = {
 
         var XLSX = require('xlsx');
         var wb = XLSX.utils.book_new();
-        var payStatus, formStatus, teamStatus;
+        
         var ws = XLSX.utils.json_to_sheet(models.map(model => {
-
+            var payStatus, formStatus, teamStatus;
             var day1 = model.Mate1Date.split('-');
             var date1 = day1[2] + "/" + day1[1] + "/" + day1[0];
             var day2 = model.Mate2Date.split('-');
@@ -380,7 +380,7 @@ module.exports = {
             return res.redirect('/admin/applyHandle/HKRGASearch');
         });
 
-    },
+    },*/
 
 
 

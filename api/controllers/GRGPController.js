@@ -245,7 +245,7 @@ module.exports = {
     },
 
     // action - export excel
-    export_xlsx: async function (req, res) {
+    /*export_xlsx: async function (req, res) {
 
         var condition = {};
         if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
@@ -434,7 +434,7 @@ module.exports = {
             }
             return res.redirect('/admin/applyHandle/HKRGASearch');
         });
-    }
+    }*/
 
 };
 
