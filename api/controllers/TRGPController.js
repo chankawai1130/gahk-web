@@ -9,7 +9,7 @@ module.exports = {
     //(preview)
     TRGPForm: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/TRGPForm'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/TRGPForm'); }
 
         req.session.data = req.body.TRGP;
 
@@ -64,9 +64,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/TRGPForm' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/TRGPForm' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/TRGPForm');           // for normal request
+            return res.redirect('/pages/competition/form/TRGPForm');           // for normal request
         }
     },
 
