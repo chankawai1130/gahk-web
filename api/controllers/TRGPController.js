@@ -132,35 +132,35 @@ module.exports = {
 
 
 
-    confirmAll: async function (req, res) {
+    // confirmAll: async function (req, res) {
 
-        if (req.method == "GET") return res.forbidden();
+    //     if (req.method == "GET") return res.forbidden();
 
-        var condition = {};
-        if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
-        if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
-        if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
-        if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
-        if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
+    //     var condition = {};
+    //     if (req.session.searchResult.compYear) condition.compYear = req.session.searchResult.compYear;
+    //     if (req.session.searchResult.category) condition.category = req.session.searchResult.category;
+    //     if (req.session.searchResult.payStatus) condition.payStatus = req.session.searchResult.payStatus;
+    //     if (req.session.searchResult.formStatus) condition.formStatus = req.session.searchResult.formStatus;
+    //     if (req.session.searchResult.teamStatus) condition.teamStatus = req.session.searchResult.teamStatus;
 
-        var models = await TRGP.find({
-            where: condition
-        });
+    //     var models = await TRGP.find({
+    //         where: condition
+    //     });
 
-        if (models.length == 0) return res.notFound();
+    //     if (models.length == 0) return res.notFound();
 
-        models.forEach(async function (model) {
-            if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
-                await TRGP.update(model.id).set({ formStatus: "accepted" })
-            }
-        });
+    //     models.forEach(async function (model) {
+    //         if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+    //             await TRGP.update(model.id).set({ formStatus: "accepted" })
+    //         }
+    //     });
 
-        if (req.wantsJSON) {
-            return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
-        } else {
-            return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
-        }
-    },
+    //     if (req.wantsJSON) {
+    //         return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
+    //     } else {
+    //         return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
+    //     }
+    // },
 
     // action - confirm form
     confirm: async function (req, res) {

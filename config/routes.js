@@ -204,6 +204,8 @@ module.exports.routes = {
   'GET /admin/applyHandle/trampolineSearch': 'AdminController.trampolineSearch',
   'GET /admin/applyHandle/HKRGASearch': 'AdminController.HKRGASearch',
   'GET /admin/applyHandle/clubMemberSearch': 'AdminController.clubMemberSearch',
+  
+  'POST /admin/applyHandle/HKRGA/confirmAll': 'AdminController.HKRGA_comfirmAll',
   '/HKRGA/export_xlsx': 'AdminController.HKRGA_export_xlsx',
   '/HKRGA/import_xlsx': 'AdminController.HKRGA_import_xlsx',
 
@@ -219,27 +221,22 @@ module.exports.routes = {
 
   'GET /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
   'POST /admin/applyHandle/GRGSEditForm/:id': 'GRGSController.update',
-  'POST /admin/applyHandle/GRGS/confirmAll': 'GRGSController.confirmAll',
   'POST /admin/applyHandle/reject/GRGS/:id': 'GRGSController.reject',
   'POST /admin/applyHandle/confirm/GRGS/:id': 'GRGSController.confirm',
   'POST /admin/applyHandle/dataDef/GRGS/:id': 'GRGSController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGS/:id': 'GRGSController.waitingList',
-  // '/GRGS/export_xlsx': 'GRGSController.export_xlsx',
-  // '/GRGS/import_xlsx': 'GRGSController.import_xlsx',
 
   'GET /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
   'POST /admin/applyHandle/GRGPEditForm/:id': 'GRGPController.update',
-  'POST /admin/applyHandle/GRGP/confirmAll': 'GRGPController.confirmAll',
   'POST /admin/applyHandle/reject/GRGP/:id': 'GRGPController.reject',
   'POST /admin/applyHandle/confirm/GRGP/:id': 'GRGPController.confirm',
   'POST /admin/applyHandle/dataDef/GRGP/:id': 'GRGPController.dataDef',
   'POST /admin/applyHandle/waitingList/GRGP/:id': 'GRGPController.waitingList',
-  // '/GRGP/export_xlsx': 'GRGPController.export_xlsx',
-  // '/GRGP/import_xlsx': 'GRGPController.import_xlsx',
+  
 
   'GET /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
   'POST /admin/applyHandle/TRGPEdit/:id': 'TRGPController.update',
-  'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
+ // 'POST /admin/applyHandle/TRGP/confirmAll': 'TRGPController.confirmAll',
   'POST /admin/applyHandle/reject/TRGP/:id': 'TRGPController.reject',
   'POST /admin/applyHandle/confirm/TRGP/:id': 'TRGPController.confirm',
   'POST /admin/applyHandle/dataDef/TRGP/:id': 'TRGPController.dataDef',
@@ -249,7 +246,7 @@ module.exports.routes = {
 
   'GET /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
   'POST /admin/applyHandle/TRGSEdit/:id': 'TRGSController.update',
-  'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
+ // 'POST /admin/applyHandle/TRGS/confirmAll': 'TRGSController.confirmAll',
   'POST /admin/applyHandle/reject/TRGS/:id': 'TRGSController.reject',
   'POST /admin/applyHandle/confirm/TRGS/:id': 'TRGSController.confirm',
   'POST /admin/applyHandle/dataDef/TRGS/:id': 'TRGSController.dataDef',

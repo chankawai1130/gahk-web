@@ -121,7 +121,7 @@
     }
 </style>
 
-<%- partial('../partial/sidemenu.ejs') %>
+<%- partial('../partial/app_sidemenu.ejs') %>
 <div class="content admin w-100">
     <h5 class="main-heading1">
         技巧體操公開賽申請處理管理<span class="highlight">系統</span>
@@ -483,7 +483,7 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
-            window.location = data.url;
+            location.reload();
         } else {
             alert(response.statusText);
         }
@@ -498,7 +498,7 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
-            window.location = data.url;
+            location.reload();
         } else {
             alert(response.status + ": " + response.statusText);
         }
@@ -513,7 +513,7 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
-            window.location = data.url;
+            location.reload();
         } else {
             alert(response.status + ": " + response.statusText);
         }
@@ -529,7 +529,7 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
-            window.location = data.url;
+            location.reload();
         } else {
             alert(response.status + ": " + response.statusText);
         }
@@ -544,7 +544,7 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
-            window.location = data.url;
+            location.reload();
         } else {
             alert(response.status + ": " + response.statusText);
         }
