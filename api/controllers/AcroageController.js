@@ -9,7 +9,7 @@ module.exports = {
     //(preview)
     acroage: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/acroage'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/acroage'); }
 
         req.session.data = req.body.Acroage;
 
@@ -65,9 +65,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/acroage' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/acroage' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/acroage');           // for normal request
+            return res.redirect('/pages/competition/form/acroage');           // for normal request
         }
     },
 

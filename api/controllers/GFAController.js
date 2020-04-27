@@ -8,7 +8,7 @@
 module.exports = {
     GFA_form: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/GFA_form'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/GFA_form'); }
 
         req.session.data = req.body.GFA;
 
@@ -64,9 +64,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GFA_form' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/GFA_form' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/GFA_form');           // for normal request
+            return res.redirect('/pages/competition/form/GFA_form');           // for normal request
         }
     },
 

@@ -38,7 +38,7 @@ module.exports.routes = {
   '/training': { view: 'pages/training' },
   '/coach': { view: 'pages/coach' },
   '/judge': { view: 'pages/judge' },
-  '/competition': { view: 'pages/competition/1920' },
+  '/competition': { view: 'pages/competition/2021' },
   '/competition/2019/20': { view: 'pages/competition/1920' },
   '/competition/2018/19': { view: 'pages/competition/1819' },
   '/competition/2017/18': { view: 'pages/competition/1718' },
@@ -64,17 +64,15 @@ module.exports.routes = {
   '/competition/2020/21': { view: 'pages/competition/2021' },
   '/competition/annex1': { view: 'pages/competition/form/annex1' },
   '/membership/clubMemberFormConfirm': { view: 'membership/clubMemberFormConfirm' },
-
-  '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
-  '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
-
-  '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
-
-  '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
   '/competition/form/confirm_form': { view: 'pages/competition/form/confirm_form' },
-  '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
-  '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
-  '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
+
+  // '/competition/form/GRGS': { view: 'pages/competition/form/GRGS' },
+  // '/competition/form/GRGP': { view: 'pages/competition/form/GRGP' },
+  // '/competition/form/acroage': { view: 'pages/competition/form/acroage' },
+  // '/competition/form/GFA_form': { view: 'pages/competition/form/GFA_form' },
+  // '/competition/form/TRGSForm': { view: 'pages/competition/form/TRGSForm' },
+  // '/competition/form/TRGPForm': { view: 'pages/competition/form/TRGPForm' },
+  // '/competition/form/trampoline': { view: 'pages/competition/form/trampoline' },
 
 
   /***************************************************************************
@@ -153,29 +151,32 @@ module.exports.routes = {
 
 
   //********************Competition Application routes****************
-  //'GET /competition/form/GRGS': 'GRGSController.GRGS_form',
-  'POST /competition/form/GRGS': 'GRGSController.GRGS_form',
+  'GET /pages/competition/form/GRGS': 'GRGSController.GRGS_form',
+  'POST /pages/competition/form/GRGS': 'GRGSController.GRGS_form',
   'POST /competition/form/GRGS/save': 'GRGSController.save',
   'GET /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
   'POST /pages/competition/form/GRGS_Preview': 'GRGSController.GRGS_form_preview',
 
-  'POST /competition/form/GRGP': 'GRGPController.GRGP_form',
+  'GET /pages/competition/form/GRGP': 'GRGPController.GRGP_form',
+  'POST /pages/competition/form/GRGP': 'GRGPController.GRGP_form',
   'POST /competition/form/GRGP/save': 'GRGPController.save',
   'GET /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
   'POST /pages/competition/form/GRGP_Preview': 'GRGPController.GRGP_form_preview',
 
-  'POST /competition/form/GFA_form': 'GFAController.GFA_form',
+  'GET /pages/competition/form/GFA_form': 'GFAController.GFA_form',
+  'POST /pages/competition/form/GFA_form': 'GFAController.GFA_form',
   'GET /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /pages/competition/form/GFA_Preview': 'GFAController.GFA_form_preview',
   'POST /competition/form/GFA/save': 'GFAController.save',
 
-  'POST /competition/form/TRGSForm': 'TRGSController.TRGSForm',
+  'GET /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
+  'POST /pages/competition/form/TRGSForm': 'TRGSController.TRGSForm',
   'GET /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /pages/competition/form/TRGSFormPreview': 'TRGSController.TRGSFormPreview',
   'POST /competition/form/TRGSForm/save': 'TRGSController.save',
 
-  
-  'POST /competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'GET /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
+  'POST /pages/competition/form/TRGPForm': 'TRGPController.TRGPForm',
   'GET /pages/competition/form/TPGPFormPreview': 'TRGPController.TPGPFormPreview',
   'POST /pages/competition/form/TRGPFormPreview': 'TRGPController.TRGPFormPreview',
   'POST /competition/form/TRGPForm/save': 'TRGPController.save',
@@ -186,13 +187,14 @@ module.exports.routes = {
   'POST /membership/clubMemberFormPreview': 'ClubMemberController.clubMemberFormPreview',
   'POST /membership/clubMemberForm/save': 'ClubMemberController.save',
 
-  'POST /competition/form/trampoline': 'TrampolineController.trampoline',
+  'GET /pages/competition/form/trampoline': 'TrampolineController.trampoline',
+  'POST /pages/competition/form/trampoline': 'TrampolineController.trampoline',
   'GET /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /pages/competition/form/TrampolinePreviewForm': 'TrampolineController.TrampolinePreviewForm',
   'POST /competition/form/trampoline/save': 'TrampolineController.save',
 
-  //'GET /competition/form/acroage': 'AcroageController.acroage',
-  'POST /competition/form/acroage': 'AcroageController.acroage',
+  'GET /pages/competition/form/acroage': 'AcroageController.acroage',
+  'POST /pages/competition/form/acroage': 'AcroageController.acroage',
   'GET /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /pages/competition/form/acroage_preview': 'AcroageController.acroage_preview',
   'POST /competition/form/acroage/save': 'AcroageController.save',

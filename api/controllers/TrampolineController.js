@@ -10,7 +10,7 @@ module.exports = {
     //(preview)
     trampoline: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/trampoline'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/trampoline'); }
 
         req.session.data = req.body.Trampoline;
 
@@ -67,9 +67,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/trampoline' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/trampoline' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/trampoline');           // for normal request
+            return res.redirect('/pages/competition/form/trampoline');           // for normal request
         }
     },
 

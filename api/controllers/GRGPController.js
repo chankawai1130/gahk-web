@@ -8,7 +8,7 @@
 module.exports = {
     GRGP_form: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/GRGP'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/GRGP'); }
 
         req.session.data = req.body.GRGP;
 
@@ -64,9 +64,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GRGP' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/GRGP' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/GRGP');           // for normal request
+            return res.redirect('/pages/competition/form/GRGP');           // for normal request
         }
     },
 

@@ -8,7 +8,7 @@
 module.exports = {
     GRGS_form: async function (req, res) {
 
-        if (req.method == 'GET') { return res.view('competition/form/GRGS'); }
+        if (req.method == 'GET') { return res.view('pages/competition/form/GRGS'); }
 
         req.session.data = req.body.GRGS;
 
@@ -65,9 +65,9 @@ module.exports = {
         if (user.length == 0) return res.notFound();
 
         if (req.wantsJSON) {
-            return res.json({ message: "儲存成功 Sucessfully save.", url: '/competition/form/GRGS' });    // for ajax request
+            return res.json({ message: "儲存成功 Sucessfully save.", url: '/pages/competition/form/GRGS' });    // for ajax request
         } else {
-            return res.redirect('/competition/form/GRGS');           // for normal request
+            return res.redirect('/pages/competition/form/GRGS');           // for normal request
         }
     },
 
