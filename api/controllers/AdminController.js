@@ -66,100 +66,7 @@ module.exports = {
 
   },
 
-  //applyHandle
-  /*apply_search: async function (req, res) {
-    req.session.searchResult = {};
-    var condition = {};
-    var form = req.query.application;
-    var projectYear = req.query.year;
-
-    if (req.query.application == "TRGP") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await TRGP.find({
-        where: condition
-      });
-    } else if (req.query.application == "TRGS") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await TRGS.find({
-        where: condition
-      });
-
-    } else if (req.query.application == "GRGS") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await GRGS.find({
-        where: condition
-      });
-    } else if (req.query.application == "GRGP") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await GRGP.find({
-        where: condition
-      });
-    } else if (req.query.application == "trampoline") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.gender) condition.gender = req.query.gender;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await Trampoline.find({
-        where: condition
-      });
-    } else if (req.query.application == "gfa") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await GFA.find({
-        where: condition
-      });
-    } else if (req.query.application == "acroage") {
-      if (req.query.year) condition.compYear = req.query.year;
-      if (req.query.item) condition.item = req.query.item;
-      if (req.query.category) condition.category = req.query.category;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      if (req.query.teamStatus) condition.teamStatus = req.query.teamStatus;
-
-      var models = await Acroage.find({
-        where: condition
-      });
-
-    } else if (req.query.application == "clubMem") {
-      if (req.query.year) condition.clubYear = req.query.year;
-      if (req.query.payStatus) condition.payStatus = req.query.payStatus;
-      if (req.query.formStatus) condition.formStatus = req.query.formStatus;
-      var models = await ClubMember.find({
-        where: condition
-      });
-
-    }
-    req.session.searchResult = condition;
-    return res.view('admin/applyHandle/search', { applications: models, form, projectYear });
-  },*/
-
+  // acroage - search
   acroSearch: async function (req, res) {
     req.session.acroSearchResult = {};
     var condition = {};
@@ -184,6 +91,7 @@ module.exports = {
     return res.view('admin/applyHandle/acroSearch', { applications: models, projectYear });
   },
 
+  //gfa - search
   gfaSearch: async function (req, res) {
     req.session.gfaSearchResult = {};
     var condition = {};
@@ -207,6 +115,7 @@ module.exports = {
     return res.view('admin/applyHandle/gfaSearch', { applications: models, projectYear });
   },
 
+  //trampoline - search
   trampolineSearch: async function (req, res) {
     req.session.tramSearchResult = {};
     var condition = {};
@@ -231,6 +140,7 @@ module.exports = {
     return res.view('admin/applyHandle/trampolineSearch', { applications: models, projectYear });
   },
 
+  //clubmember - search
   clubMemberSearch: async function (req, res) {
     req.session.clubMemSearchResult = {};
     var condition = {};
@@ -252,6 +162,7 @@ module.exports = {
     return res.view('admin/applyHandle/clubMemberSearch', { applications: models, projectYear });
   },
 
+  //hkrga - search
   HKRGASearch: async function (req, res) {
     req.session.hkrgaSearchResult = {};
     var condition = {};
@@ -319,6 +230,7 @@ module.exports = {
     return res.view('admin/applyHandle/HKRGASearch', { trgpApp: trgpModels, trgsApp: trgsModels, grgpApp: grgpModels, grgsApp: grgsModels, form, projectYear });
   },
 
+  //hkrga - export excel
   HKRGA_export_xlsx: async function (req, res) {
     var condition = {};
     if (!req.session.hkrgaSearchResult.form && !req.session.hkrgaSearchResult.compYear && !req.session.hkrgaSearchResult.category
@@ -753,6 +665,7 @@ module.exports = {
     return res.end(XLSX.write(wb, { type: "buffer", bookType: "xlsx" }));
   },
 
+  //hkrga - import excel
   HKRGA_import_xlsx: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
@@ -968,6 +881,7 @@ module.exports = {
     });
   },
 
+  //hkrga - comfirm all
   HKRGA_comfirmAll: async function (req, res) {
     var condition = {};
     if (!req.session.hkrgaSearchResult.form && !req.session.hkrgaSearchResult.compYear && !req.session.hkrgaSearchResult.category
