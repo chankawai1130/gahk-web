@@ -873,90 +873,90 @@ module.exports = {
 
       //import TRGS
       var trgsWS = workbook.Sheets[workbook.SheetNames[2]];
-            var trgsData = XLSX.utils.sheet_to_json(trgsWS, { range: 1, header: ["idCode", "compYear", "teamName", "Phone", "Email", "CoachName", "CoachPhone", "category", "havecname1", "Mate1ChiName", "Mate1EngName", "Mate1IDNo", "Mate1Date", "havecname2", "Mate2ChiName", "Mate2EngName", "Mate2IDNo", "Mate2Date", "havecname3", "Mate3ChiName", "Mate3EngName", "Mate3IDNo", "Mate3Date", "havecname4", "Mate4ChiName", "Mate4EngName", "Mate4IDNo", "Mate4Date", "TeamNumber", "TeamPrice", "TeamTotalPrice", "leaderName", "leaderPosition", "payStatus", "formStatus", "teamStatus"] });
+      var trgsData = XLSX.utils.sheet_to_json(trgsWS, { range: 1, header: ["idCode", "compYear", "teamName", "Phone", "Email", "CoachName", "CoachPhone", "category", "havecname1", "Mate1ChiName", "Mate1EngName", "Mate1IDNo", "Mate1Date", "havecname2", "Mate2ChiName", "Mate2EngName", "Mate2IDNo", "Mate2Date", "havecname3", "Mate3ChiName", "Mate3EngName", "Mate3IDNo", "Mate3Date", "havecname4", "Mate4ChiName", "Mate4EngName", "Mate4IDNo", "Mate4Date", "TeamNumber", "TeamPrice", "TeamTotalPrice", "leaderName", "leaderPosition", "payStatus", "formStatus", "teamStatus"] });
 
-            for (var i = 0; i < trgsData.length; i++) {
-                if (trgsData[i].payStatus == "未付款 Unpaid") {
-                  trgsData[i].payStatus = "unpaid";
-                } else if (trgsData[i].payStatus == "已付款 Paid") {
-                  trgsData[i].payStatus = "paid";
-                }
+      for (var i = 0; i < trgsData.length; i++) {
+        if (trgsData[i].payStatus == "未付款 Unpaid") {
+          trgsData[i].payStatus = "unpaid";
+        } else if (trgsData[i].payStatus == "已付款 Paid") {
+          trgsData[i].payStatus = "paid";
+        }
 
-                if (trgsData[i].formStatus == "待處理 To be handled") {
-                  trgsData[i].formStatus = "ToBeCon";
-                } else if (trgsData[i].formStatus == "已確認 Accepted") {
-                  trgsData[i].formStatus = "accepted";
-                } else if (trgsData[i].formStatus == "已拒絕 Rejected") {
-                  trgsData[i].formStatus = "rejected";
-                } else if (trgsData[i].formStatus == "資料不全 Data Deficiency") {
-                  trgsData[i].formStatus = "dataDef";
-                }
+        if (trgsData[i].formStatus == "待處理 To be handled") {
+          trgsData[i].formStatus = "ToBeCon";
+        } else if (trgsData[i].formStatus == "已確認 Accepted") {
+          trgsData[i].formStatus = "accepted";
+        } else if (trgsData[i].formStatus == "已拒絕 Rejected") {
+          trgsData[i].formStatus = "rejected";
+        } else if (trgsData[i].formStatus == "資料不全 Data Deficiency") {
+          trgsData[i].formStatus = "dataDef";
+        }
 
-                if (trgsData[i].teamStatus == "正選 Successful Team") {
-                  trgsData[i].teamStatus = "suTeam";
-                } else if (trgsData[i].teamStatus == "後補 Team on Waitiing List") {
-                  trgsData[i].teamStatus = "waitTeam";
-                }
+        if (trgsData[i].teamStatus == "正選 Successful Team") {
+          trgsData[i].teamStatus = "suTeam";
+        } else if (trgsData[i].teamStatus == "後補 Team on Waitiing List") {
+          trgsData[i].teamStatus = "waitTeam";
+        }
 
-                var day1 = trgsData[i].Mate1Date.split('/');
-                var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
-                trgsData[i].Mate1Date = date1;
-                var day2 = trgsData[i].Mate2Date.split('/');
-                var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
-                trgsData[i].Mate2Date = date2;
-                var day3 = trgsData[i].Mate3Date.split('/');
-                var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
-                trgsData[i].Mate3Date = date3;
-                var day4 = trgsData[i].Mate4Date.split('/');
-                var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
-                trgsData[i].Mate4Date = date4;
-            }
-            console.log(trgsData);
-            var trgsModels = await TRGS.createEach(trgsData).fetch();
+        var day1 = trgsData[i].Mate1Date.split('/');
+        var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
+        trgsData[i].Mate1Date = date1;
+        var day2 = trgsData[i].Mate2Date.split('/');
+        var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
+        trgsData[i].Mate2Date = date2;
+        var day3 = trgsData[i].Mate3Date.split('/');
+        var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
+        trgsData[i].Mate3Date = date3;
+        var day4 = trgsData[i].Mate4Date.split('/');
+        var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
+        trgsData[i].Mate4Date = date4;
+      }
+      console.log(trgsData);
+      var trgsModels = await TRGS.createEach(trgsData).fetch();
 
-            //import TRGP
-            var trgpWS = workbook.Sheets[workbook.SheetNames[3]];
-            var trgpData = XLSX.utils.sheet_to_json(trgpWS, { range: 1, header: ["idCode", "compYear", "teamName", "Phone", "Email", "CoachName", "CoachPhone", "category", "havecname1", "Mate1ChiName", "Mate1EngName", "Mate1IDNo", "Mate1Date", "havecname2", "Mate2ChiName", "Mate2EngName", "Mate2IDNo", "Mate2Date", "havecname3", "Mate3ChiName", "Mate3EngName", "Mate3IDNo", "Mate3Date", "havecname4", "Mate4ChiName", "Mate4EngName", "Mate4IDNo", "Mate4Date", "TeamNumber", "TeamPrice", "TeamTotalPrice", "leaderName", "leaderPosition", "payStatus", "formStatus", "teamStatus"] });
+      //import TRGP
+      var trgpWS = workbook.Sheets[workbook.SheetNames[3]];
+      var trgpData = XLSX.utils.sheet_to_json(trgpWS, { range: 1, header: ["idCode", "compYear", "teamName", "Phone", "Email", "CoachName", "CoachPhone", "category", "havecname1", "Mate1ChiName", "Mate1EngName", "Mate1IDNo", "Mate1Date", "havecname2", "Mate2ChiName", "Mate2EngName", "Mate2IDNo", "Mate2Date", "havecname3", "Mate3ChiName", "Mate3EngName", "Mate3IDNo", "Mate3Date", "havecname4", "Mate4ChiName", "Mate4EngName", "Mate4IDNo", "Mate4Date", "TeamNumber", "TeamPrice", "TeamTotalPrice", "leaderName", "leaderPosition", "payStatus", "formStatus", "teamStatus"] });
 
-            for (var i = 0; i < trgpData.length; i++) {
-                if (trgpData[i].payStatus == "未付款 Unpaid") {
-                  trgpData[i].payStatus = "unpaid";
-                } else if (trgpData[i].payStatus == "已付款 Paid") {
-                  trgpData[i].payStatus = "paid";
-                }
+      for (var i = 0; i < trgpData.length; i++) {
+        if (trgpData[i].payStatus == "未付款 Unpaid") {
+          trgpData[i].payStatus = "unpaid";
+        } else if (trgpData[i].payStatus == "已付款 Paid") {
+          trgpData[i].payStatus = "paid";
+        }
 
-                if (trgpData[i].formStatus == "待處理 To be handled") {
-                  trgpData[i].formStatus = "ToBeCon";
-                } else if (trgpData[i].formStatus == "已確認 Accepted") {
-                  trgpData[i].formStatus = "accepted";
-                } else if (trgpData[i].formStatus == "已拒絕 Rejected") {
-                  trgpData[i].formStatus = "rejected";
-                } else if (trgpData[i].formStatus == "資料不全 Data Deficiency") {
-                  trgpData[i].formStatus = "dataDef";
-                }
+        if (trgpData[i].formStatus == "待處理 To be handled") {
+          trgpData[i].formStatus = "ToBeCon";
+        } else if (trgpData[i].formStatus == "已確認 Accepted") {
+          trgpData[i].formStatus = "accepted";
+        } else if (trgpData[i].formStatus == "已拒絕 Rejected") {
+          trgpData[i].formStatus = "rejected";
+        } else if (trgpData[i].formStatus == "資料不全 Data Deficiency") {
+          trgpData[i].formStatus = "dataDef";
+        }
 
-                if (trgpData[i].teamStatus == "正選 Successful Team") {
-                  trgpData[i].teamStatus = "suTeam";
-                } else if (trgpData[i].teamStatus == "後補 Team on Waitiing List") {
-                  trgpData[i].teamStatus = "waitTeam";
-                }
+        if (trgpData[i].teamStatus == "正選 Successful Team") {
+          trgpData[i].teamStatus = "suTeam";
+        } else if (trgpData[i].teamStatus == "後補 Team on Waitiing List") {
+          trgpData[i].teamStatus = "waitTeam";
+        }
 
-                var day1 = trgpData[i].Mate1Date.split('/');
-                var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
-                trgpData[i].Mate1Date = date1;
-                var day2 = trgpData[i].Mate2Date.split('/');
-                var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
-                trgpData[i].Mate2Date = date2;
-                var day3 = trgpData[i].Mate3Date.split('/');
-                var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
-                trgpData[i].Mate3Date = date3;
-                var day4 = trgpData[i].Mate4Date.split('/');
-                var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
-                trgpData[i].Mate4Date = date4;
-            }
+        var day1 = trgpData[i].Mate1Date.split('/');
+        var date1 = day1[2] + "-" + day1[1] + "-" + day1[0];
+        trgpData[i].Mate1Date = date1;
+        var day2 = trgpData[i].Mate2Date.split('/');
+        var date2 = day2[2] + "-" + day2[1] + "-" + day2[0];
+        trgpData[i].Mate2Date = date2;
+        var day3 = trgpData[i].Mate3Date.split('/');
+        var date3 = day3[2] + "-" + day3[1] + "-" + day3[0];
+        trgpData[i].Mate3Date = date3;
+        var day4 = trgpData[i].Mate4Date.split('/');
+        var date4 = day4[2] + "-" + day4[1] + "-" + day4[0];
+        trgpData[i].Mate4Date = date4;
+      }
 
-            console.log(trgpData);
-            var trgpModels = await TRGP.createEach(trgpData).fetch();
+      console.log(trgpData);
+      var trgpModels = await TRGP.createEach(trgpData).fetch();
 
 
 
@@ -966,6 +966,97 @@ module.exports = {
       }
       return res.redirect('/admin/applyHandle/HKRGASearch');
     });
+  },
+
+  HKRGA_comfirmAll: async function (req, res) {
+    var condition = {};
+    if (!req.session.hkrgaSearchResult.form && !req.session.hkrgaSearchResult.compYear && !req.session.hkrgaSearchResult.category
+      && !req.session.hkrgaSearchResult.payStatus && !req.session.hkrgaSearchResult.formStatus && !req.session.hkrgaSearchResult.teamStatus) {
+      var grgsModels = await GRGS.find();
+      var grgpModels = await GRGP.find();
+      var trgsModels = await TRGS.find();
+      var trgpModels = await TRGP.find();
+
+    } else {
+      if (req.session.hkrgaSearchResult.compYear) condition.compYear = req.session.hkrgaSearchResult.compYear;
+      if (req.session.hkrgaSearchResult.category) condition.category = req.session.hkrgaSearchResult.category;
+      if (req.session.hkrgaSearchResult.payStatus) condition.payStatus = req.session.hkrgaSearchResult.payStatus;
+      if (req.session.hkrgaSearchResult.formStatus) condition.formStatus = req.session.hkrgaSearchResult.formStatus;
+      if (req.session.hkrgaSearchResult.teamStatus) condition.teamStatus = req.session.hkrgaSearchResult.teamStatus;
+
+      if (req.session.hkrgaSearchResult.form) {
+        if (req.session.hkrgaSearchResult.form == "TRGP") {
+          var trgpModels = await TRGP.find({
+            where: condition
+          });
+
+        } else if (req.session.hkrgaSearchResult.form == "TRGS") {
+          var trgsModels = await TRGS.find({
+            where: condition
+          });
+        } else if (req.session.hkrgaSearchResult.form == "GRGP") {
+          var grgpModels = await GRGP.find({
+            where: condition
+          });
+        } else if (req.session.hkrgaSearchResult.form == "GRGS") {
+          var grgsModels = await GRGS.find({
+            where: condition
+          });
+        }
+
+      } else {
+        var trgpModels = await TRGP.find({
+          where: condition
+        });
+        var trgsModels = await TRGS.find({
+          where: condition
+        });
+        var grgpModels = await GRGP.find({
+          where: condition
+        });
+        var grgsModels = await GRGS.find({
+          where: condition
+        });
+      }
+    }
+
+    if (trgpModels) {
+      trgpModels.forEach(async function (model) {
+        if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+          await TRGP.update(model.id).set({ formStatus: "accepted" })
+        }
+      });
+    }
+
+    if (trgsModels) {
+      trgsModels.forEach(async function (model) {
+        if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+          await TRGS.update(model.id).set({ formStatus: "accepted" })
+        }
+      });
+    }
+
+    if (grgpModels) {
+      grgpModels.forEach(async function (model) {
+        if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+          await GRGP.update(model.id).set({ formStatus: "accepted" })
+        }
+      });
+    }
+
+    if (grgsModels) {
+      grgsModels.forEach(async function (model) {
+        if (model.formStatus == "ToBeCon" || model.formStatus == "dataDef") {
+          await GRGS.update(model.id).set({ formStatus: "accepted" })
+        }
+      });
+    }
+
+    if (req.wantsJSON) {
+      return res.json({ message: "已確認全部申請表 Sucessfully confirm all applications.", url: '/admin/applyHandle/HKRGASearch' });    // for ajax request
+    } else {
+      return res.redirect('/admin/applyHandle/HKRGASearch');           // for normal request
+    }
   },
 
 

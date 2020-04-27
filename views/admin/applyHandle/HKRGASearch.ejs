@@ -223,10 +223,11 @@
                             <div class="container">
                                 <h1>Excel匯入指引<br>Excel Import Guidelines</h1><br>
                                 <ol style="text-align: left;">
-                                    <li>請在匯入檔案前下載 <a download="HKRGA_範本.xlsx" href="/formDoc/HKRGA_template.xlsx" target="_blank">範本.xlsx</a>
+                                    <li>請在匯入檔案前下載 <a download="HKRGA_範本.xlsx" href="/formDoc/HKRGA_template.xlsx"
+                                            target="_blank">範本.xlsx</a>
                                         並輸入資料。<br>
-                                        Please download <a download="HKRGA_template.xlsx" href="/formDoc/HKRGA_template.xlsx"
-                                            target="_blank">template.xlsx</a>
+                                        Please download <a download="HKRGA_template.xlsx"
+                                            href="/formDoc/HKRGA_template.xlsx" target="_blank">template.xlsx</a>
                                         and input the data before importing.</li>
                                     <br>
                                     <li>請不要更改、刪除或新增第1行的標示,並從第二行開始輸入資料。<br>
@@ -307,11 +308,13 @@
 
                     <!-- Excel Import-->
                     <form action="/HKRGA/import_xlsx" method="post" enctype="multipart/form-data">
-                        <span class="mx-sm-2">請在匯入檔案前下載 <a download="HKRGA_範本.xlsx" href="/formDoc/HKRGA_template.xlsx" target="_blank">範本.xlsx</a>
+                        <span class="mx-sm-2">請在匯入檔案前下載 <a download="HKRGA_範本.xlsx" href="/formDoc/HKRGA_template.xlsx"
+                                target="_blank">範本.xlsx</a>
                             並輸入資料。</span>
                         <br>
-                        <span class="mx-sm-2">Please download <a download="HKRGA_template.xlsx" href="/formDoc/HKRGA_template.xlsx"
-                                target="_blank">template.xlsx</a> and input he data before importing.</span>
+                        <span class="mx-sm-2">Please download <a download="HKRGA_template.xlsx"
+                                href="/formDoc/HKRGA_template.xlsx" target="_blank">template.xlsx</a> and input he data
+                            before importing.</span>
                         <br>
                         <input class="mx-sm-2" type="file"
                             accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
@@ -342,7 +345,8 @@
                                     <button type="button" class="cancelbtn modalBtn"
                                         onclick="document.getElementById('confirmAll').style.display='none'">取消
                                         Cancel</button>
-                                    <button type="button" class="confirmbtn modalBtn" onclick="">全部確認 Confirm
+                                    <button type="button" class="confirmbtn modalBtn" onclick="confirmAll()">全部確認
+                                        Confirm
                                         All</button>
                                 </div>
                             </div>
@@ -351,21 +355,21 @@
 
                     <br><br>
                     <span>搜尋申請項目 Searching Application Project: <br>
-                    <% if (projectYear != null){%>
-                    <b><%=projectYear%>
-                    <%}%>
+                        <% if (projectYear != null){%>
+                        <b><%=projectYear%>
+                            <%}%>
                     <%if (form) {%>
-                    <% if (form == "GRGS") {%>
-                        全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition-Group(School)
-                    <%} else if (form == "GRGP") {%>
-                        全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition-Group(Public)
-                    <%} else if (form == "TRGS") {%>
-                        全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition-Team(School)
-                    <%} else if (form == "TRGP") {%>
-                        全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition-Team(Public)
-                    <%}} else {%>
-                        全港藝術體操分齡賽-所有 HKRGAgeGroupCompetition-All
-                    <%}%></b></span>
+                            <% if (form == "GRGS") {%>
+                            全港藝術體操分齡賽-集體(學校組) HKRGAgeGroupCompetition-Group(School)
+                            <%} else if (form == "GRGP") {%>
+                            全港藝術體操分齡賽-集體(公開組) HKRGAgeGroupCompetition-Group(Public)
+                            <%} else if (form == "TRGS") {%>
+                            全港藝術體操分齡賽-團體(學校組) HKRGAgeGroupCompetition-Team(School)
+                            <%} else if (form == "TRGP") {%>
+                            全港藝術體操分齡賽-團體(公開組) HKRGAgeGroupCompetition-Team(Public)
+                            <%}} else {%>
+                            全港藝術體操分齡賽-所有 HKRGAgeGroupCompetition-All
+                            <%}%></b></span>
                     
 
                     <!-- Attributes -->
@@ -380,513 +384,533 @@
 
                     <!-- GRGS Table -->
                     <% if(grgsApp){%>
-                    <% grgsApp.forEach( function(grgsModel) { %>
-                    <% var n = new Date(grgsModel.createdAt);
+                            <% grgsApp.forEach( function(grgsModel) { %>
+                            <% var n = new Date(grgsModel.createdAt);
                     var month = n.getMonth() + 1;
                     var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-                    <tr>
-                        <!-- 申請編號 Apply No. -->
-                        <td width="10%"><%= grgsModel.idCode %></td>
-                        <!--Column: 隊伍/團體 Team/Organisation -->
-                        <td width="35%"><%= grgsModel.teamName %></td>
-                        <!-- Column:組別 Category -->
-                        <td width="20%"><%= grgsModel.category %></td>
+                            <tr>
+                                <!-- 申請編號 Apply No. -->
+                                <td width="10%"><%= grgsModel.idCode %></td>
+                                <!--Column: 隊伍/團體 Team/Organisation -->
+                                <td width="35%"><%= grgsModel.teamName %></td>
+                                <!-- Column:組別 Category -->
+                                <td width="20%"><%= grgsModel.category %></td>
 
-                        <!-- Column:付款 Payment -->
-                        <% if(grgsModel.payStatus == "paid") {%>
-                        <td width="10%"><i class="fa fa-check"></i></td>
-                        <%} else if (grgsModel.payStatus == "unpaid"){%>
-                        <td width="10%"><i class="fa fa-remove"></i></td>
-                        <%} else {%>
-                        <!-- if input wrong data when import excel -->
-                        <td>&nbsp;</td>
-                        <%}%>
+                                <!-- Column:付款 Payment -->
+                                <% if(grgsModel.payStatus == "paid") {%>
+                                <td width="10%"><i class="fa fa-check"></i></td>
+                                <%} else if (grgsModel.payStatus == "unpaid"){%>
+                                <td width="10%"><i class="fa fa-remove"></i></td>
+                                <%} else {%>
+                                <!-- if input wrong data when import excel -->
+                                <td>&nbsp;</td>
+                                <%}%>
 
                         <!-- Column:提交日期 Apply Date -->
                         <td width="15%"><%= applyDate %></td>
 
-                        <!-- Column:狀態 Status  -->
-                        <td width="10%" id="btns">
-                            <%if (grgsModel.formStatus == "rejected") {%>
-                            <button type="button" class="btn btn-outline-danger" id="statusBtn"
-                                disabled>已拒絕<br>Rejected</button>
-                            <%} else {%>
-                            <% if (grgsModel.formStatus == "accepted"){%>
-                            <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                                disabled>已確認<br>Accepted</button>
+                                <!-- Column:狀態 Status  -->
+                                <td width="10%" id="btns">
+                                    <%if (grgsModel.formStatus == "rejected") {%>
+                                    <button type="button" class="btn btn-outline-danger" id="statusBtn"
+                                        disabled>已拒絕<br>Rejected</button>
+                                    <%} else {%>
+                                    <% if (grgsModel.formStatus == "accepted"){%>
+                                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
+                                        disabled>已確認<br>Accepted</button>
 
-                            <%} else if(grgsModel.formStatus == "dataDef") {
+                                    <%} else if(grgsModel.formStatus == "dataDef") {
                         var confirmID = "conGRGS" + grgsModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= grgsModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('GRGS','<%= grgsModel.id%>')">確認 Confirm</button>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= grgsModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('GRGS','<%= grgsModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                                Deficiency</button>
+                                    <button type="button" class="btn btn-outline-warning" id="statusBtn"
+                                        disabled>資料不全<br>Data
+                                        Deficiency</button>
 
-                            <%} else {%>
-                            <%var confirmID = "conGRGS" + grgsModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= grgsModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('GRGS','<%= grgsModel.id%>')">確認 Confirm</button>
+                                    <%} else {%>
+                                    <%var confirmID = "conGRGS" + grgsModel.id %>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= grgsModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('GRGS','<%= grgsModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <a type="button" class="btn btn-warning" id="statusBtn"
-                                onclick="dataDef('GRGS','<%= grgsModel.id%>')" style="color: white;">資料不全<br>Data
-                                Deficiency</a>
-                            <%}%>
+                                    <a type="button" class="btn btn-warning" id="statusBtn"
+                                        onclick="dataDef('GRGS','<%= grgsModel.id%>')"
+                                        style="color: white;">資料不全<br>Data
+                                        Deficiency</a>
+                                    <%}%>
    
                     <%var deleteID = "delGRGS"+ grgsModel.id %>
-                            <a type="button" class="btn btn-danger" id="statusBtn"
-                                onclick="document.getElementById('<%= deleteID%>').style.display='block'"
-                                style="color: white;">拒絕<br>Rejected</a>
-                            <!-- reject box -->
-                            <div id="<%= deleteID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>拒絕申請 Reject Application<br><%= grgsModel.idCode%></h1>
-                                        <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="deletebtn modalBtn"
-                                                onclick="rejectForm('GRGS','<%= grgsModel.id%>')">拒絕 Rejected</button>
+                                    <a type="button" class="btn btn-danger" id="statusBtn"
+                                        onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                                        style="color: white;">拒絕<br>Rejected</a>
+                                    <!-- reject box -->
+                                    <div id="<%= deleteID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>拒絕申請 Reject Application<br><%= grgsModel.idCode%></h1>
+                                                <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="deletebtn modalBtn"
+                                                        onclick="rejectForm('GRGS','<%= grgsModel.id%>')">拒絕
+                                                        Rejected</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <%if (grgsModel.teamStatus == "waitTeam") {%>
-                            <button type="button" class="btn btn-outline-info" id="statusBtn"
-                                disabled>後補<br>Waitiing</button>
-                            <%} else {%>
-                            <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                                onclick="waitingList('GRGS','<%= grgsModel.id%>')">後補<br>Waitiing</a>
+                                    <%if (grgsModel.teamStatus == "waitTeam") {%>
+                                    <button type="button" class="btn btn-outline-info" id="statusBtn"
+                                        disabled>後補<br>Waitiing</button>
+                                    <%} else {%>
+                                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                                        onclick="waitingList('GRGS','<%= grgsModel.id%>')">後補<br>Waitiing</a>
+                                    <%}%>
+                    <%}%>
+
+                                    <a type="button" class="btn btn-success" id="statusBtn"
+                                        href="/admin/applyHandle/GRGSEditForm/<%= grgsModel.id %>">編輯<br>Edit</a>
+                                </td>
+                            </tr>
+                            <%});%>
                             <%}%>
-                    <%}%>
-
-                            <a type="button" class="btn btn-success" id="statusBtn"
-                                href="/admin/applyHandle/GRGSEditForm/<%= grgsModel.id %>">編輯<br>Edit</a>
-                        </td>
-                    </tr>
-                    <%});%>
-                    <%}%>
 
                     <!-- GRGP Table -->
                     <% if(grgpApp){%>
-                    <% grgpApp.forEach( function(grgpModel) { %>
-                    <% var n = new Date(grgpModel.createdAt);
+                            <% grgpApp.forEach( function(grgpModel) { %>
+                            <% var n = new Date(grgpModel.createdAt);
                         var month = n.getMonth() + 1;
                         var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-                    <tr>
-                        <!-- 申請編號 Apply No. -->
-                        <td width="10%"><%= grgpModel.idCode %></td>
-                        <!--Column: 隊伍/團體 Team/Organisation -->
-                        <td width="35%"><%= grgpModel.teamName %></td>
-                        <!-- Column:組別 Category -->
-                        <td width="20%"><%= grgpModel.category %></td>
+                            <tr>
+                                <!-- 申請編號 Apply No. -->
+                                <td width="10%"><%= grgpModel.idCode %></td>
+                                <!--Column: 隊伍/團體 Team/Organisation -->
+                                <td width="35%"><%= grgpModel.teamName %></td>
+                                <!-- Column:組別 Category -->
+                                <td width="20%"><%= grgpModel.category %></td>
 
-                        <!-- Column:付款 Payment -->
-                        <% if(grgpModel.payStatus == "paid") {%>
-                        <td width="10%"><i class="fa fa-check"></i></td>
-                        <%} else if (grgpModel.payStatus == "unpaid"){%>
-                        <td width="10%"><i class="fa fa-remove"></i></td>
-                        <%} else {%>
-                        <!-- if input wrong data when import excel -->
-                        <td>&nbsp;</td>
-                        <%}%>
+                                <!-- Column:付款 Payment -->
+                                <% if(grgpModel.payStatus == "paid") {%>
+                                <td width="10%"><i class="fa fa-check"></i></td>
+                                <%} else if (grgpModel.payStatus == "unpaid"){%>
+                                <td width="10%"><i class="fa fa-remove"></i></td>
+                                <%} else {%>
+                                <!-- if input wrong data when import excel -->
+                                <td>&nbsp;</td>
+                                <%}%>
     
                             <!-- Column:提交日期 Apply Date -->
                             <td width="15%"><%= applyDate %></td>
 
-                        <!-- Column:狀態 Status  -->
-                        <td width="10%" id="btns">
-                            <%if (grgpModel.formStatus == "rejected") {%>
-                            <button type="button" class="btn btn-outline-danger" id="statusBtn"
-                                disabled>已拒絕<br>Rejected</button>
-                            <%} else {%>
-                            <% if (grgpModel.formStatus == "accepted"){%>
-                            <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                                disabled>已確認<br>Accepted</button>
+                                <!-- Column:狀態 Status  -->
+                                <td width="10%" id="btns">
+                                    <%if (grgpModel.formStatus == "rejected") {%>
+                                    <button type="button" class="btn btn-outline-danger" id="statusBtn"
+                                        disabled>已拒絕<br>Rejected</button>
+                                    <%} else {%>
+                                    <% if (grgpModel.formStatus == "accepted"){%>
+                                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
+                                        disabled>已確認<br>Accepted</button>
 
-                            <%} else if(grgpModel.formStatus == "dataDef") {
+                                    <%} else if(grgpModel.formStatus == "dataDef") {
                             var confirmID = "conGRGP" + grgpModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= grgpModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('GRGP','<%= grgpModel.id%>')">確認 Confirm</button>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= grgpModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('GRGP','<%= grgpModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                                Deficiency</button>
+                                    <button type="button" class="btn btn-outline-warning" id="statusBtn"
+                                        disabled>資料不全<br>Data
+                                        Deficiency</button>
 
-                            <%} else {%>
-                            <%var confirmID = "conGRGP" + grgpModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= grgpModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('GRGP','<%= grgpModel.id%>')">確認 Confirm</button>
+                                    <%} else {%>
+                                    <%var confirmID = "conGRGP" + grgpModel.id %>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= grgpModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('GRGP','<%= grgpModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <a type="button" class="btn btn-warning" id="statusBtn"
-                                onclick="dataDef('GRGP','<%= grgpModel.id%>')" style="color: white;">資料不全<br>Data
-                                Deficiency</a>
-                            <%}%>
+                                    <a type="button" class="btn btn-warning" id="statusBtn"
+                                        onclick="dataDef('GRGP','<%= grgpModel.id%>')"
+                                        style="color: white;">資料不全<br>Data
+                                        Deficiency</a>
+                                    <%}%>
        
                         <%var deleteID = "delGRGP"+ grgpModel.id %>
-                            <a type="button" class="btn btn-danger" id="statusBtn"
-                                onclick="document.getElementById('<%= deleteID%>').style.display='block'"
-                                style="color: white;">拒絕<br>Rejected</a>
-                            <!-- reject box -->
-                            <div id="<%= deleteID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>拒絕申請 Reject Application<br><%= grgpModel.idCode%></h1>
-                                        <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="deletebtn modalBtn"
-                                                onclick="rejectForm('GRGP','<%= grgpModel.id%>')">拒絕 Rejected</button>
+                                    <a type="button" class="btn btn-danger" id="statusBtn"
+                                        onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                                        style="color: white;">拒絕<br>Rejected</a>
+                                    <!-- reject box -->
+                                    <div id="<%= deleteID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>拒絕申請 Reject Application<br><%= grgpModel.idCode%></h1>
+                                                <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="deletebtn modalBtn"
+                                                        onclick="rejectForm('GRGP','<%= grgpModel.id%>')">拒絕
+                                                        Rejected</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <%if (grgpModel.teamStatus == "waitTeam") {%>
-                            <button type="button" class="btn btn-outline-info" id="statusBtn"
-                                disabled>後補<br>Waitiing</button>
-                            <%} else {%>
-                            <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                                onclick="waitingList('GRGP','<%= grgpModel.id%>')">後補<br>Waitiing</a>
-                            <%}%>
+                                    <%if (grgpModel.teamStatus == "waitTeam") {%>
+                                    <button type="button" class="btn btn-outline-info" id="statusBtn"
+                                        disabled>後補<br>Waitiing</button>
+                                    <%} else {%>
+                                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                                        onclick="waitingList('GRGP','<%= grgpModel.id%>')">後補<br>Waitiing</a>
+                                    <%}%>
                         <%}%>
 
-                            <a type="button" class="btn btn-success" id="statusBtn"
-                                href="/admin/applyHandle/GRGPEditForm/<%= grgpModel.id %>">編輯<br>Edit</a>
-                        </td>
-                    </tr>
-                    <%});%>
-                    <%}%>
+                                    <a type="button" class="btn btn-success" id="statusBtn"
+                                        href="/admin/applyHandle/GRGPEditForm/<%= grgpModel.id %>">編輯<br>Edit</a>
+                                </td>
+                            </tr>
+                            <%});%>
+                            <%}%>
 
                     <!-- TRGS Table -->
                     <% if(trgsApp){%>
-                    <% trgsApp.forEach( function(trgsModel) { %>
-                    <% var n = new Date(trgsModel.createdAt);
+                            <% trgsApp.forEach( function(trgsModel) { %>
+                            <% var n = new Date(trgsModel.createdAt);
                         var month = n.getMonth() + 1;
                         var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-                    <tr>
-                        <!-- 申請編號 Apply No. -->
-                        <td width="10%"><%= trgsModel.idCode %></td>
-                        <!--Column: 隊伍/團體 Team/Organisation -->
-                        <td width="35%"><%= trgsModel.teamName %></td>
-                        <!-- Column:組別 Category -->
-                        <td width="20%"><%= trgsModel.category %></td>
+                            <tr>
+                                <!-- 申請編號 Apply No. -->
+                                <td width="10%"><%= trgsModel.idCode %></td>
+                                <!--Column: 隊伍/團體 Team/Organisation -->
+                                <td width="35%"><%= trgsModel.teamName %></td>
+                                <!-- Column:組別 Category -->
+                                <td width="20%"><%= trgsModel.category %></td>
 
-                        <!-- Column:付款 Payment -->
-                        <% if(trgsModel.payStatus == "paid") {%>
-                        <td width="10%"><i class="fa fa-check"></i></td>
-                        <%} else if (trgsModel.payStatus == "unpaid"){%>
-                        <td width="10%"><i class="fa fa-remove"></i></td>
-                        <%} else {%>
-                        <!-- if input wrong data when import excel -->
-                        <td>&nbsp;</td>
-                        <%}%>
+                                <!-- Column:付款 Payment -->
+                                <% if(trgsModel.payStatus == "paid") {%>
+                                <td width="10%"><i class="fa fa-check"></i></td>
+                                <%} else if (trgsModel.payStatus == "unpaid"){%>
+                                <td width="10%"><i class="fa fa-remove"></i></td>
+                                <%} else {%>
+                                <!-- if input wrong data when import excel -->
+                                <td>&nbsp;</td>
+                                <%}%>
     
                             <!-- Column:提交日期 Apply Date -->
                             <td width="15%"><%= applyDate %></td>
 
-                        <!-- Column:狀態 Status  -->
-                        <td width="10%" id="btns">
-                            <%if (trgsModel.formStatus == "rejected") {%>
-                            <button type="button" class="btn btn-outline-danger" id="statusBtn"
-                                disabled>已拒絕<br>Rejected</button>
-                            <%} else {%>
-                            <% if (trgsModel.formStatus == "accepted"){%>
-                            <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                                disabled>已確認<br>Accepted</button>
+                                <!-- Column:狀態 Status  -->
+                                <td width="10%" id="btns">
+                                    <%if (trgsModel.formStatus == "rejected") {%>
+                                    <button type="button" class="btn btn-outline-danger" id="statusBtn"
+                                        disabled>已拒絕<br>Rejected</button>
+                                    <%} else {%>
+                                    <% if (trgsModel.formStatus == "accepted"){%>
+                                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
+                                        disabled>已確認<br>Accepted</button>
 
-                            <%} else if(trgsModel.formStatus == "dataDef") {
+                                    <%} else if(trgsModel.formStatus == "dataDef") {
                             var confirmID = "conTRGS" + trgsModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= trgsModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('TRGS','<%= trgsModel.id%>')">確認 Confirm</button>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= trgsModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('TRGS','<%= trgsModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                                Deficiency</button>
+                                    <button type="button" class="btn btn-outline-warning" id="statusBtn"
+                                        disabled>資料不全<br>Data
+                                        Deficiency</button>
 
-                            <%} else {%>
-                            <%var confirmID = "conTRGS" + trgsModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= trgsModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('TRGS','<%= trgsModel.id%>')">確認 Confirm</button>
+                                    <%} else {%>
+                                    <%var confirmID = "conTRGS" + trgsModel.id %>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= trgsModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('TRGS','<%= trgsModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <a type="button" class="btn btn-warning" id="statusBtn"
-                                onclick="dataDef('TRGS','<%= trgsModel.id%>')" style="color: white;">資料不全<br>Data
-                                Deficiency</a>
-                            <%}%>
+                                    <a type="button" class="btn btn-warning" id="statusBtn"
+                                        onclick="dataDef('TRGS','<%= trgsModel.id%>')"
+                                        style="color: white;">資料不全<br>Data
+                                        Deficiency</a>
+                                    <%}%>
        
                         <%var deleteID = "delTRGS"+ trgsModel.id %>
-                            <a type="button" class="btn btn-danger" id="statusBtn"
-                                onclick="document.getElementById('<%= deleteID%>').style.display='block'"
-                                style="color: white;">拒絕<br>Rejected</a>
-                            <!-- reject box -->
-                            <div id="<%= deleteID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>拒絕申請 Reject Application<br><%= trgsModel.idCode%></h1>
-                                        <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="deletebtn modalBtn"
-                                                onclick="rejectForm('TRGS','<%= trgsModel.id%>')">拒絕 Rejected</button>
+                                    <a type="button" class="btn btn-danger" id="statusBtn"
+                                        onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                                        style="color: white;">拒絕<br>Rejected</a>
+                                    <!-- reject box -->
+                                    <div id="<%= deleteID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>拒絕申請 Reject Application<br><%= trgsModel.idCode%></h1>
+                                                <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="deletebtn modalBtn"
+                                                        onclick="rejectForm('TRGS','<%= trgsModel.id%>')">拒絕
+                                                        Rejected</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <%if (trgsModel.teamStatus == "waitTeam") {%>
-                            <button type="button" class="btn btn-outline-info" id="statusBtn"
-                                disabled>後補<br>Waitiing</button>
-                            <%} else {%>
-                            <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                                onclick="waitingList('TRGS','<%= trgsModel.id%>')">後補<br>Waitiing</a>
-                            <%}%>
+                                    <%if (trgsModel.teamStatus == "waitTeam") {%>
+                                    <button type="button" class="btn btn-outline-info" id="statusBtn"
+                                        disabled>後補<br>Waitiing</button>
+                                    <%} else {%>
+                                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                                        onclick="waitingList('TRGS','<%= trgsModel.id%>')">後補<br>Waitiing</a>
+                                    <%}%>
                         <%}%>
 
-                            <a type="button" class="btn btn-success" id="statusBtn"
-                                href="/admin/applyHandle/TRGSEdit/<%= trgsModel.id %>">編輯<br>Edit</a>
-                        </td>
-                    </tr>
-                    <%});%>
-                    <%}%>
+                                    <a type="button" class="btn btn-success" id="statusBtn"
+                                        href="/admin/applyHandle/TRGSEdit/<%= trgsModel.id %>">編輯<br>Edit</a>
+                                </td>
+                            </tr>
+                            <%});%>
+                            <%}%>
 
                     <!-- TRGP Table -->
                     <% if(trgpApp){%>
-                    <% trgpApp.forEach( function(trgpModel) { %>
-                    <% var n = new Date(trgpModel.createdAt);
+                            <% trgpApp.forEach( function(trgpModel) { %>
+                            <% var n = new Date(trgpModel.createdAt);
                         var month = n.getMonth() + 1;
                         var applyDate = n.getDate() + "/" + month + "/" + n.getFullYear(); %>
-                    <tr>
-                        <!-- 申請編號 Apply No. -->
-                        <td width="10%"><%= trgpModel.idCode %></td>
-                        <!--Column: 隊伍/團體 Team/Organisation -->
-                        <td width="35%"><%= trgpModel.teamName %></td>
-                        <!-- Column:組別 Category -->
-                        <td width="20%"><%= trgpModel.category %></td>
+                            <tr>
+                                <!-- 申請編號 Apply No. -->
+                                <td width="10%"><%= trgpModel.idCode %></td>
+                                <!--Column: 隊伍/團體 Team/Organisation -->
+                                <td width="35%"><%= trgpModel.teamName %></td>
+                                <!-- Column:組別 Category -->
+                                <td width="20%"><%= trgpModel.category %></td>
 
-                        <!-- Column:付款 Payment -->
-                        <% if(trgpModel.payStatus == "paid") {%>
-                        <td width="10%"><i class="fa fa-check"></i></td>
-                        <%} else if (trgpModel.payStatus == "unpaid"){%>
-                        <td width="10%"><i class="fa fa-remove"></i></td>
-                        <%} else {%>
-                        <!-- if input wrong data when import excel -->
-                        <td>&nbsp;</td>
-                        <%}%>
+                                <!-- Column:付款 Payment -->
+                                <% if(trgpModel.payStatus == "paid") {%>
+                                <td width="10%"><i class="fa fa-check"></i></td>
+                                <%} else if (trgpModel.payStatus == "unpaid"){%>
+                                <td width="10%"><i class="fa fa-remove"></i></td>
+                                <%} else {%>
+                                <!-- if input wrong data when import excel -->
+                                <td>&nbsp;</td>
+                                <%}%>
     
                             <!-- Column:提交日期 Apply Date -->
                             <td width="15%"><%= applyDate %></td>
 
-                        <!-- Column:狀態 Status  -->
-                        <td width="10%" id="btns">
-                            <%if (trgpModel.formStatus == "rejected") {%>
-                            <button type="button" class="btn btn-outline-danger" id="statusBtn"
-                                disabled>已拒絕<br>Rejected</button>
-                            <%} else {%>
-                            <% if (trgpModel.formStatus == "accepted"){%>
-                            <button type="button" class="btn btn-outline-primary" id="statusBtn"
-                                disabled>已確認<br>Accepted</button>
+                                <!-- Column:狀態 Status  -->
+                                <td width="10%" id="btns">
+                                    <%if (trgpModel.formStatus == "rejected") {%>
+                                    <button type="button" class="btn btn-outline-danger" id="statusBtn"
+                                        disabled>已拒絕<br>Rejected</button>
+                                    <%} else {%>
+                                    <% if (trgpModel.formStatus == "accepted"){%>
+                                    <button type="button" class="btn btn-outline-primary" id="statusBtn"
+                                        disabled>已確認<br>Accepted</button>
 
-                            <%} else if(trgpModel.formStatus == "dataDef") {
+                                    <%} else if(trgpModel.formStatus == "dataDef") {
                             var confirmID = "conTRGP" + trgpModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= trgpModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('TRGP','<%= trgpModel.id%>')">確認 Confirm</button>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= trgpModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('TRGP','<%= trgpModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <button type="button" class="btn btn-outline-warning" id="statusBtn" disabled>資料不全<br>Data
-                                Deficiency</button>
+                                    <button type="button" class="btn btn-outline-warning" id="statusBtn"
+                                        disabled>資料不全<br>Data
+                                        Deficiency</button>
 
-                            <%} else {%>
-                            <%var confirmID = "conTRGP" + trgpModel.id %>
-                            <a type="button" class="btn btn-primary" id="statusBtn"
-                                onclick="document.getElementById('<%= confirmID%>').style.display='block'"
-                                style="color: white;">確認<br>Confirm</a>
-                            <!-- confirm box -->
-                            <div id="<%= confirmID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>確認申請 Confirm Application<br><%= trgpModel.idCode%></h1>
-                                        <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="confirmbtn modalBtn"
-                                                onclick="confirm('TRGP','<%= trgpModel.id%>')">確認 Confirm</button>
+                                    <%} else {%>
+                                    <%var confirmID = "conTRGP" + trgpModel.id %>
+                                    <a type="button" class="btn btn-primary" id="statusBtn"
+                                        onclick="document.getElementById('<%= confirmID%>').style.display='block'"
+                                        style="color: white;">確認<br>Confirm</a>
+                                    <!-- confirm box -->
+                                    <div id="<%= confirmID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>確認申請 Confirm Application<br><%= trgpModel.idCode%></h1>
+                                                <p>確定要確認這份申請表?<br>Are you sure you want to confirm this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= confirmID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="confirmbtn modalBtn"
+                                                        onclick="confirm('TRGP','<%= trgpModel.id%>')">確認
+                                                        Confirm</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <a type="button" class="btn btn-warning" id="statusBtn"
-                                onclick="dataDef('TRGP','<%= trgpModel.id%>')" style="color: white;">資料不全<br>Data
-                                Deficiency</a>
-                            <%}%>
+                                    <a type="button" class="btn btn-warning" id="statusBtn"
+                                        onclick="dataDef('TRGP','<%= trgpModel.id%>')"
+                                        style="color: white;">資料不全<br>Data
+                                        Deficiency</a>
+                                    <%}%>
        
                         <%var deleteID = "delTRGP"+ trgpModel.id %>
-                            <a type="button" class="btn btn-danger" id="statusBtn"
-                                onclick="document.getElementById('<%= deleteID%>').style.display='block'"
-                                style="color: white;">拒絕<br>Rejected</a>
-                            <!-- reject box -->
-                            <div id="<%= deleteID%>" class="modal">
-                                <div class="modal-content">
-                                    <div class="container">
-                                        <h1>拒絕申請 Reject Application<br><%= trgpModel.idCode%></h1>
-                                        <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
-                                        <div class="clearfix">
-                                            <button type="button" class="cancelbtn modalBtn"
-                                                onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
-                                                Cancel</button>
-                                            <button type="button" class="deletebtn modalBtn"
-                                                onclick="rejectForm('TRGP','<%= trgpModel.id%>')">拒絕 Rejected</button>
+                                    <a type="button" class="btn btn-danger" id="statusBtn"
+                                        onclick="document.getElementById('<%= deleteID%>').style.display='block'"
+                                        style="color: white;">拒絕<br>Rejected</a>
+                                    <!-- reject box -->
+                                    <div id="<%= deleteID%>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="container">
+                                                <h1>拒絕申請 Reject Application<br><%= trgpModel.idCode%></h1>
+                                                <p>確定要拒絕這份申請表?<br>Are you sure you want to reject this application?</p>
+                                                <div class="clearfix">
+                                                    <button type="button" class="cancelbtn modalBtn"
+                                                        onclick="document.getElementById('<%= deleteID%>').style.display='none'">取消
+                                                        Cancel</button>
+                                                    <button type="button" class="deletebtn modalBtn"
+                                                        onclick="rejectForm('TRGP','<%= trgpModel.id%>')">拒絕
+                                                        Rejected</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <%if (trgpModel.teamStatus == "waitTeam") {%>
-                            <button type="button" class="btn btn-outline-info" id="statusBtn"
-                                disabled>後補<br>Waitiing</button>
-                            <%} else {%>
-                            <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
-                                onclick="waitingList('TRGP','<%= trgpModel.id%>')">後補<br>Waitiing</a>
-                            <%}%>
+                                    <%if (trgpModel.teamStatus == "waitTeam") {%>
+                                    <button type="button" class="btn btn-outline-info" id="statusBtn"
+                                        disabled>後補<br>Waitiing</button>
+                                    <%} else {%>
+                                    <a type="button" class="btn btn-info" id="statusBtn" style="color: white;"
+                                        onclick="waitingList('TRGP','<%= trgpModel.id%>')">後補<br>Waitiing</a>
+                                    <%}%>
                         <%}%>
 
-                            <a type="button" class="btn btn-success" id="statusBtn"
-                                href="/admin/applyHandle/TRGPEdit/<%= trgpModel.id %>">編輯<br>Edit</a>
-                        </td>
-                    </tr>
-                    <%});%>
-                    <%}%>
+                                    <a type="button" class="btn btn-success" id="statusBtn"
+                                        href="/admin/applyHandle/TRGPEdit/<%= trgpModel.id %>">編輯<br>Edit</a>
+                                </td>
+                            </tr>
+                            <%});%>
+                            <%}%>
 
 
 
 
         <%}%>
-                    </table>
+                            </table>
             </div>
 
             <script>
@@ -967,4 +991,20 @@
                         alert(response.status + ": " + response.statusText);
                     }
                 };
+
+                //Confirm all
+                async function confirmAll() {
+                    var response = await fetch("/admin/applyHandle/HKRGA/confirmAll/", {
+                        method: "POST",
+                        credentials: 'same-origin',
+                    });
+                    if (response.ok) {
+                        var data = await response.json();
+                        alert(data.message);
+                        window.location = data.url;
+                    } else {
+                        alert(response.statusText);
+                    }
+                };
+
             </script>
